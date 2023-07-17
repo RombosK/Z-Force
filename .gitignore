@@ -2,10 +2,10 @@
 __pycache__/
 *.py[cod]
 *$py.class
-
+.xml
 # C extensions
 *.so
-
+.idea
 .gitignore
 # Distribution / packaging
 .Python
