@@ -1,7 +1,13 @@
 from django.contrib import admin
+from authapp.models import User
 
-admin.site.site_title = "Панель администрирования Z-Force"
-admin.site.index_title = "Добро пожаловать в dashboard"
+admin.site.index_title = "Добро пожаловать в Z-board"
 
 
-
+@admin.register(User)
+class UserAdmin(admin.ModelAdmin):
+    list_display = ('username', 'first_name', 'last_name', 'age', 'is_staff', 'is_active')
+    list_per_page = 10
+    list_filter = ('username', 'is_staff', 'is_active')
+    search_fields = ('username', 'first_name', 'last_name')
+    show_full_result_count = False
