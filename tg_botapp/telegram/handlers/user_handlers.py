@@ -1,5 +1,5 @@
 import config_bd.bd as bd
-from aiogram import Router, Bot
+from aiogram import Bot, Router
 from aiogram.types import Message
 from lexicon.lexicon import LEXICON_RU
 

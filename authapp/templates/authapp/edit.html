@@ -1,0 +1,20 @@
+
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <div class="row justify-content-center my-2">
+        <div class="row justify-content-center">
+            <div class="col-sm-7 col-md-5 col-lg-4">
+                {% if user.avatar %}
+                    <img src="{{ user.avatar.url }}" alt="" width="20%">
+                {% else %}
+                    <img src="{% static 'img/user003.png' %}" alt="" width="20%">
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+

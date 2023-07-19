@@ -1,4 +1,5 @@
 from django.contrib import admin
+
 from authapp.models import User
 
 admin.site.index_title = "Добро пожаловать в Z-board"

@@ -1,4 +1,5 @@
 from .lexicon_src_contacts import LEXICON_SRC_CONTACTS
+
 gruop_name: str = '«Место встречи - ZoV»'
 
 LEXICON_SRC_RU: dict[str, str] = {

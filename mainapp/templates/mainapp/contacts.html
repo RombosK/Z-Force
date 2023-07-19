@@ -1,0 +1,48 @@
+
+
+{% extends 'mainapp/base.html' %}
+
+
+{% block content %}
+
+    <p>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">Наши контакты</h1>
+            <p class="lead">Обязательно свяжитесь с нами! </p>
+            <div class="row">
+            <form method="post" class="form-group col-4">
+                {%csrf_token%}
+
+                <textarea class="form-control" name="message_body"></textarea>
+                <input type="submit" class="btn btn-primary" value="Отправить"/>
+            </form>
+        </div>
+        </div>
+    </div>
+    <p>
+    <div class="row justify-content-around mt-n2">
+        {%for contact in contacts%}
+            <div class="col-sm-6 col-md-6 col-lg-4 pb-2">
+                <div class="card h-100 shadow">
+                    <div class="card-body">
+
+                        <h5 class="card-title">{{ contact.city }}</h5>
+                        <p class="card-text">
+                        <ul class="list-unstyled">
+                            <li>Телефон</li>
+                            <li><strong>{{ contact.phone }}</strong></li>
+                        </ul>
+                        <ul class="list-unstyled">
+                            <li>Адрес</li>
+                            <li><strong>{{ contact.adress }}</strong></li>
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+
+{% endblock content %}

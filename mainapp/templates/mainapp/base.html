@@ -1,0 +1,97 @@
+
+
+{% load static %}
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Z-Force</title>
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-lg">
+            <a class="navbar-brand" href="{% url 'mainapp:home' %}">
+                <img src="{% static '/img/Z.jpg' %}" alt="Z">
+            </a>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'mainapp:home' %}">Домашняя</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'mainapp:login' %}">Войти</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'authapp:edit' %}">Редактировать</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'mainapp:home' %}">Выйти</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'mainapp:contacts' %}">Контакты</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-lg mt-3">
+        {% block content %}
+        {% endblock content %}
+    </div>
+
+    <!-- Footer -->
+    <div class="container-lg mt-auto">
+        <hr>
+        <div class="row justify-content-center">
+            <div class="col-sm-6 col-md-3 text-center">
+                <p>
+                    <strong>Z-Force</strong>
+                </p>
+
+            </div>
+            <div class="col-sm-6 col-md-3 text-center">
+                <p>
+                    <strong>Полезное</strong>
+                </p>
+                <p>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Положения &amp; Условия</a></li>
+                        <li><a href="#">Конфиденциальность &amp; Cookies</a></li>
+                    </ul>
+
+            </div>
+            <div class="col-sm-6 col-md-3 text-center">
+                <p>
+                     <strong>Мы в социальных сетях</strong>
+            </p>
+            <p>
+            <div class="row justify-content-around">
+                <div><a href="#"><i class="fab fa-vk fa-2x"></i></a></div>
+                <div><a href="#"><i class="fab fa-telegram fa-2x"></i></a></div>
+            </div>
+            <p>
+                <strong>Наш  telegram бот</strong>
+            </p>
+
+            <div class="row justify-content-around">
+                <div><a href="#"><i class="fab fa-app-store fa-2x"></i></a></div>
+                <div><a href="#"><i class="fab fa-google-play fa-2x"></i></a></div>
+                <div><a href="#"><i class="fab fa-windows fa-2x"></i></a></div>
+            </div>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div>
+            <p><small>&copy; Z-Force 2023</small></p>
+        </div>
+    </div>
+
+</body>
+

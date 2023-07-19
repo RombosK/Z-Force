@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'crispy_forms',
     'adminapp',
     'userapp',
     'mainapp',
@@ -60,7 +61,7 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR/'templates/'],
+        'DIRS': [BASE_DIR / 'templates/'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -121,16 +122,27 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
         BASE_DIR / 'static',
-]
+    ]
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+MEDIA_URL = '/media/'
+DEFAULT_AVATAR_URL = '/img/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
 AUTH_USER_MODEL = 'authapp.User'
+
+LOGIN_REDIRECT_URL = 'mainapp:home'
+LOGOUT_REDIRECT_URL = 'mainapp:home'
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+

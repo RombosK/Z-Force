@@ -1,9 +1,11 @@
 import z_force.tg_botapp.telegram.config_bd.bd as bd
-from aiogram import Router, Bot
+from aiogram import Bot, Router
 from aiogram.filters import Command, CommandStart
 from aiogram.types import Message
 from z_force.tg_botapp.telegram.config_data.config import Config, load_config
-from z_force.tg_botapp.telegram.lexicon.lexicon import LEXICON_RU, LEXICON_HI_RU, LEXICON_CONTACTS
+from z_force.tg_botapp.telegram.lexicon.lexicon import (LEXICON_CONTACTS,
+                                                        LEXICON_HI_RU,
+                                                        LEXICON_RU)
 
 config: Config = load_config()
 

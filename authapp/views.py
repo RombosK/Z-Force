@@ -1,3 +1,40 @@
+from django.contrib.auth.views import LoginView, LogoutView
 from django.shortcuts import render
+from django.urls import reverse_lazy
+from django.views.generic import CreateView, UpdateView
 
-# Create your views here.
+from authapp.forms import CustomUserChangeForm, CustomUserCreationForm
+from authapp.models import User
+
+
+class CustomLoginView(LoginView):
+    template_name = 'authapp/login.html'
+    extra_context = {
+        'title': 'Вход пользователя'
+    }
+
+    def home(request):
+        title = 'Домашняя страница'
+        return render(request, 'mainapp/home.html', {'title': title})
+
+
+class RegisterView(CreateView):
+    model = User
+    form_class = CustomUserCreationForm
+    success_url = reverse_lazy('authapp:login')
+
+
+class CustomLogoutView(LogoutView):
+    template_name = 'mainapp/index.html'
+
+
+class EditView(UpdateView):
+    model = User
+    form_class = CustomUserChangeForm
+    template_name = 'authapp/edit.html'
+
+    def get_object(self, queryset=None):
+        return self.request.user
+
+    def get_success_url(self):
+        return reverse_lazy('authapp:edit', args=[self.request.user.pk])
