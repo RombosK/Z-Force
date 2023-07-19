@@ -1,7 +1,9 @@
 # Z-Force
 
+# clone repo -> venv -> requirements.txt -> 
+# python manage.py migrate -> python manage.py createsuperuser
 Приложения сервиса:
-# adminapp: админ-панель(login=superadmin, password=superadmin(после первой миграции)),
+# adminapp: админ-панель,
 # authapp: авторизация,
 # config: основные настройки проекта,
 # mainapp: основной раздел сайта под наполнение,
