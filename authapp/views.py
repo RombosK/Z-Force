@@ -13,10 +13,6 @@ class CustomLoginView(LoginView):
         'title': 'Вход пользователя'
     }
 
-    def home(request):
-        title = 'Домашняя страница'
-        return render(request, 'mainapp/home.html', {'title': title})
-
 
 class RegisterView(CreateView):
     model = User
