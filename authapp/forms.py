@@ -41,3 +41,5 @@ class CustomUserChangeForm(UserChangeForm):
             raise ValidationError('Контент 18+')
         else:
             return age
+
+

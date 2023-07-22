@@ -1,15 +1,54 @@
 
-{% extends 'mainapp/base.html' %}
+
+
 {% load static %}
 
-{% block content %}
-    <div class="row justify-content-around align-items-center" style="height: 100vh; margin: 0px">
-        <div class="text-center">
-            <p>
-                <a href="{% url 'mainapp:home' %}"><img src="{% static 'img/Z.jpg' %}" alt=""></a>
-            </p>
-            <h2>{{ title }}</h2>
-            <!-- Добавьте свой контент здесь -->
-        </div>
+<head>
+    <!-- Required meta tags -->
+
+
+    <title>Welcome to Z!</title>
+</head>
+
+<body>
+
+<div class="row justify-content-around align-items-center" style="height: 100vh; margin: 0px">
+    <div class="text-center">
+        <p>
+            <a href="{% url 'mainapp:home' %}"><img src="{% static 'img/Z.jpg' %}" alt=""></a>
+        </p>
+        <h2>{{title }}</h2>
+        {% block content %}
+        {% endblock %}
+
+
     </div>
+</div>
+
+<!-- Footer -->
+
+<!-- /Footer -->
+
+<!-- JavaScript section -->
+<!-- Bootstrap -->
+
+{% block js %}
+    <script>
+        $(document).ready(function () {
+
+            {% if messages %}
+
+                // Toasts
+                $(".toast").toast({ delay: 5000 });
+                $(".toast").toast("show");
+
+            {% endif %}
+
+        });
+    </script>
+
 {% endblock %}
+
+</body>
+</html>
+

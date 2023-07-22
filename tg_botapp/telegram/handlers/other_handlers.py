@@ -1,14 +1,13 @@
-import z_force.tg_botapp.telegram.config_bd.bd as bd
+import tg_botapp.telegram.config_bd.bd as bd
 from aiogram import Bot, Router
 from aiogram.filters import Command, CommandStart
 from aiogram.types import Message
-from z_force.tg_botapp.telegram.config_data.config import Config, load_config
-from z_force.tg_botapp.telegram.lexicon.lexicon import (LEXICON_CONTACTS,
-                                                        LEXICON_HI_RU,
-                                                        LEXICON_RU)
+from tg_botapp.telegram.config_data.config import Config, load_config
+from tg_botapp.telegram.lexicon.lexicon import (LEXICON_CONTACTS,
+                                                LEXICON_HI_RU,
+                                                LEXICON_RU)
 
 config: Config = load_config()
-
 
 # Инициализируем роутер уровня модуля
 router: Router = Router()
@@ -48,16 +47,19 @@ async def process_help_command(message: Message):
 @router.message(Command(commands='contacts'))
 async def process_help_command(message: Message):
     await message.answer(text=LEXICON_HI_RU['/contacts'])
-    
+
+
 # Этот хэндлер срабатывает на команду /contacts_goverment
 @router.message(Command(commands='contacts_goverment'))
 async def process_contacts_command(message: Message):
     await message.answer(text=LEXICON_CONTACTS['/contacts_goverment'])
-    
+
+
 # Этот хэндлер срабатывает на команду /contacts_hospitals
 @router.message(Command(commands='contacts_hospitals'))
 async def process_contacts_command(message: Message):
     await message.answer(text=LEXICON_CONTACTS['/contacts_hospitals'])
+
 
 @router.message()
 async def send_echo(message: Message, bot: Bot):
@@ -78,5 +80,3 @@ async def send_echo(message: Message, bot: Bot):
         #     print(message.message_thread_id)
     except TypeError:
         await message.reply(text=LEXICON_RU['no_echo'])
-
-
