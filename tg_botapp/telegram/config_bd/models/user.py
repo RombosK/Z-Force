@@ -1,7 +1,8 @@
 from datetime import datetime
 from typing import Optional
 
-from sqlalchemy import BigInteger, Boolean, DateTime, String, Text, func
+from sqlalchemy import BigInteger, Boolean, DateTime, String, Text
+from sqlalchemy import func
 from sqlalchemy.orm import Mapped, mapped_column
 
 from ..models.base import BaseModel, UserStatus

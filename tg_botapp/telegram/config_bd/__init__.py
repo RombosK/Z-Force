@@ -3,6 +3,7 @@ from sqlalchemy.orm import Session
 
 from .models import BaseModel
 
+
 BASE_URL = 'sqlite:///db.db'
 
 
@@ -35,14 +36,14 @@ class DB:
     __db_password: str
     __db_basename: str
     _echo: bool = True
-
-    def __init__(self, config=None):
+    
+    def __init__(self, config = None):
 
         self.url = self.__create_url(config)
 
         if config:
             self._echo = False
-
+        
         self.engine = create_engine(self.url, echo=self._echo)
         BaseModel.metadata.create_all(bind=self.engine)
         self.session = Session(self.engine)
@@ -53,13 +54,13 @@ class DB:
         """
 
         if config is None:
-            return BASE_URL
-
+            return BASE_URL 
+        
         self.__db_user = config.db.db_user
         self.__db_host = config.db.db_host
         self.__db_password = config.db.db_password
         self.__db_basename = config.db.database
-
+        
         return f'mysql+pymysql://{self.__db_user}:\
                                  {self.__db_password}@\
                                  {self.__db_host}/\

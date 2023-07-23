@@ -1,3 +1,4 @@
+
 {% extends 'authapp/base.html' %}
 {% load crispy_forms_tags %}
 {% block content %}
@@ -31,4 +32,15 @@
     </div>
 </div>
 {% endblock content %}
+
+--{% block js %}-->
+    <script>
+        $(document).ready(function () {
+            {% if messages %}
+                $(".toast").toast({delay: 5000});
+                $(".toast").toast("show");
+            {% endif %}
+        });
+    </script>
+{% endblock %}
 

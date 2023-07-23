@@ -1,0 +1,53 @@
+{% with request.resolver_match.url_name as url_name %}
+
+
+
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+        {% if user.is_authenticated %}
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="ddProfile" role="button" data-toggle="dropdown"
+               aria-haspopup="true" aria-expanded="false">Профиль
+
+            </a>
+            <div class="dropdown-menu" aria-labelledby="ddProfile">
+                <a class="dropdown-item" href="{% url 'authapp:edit' %}">Редактировать профиль
+
+                </a>
+
+                <div class="dropdown-divider"></div>
+                {% if user.is_staff %}
+                    <a class="dropdown-item" href="{% url 'admin:index' %}">Модерация
+
+                    </a>
+                {% endif %}
+                {% if user.is_superuser %}
+                    <a class="dropdown-item" href="{% url 'admin:index' %}">Админ-панель
+
+                    </a>
+
+                {% endif %}
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="{% url 'authapp:logout' %}">Выход
+
+                </a>
+            </div>
+        </li>
+        {% else %}
+            <li class="nav-item ">
+                <a class="nav-link" href="{% url 'authapp:login' %}">Вход
+
+                </a>
+            </li>
+        {% endif %}
+        <li class="nav-item {%  if url_name == 'contacts' %} active {% endif %}">
+            <a class="nav-link" href="{% url 'mainapp:contacts' %}">Контакты
+
+            </a>
+        </li>
+    </ul>
+
+            </div>
+{% endwith %}
+
+

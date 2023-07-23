@@ -1,5 +1,6 @@
-from dataclasses import dataclass
+from __future__ import annotations
 
+from dataclasses import dataclass
 from environs import Env
 
 
@@ -13,7 +14,7 @@ class DatabaseConfig:
 
 @dataclass
 class TgBot:
-    token: str            # Токен для доступа к телеграм-боту
+    token: str # Токен для доступа к телеграм-боту
     admin_ids: list[int]  # Список id администраторов бота
 
 

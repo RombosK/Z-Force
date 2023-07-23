@@ -1,5 +1,5 @@
-from aiogram.filters import BaseFilter
-from aiogram.types import CallbackQuery, Message
+from aiogram.filters import Command, CommandStart, BaseFilter
+from aiogram.types import Message, CallbackQuery
 
 
 class NewUser(BaseFilter):

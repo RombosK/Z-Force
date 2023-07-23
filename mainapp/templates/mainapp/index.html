@@ -1,44 +1,54 @@
-
-
 {% extends 'mainapp/base.html' %}
 
 {% load static %}
 
 {% block content %}
     <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-ride="carousel">
-
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
         <div class="carousel-inner" style="background-color: #777; font-size: 1.25rem;">
             <div class="carousel-item active">
-                <img src="{% static 'img/Z.jpg' %}" class="d-block w-100" alt="" style="opacity: 0.3;">
+                <img src="{% static 'img/slider001.jpg' %}" class="d-block w-100" alt="" style="opacity: 0.3;">
                 <div class="carousel-caption d-none d-md-block">
-                    <h3>Z-Force</h3>
-                    <p>Description</p>
+                    <h3>Любой текст</h3>
+                    <p>ZOV IT: Z-Force</p>
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="{% static 'img/Z.jpg' %}" class="d-block w-100" alt="" style="opacity: 0.3;">
+                <img src="{% static 'img/slider002.jpg' %}" class="d-block w-100" alt="" style="opacity: 0.3;">
                 <div class="carousel-caption d-none d-md-block">
-                    <h3>SOME TEXT</h3>
-                    <p>Lorem</p>
+                    <h3>Lorem</h3>
+                    <p>Random text</p>
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="{% static 'img/Z.jpg' %}" class="d-block w-100" alt="" style="opacity: 0.3;">
+                <img src="{% static 'img/slider003.jpg' %}" class="d-block w-100" alt="" style="opacity: 0.3;">
                 <div class="carousel-caption d-none d-md-block">
-                    <h3>Z-Force - это МЫ</h3>
-                    <p>Description</p>
+                    <h3>ZOV IT: Z-Force</h3>
+                    <p>Help Lorem</p>
                 </div>
             </div>
         </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
     </div>
 
     <div class="jumbotron">
-        <h1 class="display-4">Приветствую, Z!</h1>
+        <h1 class="display-4">Приветствую, ZOV IT</h1>
         <p class="lead">
-            Lorem ipsum dolor sit amet, consectetur adip
+            На данном портале мы собрали сообщество людей объединённых одной целью - ZOV IT: Z-Force!
+            Краткое описание ZOV IT: Z-Force
         </p>
     </div>
-
 
     <div class="my-5">
         <hr>
@@ -46,16 +56,28 @@
 
     <div class="row justify-content-center align-items-center">
         <div class="col-md-7">
-            <h1>Lorem</h1>
-            <p>Description</p>
+            <h1>Some text</h1>
+            <p>Lorem text</p>
         </div>
         <div class="col-md-5">
-            <img src="{% static 'img/Z.jpg' %}" alt="" class="w-100 h-100 rounded" style="opacity: 0.7;">
+            <img src="{% static 'img/promo001.jpg' %}" alt="" class="w-100 h-100 rounded" style="opacity: 0.7;">
         </div>
     </div>
 
     <div class="my-5">
         <hr>
+    </div>
+
+    <div class="row justify-content-center align-items-center">
+        <div class="col-md-5">
+            <img src="{% static 'img/promo002.jpg' %}" alt="" class="w-100 h-100 rounded" style="opacity: 0.7;">
+        </div>
+        <div class="col-md-7">
+            <h1>ZOV IT: Z-Force</h1>
+            <p>
+                Lorem some text
+            </p>
+        </div>
     </div>
 
     <div class="my-5">
@@ -65,10 +87,11 @@
     <div class="row justify-content-center align-items-center">
         <div class="col-md-7">
             <h1>Вместе мы сила</h1>
-            <p>Проекты любой сложности становятся легче, если ты в компании единомышленников. Присоединяйся!</p>
+            <p>Проекты любой сложности становятся легче, если ты в компании единомышленников. Присоединяйся!
+                ZOV IT: Z-Force</p>
         </div>
         <div class="col-md-5">
-            <img src="{% static 'img/Z.jpg' %}" alt="" class="w-100 h-100 rounded" style="opacity: 0.7;">
+            <img src="{% static 'img/promo003.jpg' %}" alt="" class="w-100 h-100 rounded" style="opacity: 0.7;">
         </div>
     </div>
 {% endblock content %}
