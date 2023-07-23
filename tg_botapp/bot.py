@@ -13,6 +13,7 @@ logger = logging.getLogger(__name__)
 # Функция конфигурирования и запуска бота
 async def main() -> None:
 
+
     # Кофигурируем логирование
     logging.basicConfig(
         level=logging.INFO,

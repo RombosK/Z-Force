@@ -1,17 +1,12 @@
-
-
-
 {% load static %}
 
+<!DOCTYPE html>
+<html lang="ru">
 <head>
-    <!-- Required meta tags -->
-
-
+    <meta charset="UTF-8">
     <title>Welcome to Z!</title>
 </head>
-
 <body>
-
 <div class="row justify-content-around align-items-center" style="height: 100vh; margin: 0px">
     <div class="text-center">
         <p>
@@ -21,34 +16,8 @@
         {% block content %}
         {% endblock %}
 
-
     </div>
 </div>
 
-<!-- Footer -->
-
-<!-- /Footer -->
-
-<!-- JavaScript section -->
-<!-- Bootstrap -->
-
-{% block js %}
-    <script>
-        $(document).ready(function () {
-
-            {% if messages %}
-
-                // Toasts
-                $(".toast").toast({ delay: 5000 });
-                $(".toast").toast("show");
-
-            {% endif %}
-
-        });
-    </script>
-
-{% endblock %}
-
 </body>
 </html>
-

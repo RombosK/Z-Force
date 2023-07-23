@@ -30,6 +30,7 @@
                         <a class="nav-link" href="{% url 'authapp:register' %}">Регистрация</a>
                     </li>
                     <li class="nav-item">
+
                         <a class="nav-link" href="{% url 'authapp:edit' %}">Редактировать</a>
                     </li>
                     <li class="nav-item">
@@ -39,7 +40,9 @@
                         <a class="nav-link" href="{% url 'mainapp:contacts' %}">Контакты</a>
                     </li>
                     <li class="nav-item">
+                        {% if user.is_superuser %}
                         <a class="nav-link" href="{% url 'admin:index' %}">Admin-board</a>
+                        {% endif %}
                     </li>
                 </ul>
             </div>
@@ -70,26 +73,13 @@
                         <li><a href="#">Положения &amp; Условия</a></li>
                         <li><a href="#">Конфиденциальность &amp; Cookies</a></li>
                     </ul>
-
             </div>
             <div class="col-sm-6 col-md-3 text-center">
-                <p>
-                     <strong>Мы в социальных сетях</strong>
-            </p>
-            <p>
-            <div class="row justify-content-around">
-                <div><a href="#"><i class="fab fa-vk fa-2x"></i></a></div>
-                <div><a href="#"><i class="fab fa-telegram fa-2x"></i></a></div>
-            </div>
-            <p>
-                <strong>Наш  telegram бот</strong>
-            </p>
 
-            <div class="row justify-content-around">
-                <div><a href="#"><i class="fab fa-app-store fa-2x"></i></a></div>
-                <div><a href="#"><i class="fab fa-google-play fa-2x"></i></a></div>
-                <div><a href="#"><i class="fab fa-windows fa-2x"></i></a></div>
-            </div>
+                <strong>Наш  telegram бот</strong>
+                <ul class="list-unstyled">
+                    <li><a href="https://t.me/zov_it_mvbot">Zov-bot</a></li>
+
             </div>
         </div>
     </div>
