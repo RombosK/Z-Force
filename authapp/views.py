@@ -1,8 +1,7 @@
+
 from django.contrib.auth.views import LoginView, LogoutView
-from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, UpdateView
-
 from authapp.forms import CustomUserChangeForm, CustomUserCreationForm
 from authapp.models import User
 
@@ -34,3 +33,9 @@ class EditView(UpdateView):
 
     def get_success_url(self):
         return reverse_lazy('authapp:edit', args=[self.request.user.pk])
+
+
+
+
+
+
