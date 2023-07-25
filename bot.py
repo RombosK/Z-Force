@@ -1,7 +1,7 @@
 import asyncio
 import logging
 from aiogram import Bot, Dispatcher
-from telegram.config_data.config import Config, load_config
+from tg_botapp.telegram.config_data.config import Config, load_config
 from tg_botapp.telegram.handlers import other_handlers, user_handlers, admin_handlers
 
 # Инициализируем логгер
