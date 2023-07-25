@@ -2,7 +2,7 @@ from aiogram import Router, Bot
 from aiogram.types import Message, ChatPermissions, Update
 
 from tg_botapp.telegram.lexicon.lexicon import LEXICON_RU
-from .. import config_bd as bd
+import tg_botapp.telegram.config_bd.bd as bd
 
 # Инициализируем роутер уровня модуля
 router: Router = Router()

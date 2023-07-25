@@ -1,5 +1,13 @@
+
+LEXICON_SRC_LIST_BUTTONS_CONTACTS: dict[str, str] = {
+    '/contacts_admins' : 'Админы',
+    '/contacts_government' : 'Госорганы',
+    '/contacts_hospitals' : 'Поиск/госпитали',
+    '/cancel': 'Выход',
+}
+
 LEXICON_SRC_CONTACTS: dict[str, str] = {
-    'contacts_admins': 
+    '/contacts_admins': 
         'Администратор группы - Андрей, @AKlion\n\n'
         'Болталка и общая модерация - Людмила С., @Milaga_S, помощник администратора группы\n\n'
         'Болталка и общая модерация - alex alex., @AlexZander2020, помощник администратора группы\n\n'
