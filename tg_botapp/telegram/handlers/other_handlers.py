@@ -2,7 +2,7 @@ from aiogram import Router, Bot, types, Dispatcher
 from aiogram.types import Message, CallbackQuery
 from aiogram.filters import Command, CommandStart, Text
 
-from tg_botapp.telegram.keyboards.inline.keyboard import create_inline_kb, create_inline_kb_test
+from tg_botapp.telegram.keyboards.inline.keyboard import create_inline_kb, create_inline_kb_inside
 from tg_botapp.telegram.lexicon.lexicon import LEXICON_RU, LEXICON_HI_RU, LEXICON_CONTACTS, LEXICON_SRC_COMMANDS_RU, LEXICON_SRC_RU, LEXICON_TEST_COMMANDS_RU, LEXICON_LIST_BUTTONS_CONTACTS, LEXICON_COMMANDS_RU
 from tg_botapp.telegram.config_data.config import Config, load_config
 import tg_botapp.telegram.config_bd.bd as bd
@@ -13,7 +13,7 @@ config: Config = load_config()
 router: Router = Router()
 keyboard = create_inline_kb(2, **LEXICON_COMMANDS_RU)
 keyboard_contacts = create_inline_kb(2, **LEXICON_LIST_BUTTONS_CONTACTS)
-keyboard_test = create_inline_kb_test(1, **LEXICON_TEST_COMMANDS_RU)
+keyboard_inside = create_inline_kb_inside(1, **LEXICON_TEST_COMMANDS_RU)
 
 
 # Этот хэндлер срабатывает на команду /start
@@ -26,13 +26,13 @@ async def process_start_command(message: Message):
 # Этот хэндлер срабатывает на команду /help
 @router.message(Command(commands='help'))
 async def process_help_command(message: Message):
-    await message.answer(text=LEXICON_RU['/help'], reply_markup=keyboard_test)
+    await message.answer(text=LEXICON_RU['/help'], reply_markup=keyboard_inside)
 
 
 # Этот хэндлер срабатывает на команду /help
 @router.message(Command(commands='ПОМОЩЬ'))
 async def process_help_command(message: Message):
-    await message.answer(text=LEXICON_RU['/help'], reply_markup=keyboard_test)
+    await message.answer(text=LEXICON_RU['/help'], reply_markup=keyboard_inside)
 
 
 # Этот хэндлер срабатывает на команду /info
@@ -59,11 +59,13 @@ async def process_help_command(message: Message):
 @router.message(Command(commands='contacts'))
 async def process_help_command(message: Message):
     await message.answer(text=LEXICON_HI_RU['/contacts'])
-    
-    # Этот хэндлер срабатывает на команду /contacts_admins
+
+
+# Этот хэндлер срабатывает на команду /contacts_admins
 @router.message(Command(commands='contacts_admins'))
 async def process_contacts_command(message: Message):
     await message.answer(text=LEXICON_CONTACTS['/contacts_admins'])
+
 
 # Этот хэндлер срабатывает на команду /contacts_government
 @router.message(Command(commands='contacts_government'))
@@ -142,7 +144,8 @@ async def buttons_press_contacts(callback: CallbackQuery):
             text=LEXICON_HI_RU['/contacts'],
             reply_markup=keyboard_contacts)
     await callback.answer(text=LEXICON_HI_RU['/contacts'])
-    
+
+
 # Обработчик нажатия на кнопку Админы
 @router.callback_query(Text(text=['/contacts_admins']))
 async def buttons_press_support(callback: CallbackQuery):
@@ -153,8 +156,9 @@ async def buttons_press_support(callback: CallbackQuery):
             reply_markup=callback.message.reply_markup
         )
     await callback.answer(text=LEXICON_CONTACTS['/contacts_admins'])
-    
-    # Обработчик нажатия на кнопку Госорганы
+
+
+# Обработчик нажатия на кнопку Госорганы
 @router.callback_query(Text(text=['/contacts_government']))
 async def buttons_press_support(callback: CallbackQuery):
     print('Это обработчик Госорганов')
@@ -164,8 +168,9 @@ async def buttons_press_support(callback: CallbackQuery):
             reply_markup=callback.message.reply_markup
         )
     await callback.answer(text=LEXICON_CONTACTS['/contacts_government'])
-    
-    # Обработчик нажатия на кнопку Поиск/госпитали
+
+
+# Обработчик нажатия на кнопку Поиск/госпитали
 @router.callback_query(Text(text=['/contacts_hospitals']))
 async def buttons_press_support(callback: CallbackQuery):
     print('Это обработчик Поиска/госпиталей')

@@ -31,7 +31,8 @@ def create_inline_kb(width: int, *args: str, **kwargs: str) -> InlineKeyboardMar
     return kb_builder.as_markup()
 
 
-def create_inline_kb_test(width: int, *args: str, **kwargs: str) -> InlineKeyboardMarkup:
+# Функция генерит еще одну клавиатуру - вложенную
+def create_inline_kb_inside(width: int, *args: str, **kwargs: str) -> InlineKeyboardMarkup:
     # Инициализация билдера
     kb_builder: InlineKeyboardBuilder = InlineKeyboardBuilder()
     # Инициализация списка кнопок
