@@ -2,7 +2,7 @@
 LEXICON_SRC_LIST_BUTTONS_CONTACTS: dict[str, str] = {
     '/contacts_admins': 'Админы',
     '/contacts_government': 'Госорганы',
-    '/contacts_hospitals': 'Поиск/госпитали',
+    '/contacts_hospitals': 'Поиск / Госпитали',
     '/cancel': 'Выход',
 }
 
