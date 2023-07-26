@@ -1,4 +1,4 @@
-from aiogram import Router, Bot, types, Dispatcher
+from aiogram import Router, Bot, types
 from aiogram.types import Message, CallbackQuery
 from aiogram.filters import Command, CommandStart, Text
 
@@ -26,7 +26,7 @@ async def process_start_command(message: Message):
 # Этот хэндлер срабатывает на команду /help
 @router.message(Command(commands='help'))
 async def process_help_command(message: Message):
-    await message.answer(text=LEXICON_RU['/help'], reply_markup=keyboard_test)
+    await message.answer(text=LEXICON_RU['/help'], reply_markup=keyboard_inside)
 
 
 # Этот хэндлер срабатывает на команду /info
