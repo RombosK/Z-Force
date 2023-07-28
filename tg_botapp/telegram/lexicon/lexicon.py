@@ -11,5 +11,6 @@ LEXICON_HI_RU: dict[str, str] = LEXICON_SRC_HI_RU
 
 LEXICON_CONTACTS: dict[str, str] = LEXICON_SRC_CONTACTS
 
-
 LEXICON_FAQ: dict[str, str] = LEXICON_FAQ_RU
+
+LEXICON_SOS: dict[str, str] = LEXICON_SOS_RU
