@@ -1,7 +1,7 @@
-from aiogram import Router, types, Bot
+from aiogram import Router, Bot
 from aiogram.filters import Command, Text
 from aiogram.types import Message, CallbackQuery
-import tg_botapp.telegram.config_bd.bd as bd
+
 from tg_botapp.telegram.ZOV_src.lexicon_src import LEXICON_SOS_RU
 from tg_botapp.telegram.config_data.config import Config, load_config
 from tg_botapp.telegram.filters.filters import IsAdmin
@@ -15,17 +15,19 @@ router: Router = Router()
 keyboard = create_inline_kb(2, **LEXICON_COMMANDS_RU)
 keyboard_contacts = create_inline_kb(1, **LEXICON_LIST_BUTTONS_CONTACTS)
 keyboard_inside = create_inline_kb_inside(1, **LEXICON_TEST_COMMANDS_RU)
-ADMIN_LIST = [2222222, 111111111, 333333333]  # Свои значения id пользователей
-ADMIN_ID = 222222    # id админа
+
+
+ADMIN_LIST = [415521486, 825886126, 333333333]  # Свои значения id пользователей
+ADMIN_ID = 415521486  # id админа
+bot = Bot(token='YOUR_TOKEN')
 
 
 async def send_sos_message(admin_id, recipient_id):
-    message_all = 'Общий сбор'
-    try:
-        await Bot.send_message(recipient_id, message_all)
-        await Bot.send_message(admin_id, f'SOS-сообщение отправлено пользователю с ID {recipient_id}')
-    except Exception as e:
-        print(f'Error sending message: {e}')
+    message = 'Общий сбор'
+    for recipient_id in ADMIN_LIST:
+        await bot.send_message(recipient_id, message)
+        await bot.send_message(admin_id, f"Отправлен срочный вызов от админа с id{admin_id} пользователю\
+         с id {recipient_id}")
 
 
 @IsAdmin
@@ -36,10 +38,9 @@ async def process_help_command(message: Message):
 
 
 @IsAdmin
-@router.callback_query(lambda callback: callback.data == 'sos')
-async def admin_button_handler(callback: CallbackQuery):
+@router.callback_query(Text(text=['/sos']))
+async def buttons_press_faq(callback: CallbackQuery):
+    print('Это обработчик SOS')
     recipient_id = [admin for admin in ADMIN_LIST]
     for admin_id in ADMIN_LIST:
-        print(f"Sending SOS message from admin {admin_id} to recipient {recipient_id}")
         await send_sos_message(admin_id, recipient_id)
-    await callback.answer(text='Срочный вызов')
