@@ -17,8 +17,8 @@ keyboard_contacts = create_inline_kb(1, **LEXICON_LIST_BUTTONS_CONTACTS)
 keyboard_inside = create_inline_kb_inside(1, **LEXICON_TEST_COMMANDS_RU)
 
 
-ADMIN_LIST = [415521486, 825886126, 333333333]  # Свои значения id пользователей
-ADMIN_ID = 415521486  # id админа
+ADMIN_LIST = [111111111, 333333333, 22222222]  # Свои значения id пользователей
+ADMIN_ID = 11111111  # id админа
 bot = Bot(token='YOUR_TOKEN')
 
 
