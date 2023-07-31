@@ -2,12 +2,11 @@ from aiogram import Router, Bot, types
 from aiogram.types import Message, CallbackQuery
 from aiogram.filters import Command, CommandStart, Text
 
-from tg_botapp.telegram.keyboards.inline.keyboard import create_inline_kb, create_inline_kb_inside
-from tg_botapp.telegram.lexicon.lexicon import LEXICON_RU, LEXICON_HI_RU, LEXICON_CONTACTS, LEXICON_SRC_COMMANDS_RU, LEXICON_SRC_RU, LEXICON_TEST_COMMANDS_RU, LEXICON_LIST_BUTTONS_CONTACTS, LEXICON_COMMANDS_RU, LEXICON_FAQ
-from tg_botapp.telegram.config_data.config import Config, load_config
+from ..keyboards.inline.keyboard import create_inline_kb, create_inline_kb_inside
+from ..lexicon.lexicon import LEXICON_RU, LEXICON_HI_RU, LEXICON_CONTACTS, LEXICON_SRC_COMMANDS_RU, LEXICON_SRC_RU, LEXICON_TEST_COMMANDS_RU, LEXICON_LIST_BUTTONS_CONTACTS, LEXICON_COMMANDS_RU, LEXICON_FAQ
+from ..config_data.config import Config, load_config
 import tg_botapp.telegram.config_bd.bd as bd
-
-config: Config = load_config()
+from ..utiles.service import msg_to_delete
 
 # Инициализируем роутер уровня модуля
 router: Router = Router()
@@ -26,6 +25,7 @@ async def process_start_command(message: Message):
 # Этот хэндлер срабатывает на команду /help
 @router.message(Command(commands='help'))
 async def process_help_command(message: Message):
+    print(message.from_user.id)
     await message.answer(text=LEXICON_RU['/help'], reply_markup=keyboard_inside)
 
 
@@ -77,8 +77,7 @@ async def process_contacts_command(message: Message):
 @router.message(Command(commands='contacts_hospitals'))
 async def process_contacts_command(message: Message):
     await message.answer(text=LEXICON_CONTACTS['/contacts_hospitals'])
-
-
+    
 @router.message()
 async def send_echo(message: Message, bot: Bot):
     try:
@@ -88,13 +87,18 @@ async def send_echo(message: Message, bot: Bot):
                 user_id = member.id
                 name = member.first_name
                 if bd.select(user_id):
-                    await message.answer(text=f'С возвращением {name}!')
+                    msg = await message.answer(text=f'С возвращением {name}!')
+                    await msg_to_delete(msg)
                 else:
                     bd.insert(user_id, member.username, name, False)
-                    await message.answer(
+                    msg = await message.answer(
                         text=f'Доброго времени суток {name}! {LEXICON_HI_RU["hi"]}')
+                    await msg_to_delete(msg)
         else:
-            print(message)
+            if message.from_user.id not in list_x:
+                list_x.append(message.from_user.id)
+            print(list_x)
+            print(message.from_user.id)
         #     print(f'{str(message.chat.id)} ---> {message.chat.title} ---> ---> {message.from_user.first_name} -> {message.text}')
         #     print(message.message_thread_id)
     except TypeError:
@@ -191,6 +195,18 @@ async def buttons_press_support(callback: CallbackQuery):
             reply_markup=callback.message.reply_markup
         )
     await callback.answer(text='Больницы')
+    
+ 
+# Обработчик нажатия на кнопку Прошивка дронов
+@router.callback_query(Text(text=['/contacts_drons_software']))
+async def buttons_press_support(callback: CallbackQuery):
+    print('Это обработчик Поиска/госпиталей')
+    if callback.message.text != 'contacts_drons_software':
+        await callback.message.answer(
+            text=LEXICON_CONTACTS['/contacts_drons_software'],
+            reply_markup=callback.message.reply_markup
+        )
+    await callback.answer(text='Прошивка дронов')
 
 
 # Обработчик нажатия на кнопку Поддержка
@@ -214,6 +230,4 @@ async def buttons_press(callback: CallbackQuery):
             text=LEXICON_RU['/start'],
             reply_markup=keyboard)
     await callback.answer(text='Вы находитесь в главном меню')
-
-
 
