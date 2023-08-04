@@ -41,7 +41,7 @@ async def process_help_command1(message: Message, bot: Bot):
 @router.message(Command(commands='help'))
 async def process_help_command(message: Message):
     print(message.from_user.id)
-    await message.answer(text=LEXICON_RU['/help'], reply_markup=keyboard_inside)
+    await message.answer(text=LEXICON_RU['/sos'], reply_markup=keyboard_inside)
 
 
 @router.message()

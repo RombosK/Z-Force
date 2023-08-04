@@ -1,4 +1,4 @@
-# Для запуска проекта на сервере командой python run.py3
+# Для запуска проекта на сервере командой python run.py
 
 import subprocess
 import threading

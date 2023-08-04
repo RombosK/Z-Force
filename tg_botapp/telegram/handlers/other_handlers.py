@@ -3,7 +3,8 @@ from aiogram.types import Message, CallbackQuery
 from aiogram.filters import Command, CommandStart, Text
 
 from ..keyboards.inline.keyboard import create_inline_kb, create_inline_kb_inside
-from ..lexicon.lexicon import LEXICON_RU, LEXICON_HI_RU, LEXICON_CONTACTS, LEXICON_SRC_COMMANDS_RU, LEXICON_SRC_RU, LEXICON_TEST_COMMANDS_RU, LEXICON_LIST_BUTTONS_CONTACTS, LEXICON_COMMANDS_RU, LEXICON_FAQ
+from ..lexicon.lexicon import LEXICON_RU, LEXICON_HI_RU, LEXICON_CONTACTS, LEXICON_SRC_COMMANDS_RU, LEXICON_SRC_RU, \
+    LEXICON_TEST_COMMANDS_RU, LEXICON_LIST_BUTTONS_CONTACTS, LEXICON_COMMANDS_RU, LEXICON_FAQ
 from ..config_data.config import Config, load_config
 import tg_botapp.telegram.config_bd.bd as bd
 from ..utiles.service import msg_to_delete
@@ -77,7 +78,8 @@ async def process_contacts_command(message: Message):
 @router.message(Command(commands='contacts_hospitals'))
 async def process_contacts_command(message: Message):
     await message.answer(text=LEXICON_CONTACTS['/contacts_hospitals'])
-    
+
+
 @router.message()
 async def send_echo(message: Message, bot: Bot):
     try:
@@ -195,8 +197,8 @@ async def buttons_press_support(callback: CallbackQuery):
             reply_markup=callback.message.reply_markup
         )
     await callback.answer(text='Больницы')
-    
- 
+
+
 # Обработчик нажатия на кнопку Прошивка дронов
 @router.callback_query(Text(text=['/contacts_drons_software']))
 async def buttons_press_support(callback: CallbackQuery):
@@ -230,4 +232,3 @@ async def buttons_press(callback: CallbackQuery):
             text=LEXICON_RU['/start'],
             reply_markup=keyboard)
     await callback.answer(text='Вы находитесь в главном меню')
-
