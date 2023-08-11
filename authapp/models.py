@@ -6,6 +6,7 @@ NULLABLE = {"blank": True, "null": True}
 
 
 class User(AbstractUser):
+    telegram_id = models.PositiveIntegerField(verbose_name='ID Телеграм', **NULLABLE)
     email = models.EmailField(blank=True, verbose_name=_("email"), unique=True)
     age = models.PositiveSmallIntegerField(verbose_name=_("age"), **NULLABLE)
     avatar = models.ImageField(upload_to="users", verbose_name=_("avatar"), **NULLABLE)

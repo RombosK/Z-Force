@@ -11,3 +11,7 @@ sleep_time: int = config.tg_bot.sleep_time
 async def msg_to_delete(message: Message) -> None:
     await sleep(sleep_time)
     await message.delete()
+
+
+
+

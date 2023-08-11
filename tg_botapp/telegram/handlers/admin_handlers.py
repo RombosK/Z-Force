@@ -1,7 +1,6 @@
 from aiogram import Router, Bot
 from aiogram.filters import Command, Text
 from aiogram.types import Message, CallbackQuery
-
 from ..ZOV_src.lexicon_src import LEXICON_SOS_RU
 from ..config_data.config import Config, load_config
 from ..filters.filters import IsAdmin
@@ -49,3 +48,5 @@ async def process_help_command(message: Message, bot: Bot):
     print("Received /sos command")
     await bot.send_message(message.from_user.id, LEXICON_SOS_RU['/sos'], reply_markup=keyboard)
     # await message.answer(text=LEXICON_SOS_RU['/sos'], reply_markup=keyboard)
+
+

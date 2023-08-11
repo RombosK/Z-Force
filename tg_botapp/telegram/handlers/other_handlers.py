@@ -1,13 +1,22 @@
-from aiogram import Router, Bot, types
-from aiogram.types import Message, CallbackQuery
-from aiogram.filters import Command, CommandStart, Text
+import os
+import django
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings')
+django.setup()
+from channels.auth import AuthMiddlewareStack
+from channels.routing import ProtocolTypeRouter, URLRouter
+from django.core.asgi import get_asgi_application
 
-from ..keyboards.inline.keyboard import create_inline_kb, create_inline_kb_inside
-from ..lexicon.lexicon import LEXICON_RU, LEXICON_HI_RU, LEXICON_CONTACTS, LEXICON_SRC_COMMANDS_RU, LEXICON_SRC_RU, \
-    LEXICON_TEST_COMMANDS_RU, LEXICON_LIST_BUTTONS_CONTACTS, LEXICON_COMMANDS_RU, LEXICON_FAQ
-from ..config_data.config import Config, load_config
+from aiogram import Router, Bot
+from aiogram.filters import Command, CommandStart, Text
+from aiogram.types import Message, CallbackQuery
 import tg_botapp.telegram.config_bd.bd as bd
+from authapp.models import User
+from ..keyboards.inline.keyboard import create_inline_kb, create_inline_kb_inside
+from ..lexicon.lexicon import LEXICON_RU, LEXICON_HI_RU, LEXICON_CONTACTS, LEXICON_TEST_COMMANDS_RU, \
+    LEXICON_LIST_BUTTONS_CONTACTS, LEXICON_COMMANDS_RU, LEXICON_FAQ
 from ..utiles.service import msg_to_delete
+
+
 
 # Инициализируем роутер уровня модуля
 router: Router = Router()
@@ -232,3 +241,29 @@ async def buttons_press(callback: CallbackQuery):
             text=LEXICON_RU['/start'],
             reply_markup=keyboard)
     await callback.answer(text='Вы находитесь в главном меню')
+
+
+@router.callback_query(Text(text=['/username']))
+async def _merge_accounts(self, callback: CallbackQuery, message: Message, bot: Bot) -> None:
+    """
+        Функция связывания аккаунтов:
+        - в случае успешной авторизации аккаунту в базе добавляется переданный telegram id
+        """
+
+    username = await self._get_answer_from_conv(conv=message, question='Введи имя пользователя')
+    if username:
+        password = await self._get_answer_from_conv(conv=message, question='Введи пароль')
+        if password:
+            # Авторизация базовым аккаунтом системы
+            authorized = self._authorize(username=username, password=password)
+
+            if authorized:
+                # Добавляем аккаунту telegram id
+                current_user = User.objects.get(username=username)
+                current_user.telegram_id = self.telegram_id
+                current_user.save()
+                await callback.answer(text=
+                                      'Аккаунты связаны: login {current_user.username}, \
+                                      telegram_id {current_user.telegram_id}')
+            else:
+                await callback.answer(text='Неверный логин или пароль')
