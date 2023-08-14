@@ -3,14 +3,14 @@ from sqlalchemy.orm import Session
 
 from .models import BaseModel
 
-
-BASE_URL = 'sqlite:///db.db'
+# BASE_URL = 'sqlite:///db.db'
+BASE_URL = 'sqlite:///db.sqlite3'
 
 
 class DB:
     """
         Основной класс инициализирования базы данных. Если класс не получает
-        требуемых для запуска MySql движка, то запускается sqllite3 база
+        требуемых для запуска MySql движка, то запускается sqlite3 база
         данных db.db
         Атрибуты:
             
@@ -36,31 +36,31 @@ class DB:
     __db_password: str
     __db_basename: str
     _echo: bool = True
-    
-    def __init__(self, config = None):
+
+    def __init__(self, config=None):
 
         self.url = self.__create_url(config)
 
         if config:
             self._echo = False
-        
+
         self.engine = create_engine(self.url, echo=self._echo)
         BaseModel.metadata.create_all(bind=self.engine)
         self.session = Session(self.engine)
 
     def __create_url(self, config) -> str:
         """
-            Метод формирования url для для запуска движка базы данных
+            Метод формирования url для запуска движка базы данных
         """
 
         if config is None:
-            return BASE_URL 
-        
+            return BASE_URL
+
         self.__db_user = config.db.db_user
         self.__db_host = config.db.db_host
         self.__db_password = config.db.db_password
         self.__db_basename = config.db.database
-        
+
         return f'mysql+pymysql://{self.__db_user}:\
                                  {self.__db_password}@\
                                  {self.__db_host}/\
