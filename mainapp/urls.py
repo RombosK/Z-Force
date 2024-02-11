@@ -16,5 +16,8 @@ urlpatterns = [
     path('login/', views.LoginView.as_view(), name='login'),
     path('', views.IndexView.as_view(), name='home'),
     path('yandex/', RedirectView.as_view(url='https://yandex.ru/search/', query_string=True), name='yandex'),
+    path('offero/', views.OfferoView.as_view(), name='offero'),
+    path('personal_data/', views.PersonalDataView.as_view(), name='personal_data'),
+    path('legal/', views.LegalView.as_view(), name='legal'),
 
 ]
