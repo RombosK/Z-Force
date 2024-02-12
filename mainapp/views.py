@@ -25,10 +25,10 @@ class ContactsView(TemplateView):
         context_data['contacts'] = [
             {
 
-                'city': 'Random',
-                'phone': '+88888888888',
-                'email': 'zov@spb.ru',
-                'adress': 'Street'
+                'city': 'Московская область, г. Королев',
+                'phone': '+7 (910)401-40-12',
+                'email': 'org@fond-oknovmir.ru',
+                'adress': '141075, г. Королев, ул. Фрунзе, д. 12'
             }, {
 
                 'city': 'Other',
@@ -68,6 +68,17 @@ class IndexView(TemplateView):
 class LoginView(TemplateView):
     template_name = 'mainapp/login.html'
 
+
+class OfferoView(TemplateView):
+    template_name = 'mainapp/offero.html'
+
+
+class PersonalDataView(TemplateView):
+    template_name = 'mainapp/personal_data.html'
+
+
+class LegalView(TemplateView):
+    template_name = 'mainapp/legal.html'
 
 # class NewsListView(ListView):
 #     model = News
