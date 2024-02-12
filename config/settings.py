@@ -53,7 +53,6 @@ INSTALLED_APPS = [
     'mainapp',
     'authapp',
     'requestapp',
-    'tg_botapp',
     'debug_toolbar',
 ]
 
