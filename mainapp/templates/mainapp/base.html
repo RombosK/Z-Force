@@ -14,7 +14,7 @@
 
     <!-- FontAwesome -->
     <link rel="stylesheet" href="{% static '/css/fontawesome.all.min.css' %}">
-    <title>Z-Force</title>
+    <title>Благотворительный Фонд Окно в Мир</title>
 
 </head>
 
@@ -24,7 +24,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
         <a class="navbar-brand" href="{% url 'mainapp:home' %}">
-            <img src="{% static '/img/logo.png' %}" alt="">
+            <img src="{% static '/img/logo.jpg' %}" width="150" height="150" alt="Окно в Мир">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -50,7 +50,7 @@
     <div class="row justify-content-center">
         <div class="col-sm-6 col-md-3 text-center">
             <p>
-                <strong>Z-Force</strong>
+                <strong>МЕЖДУНАРОДНЫЙ БЛАГОТВОРИТЕЛЬНЫЙ ФОНД "ОКНО В МИР"</strong>
             </p>
             <p>
             <ul class="list-unstyled">
@@ -61,12 +61,13 @@
         </div>
         <div class="col-sm-6 col-md-3 text-center">
             <p>
-                <strong>Полезное</strong>
+                <strong>Политика безопасности</strong>
             </p>
             <p>
             <ul class="list-unstyled">
-                <li><a href="#">Положения &amp; Условия</a></li>
-                <li><a href="#">Конфиденциальность &amp; Cookies</a></li>
+                <li><a href="{% url 'mainapp:legal' %}">Политика сайта</a></li>
+                <li><a href="{% url 'mainapp:personal_data' %}">Политика обработки персональных данных</a></li>
+                <li><a href="{% url 'mainapp:offero' %}">Договор оферты</a></li>
 
             </ul>
 
@@ -83,7 +84,7 @@
     </div>
     <div class="row justify-content-center">
         <div>
-            <p><small>&copy; Z-Force IT 2023</small></p>
+            <p><small>&copy; Z-Force IT 2024</small></p>
         </div>
     </div>
 </div>
