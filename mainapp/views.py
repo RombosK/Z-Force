@@ -4,12 +4,14 @@ from django.contrib.auth.mixins import PermissionRequiredMixin, UserPassesTestMi
 from django.core.cache import cache
 from django.http import JsonResponse, FileResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404
+from django.template.context_processors import request
 from django.template.loader import render_to_string
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, ListView, UpdateView, CreateView, DetailView, DeleteView, View
 
 from config import settings
 from mainapp import forms
+from mainapp.models import News, Project, ProjectCategory, AllYouNeedIs
 
 # from mainapp.forms import CourseFeedbackForm
 # from mainapp.models import News, Courses, Lesson, CourseTeachers, CourseFeedback
@@ -17,33 +19,139 @@ from mainapp import forms
 logger = logging.getLogger(__name__)
 
 
+# Контроллер главной страницы
+class IndexView(TemplateView):
+    template_name = 'mainapp/index.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context ['title'] = 'Окно в Мир'
+
+        return context
+
+
+# Контроллер страницы контактов
 class ContactsView(TemplateView):
     template_name = 'mainapp/contacts.html'
 
     def get_context_data(self, **kwargs):
-        context_data = super().get_context_data(**kwargs)
-        context_data['contacts'] = [
+        context = super().get_context_data(**kwargs)
+        context ['title'] = 'Cвязаться с нами'
+        context ['contacts'] = [
             {
-
                 'city': 'Московская область, г. Королев',
                 'phone': '+7 (910)401-40-12',
                 'email': 'org@fond-oknovmir.ru',
-                'adress': '141075, г. Королев, ул. Фрунзе, д. 12'
+                'address': '141075, г. Королев, ул. Фрунзе, д. 12'
             }, {
 
                 'city': 'Other',
                 'phone': '777777777',
                 'email': 'zov@kz.ru',
-                'adress': 'Field'
+                'address': 'Field'
             }, {
 
                 'city': 'Main',
                 'phone': '+5555555',
                 'email': 'z-red@msk.ru',
-                'adress': 'Square'
+                'address': 'Square'
             }
         ]
-        return context_data
+
+        return context
+
+
+# Контроллер страницы новостей
+class NewsView(TemplateView):
+    template_name = 'mainapp/news.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context['title'] = 'Новости'
+        context['object'] = News.objects.all()
+        return context
+
+
+# Контроллер проектов
+class ProjectView(TemplateView):
+    template_name = 'mainapp/projects.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context['title'] = 'Проекты'
+        context['object'] = ProjectCategory.objects.all()
+
+        return context
+
+
+# Контроллер нуждающихся
+class AllYouNeedIsView(TemplateView):
+    template_name = 'mainapp/allyouneedis.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context['title'] = 'Подопечные'
+        context['object'] = AllYouNeedIs.objects.all()
+
+        return context
+
+
+# Контроллер страницы О нас
+class AboutView(TemplateView):
+    template_name = 'mainapp/about.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context['title'] = 'О нас'
+        return context
+
+
+# Контроллер страницы пожертвований
+class DonationView(TemplateView):
+    template_name = 'mainapp/donation.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context['title'] = 'Сделать пожертвование'
+        return context
+
+
+# Контроллер страницы политики сайта
+class LegalView(TemplateView):
+    template_name = 'mainapp/legal.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Политика сайта'
+
+        return context
+
+
+# Контроллер страницы о персональных данных
+class PersonalDataView(TemplateView):
+    template_name = 'mainapp/personal_data.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Политика обработки персональных данных'
+
+        return context
+
+
+# Контроллер страницы оферты
+class OfferoView(TemplateView):
+    template_name = 'mainapp/offero.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Оферта добровольного пожертвования'
+
+        return context
 
     # def post(self, *args, **kwargs):
     #     message_body = self.request.POST.get('message_body')
@@ -61,24 +169,8 @@ class DocSiteView(TemplateView):
     template_name = 'mainapp/doc_site.html'
 
 
-class IndexView(TemplateView):
-    template_name = 'mainapp/index.html'
-
-
 class LoginView(TemplateView):
     template_name = 'mainapp/login.html'
-
-
-class OfferoView(TemplateView):
-    template_name = 'mainapp/offero.html'
-
-
-class PersonalDataView(TemplateView):
-    template_name = 'mainapp/personal_data.html'
-
-
-class LegalView(TemplateView):
-    template_name = 'mainapp/legal.html'
 
 # class NewsListView(ListView):
 #     model = News

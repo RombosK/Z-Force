@@ -1,0 +1,25 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+<title>
+{% block title %}
+{{ title }}
+{% endblock %}
+</title>
+
+{% block content %}
+
+<h1>ПРОЕКТЫ</h1>
+
+{% for project_item in object %}
+<div class="row justify-content-center align-items-center">
+        <div class="col-md-7">
+
+            <h5>{{ project_item.name }}</h5>
+            <p>{{ project_item.description }}</p>
+
+        </div>
+
+{% endfor %}
+
+{% endblock %}
+</div>

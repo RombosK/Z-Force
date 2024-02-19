@@ -3,11 +3,17 @@
 {% load email_to_link %}
 
 {% block content %}
+<title>
+{% block title %}
+{{ title }}
+{% endblock %}
+</title>
     <p>
     <div class="jumbotron jumbotron-fluid">
         <div class="container">
             <h1 class="display-4">Наши контакты</h1>
-            <p class="lead">Если у вас есть вопросы или вы хотите присоединиться к инициативе, пишите нам. Будем рады сотрудничеству.</p>
+            <p class="lead">Если у вас есть вопросы или вы хотите присоединиться к инициативе, пишите нам.
+                Будем рады сотрудничеству.</p>
 
             <div class="row">
             <form method="post" class="form-group col-4">
@@ -41,7 +47,7 @@
                             </div>
                         <ul class="list-unstyled">
                             <li>Адрес</li>
-                            <li><strong>{{ contact.adress }}</strong></li>
+                            <li><strong>{{ contact.address }}</strong></li>
                         </ul>
 
                             </div>

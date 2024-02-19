@@ -2,7 +2,7 @@ from django.contrib import admin
 
 from authapp.models import User
 
-admin.site.index_title = "Добро пожаловать в Z-board"
+admin.site.index_title = "Добро пожаловать в админ-панель сайта фонда Окно в Мир"
 
 
 @admin.register(User)
