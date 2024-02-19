@@ -8,9 +8,12 @@ from django.template.context_processors import request
 from django.template.loader import render_to_string
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, ListView, UpdateView, CreateView, DetailView, DeleteView, View
-
+from django.core.mail import send_mail, BadHeaderError
+from django.shortcuts import render, redirect
+from django.http import HttpResponse
 from config import settings
 from mainapp import forms
+from mainapp.forms import ContactForm
 from mainapp.models import News, Project, ProjectCategory, AllYouNeedIs
 
 # from mainapp.forms import CourseFeedbackForm
@@ -25,7 +28,7 @@ class IndexView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context ['title'] = 'Окно в Мир'
+        context['title'] = 'Окно в Мир'
 
         return context
 
@@ -36,8 +39,8 @@ class ContactsView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context ['title'] = 'Cвязаться с нами'
-        context ['contacts'] = [
+        context['title'] = 'Cвязаться с нами'
+        context['contacts'] = [
             {
                 'city': 'Московская область, г. Королев',
                 'phone': '+7 (910)401-40-12',
@@ -171,6 +174,7 @@ class DocSiteView(TemplateView):
 
 class LoginView(TemplateView):
     template_name = 'mainapp/login.html'
+
 
 # class NewsListView(ListView):
 #     model = News
