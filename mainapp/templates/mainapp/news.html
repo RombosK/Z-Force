@@ -1,18 +1,18 @@
 {% extends 'mainapp/base.html' %}
 
 <title>
-{% block title %}
-{{ title }}
-{% endblock %}
+    {% block title %}
+        {{ title }}
+    {% endblock %}
 </title>
 
 {% block content %}
 
-<h1>НОВОСТИ</h1>
+    <h1>НОВОСТИ</h1>
 
-{% for news_item in object %}
+    {% for news_item in object %}
 
-<div class="row justify-content-center align-items-center">
+        <div class="row justify-content-center align-items-center">
         <div class="col-md-7">
 
             <h5>{{ news_item.name }}</h5>
@@ -21,9 +21,10 @@
 
         </div>
 
-{% endfor %}
+    {% endfor %}
 
 {% endblock %}
+</div>
 
 
 
