@@ -35,15 +35,36 @@
         </li>
         {% else %}
             <li class="nav-item ">
-                <a class="nav-link" href="{% url 'authapp:login' %}">Вход
-
-                </a>
+                <a class="nav-link" href="{% url 'authapp:login' %}">Вход</a>
             </li>
         {% endif %}
-        <li class="nav-item {%  if url_name == 'contacts' %} active {% endif %}">
-            <a class="nav-link" href="{% url 'mainapp:contacts' %}">Контакты
-
-            </a>
+         <li class="nav-item ">
+                <a class="nav-link" href="{% url 'mainapp:about' %}">О Нас</a>
+        </li>
+        <li class="nav-item ">
+                <a class="nav-link" href="{% url 'mainapp:news' %}">Новости</a>
+        </li>
+        <li class="nav-item ">
+                <a class="nav-link" href="{% url 'mainapp:projects' %}">Проекты</a>
+        </li>
+        <li class="nav-item ">
+                <a class="nav-link" href="{% url 'mainapp:allyouneedis' %}">Наши подопечные</a>
+        </li>
+       <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="ddProfile" role="button" data-toggle="dropdown"
+               aria-haspopup="true" aria-expanded="false">Благотворители </a>
+            <div class="dropdown-menu" aria-labelledby="ddProfile">
+                <a class="dropdown-item" href="{% url 'authapp:edit' %}">Стать благотворителем</a>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="ddProfile" role="button" data-toggle="dropdown"
+               aria-haspopup="true" aria-expanded="false">Волонтеры </a>
+            <div class="dropdown-menu" aria-labelledby="ddProfile">
+                <a class="dropdown-item" href="{% url 'authapp:edit' %}">Стать волонтером</a>
+                <li class="nav-item ">
+                <a class="nav-link" href="{% url 'mainapp:donation' %}">Сделать пожертвование</a>
+        </li>
+        <li class="nav-item ">
+                <a class="nav-link" href="{% url 'mainapp:contacts' %}">Контакты</a>
         </li>
     </ul>
 

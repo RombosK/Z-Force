@@ -1,0 +1,30 @@
+{% extends 'mainapp/base.html' %}
+
+<title>
+{% block title %}
+{{ title }}
+{% endblock %}
+</title>
+
+{% block content %}
+
+<h1>НОВОСТИ</h1>
+
+{% for news_item in object %}
+
+<div class="row justify-content-center align-items-center">
+        <div class="col-md-7">
+
+            <h5>{{ news_item.name }}</h5>
+            <p>{{ news_item.description }}</p>
+            <p>{{ news_item.created_at }}</p>
+
+        </div>
+
+{% endfor %}
+
+{% endblock %}
+
+
+
+

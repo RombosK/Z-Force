@@ -1,0 +1,32 @@
+{% extends 'mainapp/base.html' %}
+
+<title>
+{% block title %}
+{{ title }}
+{% endblock %}
+</title>
+
+{% block content %}
+
+<h1>НАШИ ПОДОПЕЧНЫЕ</h1>
+
+{% for needs in object %}
+
+<div class="row justify-content-center align-items-center">
+        <div class="col-md-7">
+
+            <h5>{{ needs.name }} {{ needs.surname }}</h5>
+            <p>{{ needs.description }}</p>
+            <p>{{ needs.solution }}</p>
+            <p>собрано {{ needs.collected }} руб</p>
+            <p>требуемая сумма {{ needs.donation }} руб</p>
+
+        </div>
+
+{% endfor %}
+
+{% endblock %}
+
+
+
+
