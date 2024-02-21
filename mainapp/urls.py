@@ -1,17 +1,13 @@
-from django.urls import path
+from django.urls import path, include
 from django.views.generic import RedirectView
-
 from django.conf.urls.static import static
 from django.conf import settings
 from mainapp import views
 from mainapp.apps import MainappConfig
 
+
 app_name = MainappConfig.name
 
-# urlpatterns = [
-#     path("", views.HelloView.as_view()),
-#     path("<str:word>/", views.check_kwargs),
-# ]
 
 urlpatterns = [
     path('', views.IndexView.as_view(), name='home'),
@@ -26,8 +22,12 @@ urlpatterns = [
     path('offero/', views.OfferoView.as_view(), name='offero'),
     path('personal_data/', views.PersonalDataView.as_view(), name='personal_data'),
     path('legal/', views.LegalView.as_view(), name='legal'),
+    path('request/', views.RequestEditView.as_view(), name='request'),
 
 ]
 
-# if settings.DEBUG:
-#     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+if settings.DEBUG:
+    import debug_toolbar
+
+    urlpatterns.append(path("__debug__/", include(debug_toolbar.urls)))
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

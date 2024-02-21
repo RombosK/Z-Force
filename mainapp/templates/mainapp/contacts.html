@@ -1,30 +1,31 @@
 {% extends 'mainapp/base.html' %}
-
+{% load crispy_forms_tags %}
 {% load email_to_link %}
 
 {% block content %}
-<title>
-{% block title %}
-{{ title }}
-{% endblock %}
-</title>
+    <title>
+        {% block title %}
+            {{ title }}
+        {% endblock %}
+    </title>
     <p>
     <div class="jumbotron jumbotron-fluid">
-        <div class="container">
+        <f class="container">
             <h1 class="display-4">Наши контакты</h1>
             <p class="lead">Если у вас есть вопросы или вы хотите присоединиться к инициативе, пишите нам.
                 Будем рады сотрудничеству.</p>
-
             <div class="row">
-            <form method="post" class="form-group col-4">
-                {% csrf_token %}
-                <textarea class="form-control" name="message_body"></textarea>
-                <input type="submit" class="btn btn-primary" value="Отправить"/>
-            </form>
-
-        </div>
-        </div>
+                <form method="post" class="form-group col-4">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <textarea class="form-control" name="message_body"></textarea>
+                    <input type="submit" class="btn btn-primary" value="Отправить"/>
+                </form>
+            </div>
+        </f>
     </div>
+
+
     <div class="row justify-content-around mt-n2">
         {% for contact in contacts %}
             <div class="col-sm-6 col-md-6 col-lg-4 pb-2">
@@ -43,17 +44,17 @@
                             <li>Email</li>
                             <li><strong>{{ contact.email|email_to_link }}</strong></li>
                         </ul>
-                            <div style="position:relative;overflow:hidden;"><a
-                            </div>
+                        <div style="position:relative;overflow:hidden;"><a
+                        </div>
                         <ul class="list-unstyled">
                             <li>Адрес</li>
                             <li><strong>{{ contact.address }}</strong></li>
                         </ul>
 
-                            </div>
-                        </ul>
                     </div>
+                    </ul>
                 </div>
+            </div>
             </div>
         {% endfor %}
     </div>

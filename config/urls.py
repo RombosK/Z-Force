@@ -8,4 +8,5 @@ urlpatterns = [
     path("home/", include('mainapp.urls', namespace='home')),
     path("authapp/", include('authapp.urls', namespace='authapp')),
 
+
 ]
