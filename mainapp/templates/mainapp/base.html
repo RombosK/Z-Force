@@ -40,8 +40,33 @@
 <div class="container-md">
     {% block content %}
     {% endblock content %}
+<!--    # После блока content начинается пагинация на каждой странице сробатывает надо учитывать-->
+    <!-- # идет проверка о наличии страниц -->
+    {% if page_obj.has_other_pages %}
+    <nav class="list-pages">
+        <ul><!-- #отоброжаем стрелку -->
+            {% if page_obj.has_previous %}
+                <a href="?page=1">&laquo;</a>
+                <a href="?page={{ page_obj.previous_page_number }}">&lt</a>
+        {% endif %}
+            {% for p in paginator.page_range %}<!-- цикл  for  переберает страницы -->
+            {% if page_obj.number == p %}
+            <li class="page-num page-num-selected">{{ p }}</li><!-- Дальше по документации
+            https://docs.djangoproject.com/en/3.1/topics/pagination/ -->
+            {% elif p >= page_obj.number|add:-2 and p <= page_obj.number|add:2 %}
+            <li class="page-num">
+                <a href="?page={{ p }}">{{ p }}</a>
+            </li>
+            {% endif %}
+            {% endfor %}
+            {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">&gt</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">&raquo;</a>
+        {% endif %}
+        </ul>
+    </nav>
+    {% endif %}
 </div>
-
 
 <!-- Footer -->
 <div class="container-lg mt-auto">

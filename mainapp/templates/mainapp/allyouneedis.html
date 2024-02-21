@@ -11,18 +11,21 @@
 <h1>НАШИ ПОДОПЕЧНЫЕ</h1>
 
 {% for needs in object %}
-
-<div class="row justify-content-center align-items-center">
+<!-- Фронтендерам подправить <b> <br> -->
+    <div class="row justify-content-center align-items-center">
         <div class="col-md-7">
 
-            <h5>{{ needs.name }} {{ needs.surname }}</h5>
+            <h5><b>{{ needs.name }} {{ needs.surname }}</b></h5>
+            {% if needs.photo %}
+            <p><img class="img-header-photo" src="/home{{needs.photo.url}}" width="300" height="250"></p>
+            {% endif %}
             <p>{{ needs.description }}</p>
-            <p>{{ needs.solution }}</p>
-            <p>собрано {{ needs.collected }} руб</p>
-            <p>требуемая сумма {{ needs.donation }} руб</p>
+            <p><b><br>Решение</br></b> {{ needs.solution }}</p>
+            <p><b><br>Собрано</br></b> {{ needs.collected }} руб</p>
+            <p><b><br>Требуемая сумма:</br></b> {{ needs.donation }} руб</p>
 
         </div>
-
+    </div>
 {% endfor %}
 
 {% endblock %}

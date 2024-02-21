@@ -13,6 +13,7 @@ class News(models.Model):
     class Meta:
         verbose_name = 'Новость'
         verbose_name_plural = 'Новости'
+        ordering = ['id']
 
     def __str__(self):
         return f'{self.id} - {self.name}'
@@ -27,6 +28,7 @@ class ProjectCategory(models.Model):
     class Meta:
         verbose_name = 'Проект'
         verbose_name_plural = 'Проекты'
+        ordering = ['id']
 
     def __str__(self):
         return f'{self.name}'
@@ -44,6 +46,7 @@ class Project(models.Model):
     class Meta:
         verbose_name = 'Задача'
         verbose_name_plural = 'Задачи'
+        ordering = ['id']
 
     def __str__(self):
         return f'{self.name} - {self.category.name}'
@@ -67,6 +70,7 @@ class AllYouNeedIs(models.Model):
     class Meta:
         verbose_name = 'Подопечный'
         verbose_name_plural = 'Подопечные'
+        ordering = ['id']
 
     def __str__(self):
         return f'{self.name} {self.surname} - {self.category.name}'

@@ -2,6 +2,7 @@ import logging
 
 from django.contrib.auth.mixins import PermissionRequiredMixin, UserPassesTestMixin
 from django.core.cache import cache
+from django.core.paginator import Paginator
 from django.http import JsonResponse, FileResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from django.template.context_processors import request
@@ -65,41 +66,65 @@ class ContactsView(TemplateView):
 
 
 # Контроллер страницы новостей
-class NewsView(TemplateView):
+#родитель ListView для удобства работы со страницами где нужна пагинация
+class NewsView(ListView):
+
+    model = News
     template_name = 'mainapp/news.html'
+    context_object_name = 'object'
+    extra_context = {
+        'title': 'Новости',
+    }
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
 
-        context['title'] = 'Новости'
-        context['object'] = News.objects.all()
-        return context
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
 
+
+# def listing(request):
+#     contact_list = News.objects.all()
+#     paginator = Paginator(contact_list, 2) # отоброжение количества новостей на странице
+#
+#     page_number = request.GET.get('page')
+#     page_obj = paginator.get_page(page_number)
+#     return render(request, 'News.html', {'page_obj': page_obj})
 
 # Контроллер проектов
-class ProjectView(TemplateView):
+#родитель ListView для удобства работы со страницами где нужна пагинация
+class ProjectView(ListView):
     template_name = 'mainapp/projects.html'
+    model = ProjectCategory
+    context_object_name = 'object'
+    extra_context = {
+        'title': 'Проекты',
+    }
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-
-        context['title'] = 'Проекты'
-        context['object'] = ProjectCategory.objects.all()
-
-        return context
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #
+    #     context['title'] = 'Проекты'
+    #     context['object'] = ProjectCategory.objects.all()
+    #
+    #     return context
 
 
 # Контроллер нуждающихся
-class AllYouNeedIsView(TemplateView):
+#родитель ListView для удобства работы со страницами где нужна пагинация
+class AllYouNeedIsView(ListView):
     template_name = 'mainapp/allyouneedis.html'
+    model = AllYouNeedIs
+    context_object_name  = 'object'
+    extra_context = {
+        'title': 'Подопечные',
+    }
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-
-        context['title'] = 'Подопечные'
-        context['object'] = AllYouNeedIs.objects.all()
-
-        return context
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #
+    #     context['title'] = 'Подопечные'
+    #     context['object'] = AllYouNeedIs.objects.all()
+    #
+    #     return context
 
 
 # Контроллер страницы О нас
@@ -340,3 +365,6 @@ class LogDownloadView(UserPassesTestMixin, View):
 
     def get(self, *args, **kwargs):
         return FileResponse(open(settings.LOG_FILE, "rb"))
+
+
+
