@@ -61,9 +61,8 @@ class ContactsView(TemplateView):
 
         return context
 
-    # Контроллер страницы новостей
 
-
+# Контроллер страницы новостей
 class NewsView(TemplateView):
     template_name = 'mainapp/news.html'
 
@@ -172,10 +171,10 @@ class RequestEditView(View):
 
         return render(request, 'mainapp/success.html')
 
-
-class DocSiteView(TemplateView):
-    template_name = 'mainapp/doc_site.html'
-
+#
+# class DocSiteView(TemplateView):
+#     template_name = 'mainapp/doc_site.html'
+#
 
 class LoginView(TemplateView):
     template_name = 'mainapp/login.html'
@@ -224,46 +223,46 @@ class LoginView(TemplateView):
 #         return context
 
 
-class ContactsPageView(TemplateView):
-    template_name = "mainapp/contacts.html"
+# class ContactsPageView(TemplateView):
+#     template_name = "mainapp/contacts.html"
+#
+#     def get_context_data(self, **kwargs):
+#         context = super(ContactsPageView, self).get_context_data(**kwargs)
+#         if self.request.user.is_authenticated:
+#             context["form"] = forms.CourseFeedbackForm(
+#                 user=self.request.user
+#             )
+#         return context
 
-    def get_context_data(self, **kwargs):
-        context = super(ContactsPageView, self).get_context_data(**kwargs)
-        if self.request.user.is_authenticated:
-            context["form"] = forms.CourseFeedbackForm(
-                user=self.request.user
-            )
-        return context
-
-    # def post(self, *args, **kwargs):
-    #     if self.request.user.is_authenticated:
-    #         cache_lock_flag = cache.get(
-    #             f"mail_feedback_lock_{self.request.user.pk}"
-    #         )
-    #
-    #         if not cache_lock_flag:
-    #             cache.set(
-    #                 f"mail_feedback_lock_{self.request.user.pk}",
-    #                 "lock",
-    #                 timeout=300,
-    #             )
-    #             messages.add_message(
-    #                 self.request, messages.INFO, f"Message sended"
-    #             )
-    #             tasks.send_feedback_mail.delay(
-    #                 {
-    #                     "user_id": self.request.POST.get("user_id"),
-    #                     "message": self.request.POST.get("message"),
-    #                 }
-    #             )
-    #         else:
-    #             self.message = messages.add_message(self.request, messages.WARNING,
-    #                                                 f"You can send only one message per 5 minutes", )
-    #     return HttpResponseRedirect(reverse_lazy("mainapp:contacts"))
+# def post(self, *args, **kwargs):
+#     if self.request.user.is_authenticated:
+#         cache_lock_flag = cache.get(
+#             f"mail_feedback_lock_{self.request.user.pk}"
+#         )
+#
+#         if not cache_lock_flag:
+#             cache.set(
+#                 f"mail_feedback_lock_{self.request.user.pk}",
+#                 "lock",
+#                 timeout=300,
+#             )
+#             messages.add_message(
+#                 self.request, messages.INFO, f"Message sended"
+#             )
+#             tasks.send_feedback_mail.delay(
+#                 {
+#                     "user_id": self.request.POST.get("user_id"),
+#                     "message": self.request.POST.get("message"),
+#                 }
+#             )
+#         else:
+#             self.message = messages.add_message(self.request, messages.WARNING,
+#                                                 f"You can send only one message per 5 minutes", )
+#     return HttpResponseRedirect(reverse_lazy("mainapp:contacts"))
 
 
-class DocSitePageView(TemplateView):
-    template_name = "mainapp/doc_site.html"
+# class DocSitePageView(TemplateView):
+#     template_name = "mainapp/doc_site.html"
 
 
 # class CoursesListView(TemplateView):
@@ -316,32 +315,32 @@ class DocSitePageView(TemplateView):
 #         return JsonResponse({'card': rendered_card})
 
 
-class LogView(UserPassesTestMixin, TemplateView):
-    template_name = 'mainapp/logs.html'
+# class LogView(UserPassesTestMixin, TemplateView):
+#     template_name = 'mainapp/logs.html'
+#
+#     def test_func(self):
+#         return self.request.user.is_superuser
+#
+#     def get_context_data(self, **kwargs):
+#
+#         context = super(LogView, self).get_context_data(**kwargs)
+#         log_slice = []
+#         logs_line = 1000  # Заданное кол-во строк последних логов
+#         last_line = sum(1 for line in open(settings.LOG_FILE))
+#         with open(settings.LOG_FILE, "r") as log_file:
+#             for i, line in enumerate(log_file):
+#                 cnt = (last_line - logs_line)
+#                 if i < cnt:
+#                     continue
+#                 log_slice.insert(0, f'{i} {line}')
+#             context["logs"] = log_slice
+#         return context
 
-    def test_func(self):
-        return self.request.user.is_superuser
 
-    def get_context_data(self, **kwargs):
-
-        context = super(LogView, self).get_context_data(**kwargs)
-        log_slice = []
-        logs_line = 1000  # Заданное кол-во строк последних логов
-        last_line = sum(1 for line in open(settings.LOG_FILE))
-        with open(settings.LOG_FILE, "r") as log_file:
-            for i, line in enumerate(log_file):
-                cnt = (last_line - logs_line)
-                if i < cnt:
-                    continue
-                log_slice.insert(0, f'{i} {line}')
-            context["logs"] = log_slice
-        return context
-
-
-class LogDownloadView(UserPassesTestMixin, View):
-
-    def test_func(self):
-        return self.request.user.is_superuser
-
-    def get(self, *args, **kwargs):
-        return FileResponse(open(settings.LOG_FILE, "rb"))
+# class LogDownloadView(UserPassesTestMixin, View):
+#
+#     def test_func(self):
+#         return self.request.user.is_superuser
+#
+#     def get(self, *args, **kwargs):
+#         return FileResponse(open(settings.LOG_FILE, "rb"))
