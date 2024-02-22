@@ -175,9 +175,9 @@ class RequestEditView(View):
 # class DocSiteView(TemplateView):
 #     template_name = 'mainapp/doc_site.html'
 #
-#
-# class LoginView(TemplateView):
-#     template_name = 'mainapp/login.html'
+
+class LoginView(TemplateView):
+    template_name = 'mainapp/login.html'
 
 
 # class NewsListView(ListView):
