@@ -1,4 +1,5 @@
 from django.db import models
+from authapp.models import User
 
 
 # Модель новостей
@@ -70,3 +71,19 @@ class AllYouNeedIs(models.Model):
 
     def __str__(self):
         return f'{self.name} {self.surname} - {self.category.name}'
+
+
+class Request(models.Model):
+    first_name = models.CharField(verbose_name='Имя', max_length=100)
+    last_name = models.CharField(verbose_name='Фамилия', max_length=100)
+    city = models.CharField(verbose_name='Город', max_length=100)
+    email = models.EmailField()
+    phone = models.CharField(verbose_name='Телефон для связи', max_length=20)
+    text = models.TextField(verbose_name='Немного о себе')
+
+    def __str__(self):
+        return f'{self.first_name} - {self.last_name} - {self.text}'
+
+    class Meta:
+        verbose_name = 'Анкета'
+        verbose_name_plural = 'Анкеты'

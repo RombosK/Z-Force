@@ -1,5 +1,4 @@
 import logging
-
 from django.contrib.auth.mixins import PermissionRequiredMixin, UserPassesTestMixin
 from django.core.cache import cache
 from django.http import JsonResponse, FileResponse, HttpResponseRedirect
@@ -11,13 +10,12 @@ from django.views.generic import TemplateView, ListView, UpdateView, CreateView,
 from django.core.mail import send_mail, BadHeaderError
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+
+from authapp.models import User
 from config import settings
 from mainapp import forms
-from mainapp.forms import ContactForm
-from mainapp.models import News, Project, ProjectCategory, AllYouNeedIs
-
-# from mainapp.forms import CourseFeedbackForm
-# from mainapp.models import News, Courses, Lesson, CourseTeachers, CourseFeedback
+from mainapp.forms import RequestForm
+from mainapp.models import News, Project, ProjectCategory, AllYouNeedIs, Request
 
 logger = logging.getLogger(__name__)
 
@@ -63,8 +61,9 @@ class ContactsView(TemplateView):
 
         return context
 
+    # Контроллер страницы новостей
 
-# Контроллер страницы новостей
+
 class NewsView(TemplateView):
     template_name = 'mainapp/news.html'
 
@@ -156,16 +155,22 @@ class OfferoView(TemplateView):
 
         return context
 
-    # def post(self, *args, **kwargs):
-    #     message_body = self.request.POST.get('message_body')
-    #     message_from = self.request.user.pk if self.request.user.is_authenticated else None
-    #     tasks.send_feedback_to_email.delay(message_body, message_from)
-    #
-    #     return HttpResponseRedirect(reverse_lazy('mainapp:contacts'))
 
+class RequestEditView(View):
+    model = Request
+    form_class = RequestForm
 
-# class CoursesView(TemplateView):
-#     template_name = 'mainapp/courses_list.html'
+    def get(self, request):
+        form = RequestForm()
+        return render(request, 'mainapp/requests.html', {'form': form})
+
+    def post(self, request):
+        form = RequestForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/home/success/')  # перенаправление на страницу успешного заполнения анкеты
+
+        return render(request, 'mainapp/success.html')
 
 
 class DocSiteView(TemplateView):

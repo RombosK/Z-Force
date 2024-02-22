@@ -1,6 +1,6 @@
+from mainapp.models import News, ProjectCategory, Project, AllYouNeedIs, Request
 from django.contrib import admin
 
-from mainapp.models import News, ProjectCategory, Project, AllYouNeedIs
 
 # Регистрация моделей в админке
 # admin.site.register(News)
@@ -43,5 +43,16 @@ class AllYouNeedIsAdmin(admin.ModelAdmin):
     list_filter = ('name', 'surname', 'category', 'city', 'in_process', 'is_closed')
     search_fields = ('name', 'surname', 'city', 'short_description', 'in_process', 'is_closed')
     show_full_result_count = False
+
+
+@admin.register(Request)
+class NewsAdmin(admin.ModelAdmin):
+    list_display = ('first_name', 'last_name', 'city', 'email', 'phone', 'text')
+    list_per_page = 10
+    list_filter = ('last_name', 'city', 'email', 'phone')
+    search_fields = ('last_name', 'city', 'email', 'phone')
+    show_full_result_count = False
+
+
 
 

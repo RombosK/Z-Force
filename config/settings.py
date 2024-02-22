@@ -21,7 +21,7 @@ load_dotenv(BASE_DIR / '.env')
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY='django-insecure-m4w3d-8$pzr0!bfudanv!0o#46j)w^vlq6&-u*9n2prx^pb53l'
+SECRET_KEY = 'django-insecure-m4w3d-8$pzr0!bfudanv!0o#46j)w^vlq6&-u*9n2prx^pb53l'
 # SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -47,13 +47,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
     'crispy_forms',
     'adminapp',
     'userapp',
     'mainapp',
     'authapp',
-    'requestapp',
     'debug_toolbar',
 ]
 
@@ -87,7 +85,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'config.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
@@ -154,8 +151,8 @@ STATIC_URL = 'static/'
 # else:
 #     STATIC_ROOT = BASE_DIR / 'static'
 STATICFILES_DIRS = [
-        BASE_DIR / 'static',
-    ]
+    BASE_DIR / 'static',
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -183,15 +180,16 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 # https://docs.djangoproject.com/en/3.2/topics/email/
 # Full list of email settings:
 # https://docs.djangoproject.com/en/3.2/ref/settings/#email
-EMAIL_HOST = "localhost"
-EMAIL_PORT = "25"
-
-# For debugging: python -m smtpd -n -c DebuggingServer localhost:25
-EMAIL_HOST_USER = "django@geekshop.local"
-EMAIL_HOST_PASSWORD = "geekshop"
-EMAIL_USE_SSL = False
+# EMAIL_HOST = "localhost"
+# EMAIL_PORT = "25"
+# #
+# # For debugging: python -m smtpd -n -c DebuggingServer localhost:25
+# EMAIL_HOST_USER = "django@geekshop.local"
+# EMAIL_HOST_PASSWORD = "geekshop"
+# EMAIL_USE_SSL = False
 # If server support TLS:
 # EMAIL_USE_TLS = True
 # Email as files for debug
-EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
-EMAIL_FILE_PATH = "emails-tmp"
+# EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
+# EMAIL_FILE_PATH = "emails-tmp"
+
