@@ -1,12 +1,17 @@
 {% extends 'mainapp/base.html' %}
-{% load crispy_forms_tags %}
+{% load static %}
 
 {% block content %}
-<title>
-    {% block title %}
-        {{ title }}
-
-    {% endblock %}
-
-
-</title>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card mt-5">
+                <div class="card-body text-center">
+                    <h1>Успех!</h1>
+                    <p>Ваше обращение было успешно отправлено. Администратор с Вами обязательно свяжется!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

@@ -1,13 +1,11 @@
 from django.urls import path, include
-from django.views.generic import RedirectView
+from django.views.generic import RedirectView, TemplateView
 from django.conf.urls.static import static
 from django.conf import settings
 from mainapp import views
 from mainapp.apps import MainappConfig
 
-
 app_name = MainappConfig.name
-
 
 urlpatterns = [
     path('', views.IndexView.as_view(), name='home'),
@@ -23,7 +21,7 @@ urlpatterns = [
     path('personal_data/', views.PersonalDataView.as_view(), name='personal_data'),
     path('legal/', views.LegalView.as_view(), name='legal'),
     path('request/', views.RequestEditView.as_view(), name='request'),
-
+    path('success/', TemplateView.as_view(template_name='mainapp/success.html'), name='success'),
 ]
 
 if settings.DEBUG:

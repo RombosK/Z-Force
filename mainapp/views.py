@@ -156,22 +156,21 @@ class OfferoView(TemplateView):
         return context
 
 
-class RequestEditView(CreateView):
-    template_name = 'mainapp/requests.html'
+class RequestEditView(View):
     model = Request
     form_class = RequestForm
-    success_url = reverse_lazy('mainapp:news')
 
-    def create_request(self, request):
-        if request.method == 'POST':
-            form = RequestForm(request.POST)
-            if form.is_valid():
-                form.save()
-                return redirect('success')  # перенаправление на страницу успешного заполнения анкеты
-        else:
-            form = RequestForm()
-        return render(request, 'requests.html', {'form': form})
+    def get(self, request):
+        form = RequestForm()
+        return render(request, 'mainapp/requests.html', {'form': form})
 
+    def post(self, request):
+        form = RequestForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/home/success/')  # перенаправление на страницу успешного заполнения анкеты
+
+        return render(request, 'mainapp/success.html')
 
 
 class DocSiteView(TemplateView):
