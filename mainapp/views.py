@@ -22,6 +22,9 @@ from mainapp.models import News, Project, ProjectCategory, AllYouNeedIs
 
 logger = logging.getLogger(__name__)
 
+''' в list.py в class MultipleObjectMixin(ContextMixin):
+ изменено значение в переменной paginate_by = 3
+ для пагинации'''
 
 # Контроллер главной страницы
 class IndexView(TemplateView):
