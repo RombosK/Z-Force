@@ -1,21 +1,15 @@
 import logging
-from django.contrib.auth.mixins import PermissionRequiredMixin, UserPassesTestMixin
-from django.core.cache import cache
-from django.http import JsonResponse, FileResponse, HttpResponseRedirect
-from django.shortcuts import get_object_or_404
-from django.template.context_processors import request
-from django.template.loader import render_to_string
-from django.urls import reverse_lazy
-from django.views.generic import TemplateView, ListView, UpdateView, CreateView, DetailView, DeleteView, View
-from django.core.mail import send_mail, BadHeaderError
-from django.shortcuts import render, redirect
-from django.http import HttpResponse
+import os
 
-from authapp.models import User
-from config import settings
-from mainapp import forms
+import requests
+from django.http import HttpResponseRedirect
+from django.shortcuts import render, redirect
+from django.urls import reverse_lazy
+from django.views.generic import TemplateView, View
+
 from mainapp.forms import RequestForm
-from mainapp.models import News, Project, ProjectCategory, AllYouNeedIs, Request
+from mainapp.models import News, ProjectCategory, AllYouNeedIs, Request
+from dotenv import load_dotenv
 
 logger = logging.getLogger(__name__)
 
@@ -60,6 +54,39 @@ class ContactsView(TemplateView):
         ]
 
         return context
+
+# Метод отправляет сообщение в ТГ админу через бота
+    @staticmethod
+    def send_feedback_to_email(message: str, message_from: int = None) -> None:
+        user_from = 'Anonimus'
+        TOKEN = os.getenv('TOKEN')       # в .env: токен, взятый в @BotFather ТГ
+        CHAT_ID = os.getenv('CHAT_ID')   # в .env: id администратора в телеге
+
+        # URL для отправки сообщения через телеграм API
+        url = f"https://api.telegram.org/bot{TOKEN}/sendMessage"
+        # Параметры запроса
+        params = {
+            "chat_id": CHAT_ID,  # ID чата с администратором
+            "text": message,  # Текст сообщения
+            "parse_mode": "HTML"  # Форматирование сообщения
+        }
+        # Отправляем запрос
+        response = requests.get(url, params=params)
+        # Проверяем статус ответа
+        if response.status_code == 200:
+            # Все хорошо, сообщение отправлено
+            print("Message sent successfully")
+        else:
+            # Что-то пошло не так, сообщение не отправлено
+            print("Message failed to send")
+            print(response.text)
+        # redirect('/home/success/')
+
+    def post(self, *args, **kwargs):
+        message_body = self.request.POST.get('message_body')
+        self.send_feedback_to_email(message_body)
+
+        return HttpResponseRedirect(reverse_lazy('mainapp:success'))
 
 
 # Контроллер страницы новостей
@@ -171,13 +198,13 @@ class RequestEditView(View):
 
         return render(request, 'mainapp/success.html')
 
+
+class LoginView(TemplateView):
+    template_name = 'mainapp/login.html'
 #
 # class DocSiteView(TemplateView):
 #     template_name = 'mainapp/doc_site.html'
 #
-
-class LoginView(TemplateView):
-    template_name = 'mainapp/login.html'
 
 
 # class NewsListView(ListView):
