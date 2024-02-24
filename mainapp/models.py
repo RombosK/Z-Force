@@ -138,5 +138,5 @@ class RequestVolunteer(models.Model):
         return f'{self.first_name} - {self.last_name} - {self.text}'
 
     class Meta:
-        verbose_name = 'Анкета'
-        verbose_name_plural = 'Анкеты'
+        verbose_name = 'Анкета волонтёра'
+        verbose_name_plural = 'Анкеты волонтёров'
