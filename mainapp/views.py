@@ -7,8 +7,8 @@ from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, View
 
-from mainapp.forms import RequestForm
-from mainapp.models import News, ProjectCategory, AllYouNeedIs, Request
+from mainapp.forms import RequestFormVolunteer, RequestFormCharity
+from mainapp.models import News, ProjectCategory, AllYouNeedIs, RequestVolunteer, RequestCharity
 from dotenv import load_dotenv
 
 logger = logging.getLogger(__name__)
@@ -40,13 +40,13 @@ class ContactsView(TemplateView):
                 'address': '141075, г. Королев, ул. Фрунзе, д. 12'
             }, {
 
-                'city': 'Other',
+                'city': 'Красноармейск',
                 'phone': '777777777',
                 'email': 'zov@kz.ru',
                 'address': 'Field'
             }, {
 
-                'city': 'Main',
+                'city': 'Подольск',
                 'phone': '+5555555',
                 'email': 'z-red@msk.ru',
                 'address': 'Square'
@@ -182,16 +182,35 @@ class OfferoView(TemplateView):
         return context
 
 
-class RequestEditView(View):
-    model = Request
-    form_class = RequestForm
+# Контроллер страницы волонтера
+class RequestVolunteerEditView(View):
+    model = RequestVolunteer
+    form_class = RequestFormVolunteer
 
     def get(self, request):
-        form = RequestForm()
-        return render(request, 'mainapp/requests.html', {'form': form})
+        form = RequestFormVolunteer()
+        return render(request, 'mainapp/request_volunteer.html', {'form': form})
 
     def post(self, request):
-        form = RequestForm(request.POST)
+        form = RequestFormVolunteer(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/home/success/')  # перенаправление на страницу успешного заполнения анкеты
+
+        return render(request, 'mainapp/success.html')
+
+
+# Контроллер страницы благотворителя
+class RequestCharityEditView(View):
+    model = RequestCharity
+    form_class = RequestFormCharity
+
+    def get(self, request):
+        form = RequestFormCharity()
+        return render(request, 'mainapp/request_charity.html', {'form': form})
+
+    def post(self, request):
+        form = RequestFormCharity(request.POST)
         if form.is_valid():
             form.save()
             return redirect('/home/success/')  # перенаправление на страницу успешного заполнения анкеты

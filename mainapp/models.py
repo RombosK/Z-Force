@@ -21,13 +21,13 @@ class News(models.Model):
 
 # Модель проектов фонда (категории благотворительности)
 class ProjectCategory(models.Model):
-    name = models.CharField(verbose_name='имя проекта', max_length=64)
-    description = models.TextField(verbose_name='описание проекта')
+    name = models.CharField(verbose_name='имя категории проекта', max_length=64)
+    description = models.TextField(verbose_name='описание категории проекта')
     photo = models.ImageField(upload_to='project_photos', blank=True)
 
     class Meta:
-        verbose_name = 'Проект'
-        verbose_name_plural = 'Проекты'
+        verbose_name = 'Категория проекта'
+        verbose_name_plural = 'Категории проектов'
 
     def __str__(self):
         return f'{self.name}'
@@ -36,9 +36,9 @@ class ProjectCategory(models.Model):
 # Модель конкретного проекта
 class Project(models.Model):
     category = models.ForeignKey(ProjectCategory, on_delete=models.CASCADE)
-    name = models.CharField(verbose_name='имя', max_length=128)
-    description = models.TextField(verbose_name='описание задачи')
-    short_description = models.CharField(verbose_name='краткое описание задачи', max_length=64, blank=True)
+    name = models.CharField(verbose_name='название проекта', max_length=128)
+    description = models.TextField(verbose_name='описание проекта')
+    short_description = models.CharField(verbose_name='краткое описание проекта', max_length=64, blank=True)
     photo = models.ImageField(upload_to='project_photos')
     donation = models.DecimalField(verbose_name='необходимая сумма', max_digits=12, decimal_places=2, default=0)
 
@@ -73,13 +73,66 @@ class AllYouNeedIs(models.Model):
         return f'{self.name} {self.surname} - {self.category.name}'
 
 
-class Request(models.Model):
-    first_name = models.CharField(verbose_name='Имя', max_length=100)
-    last_name = models.CharField(verbose_name='Фамилия', max_length=100)
-    city = models.CharField(verbose_name='Город', max_length=100)
+# Модель анкеты на благотворителя
+class RequestCharity(models.Model):
+    MONEY = 'Деньгами'
+    THINGS ='Вещами'
+    BOTH = 'Оба варианта возможны'
+
+    HELP = (
+        (MONEY, 'Деньгами'),
+        (THINGS, 'Вещами'),
+        (BOTH, 'Оба варианта возможны')
+    )
+
+    company_name = models.CharField(verbose_name='название юр лица', max_length=128, blank=True)
+    first_name = models.CharField(verbose_name='имя', max_length=100)
+    last_name = models.CharField(verbose_name='фамилия', max_length=100)
+    city = models.CharField(verbose_name='город', max_length=100)
     email = models.EmailField()
-    phone = models.CharField(verbose_name='Телефон для связи', max_length=20)
-    text = models.TextField(verbose_name='Немного о себе')
+    phone = models.CharField(verbose_name='телефон для связи', max_length=20)
+    help = models.CharField(verbose_name='варианты помощи', choices=HELP, max_length=64, blank=True)
+    text = models.TextField(verbose_name='немного о себе')
+
+    def __str__(self):
+        return f'{self.first_name} - {self.last_name} - {self.text}'
+
+    class Meta:
+        verbose_name = 'Анкета благотворителя'
+        verbose_name_plural = 'Анкеты благотворителей'
+
+
+# Модель анкеты на волонтера
+class RequestVolunteer(models.Model):
+    TIME_1 = '2-3 часа в неделю'
+    TIME_2 = '4-7 часов в неделю'
+    TIME_3 = 'Более 7 часов в неделю'
+
+    SCHEDULE = (
+        (TIME_1, '2-3 часа в неделю'),
+        (TIME_2, '4-7 часов в неделю'),
+        (TIME_3, 'Более 7 часов в неделю')
+    )
+
+    CAR = 'На машине'
+    WALK = 'Пешком'
+    BOTH = 'Оба варианта возможны'
+
+    MOBILITY = (
+        (CAR, 'На машине'),
+        (WALK, 'Пешком'),
+        (BOTH, 'Оба варианта возможны')
+    )
+
+    company_name = models.CharField(verbose_name='название юр лица', max_length=128, blank=True)
+    first_name = models.CharField(verbose_name='имя', max_length=100)
+    last_name = models.CharField(verbose_name='фамилия', max_length=100)
+    city = models.CharField(verbose_name='город', max_length=100)
+    email = models.EmailField()
+    phone = models.CharField(verbose_name='телефон для связи', max_length=20)
+    schedule = models.CharField(verbose_name='временные возможности', choices=SCHEDULE, max_length=64, blank=True)
+    mobility = models.CharField(verbose_name='мобильность', choices=MOBILITY, max_length=64, blank=True)
+    text = models.TextField(verbose_name='немного о себе')
 
     def __str__(self):
         return f'{self.first_name} - {self.last_name} - {self.text}'
