@@ -70,8 +70,9 @@ class ContactsView(TemplateView):
 
 # Контроллер страницы новостей
 #родитель ListView для удобства работы со страницами где нужна пагинация
+# paginator_by отвечает за количество отоброжаемых статей
 class NewsView(ListView):
-
+    paginate_by = 3
     model = News
     template_name = 'mainapp/news.html'
     context_object_name = 'object'
@@ -95,6 +96,7 @@ class NewsView(ListView):
 # Контроллер проектов
 #родитель ListView для удобства работы со страницами где нужна пагинация
 class ProjectView(ListView):
+    paginate_by = 3
     template_name = 'mainapp/projects.html'
     model = ProjectCategory
     context_object_name = 'object'
@@ -114,6 +116,7 @@ class ProjectView(ListView):
 # Контроллер нуждающихся
 #родитель ListView для удобства работы со страницами где нужна пагинация
 class AllYouNeedIsView(ListView):
+    paginate_by = 3
     template_name = 'mainapp/allyouneedis.html'
     model = AllYouNeedIs
     context_object_name  = 'object'
