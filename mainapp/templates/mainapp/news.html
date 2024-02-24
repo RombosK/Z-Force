@@ -11,19 +11,21 @@
     <h1>НОВОСТИ</h1>
 
     {% for news_item in object %}
-
-        <div class="row justify-content-center align-items-center">
+    <div class="row justify-content-center align-items-center">
         <div class="col-md-7">
-
             <h5>{{ news_item.name }}</h5>
-            <p>{{ news_item.description }}</p>
+            {% if news_item.photo %}
+            <p><img class="img-header-photo" src="/home{{news_item.photo.url}}" width="300" height="250"></p>
+            {% endif %}
+            <p>{{ news_item.description|linebreaks|truncatewords:15 }}</p>
             <p>{{ news_item.created_at }}</p>
 
         </div>
-
+    </div>
     {% endfor %}
-
+{% include 'mainapp/includes/paginator.html' %}
 {% endblock %}
+
 </div>
 
 

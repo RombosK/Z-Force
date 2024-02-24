@@ -14,6 +14,7 @@ class News(models.Model):
     class Meta:
         verbose_name = 'Новость'
         verbose_name_plural = 'Новости'
+        ordering = ['id']
 
     def __str__(self):
         return f'{self.id} - {self.name}'
@@ -26,8 +27,14 @@ class ProjectCategory(models.Model):
     photo = models.ImageField(upload_to='project_photos', blank=True)
 
     class Meta:
+<<<<<<< HEAD
         verbose_name = 'Категория проекта'
         verbose_name_plural = 'Категории проектов'
+=======
+        verbose_name = 'Проект'
+        verbose_name_plural = 'Проекты'
+        ordering = ['id']
+>>>>>>> aidar_paginations_news_wards_proj
 
     def __str__(self):
         return f'{self.name}'
@@ -43,8 +50,14 @@ class Project(models.Model):
     donation = models.DecimalField(verbose_name='необходимая сумма', max_digits=12, decimal_places=2, default=0)
 
     class Meta:
+<<<<<<< HEAD
         verbose_name = 'Проект'
         verbose_name_plural = 'Проекты'
+=======
+        verbose_name = 'Задача'
+        verbose_name_plural = 'Задачи'
+        ordering = ['id']
+>>>>>>> aidar_paginations_news_wards_proj
 
     def __str__(self):
         return f'{self.name} - {self.category.name}'
@@ -68,6 +81,7 @@ class AllYouNeedIs(models.Model):
     class Meta:
         verbose_name = 'Подопечный'
         verbose_name_plural = 'Подопечные'
+        ordering = ['id']
 
     def __str__(self):
         return f'{self.name} {self.surname} - {self.category.name}'
