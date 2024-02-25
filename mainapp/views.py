@@ -1,10 +1,8 @@
 import logging
 import os
 
-<<<<<<< HEAD
 import requests
 from django.http import HttpResponseRedirect
-=======
 from django.contrib.auth.mixins import PermissionRequiredMixin, UserPassesTestMixin
 from django.core.cache import cache
 from django.core.paginator import Paginator
@@ -15,7 +13,6 @@ from django.template.loader import render_to_string
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, ListView, UpdateView, CreateView, DetailView, DeleteView, View
 from django.core.mail import send_mail, BadHeaderError
->>>>>>> aidar_paginations_news_wards_proj
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, View
@@ -425,7 +422,7 @@ class LoginView(TemplateView):
 #         return context
 
 
-<<<<<<< HEAD
+
 # class LogDownloadView(UserPassesTestMixin, View):
 #
 #     def test_func(self):
@@ -433,7 +430,7 @@ class LoginView(TemplateView):
 #
 #     def get(self, *args, **kwargs):
 #         return FileResponse(open(settings.LOG_FILE, "rb"))
-=======
+
 class LogDownloadView(UserPassesTestMixin, View):
 
     def test_func(self):
@@ -444,4 +441,3 @@ class LogDownloadView(UserPassesTestMixin, View):
 
 
 
->>>>>>> aidar_paginations_news_wards_proj

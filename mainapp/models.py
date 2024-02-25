@@ -27,14 +27,10 @@ class ProjectCategory(models.Model):
     photo = models.ImageField(upload_to='project_photos', blank=True)
 
     class Meta:
-<<<<<<< HEAD
         verbose_name = 'Категория проекта'
         verbose_name_plural = 'Категории проектов'
-=======
-        verbose_name = 'Проект'
-        verbose_name_plural = 'Проекты'
         ordering = ['id']
->>>>>>> aidar_paginations_news_wards_proj
+
 
     def __str__(self):
         return f'{self.name}'
@@ -50,14 +46,10 @@ class Project(models.Model):
     donation = models.DecimalField(verbose_name='необходимая сумма', max_digits=12, decimal_places=2, default=0)
 
     class Meta:
-<<<<<<< HEAD
         verbose_name = 'Проект'
         verbose_name_plural = 'Проекты'
-=======
-        verbose_name = 'Задача'
-        verbose_name_plural = 'Задачи'
         ordering = ['id']
->>>>>>> aidar_paginations_news_wards_proj
+
 
     def __str__(self):
         return f'{self.name} - {self.category.name}'
