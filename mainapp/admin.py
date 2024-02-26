@@ -1,4 +1,4 @@
-from mainapp.models import News, ProjectCategory, Project, AllYouNeedIs, GiveHelp, GetHelp
+from mainapp.models import News, ProjectCategory, Project, AllYouNeedIs, GiveHelp, GetHelp, Partners
 from django.contrib import admin
 
 
@@ -46,15 +46,16 @@ class AllYouNeedIsAdmin(admin.ModelAdmin):
 
 
 @admin.register(GiveHelp)
-class RequesAdmin(admin.ModelAdmin):
+class RequestAdmin(admin.ModelAdmin):
     list_display = ('company_name', 'first_name', 'last_name', 'city', 'email', 'phone', 'text')
     list_per_page = 10
     list_filter = ('last_name', 'city', 'email', 'phone')
     search_fields = ('last_name', 'city', 'email', 'phone')
     show_full_result_count = False
 
+
 @admin.register(GetHelp)
-class RequesAdmin(admin.ModelAdmin):
+class RequestAdmin(admin.ModelAdmin):
     list_display = ('first_name', 'last_name', 'city', 'email', 'phone', 'subject', 'text')
     list_per_page = 10
     list_filter = ('last_name', 'city', 'email', 'phone')
@@ -62,4 +63,10 @@ class RequesAdmin(admin.ModelAdmin):
     show_full_result_count = False
 
 
-
+@admin.register(Partners)
+class PartnersAdmin(admin.ModelAdmin):
+    list_display = ('title', 'about')
+    list_per_page = 10
+    list_filter = ('title', 'about')
+    search_fields = ('title', 'about')
+    show_full_result_count = False
