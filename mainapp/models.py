@@ -73,37 +73,8 @@ class AllYouNeedIs(models.Model):
         return f'{self.name} {self.surname} - {self.category.name}'
 
 
-# Модель анкеты на благотворителя
-class RequestCharity(models.Model):
-    MONEY = 'Деньгами'
-    THINGS ='Вещами'
-    BOTH = 'Оба варианта возможны'
-
-    HELP = (
-        (MONEY, 'Деньгами'),
-        (THINGS, 'Вещами'),
-        (BOTH, 'Оба варианта возможны')
-    )
-
-    company_name = models.CharField(verbose_name='название юр лица', max_length=128, blank=True)
-    first_name = models.CharField(verbose_name='имя', max_length=100)
-    last_name = models.CharField(verbose_name='фамилия', max_length=100)
-    city = models.CharField(verbose_name='город', max_length=100)
-    email = models.EmailField()
-    phone = models.CharField(verbose_name='телефон для связи', max_length=20)
-    help = models.CharField(verbose_name='варианты помощи', choices=HELP, max_length=64, blank=True)
-    text = models.TextField(verbose_name='немного о себе')
-
-    def __str__(self):
-        return f'{self.first_name} - {self.last_name} - {self.text}'
-
-    class Meta:
-        verbose_name = 'Анкета благотворителя'
-        verbose_name_plural = 'Анкеты благотворителей'
-
-
-# Модель анкеты на волонтера
-class RequestVolunteer(models.Model):
+# Модель анкеты волонтера
+class GiveHelp(models.Model):
     TIME_1 = '2-3 часа в неделю'
     TIME_2 = '4-7 часов в неделю'
     TIME_3 = 'Более 7 часов в неделю'
@@ -124,15 +95,32 @@ class RequestVolunteer(models.Model):
         (BOTH, 'Оба варианта возможны')
     )
 
-    company_name = models.CharField(verbose_name='название юр лица', max_length=128, blank=True)
+    MONEY = 'Деньгами'
+    THINGS = 'Вещами'
+    INVOLVEMENT = 'Участие'
+    BOTH = 'Все варианты возможны'
+
+    HELP = (
+        (MONEY, 'Деньгами'),
+        (THINGS, 'Вещами'),
+        (INVOLVEMENT, 'Участие'),
+        (BOTH, 'Все варианты возможны')
+    )
+
+    company_name = models.CharField(help_text='если вы являетесь юр лицом', verbose_name='название юр лица', max_length=128, blank=True)
     first_name = models.CharField(verbose_name='имя', max_length=100)
     last_name = models.CharField(verbose_name='фамилия', max_length=100)
-    city = models.CharField(verbose_name='город', max_length=100)
-    email = models.EmailField()
+    birthday = models.DateField(verbose_name="дата рождения", blank=True, null=True)
+    country = models.CharField(verbose_name='страна проживания', max_length=100, null=True)
+    city = models.CharField(verbose_name='город проживания', max_length=100)
+    email = models.EmailField(verbose_name='эл почта для связи', unique=True)
     phone = models.CharField(verbose_name='телефон для связи', max_length=20)
-    schedule = models.CharField(verbose_name='временные возможности', choices=SCHEDULE, max_length=64, blank=True)
+    social_network = models.CharField(verbose_name='ссылка на социальную сеть', max_length=100, blank=True)
+    schedule = models.CharField(verbose_name='сколько времени в неделю готовы уделять', choices=SCHEDULE, max_length=64, blank=True)
+    help = models.CharField(verbose_name='варианты помощи', choices=HELP, max_length=64, blank=True)
     mobility = models.CharField(verbose_name='мобильность', choices=MOBILITY, max_length=64, blank=True)
     text = models.TextField(verbose_name='немного о себе')
+    agreed = models.BooleanField(verbose_name='я согласен на обработку персональных данных', default=False)
 
     def __str__(self):
         return f'{self.first_name} - {self.last_name} - {self.text}'
@@ -140,3 +128,36 @@ class RequestVolunteer(models.Model):
     class Meta:
         verbose_name = 'Анкета волонтёра'
         verbose_name_plural = 'Анкеты волонтёров'
+
+
+# Модель анкеты на помощь
+class GetHelp(models.Model):
+    first_name = models.CharField(verbose_name='имя', max_length=100)
+    last_name = models.CharField(verbose_name='фамилия', max_length=100)
+    city = models.CharField(verbose_name='город проживания', max_length=100)
+    email = models.EmailField(verbose_name='эл почта для связи', unique=True)
+    phone = models.CharField(verbose_name='телефон для связи', max_length=20)
+    social_network = models.CharField(verbose_name='ссылка на социальную сеть', max_length=100, blank=True)
+    subject = models.CharField(verbose_name='тема / заголовок', max_length=100)
+    text = models.TextField(verbose_name='описание проблемы')
+    agreed = models.BooleanField(verbose_name='я согласен на обработку персональных данных', default=False)
+
+    def __str__(self):
+        return f'{self.first_name} - {self.last_name} - {self.text}'
+
+    class Meta:
+        verbose_name = 'Запрос на помощь'
+        verbose_name_plural = 'Запросы на помощь'
+
+
+# Модель партнера
+class Partners(models.Model):
+    title = models.CharField(verbose_name='название партнера', max_length=264)
+    about = models.TextField(verbose_name='информация о партнере')
+
+    def __str__(self):
+        return f'{self.title}'
+
+    class Meta:
+        verbose_name = 'Партнер'
+        verbose_name_plural = 'Партнеры'

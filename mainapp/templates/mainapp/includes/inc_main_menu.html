@@ -50,16 +50,15 @@
         <li class="nav-item ">
                 <a class="nav-link" href="{% url 'mainapp:allyouneedis' %}">Наши подопечные</a>
         </li>
-       <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="ddProfile" role="button" data-toggle="dropdown"
-               aria-haspopup="true" aria-expanded="false">Благотворители </a>
-            <div class="dropdown-menu" aria-labelledby="ddProfile">
-                <a class="dropdown-item" href="{% url 'mainapp:request_charity' %}">Стать благотворителем</a>
+        <li class="nav-item ">
+                <a class="nav-link" href="{% url 'mainapp:partners' %}">Партнеры</a>
+        </li>
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="ddProfile" role="button" data-toggle="dropdown"
                aria-haspopup="true" aria-expanded="false">Волонтеры </a>
             <div class="dropdown-menu" aria-labelledby="ddProfile">
-                <a class="dropdown-item" href="{% url 'mainapp:request_volunteer' %}">Стать волонтером</a>
+                <a class="dropdown-item" href="{% url 'mainapp:give_help' %}">Стать волонтером</a>
+                <a class="dropdown-item" href="{% url 'mainapp:get_help' %}">Попросить о помощи</a>
                 <li class="nav-item ">
                 <a class="nav-link" href="{% url 'mainapp:donation' %}">Сделать пожертвование</a>
         </li>
