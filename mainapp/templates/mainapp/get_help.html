@@ -2,9 +2,15 @@
 
 {% load crispy_forms_tags i18n %}
 
+<title>
+{% block title %}
+{{ title }}
+{% endblock %}
+</title>
+
 {% block content %}
 
-<h1>СТАТЬ БЛАГОТВОРИТЕЛЕМ</h1>
+<h1>ПОПРОСИТЬ О ПОМОЩИ</h1>
 
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}

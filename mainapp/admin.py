@@ -1,4 +1,4 @@
-from mainapp.models import News, ProjectCategory, Project, AllYouNeedIs, RequestVolunteer, RequestCharity
+from mainapp.models import News, ProjectCategory, Project, AllYouNeedIs, GiveHelp, GetHelp
 from django.contrib import admin
 
 
@@ -45,23 +45,21 @@ class AllYouNeedIsAdmin(admin.ModelAdmin):
     show_full_result_count = False
 
 
-@admin.register(RequestVolunteer)
-class NewsAdmin(admin.ModelAdmin):
-    list_display = ('first_name', 'last_name', 'city', 'email', 'phone', 'text')
-    list_per_page = 10
-    list_filter = ('last_name', 'city', 'email', 'phone')
-    search_fields = ('last_name', 'city', 'email', 'phone')
-    show_full_result_count = False
-
-
-@admin.register(RequestCharity)
-class NewsAdmin(admin.ModelAdmin):
+@admin.register(GiveHelp)
+class RequesAdmin(admin.ModelAdmin):
     list_display = ('company_name', 'first_name', 'last_name', 'city', 'email', 'phone', 'text')
     list_per_page = 10
     list_filter = ('last_name', 'city', 'email', 'phone')
     search_fields = ('last_name', 'city', 'email', 'phone')
     show_full_result_count = False
 
+@admin.register(GetHelp)
+class RequesAdmin(admin.ModelAdmin):
+    list_display = ('first_name', 'last_name', 'city', 'email', 'phone', 'subject', 'text')
+    list_per_page = 10
+    list_filter = ('last_name', 'city', 'email', 'phone')
+    search_fields = ('last_name', 'city', 'email', 'phone')
+    show_full_result_count = False
 
 
 

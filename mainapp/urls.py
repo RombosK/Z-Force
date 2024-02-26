@@ -20,8 +20,9 @@ urlpatterns = [
     path('offero/', views.OfferoView.as_view(), name='offero'),
     path('personal_data/', views.PersonalDataView.as_view(), name='personal_data'),
     path('legal/', views.LegalView.as_view(), name='legal'),
-    path('request_charity/', views.RequestCharityEditView.as_view(), name='request_charity'),
-    path('request_volunteer/', views.RequestVolunteerEditView.as_view(), name='request_volunteer'),
+    path('partners/', views.PartnersView.as_view(), name='partners'),
+    path('give_help/', views.GiveHelpView.as_view(), name='give_help'),
+    path('get_help/', views.GetHelpView.as_view(), name='get_help'),
     path('success/', TemplateView.as_view(template_name='mainapp/success.html'), name='success'),
 ]
 

@@ -1,19 +1,20 @@
 from django import forms
-from .models import RequestCharity, RequestVolunteer
-
-
-# Форма анкеты благотворителя
-class RequestFormCharity(forms.ModelForm):
-    class Meta:
-        model = RequestCharity
-        fields = ['company_name', 'first_name', 'last_name', 'city', 'email', 'phone', 'help', 'text']
+from .models import GiveHelp, GetHelp
 
 
 # Форма анкеты волонтера
-class RequestFormVolunteer(forms.ModelForm):
+class GiveHelpForm(forms.ModelForm):
     class Meta:
-        model = RequestVolunteer
-        fields = ['company_name', 'first_name', 'last_name', 'city', 'email', 'phone', 'schedule', 'mobility', 'text']
+        model = GiveHelp
+        fields = '__all__'
+
+
+# Форма запроса на помощь
+class GetHelpForm(forms.ModelForm):
+    class Meta:
+        model = GetHelp
+        fields = '__all__'
+
 
 
 

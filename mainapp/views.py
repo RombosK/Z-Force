@@ -7,8 +7,8 @@ from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, View
 
-from mainapp.forms import RequestFormVolunteer, RequestFormCharity
-from mainapp.models import News, ProjectCategory, AllYouNeedIs, RequestVolunteer, RequestCharity
+from mainapp.forms import GiveHelpForm, GetHelpForm
+from mainapp.models import News, ProjectCategory, AllYouNeedIs, GiveHelp, GetHelp
 from dotenv import load_dotenv
 
 logger = logging.getLogger(__name__)
@@ -182,17 +182,17 @@ class OfferoView(TemplateView):
         return context
 
 
-# Контроллер страницы волонтера
-class RequestVolunteerEditView(View):
-    model = RequestVolunteer
-    form_class = RequestFormVolunteer
+# Контроллер страницы с анкетой
+class GiveHelpView(View):
+    model = GiveHelp
+    form_class = GiveHelpForm
 
     def get(self, request):
-        form = RequestFormVolunteer()
-        return render(request, 'mainapp/request_volunteer.html', {'form': form})
+        form = GiveHelpForm()
+        return render(request, 'mainapp/give_help.html', {'form': form})
 
     def post(self, request):
-        form = RequestFormVolunteer(request.POST)
+        form = GiveHelpForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('/home/success/')  # перенаправление на страницу успешного заполнения анкеты
@@ -200,22 +200,33 @@ class RequestVolunteerEditView(View):
         return render(request, 'mainapp/success.html')
 
 
-# Контроллер страницы благотворителя
-class RequestCharityEditView(View):
-    model = RequestCharity
-    form_class = RequestFormCharity
+# Контроллер страницы с запросом на помощь
+class GetHelpView(View):
+    model = GetHelp
+    form_class = GetHelpForm
 
     def get(self, request):
-        form = RequestFormCharity()
-        return render(request, 'mainapp/request_charity.html', {'form': form})
+        form = GetHelpForm()
+        return render(request, 'mainapp/get_help.html', {'form': form})
 
     def post(self, request):
-        form = RequestFormCharity(request.POST)
+        form = GetHelpForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('/home/success/')  # перенаправление на страницу успешного заполнения анкеты
 
-        return render(request, 'mainapp/success.html')
+        return render(request, 'mainapp/get_help.html')
+
+
+# Контроллер страницы оферты
+class PartnersView(TemplateView):
+    template_name = 'mainapp/partners.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Партнеры'
+
+        return context
 
 
 class LoginView(TemplateView):
