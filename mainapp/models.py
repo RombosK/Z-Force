@@ -1,3 +1,4 @@
+from django.core.validators import RegexValidator
 from django.db import models
 from authapp.models import User
 
@@ -32,7 +33,6 @@ class ProjectCategory(models.Model):
         verbose_name_plural = 'Категории проектов'
         ordering = ['id']
 
-
     def __str__(self):
         return f'{self.name}'
 
@@ -50,7 +50,6 @@ class Project(models.Model):
         verbose_name = 'Проект'
         verbose_name_plural = 'Проекты'
         ordering = ['id']
-
 
     def __str__(self):
         return f'{self.name} - {self.category.name}'
@@ -114,7 +113,8 @@ class GiveHelp(models.Model):
         (BOTH, 'Все варианты возможны')
     )
 
-    company_name = models.CharField(help_text='если вы являетесь юр лицом', verbose_name='название юр лица', max_length=128, blank=True)
+    company_name = models.CharField(help_text='если вы являетесь юр лицом', verbose_name='название юр лица',
+                                    max_length=128, blank=True)
     first_name = models.CharField(verbose_name='имя', max_length=100)
     last_name = models.CharField(verbose_name='фамилия', max_length=100)
     birthday = models.DateField(verbose_name="дата рождения", blank=True, null=True)
@@ -123,7 +123,8 @@ class GiveHelp(models.Model):
     email = models.EmailField(verbose_name='эл почта для связи', unique=True)
     phone = models.CharField(verbose_name='телефон для связи', max_length=20)
     social_network = models.CharField(verbose_name='ссылка на социальную сеть', max_length=100, blank=True)
-    schedule = models.CharField(verbose_name='сколько времени в неделю готовы уделять', choices=SCHEDULE, max_length=64, blank=True)
+    schedule = models.CharField(verbose_name='сколько времени в неделю готовы уделять', choices=SCHEDULE, max_length=64,
+                                blank=True)
     help = models.CharField(verbose_name='варианты помощи', choices=HELP, max_length=64, blank=True)
     mobility = models.CharField(verbose_name='мобильность', choices=MOBILITY, max_length=64, blank=True)
     text = models.TextField(verbose_name='немного о себе')
