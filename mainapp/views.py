@@ -29,7 +29,8 @@ class GiveHelpView(View):
             form.save()
             return redirect('/home/success/')  # перенаправление на страницу успешного заполнения анкеты
 
-        return render(request, 'mainapp/success.html')
+        # return render(request, 'mainapp/success.html')
+        return render(request, 'mainapp/get_help.html', {'form': form})
 
 
 #
@@ -48,7 +49,8 @@ class GetHelpView(View):
             form.save()
             return redirect('/home/success/')  # перенаправление на страницу успешного заполнения анкеты
 
-        return render(request, 'mainapp/get_help.html')
+        # return render(request, 'mainapp/get_help.html')
+        return render(request, 'mainapp/get_help.html', {'form': form})
 
 
 # # Контроллер страницы оферты
