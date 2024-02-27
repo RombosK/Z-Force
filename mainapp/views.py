@@ -3,6 +3,16 @@ import os
 
 import requests
 from django.http import HttpResponseRedirect
+from django.contrib.auth.mixins import PermissionRequiredMixin, UserPassesTestMixin
+from django.core.cache import cache
+from django.core.paginator import Paginator
+from django.http import JsonResponse, FileResponse, HttpResponseRedirect
+from django.shortcuts import get_object_or_404
+from django.template.context_processors import request
+from django.template.loader import render_to_string
+from django.urls import reverse_lazy
+from django.views.generic import TemplateView, ListView, UpdateView, CreateView, DetailView, DeleteView, View
+from django.core.mail import send_mail, BadHeaderError
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, View
@@ -13,6 +23,9 @@ from dotenv import load_dotenv
 
 logger = logging.getLogger(__name__)
 
+''' в list.py в class MultipleObjectMixin(ContextMixin):
+ изменено значение в переменной paginate_by = 3
+ для пагинации'''
 
 # Контроллер главной страницы
 class IndexView(TemplateView):
@@ -90,41 +103,78 @@ class ContactsView(TemplateView):
 
 
 # Контроллер страницы новостей
-class NewsView(TemplateView):
+#родитель ListView для удобства работы со страницами где нужна пагинация
+class NewsView(ListView):
+    paginate_by = 3
+    model = News
     template_name = 'mainapp/news.html'
+    context_object_name = 'object'
+    extra_context = {
+        'title': 'Новости',
+    }
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
 
-        context['title'] = 'Новости'
-        context['object'] = News.objects.all()
-        return context
+class NewsDetail(DetailView):
+    model = News
+    template_name = 'mainapp/news_post.html'
+    slug_url_kwarg = 'post_slug'
+    context_object_name = 'post'
 
+
+    def get_object(self, queryset=None):
+        return get_object_or_404(News, slug=self.kwargs[self.slug_url_kwarg])
+
+
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+
+
+# def listing(request):
+#     contact_list = News.objects.all()
+#     paginator = Paginator(contact_list, 2) # отоброжение количества новостей на странице
+#
+#     page_number = request.GET.get('page')
+#     page_obj = paginator.get_page(page_number)
+#     return render(request, 'News.html', {'page_obj': page_obj})
 
 # Контроллер проектов
-class ProjectView(TemplateView):
+#родитель ListView для удобства работы со страницами где нужна пагинация
+class ProjectView(ListView):
+    paginate_by = 3
     template_name = 'mainapp/projects.html'
+    model = ProjectCategory
+    context_object_name = 'object'
+    extra_context = {
+        'title': 'Проекты',
+    }
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-
-        context['title'] = 'Проекты'
-        context['object'] = ProjectCategory.objects.all()
-
-        return context
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #
+    #     context['title'] = 'Проекты'
+    #     context['object'] = ProjectCategory.objects.all()
+    #
+    #     return context
 
 
 # Контроллер нуждающихся
-class AllYouNeedIsView(TemplateView):
+#родитель ListView для удобства работы со страницами где нужна пагинация
+class AllYouNeedIsView(ListView):
+    paginate_by = 3
     template_name = 'mainapp/allyouneedis.html'
+    model = AllYouNeedIs
+    context_object_name = 'object'
+    extra_context = {
+        'title': 'Подопечные',
+    }
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-
-        context['title'] = 'Подопечные'
-        context['object'] = AllYouNeedIs.objects.all()
-
-        return context
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #
+    #     context['title'] = 'Подопечные'
+    #     context['object'] = AllYouNeedIs.objects.all()
+    #
+    #     return context
 
 
 # Контроллер страницы О нас
@@ -394,6 +444,7 @@ class LoginView(TemplateView):
 #         return context
 
 
+
 # class LogDownloadView(UserPassesTestMixin, View):
 #
 #     def test_func(self):
@@ -401,3 +452,14 @@ class LoginView(TemplateView):
 #
 #     def get(self, *args, **kwargs):
 #         return FileResponse(open(settings.LOG_FILE, "rb"))
+
+class LogDownloadView(UserPassesTestMixin, View):
+
+    def test_func(self):
+        return self.request.user.is_superuser
+
+    def get(self, *args, **kwargs):
+        return FileResponse(open(settings.LOG_FILE, "rb"))
+
+
+

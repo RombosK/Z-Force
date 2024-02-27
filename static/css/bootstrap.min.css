@@ -156,6 +156,11 @@ a {
     background-color: transparent
 }
 
+a:hover:not(.active) {
+    background-color: #ddd;
+    border-radius: 5px;
+}
+
 a:hover {
     color: #0d5875;
     text-decoration: underline
@@ -10666,7 +10671,7 @@ a.text-dark:focus, a.text-dark:hover {
     position: relative;
     top: 0;
     border-style: solid;
-    border-width: 0 1px 4px 1px;
+    border-width: 0 1px 4px 1px;p
     color: #555;
     font-size: 12px;
     font-weight: 700;
@@ -10806,3 +10811,4 @@ a.list-group-item-danger.active:focus, a.list-group-item-danger.active:hover {
 .modal .close:not(:disabled):not(.disabled):focus, .modal .close:not(:disabled):not(.disabled):hover, .toast .close:not(:disabled):not(.disabled):focus, .toast .close:not(:disabled):not(.disabled):hover {
     color: #000
 }
+

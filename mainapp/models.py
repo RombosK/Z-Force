@@ -5,6 +5,7 @@ from authapp.models import User
 # Модель новостей
 class News(models.Model):
     name = models.CharField(verbose_name='заголовок', max_length=64)
+    slug = models.SlugField(max_length=255, unique=True, db_index=True)
     description = models.TextField(verbose_name='текст статьи')
     photo = models.ImageField(upload_to='news_photos', blank=True)
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='дата создания', editable=False)
@@ -14,6 +15,7 @@ class News(models.Model):
     class Meta:
         verbose_name = 'Новость'
         verbose_name_plural = 'Новости'
+        ordering = ['id']
 
     def __str__(self):
         return f'{self.id} - {self.name}'
@@ -28,6 +30,8 @@ class ProjectCategory(models.Model):
     class Meta:
         verbose_name = 'Категория проекта'
         verbose_name_plural = 'Категории проектов'
+        ordering = ['id']
+
 
     def __str__(self):
         return f'{self.name}'
@@ -45,6 +49,8 @@ class Project(models.Model):
     class Meta:
         verbose_name = 'Проект'
         verbose_name_plural = 'Проекты'
+        ordering = ['id']
+
 
     def __str__(self):
         return f'{self.name} - {self.category.name}'
@@ -68,6 +74,7 @@ class AllYouNeedIs(models.Model):
     class Meta:
         verbose_name = 'Подопечный'
         verbose_name_plural = 'Подопечные'
+        ordering = ['id']
 
     def __str__(self):
         return f'{self.name} {self.surname} - {self.category.name}'
