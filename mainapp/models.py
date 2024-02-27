@@ -5,6 +5,7 @@ from authapp.models import User
 # Модель новостей
 class News(models.Model):
     name = models.CharField(verbose_name='заголовок', max_length=64)
+    slug = models.SlugField(max_length=255, unique=True, db_index=True)
     description = models.TextField(verbose_name='текст статьи')
     photo = models.ImageField(upload_to='news_photos', blank=True)
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='дата создания', editable=False)

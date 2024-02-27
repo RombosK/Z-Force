@@ -2,7 +2,7 @@
 
 <title>
     {% block title %}
-        {{ title }}
+        {{ post.name }}
     {% endblock %}
 </title>
 
@@ -19,7 +19,7 @@
             {% endif %}
             <p>{{ news_item.description|linebreaks|truncatewords:15 }}</p>
             <p>{{ news_item.created_at }}</p>
-
+            <button type="button" onclick="location.href='{{ news_item.slug }}'">More</button>
         </div>
     </div>
     {% endfor %}

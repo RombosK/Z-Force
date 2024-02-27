@@ -114,6 +114,17 @@ class NewsView(ListView):
     }
 
 
+class NewsDetail(DetailView):
+    model = News
+    template_name = 'mainapp/news_post.html'
+    slug_url_kwarg = 'post_slug'
+    context_object_name = 'post'
+
+
+    def get_object(self, queryset=None):
+        return get_object_or_404(News, slug=self.kwargs[self.slug_url_kwarg])
+
+
     # def get_context_data(self, **kwargs):
     #     context = super().get_context_data(**kwargs)
 
@@ -152,7 +163,7 @@ class AllYouNeedIsView(ListView):
     paginate_by = 3
     template_name = 'mainapp/allyouneedis.html'
     model = AllYouNeedIs
-    context_object_name  = 'object'
+    context_object_name = 'object'
     extra_context = {
         'title': 'Подопечные',
     }

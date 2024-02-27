@@ -23,6 +23,7 @@ urlpatterns = [
     path('request_charity/', views.RequestCharityEditView.as_view(), name='request_charity'),
     path('request_volunteer/', views.RequestVolunteerEditView.as_view(), name='request_volunteer'),
     path('success/', TemplateView.as_view(template_name='mainapp/success.html'), name='success'),
+    path('news/<slug:post_slug>/', views.NewsDetail.as_view(), name='news_post'),
 ]
 
 if settings.DEBUG:
