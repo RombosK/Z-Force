@@ -83,6 +83,9 @@ from django.core.exceptions import ValidationError
 import phonenumbers
 
 
+# Валидатор для телефонной строки в анкете
+
+
 def validate_phone(value):
     try:
         parsed_phone = phonenumbers.parse(value, None)
