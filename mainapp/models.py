@@ -134,7 +134,6 @@ class GiveHelp(models.Model):
     country = models.CharField(verbose_name='страна проживания', max_length=100, null=True)
     city = models.CharField(verbose_name='город проживания', max_length=100)
     email = models.EmailField(verbose_name='эл почта для связи', unique=True)
-    # phone = models.CharField(verbose_name='телефон для связи', max_length=20)
     phone = models.CharField(verbose_name='телефон для связи в формате +7xxxxxxxxxx', max_length=20,
                              validators=[validate_phone])
     social_network = models.CharField(verbose_name='ссылка на социальную сеть', max_length=100, blank=True)
@@ -159,7 +158,6 @@ class GetHelp(models.Model):
     last_name = models.CharField(verbose_name='фамилия', max_length=100)
     city = models.CharField(verbose_name='город проживания', max_length=100)
     email = models.EmailField(verbose_name='эл почта для связи', unique=True)
-    # phone = models.CharField(verbose_name='телефон для связи', max_length=
     phone = models.CharField(verbose_name='телефон для связи в формате +7xxxxxxxxxx', max_length=20,
                              validators=[validate_phone])
     social_network = models.CharField(verbose_name='ссылка на социальную сеть', max_length=100, blank=True)
