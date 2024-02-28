@@ -131,7 +131,8 @@ class GiveHelp(models.Model):
     country = models.CharField(verbose_name='страна проживания', max_length=100, null=True)
     city = models.CharField(verbose_name='город проживания', max_length=100)
     email = models.EmailField(verbose_name='эл почта для связи', unique=True)
-    phone = models.CharField(help_text='телефон в формате +7xxxxxxxxxx', verbose_name='телефон для связи', max_length=20, validators=[validate_phone])
+    phone = models.CharField(verbose_name='телефон для связи в формате +7xxxxxxxxxx', max_length=20,
+                             validators=[validate_phone])
     social_network = models.CharField(verbose_name='ссылка на социальную сеть', max_length=100, blank=True)
     schedule = models.CharField(verbose_name='сколько времени в неделю готовы уделять', choices=SCHEDULE, max_length=64, blank=True)
     help = models.CharField(verbose_name='варианты помощи', choices=HELP, max_length=64, blank=True)
@@ -153,7 +154,8 @@ class GetHelp(models.Model):
     last_name = models.CharField(verbose_name='фамилия', max_length=100)
     city = models.CharField(verbose_name='город проживания', max_length=100)
     email = models.EmailField(verbose_name='эл почта для связи', unique=True)
-    phone = models.CharField(help_text='телефон в формате +7xxxxxxxxxx', verbose_name='телефон для связи', max_length=20, validators=[validate_phone])
+    phone = models.CharField(verbose_name='телефон для связи в формате +7xxxxxxxxxx', max_length=20,
+                             validators=[validate_phone])
     social_network = models.CharField(verbose_name='ссылка на социальную сеть', max_length=100, blank=True)
     subject = models.CharField(verbose_name='тема / заголовок', max_length=100)
     text = models.TextField(verbose_name='описание проблемы')
