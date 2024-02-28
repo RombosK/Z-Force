@@ -1,8 +1,8 @@
-from mainapp.forms import GiveHelpForm, GetHelpForm
+import asyncio
 import logging
 import os
 
-import requests
+import aiohttp
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from django.shortcuts import render, redirect
@@ -29,7 +29,8 @@ class GiveHelpView(View):
             form.save()
             return redirect('/home/success/')  # перенаправление на страницу успешного заполнения анкеты
 
-        return render(request, 'mainapp/success.html')
+        # return render(request, 'mainapp/success.html')
+        return render(request, 'mainapp/get_help.html', {'form': form})
 
 
 #
@@ -48,7 +49,8 @@ class GetHelpView(View):
             form.save()
             return redirect('/home/success/')  # перенаправление на страницу успешного заполнения анкеты
 
-        return render(request, 'mainapp/get_help.html')
+        # return render(request, 'mainapp/get_help.html')
+        return render(request, 'mainapp/get_help.html', {'form': form})
 
 
 # # Контроллер страницы оферты
@@ -61,9 +63,6 @@ class PartnersView(TemplateView):
 
         return context
 
-
-# from mainapp.forms import RequestFormVolunteer, RequestFormCharity
-# from mainapp.models import News, ProjectCategory, AllYouNeedIs, RequestVolunteer, RequestCharity
 
 logger = logging.getLogger(__name__)
 
@@ -92,63 +91,59 @@ class ContactsView(TemplateView):
         context['title'] = 'Cвязаться с нами'
         context['contacts'] = [
             {
+                'map': 'https://yandex.ru/map-widget/v1/-/CDF44O-k',
                 'city': 'Московская область, г. Королев',
                 'phone': '+7 (910)401-40-12',
                 'email': 'org@fond-oknovmir.ru',
                 'address': '141075, г. Королев, ул. Фрунзе, д. 12'
-            }, {
-
-                'city': 'Красноармейск',
-                'phone': '777777777',
-                'email': 'zov@kz.ru',
-                'address': 'Field'
-            }, {
-
-                'city': 'Подольск',
-                'phone': '+5555555',
-                'email': 'z-red@msk.ru',
-                'address': 'Square'
-            }
+            },
+            #  {
+            #
+            #     'city': 'Красноармейск',
+            #     'phone': '777777777',
+            #     'email': 'zov@kz.ru',
+            #     'address': 'Field'
+            # }, {
+            #
+            #     'city': 'Подольск',
+            #     'phone': '+5555555',
+            #     'email': 'z-red@msk.ru',
+            #     'address': 'Square'
+            # }
         ]
 
         return context
 
     # Метод отправляет сообщение в ТГ админу через бота
-    @staticmethod
-    def send_feedback_to_email(message: str, message_from: int = None) -> None:
-        # user_from = 'Anonimus'
-        TOKEN = os.getenv('TOKEN')  # в .env: токен, взятый в @BotFather ТГ
-        CHAT_ID = os.getenv('CHAT_ID')  # в .env: id администратора в телеге
 
-        # URL для отправки сообщения через телеграм API
+    @staticmethod
+    async def send_feedback_to_email(message: str, message_from: int = None) -> None:
+        TOKEN = os.getenv('TOKEN')
+        CHAT_ID = os.getenv('CHAT_ID')
         url = f"https://api.telegram.org/bot{TOKEN}/sendMessage"
-        # Параметры запроса
         params = {
-            "chat_id": CHAT_ID,  # ID чата с администратором
-            "text": message,  # Текст сообщения
-            "parse_mode": "HTML"  # Форматирование сообщения
+            "chat_id": CHAT_ID,
+            "text": message,
+            "parse_mode": "HTML"
         }
-        # Отправляем запрос
-        response = requests.get(url, params=params)
-        # Проверяем статус ответа
-        if response.status_code == 200:
-            # Все хорошо, сообщение отправлено
-            print("Message sent successfully")
-        else:
-            # Что-то пошло не так, сообщение не отправлено
-            print("Message failed to send")
-            print(response.text)
-        # redirect('/home/success/')
+
+        async with aiohttp.ClientSession() as session:
+            async with session.get(url, params=params) as response:
+                if response.status == 200:
+                    print("Message sent successfully")
+                else:
+                    print("Message failed to send")
+                    print(await response.text())
 
     def post(self, *args, **kwargs):
         message_body = self.request.POST.get('message_body')
-        self.send_feedback_to_email(message_body)
+        asyncio.run(self.send_feedback_to_email(message_body))
 
         return HttpResponseRedirect(reverse_lazy('mainapp:success'))
 
 
 # Контроллер страницы новостей
-# родитель ListView для удобства работы со страницами где нужна пагинация
+# родитель ListView для удобства работы со страницами, где нужна пагинация
 class NewsView(ListView):
     paginate_by = 3
     model = News
@@ -277,5 +272,3 @@ class OfferoView(TemplateView):
 
 class LoginView(TemplateView):
     template_name = 'mainapp/login.html'
-
-
