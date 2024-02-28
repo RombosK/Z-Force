@@ -6,6 +6,7 @@ from authapp.models import User
 # Модель новостей
 class News(models.Model):
     name = models.CharField(verbose_name='заголовок', max_length=64)
+    slug = models.SlugField(max_length=255, unique=True, db_index=True)
     description = models.TextField(verbose_name='текст статьи')
     photo = models.ImageField(upload_to='news_photos', blank=True)
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='дата создания', editable=False)
@@ -30,6 +31,7 @@ class ProjectCategory(models.Model):
     class Meta:
         verbose_name = 'Категория проекта'
         verbose_name_plural = 'Категории проектов'
+        ordering = ['id']
 
     def __str__(self):
         return f'{self.name}'
@@ -47,6 +49,7 @@ class Project(models.Model):
     class Meta:
         verbose_name = 'Проект'
         verbose_name_plural = 'Проекты'
+        ordering = ['id']
 
     def __str__(self):
         return f'{self.name} - {self.category.name}'
@@ -80,7 +83,6 @@ from django.core.exceptions import ValidationError
 import phonenumbers
 
 
-# Валидатор для телефонной строки в анкете
 def validate_phone(value):
     try:
         parsed_phone = phonenumbers.parse(value, None)
@@ -124,17 +126,20 @@ class GiveHelp(models.Model):
         (BOTH, 'Все варианты возможны')
     )
 
-    company_name = models.CharField(help_text='если вы являетесь юр лицом', verbose_name='название юр лица', max_length=128, blank=True)
+    company_name = models.CharField(help_text='если вы являетесь юр лицом', verbose_name='название юр лица',
+                                    max_length=128, blank=True)
     first_name = models.CharField(verbose_name='имя', max_length=100)
     last_name = models.CharField(verbose_name='фамилия', max_length=100)
     birthday = models.DateField(verbose_name="дата рождения", blank=True, null=True)
     country = models.CharField(verbose_name='страна проживания', max_length=100, null=True)
     city = models.CharField(verbose_name='город проживания', max_length=100)
     email = models.EmailField(verbose_name='эл почта для связи', unique=True)
+    # phone = models.CharField(verbose_name='телефон для связи', max_length=20)
     phone = models.CharField(verbose_name='телефон для связи в формате +7xxxxxxxxxx', max_length=20,
                              validators=[validate_phone])
     social_network = models.CharField(verbose_name='ссылка на социальную сеть', max_length=100, blank=True)
-    schedule = models.CharField(verbose_name='сколько времени в неделю готовы уделять', choices=SCHEDULE, max_length=64, blank=True)
+    schedule = models.CharField(verbose_name='сколько времени в неделю готовы уделять', choices=SCHEDULE, max_length=64,
+                                blank=True)
     help = models.CharField(verbose_name='варианты помощи', choices=HELP, max_length=64, blank=True)
     mobility = models.CharField(verbose_name='мобильность', choices=MOBILITY, max_length=64, blank=True)
     text = models.TextField(verbose_name='немного о себе')
@@ -154,6 +159,7 @@ class GetHelp(models.Model):
     last_name = models.CharField(verbose_name='фамилия', max_length=100)
     city = models.CharField(verbose_name='город проживания', max_length=100)
     email = models.EmailField(verbose_name='эл почта для связи', unique=True)
+    # phone = models.CharField(verbose_name='телефон для связи', max_length=
     phone = models.CharField(verbose_name='телефон для связи в формате +7xxxxxxxxxx', max_length=20,
                              validators=[validate_phone])
     social_network = models.CharField(verbose_name='ссылка на социальную сеть', max_length=100, blank=True)

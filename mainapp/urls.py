@@ -24,10 +24,12 @@ urlpatterns = [
     path('give_help/', views.GiveHelpView.as_view(), name='give_help'),
     path('get_help/', views.GetHelpView.as_view(), name='get_help'),
     path('success/', TemplateView.as_view(template_name='mainapp/success.html'), name='success'),
+    path('news/<slug:post_slug>/', views.NewsDetail.as_view(), name='news_post'),
 ]
 
 if settings.DEBUG:
     import debug_toolbar
 
     urlpatterns.append(path("__debug__/", include(debug_toolbar.urls)))
+
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

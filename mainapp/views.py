@@ -92,37 +92,25 @@ class ContactsView(TemplateView):
         context['contacts'] = [
             {
                 'map': 'https://yandex.ru/map-widget/v1/-/CDF44O-k',
-                'city': 'МО, Королев',
+                'city': 'Московская область, г. Королев',
                 'phone': '+7 (910)401-40-12',
                 'email': 'org@fond-oknovmir.ru',
-                'address': 'ул. Фрунзе 12',
-                'manager': 'Шаройко Ольга Павловна'
+                'address': '141075, г. Королев, ул. Фрунзе, д. 12'
             },
-            {
-                'map': 'https://yandex.ru/maps/-/CDFaQOn3',
-                'city': 'МО, Красноармейск',
-                'phone': '+7(916)011-81-12',
-                'email': 'krasnodobro@mail.ru',
-                'address': 'пр. Испытателей 25/2',
-                'manager': 'Березикова Ирина Владимировна'
-            }, {
-
-                'map': 'https://yandex.ru/maps/-/CDFaQD-O',
-                'city': 'МО, Подольск',
-                'phone': '+7(910)000-78-52',
-                'email': 'oknovmir.podolsk@mail.ru',
-                'address': 'Адреса пока нет',
-                'manager': 'Лебедева Ольга Владимировна'
-            }, {
-
-                'map': 'https://yandex.ru/maps/-/CDFaQL4l',
-                'city': 'МО, Апрелевка, Наро-Фоминский р-н',
-                'phone': '+7(903)247-47-06',
-                'email': 'penzina_ys@mail.ru',
-                'address': 'Республиканская ул. 13',
-                'manager': 'Пензина Юлия Сергеевна'
-            }
-            ]
+            #  {
+            #
+            #     'city': 'Красноармейск',
+            #     'phone': '777777777',
+            #     'email': 'zov@kz.ru',
+            #     'address': 'Field'
+            # }, {
+            #
+            #     'city': 'Подольск',
+            #     'phone': '+5555555',
+            #     'email': 'z-red@msk.ru',
+            #     'address': 'Square'
+            # }
+        ]
 
         return context
 
