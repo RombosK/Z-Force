@@ -33,6 +33,8 @@
                 <div class="card h-100 shadow">
                     <div class="card-body">
                         <div style="position:relative;overflow:hidden;">
+                            <iframe src="{{ contact.map }}" width="100%" height="300" frameborder="0"
+                                    allowfullscreen="true" style="position:relative; border-radius: 4px;"></iframe>
 
                         </div>
                         <h5 class="card-title">{{ contact.city }}</h5>
@@ -45,7 +47,7 @@
                             <li>Email</li>
                             <li><strong>{{ contact.email|email_to_link }}</strong></li>
                         </ul>
-                        <div style="position:relative;overflow:hidden;"><a
+                        <div style="position:relative;overflow:hidden;">
                         </div>
                         <ul class="list-unstyled">
                             <li>Адрес</li>
