@@ -1,0 +1,14 @@
+@import url("header.css");
+@import url("footer.css");
+
+
+a {
+    text-decoration: none;
+}
+
+.center {
+    padding-right: calc(50% - 800px);
+    padding-left: calc(50% - 800px);
+}
+
+

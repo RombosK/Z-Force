@@ -1,0 +1,129 @@
+.footer {
+    background: rgb(24, 121, 156);
+}
+
+.footer__container {
+    padding-top: 40px;
+    padding-bottom: 66px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer__left {
+    display: flex;
+    flex-direction: column;
+    gap: 45px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.footer__logo {
+    display: flex;
+    flex-direction: row;
+}
+
+.footer__img {
+    width: 89px;
+}
+
+.footer__title {
+    max-width: 300px;
+    color: rgb(255, 255, 255);
+    font-family: Nunito;
+    font-size: 20px;
+    font-weight: 400;
+    text-align: center;
+}
+
+.footer__needs {
+    box-sizing: border-box;
+    border: 1px solid rgba(10, 110, 146, 0.37);
+    border-radius: 20px;
+    background: rgb(239, 239, 239);
+
+    color: rgba(24, 121, 156, 0.8);
+    font-family: Nunito;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 27px;
+    text-align: center;
+    padding: 10px;
+}
+
+.footer__needs:hover {
+    background: rgba(253, 186, 166, 1.00);
+    border: 1px solid rgba(253, 186, 166, 1.00);
+    color: white;
+}
+
+.footer__nav {
+    display: flex;
+    flex-direction: row;
+    gap: 63px;
+    flex-wrap: wrap;
+}
+
+.footer__navColumn {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.footer__text {
+    color: rgb(255, 255, 255);
+    font-family: Nunito;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 25px;
+}
+
+.footer__helpBtn {
+    box-sizing: border-box;
+    border: 1px solid rgba(10, 110, 146, 0.37);
+    border-radius: 20px;
+    background: rgb(239, 239, 239);
+
+    color: rgba(24, 121, 156, 0.8);
+    font-family: Nunito;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 27px;
+    text-align: center;
+    padding: 10px 30px;
+}
+
+.footer__helpBtn:hover {
+    background: rgba(253, 186, 166, 1.00);
+    border: 1px solid rgba(253, 186, 166, 1.00);
+    color: white;
+}
+
+.footer__bottom {
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer__bottomText {
+    color: rgb(255, 255, 255);
+    font-family: Nunito;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 19px;
+}
+
+.footer__bottomConnect {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+}
+
+.footer__icon {
+    height: 20px;
+}

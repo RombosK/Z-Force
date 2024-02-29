@@ -1,0 +1,60 @@
+/* шапка */
+.header {
+    box-shadow: 0px 4px 9px 0px rgba(0, 0, 0, 0.15);
+    background: rgb(248, 248, 248);
+}
+
+.header__container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.header__img {
+    width: 89px;
+}
+
+.header__nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 50px;
+}
+
+.header__text {
+    color: rgb(43, 43, 43);
+    font-family: Nunito;
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.header__text:hover {
+    color: rgba(108, 176, 195, 1.00);
+}
+
+.header__button {
+    box-sizing: border-box;
+    border: 1px solid rgb(24, 121, 156);
+    border-radius: 20px;
+    background: rgb(255, 255, 255);
+
+    color: rgb(10, 110, 146);
+    font-family: Nunito;
+    font-size: 20px;
+    font-weight: 400;
+    text-align: center;
+    padding: 9px 35px;
+}
+
+.header__button:hover {
+    background: rgba(253, 186, 166, 1.00);
+    border: 1px solid rgba(253, 186, 166, 1.00);
+    color: white;
+}

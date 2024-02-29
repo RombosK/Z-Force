@@ -1,0 +1,62 @@
+{% load static %}
+<footer class="footer">
+  <div class="footer__container center">
+    <!-- левая часть подвала -->
+    <div class="footer__left">
+      <div class="footer__logo">
+        <a href="{% url 'mainapp:home' %}">
+          <img
+            class="footer__img"
+            src="{% static '/img/logo-footer.png' %}"
+            alt="Окно в Мир"
+          />
+        </a>
+        <p class="footer__title">
+          МЕЖДУНАРОДНЫЙ БЛАГОТВОРИТЕЛЬНЫЙ ФОНД "ОКНО В МИР"
+        </p>
+      </div>
+      <div>
+        <button class="footer__needs">Нужна помощь</button>
+      </div>
+    </div>
+    <!-- навигация -->
+    <div class="footer__nav">
+      <div class="footer__navColumn">
+        <a class="footer__text" href="{% url 'mainapp:about' %}">О Нас</a>
+        <a class="footer__text" href="{% url 'mainapp:contacts' %}">Контакты</a>
+      </div>
+      <div class="footer__navColumn">
+        <a class="footer__text" href="{% url 'mainapp:news' %}">Новости</a>
+        <a class="footer__text" href="{% url 'mainapp:news' %}">Отчеты</a>
+      </div>
+      <div class="footer__navColumn">
+        <a class="footer__text" href="{% url 'mainapp:projects' %}">Проекты</a>
+        <a class="footer__text" href="{% url 'mainapp:allyouneedis' %}"
+          >Наши подопечные</a
+        >
+      </div>
+      <div class="footer__navColumn">
+        <a class="footer__text" href="{% url 'mainapp:partners' %}">Партнеры</a>
+        <a class="footer__text" href="#">Волонтеры</a>
+      </div>
+    </div>
+    <!-- кнопка "помочь" -->
+    <div class="footer__help">
+      <button class="footer__helpBtn">Помочь</button>
+    </div>
+  </div>
+  <!-- политика безопасности и связь с разработчиком -->
+  <div class="footer__bottom center">
+    <a href="{% url 'mainapp:legal' %}" class="footer__bottomText"
+      >Политика безопасности</a
+    >
+    <a href="https://t.me/bossa_matrossa" class="footer__bottomConnect">
+      <p class="footer__bottomText">Связь с разработчиком</p>
+      <img
+        class="footer__icon"
+        src="{% static '/img/telegram.png' %}"
+        alt="Окно в Мир"
+      />
+    </a>
+  </div>
+</footer>
