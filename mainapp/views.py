@@ -116,7 +116,7 @@ class ContactsView(TemplateView):
             }, {
 
                 'map': 'https://yandex.ru/map-widget/v1/-/CDFaQL4l',
-                'city': 'МО, Апрелевка, Наро-Фоминский р-н',
+                'city': 'МО, Апрелевка',
                 'phone': '+7(903)247-47-06',
                 'email': 'penzina_ys@mail.ru',
                 'address': 'Республиканская ул. 13',
