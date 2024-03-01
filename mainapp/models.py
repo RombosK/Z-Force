@@ -25,6 +25,7 @@ class News(models.Model):
 # Модель проектов фонда (категории благотворительности)
 class ProjectCategory(models.Model):
     name = models.CharField(verbose_name='имя категории проекта', max_length=64)
+    slug = models.SlugField(max_length=255, unique=True, db_index=True)
     description = models.TextField(verbose_name='описание категории проекта')
     photo = models.ImageField(upload_to='project_photos', blank=True)
 
@@ -33,6 +34,9 @@ class ProjectCategory(models.Model):
         verbose_name_plural = 'Категории проектов'
         ordering = ['id']
 
+    def get_absolute_url(self):
+        return reverse('project_category', kwargs={'post_slug': self.slug})
+
     def __str__(self):
         return f'{self.name}'
 
@@ -40,11 +44,13 @@ class ProjectCategory(models.Model):
 # Модель конкретного проекта
 class Project(models.Model):
     category = models.ForeignKey(ProjectCategory, on_delete=models.CASCADE)
+    slug = models.SlugField(max_length=255, unique=True, db_index=True)
     name = models.CharField(verbose_name='название проекта', max_length=128)
     description = models.TextField(verbose_name='описание проекта')
-    short_description = models.CharField(verbose_name='краткое описание проекта', max_length=64, blank=True)
+    short_description = models.CharField(verbose_name='краткое описание проекта', max_length=255, blank=True)
     photo = models.ImageField(upload_to='project_photos')
     donation = models.DecimalField(verbose_name='необходимая сумма', max_digits=12, decimal_places=2, default=0)
+    is_published = models.BooleanField(default=True, verbose_name='Проект опубликован')
 
     class Meta:
         verbose_name = 'Проект'
@@ -58,6 +64,7 @@ class Project(models.Model):
 # Модель подопечных
 class AllYouNeedIs(models.Model):
     category = models.ForeignKey(ProjectCategory, on_delete=models.CASCADE)
+    slug = models.SlugField(max_length=255, unique=True, db_index=True)
     name = models.CharField(verbose_name='имя нуждающегося', max_length=32)
     surname = models.CharField(verbose_name='фамилия нуждающегося', max_length=32)
     city = models.CharField(verbose_name='город, регион', max_length=64, blank=True)

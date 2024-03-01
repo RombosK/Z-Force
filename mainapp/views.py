@@ -1,8 +1,8 @@
-import asyncio
+from mainapp.forms import GiveHelpForm, GetHelpForm
 import logging
 import os
 
-import aiohttp
+import requests
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from django.shortcuts import render, redirect
@@ -11,7 +11,7 @@ from django.views.generic import ListView, DetailView
 from django.views.generic import TemplateView, View
 
 from mainapp.forms import GiveHelpForm, GetHelpForm
-from mainapp.models import GiveHelp, GetHelp, News, ProjectCategory, AllYouNeedIs
+from mainapp.models import GiveHelp, GetHelp, News, ProjectCategory, AllYouNeedIs, Project
 
 
 # # Контроллер страницы с анкетой
@@ -166,7 +166,7 @@ class NewsView(ListView):
     }
 
 
-class NewsDetail(DetailView):
+class NewsDetailView(DetailView):
     model = News
     template_name = 'mainapp/news_post.html'
     slug_url_kwarg = 'post_slug'
@@ -189,22 +189,44 @@ class NewsDetail(DetailView):
 
 # Контроллер проектов
 # родитель ListView для удобства работы со страницами где нужна пагинация
-class ProjectView(ListView):
+class ProjectCategoryView(ListView):
     paginate_by = 3
-    template_name = 'mainapp/projects.html'
+    template_name = 'mainapp/projects_category.html'
     model = ProjectCategory
-    context_object_name = 'object'
+    slug_url_kwarg = 'slug'
+    context_object_name = 'post'
     extra_context = {
         'title': 'Проекты',
     }
 
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #
-    #     context['title'] = 'Проекты'
-    #     context['object'] = ProjectCategory.objects.all()
-    #
-    #     return context
+    def get_object(self, queryset=None):
+        return get_object_or_404(ProjectCategory, slug=self.kwargs[self.slug_url_kwarg])
+
+
+class ProjectView(ListView):
+    paginate_by = 3
+    template_name = 'mainapp/projects.html'
+    model = Project
+    pk_url_kwarg = 'pk'
+    context_object_name = 'post'
+    extra_context = {
+        'title': 'Проекты',
+    }
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['post'] = Project.objects.filter(category=self.kwargs[self.pk_url_kwarg])
+        return context
+
+
+class ProjectDetailView(DetailView):
+    model = News
+    template_name = 'mainapp/projects_post.html'
+    slug_url_kwarg = 'slug'
+    context_object_name = 'post'
+
+    def get_object(self, queryset=None):
+        return get_object_or_404(Project, slug=self.kwargs[self.slug_url_kwarg])
 
 
 # Контроллер нуждающихся
@@ -213,18 +235,24 @@ class AllYouNeedIsView(ListView):
     paginate_by = 3
     template_name = 'mainapp/allyouneedis.html'
     model = AllYouNeedIs
+    slug_url_kwarg = 'post'
     context_object_name = 'object'
     extra_context = {
         'title': 'Подопечные',
     }
 
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #
-    #     context['title'] = 'Подопечные'
-    #     context['object'] = AllYouNeedIs.objects.all()
-    #
-    #     return context
+    # def get_object(self, queryset=None):
+    #     return get_object_or_404(AllYouNeedIs, slug=self.kwargs[self.slug_url_kwarg])
+
+
+class AllYouNeedIsDetailView(DetailView):
+    model = AllYouNeedIs
+    template_name = 'mainapp/projects_post.html'
+    slug_url_kwarg = 'slug'
+    context_object_name = 'post'
+
+    def get_object(self, queryset=None):
+        return get_object_or_404(AllYouNeedIs, slug=self.kwargs[self.slug_url_kwarg])
 
 
 # Контроллер страницы О нас
@@ -284,3 +312,5 @@ class OfferoView(TemplateView):
 
 class LoginView(TemplateView):
     template_name = 'mainapp/login.html'
+
+
