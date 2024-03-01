@@ -1,28 +1,27 @@
 {% load static %}
 
 <header class="header">
-  <div class="header__container center">
-    <!-- лого -->
-    <div class="header__logo">
-      <a  href="{% url 'mainapp:home' %}">
-        <img class="header__img" src="{% static '/img/logo-header.png' %}" alt="Окно в Мир" />
-      </a>
-    </div>
-   
-    <!-- навигация -->
-    <div class="header__nav">
-        <a class="header__text" href="{% url 'mainapp:about' %}">О Нас</a>
-        <a class="header__text" href="{% url 'mainapp:news' %}">Новости</a>
-        <a class="header__text" href="{% url 'mainapp:projects' %}">Проекты</a>
-        <a class="header__text" href="{% url 'mainapp:allyouneedis' %}">Наши подопечные</a>
-        <a class="header__text" href="{% url 'mainapp:partners' %}">Партнеры</a>
-        <a class="header__text" href="{% url 'mainapp:give_help' %}">Волонтеры</a>
+    <div class="header__container center">
+        <!-- лого -->
+        <div class="header__logo">
+            <a href="{% url 'mainapp:home' %}">
+                <img class="header__img" src="{% static '/img/logo-header.png' %}" alt="Окно в Мир"/>
+            </a>
+        </div>
 
+        <!-- навигация -->
+        <div class="header__nav">
+            <a class="header__text" href="{% url 'mainapp:about' %}">О Нас</a>
+            <a class="header__text" href="{% url 'mainapp:news' %}">Новости</a>
+            <a class="header__text" href="{% url 'mainapp:projects' %}">Проекты</a>
+            <a class="header__text" href="{% url 'mainapp:allyouneedis' %}">Наши подопечные</a>
+            <a class="header__text" href="{% url 'mainapp:partners' %}">Партнеры</a>
+
+        </div>
+
+        <!-- кнопка "помочь" -->
+        <div class="header__help">
+            <button class="header__button">Помочь</button>
+        </div>
     </div>
-   
-    <!-- кнопка "помочь" -->
-    <div class="header__help">
-        <button class="header__button">Помочь</button>
-    </div>
-  </div>
 </header>
