@@ -1,9 +1,23 @@
 {% extends 'mainapp/base.html' %}
+<!--  -->
 {% load crispy_forms_tags %}
+<!--  -->
 {% load email_to_link %}
 
+<!--  -->
 {% block content %}
-    <title>
+<h1 class="contacts__titleBlock">Наши контакты</h1>
+
+<div class="contacts__box">
+  {% for contact in contacts %}
+  <div class="contacts__item">
+    <h5 class="card-title">{{ contact.city }}</h5>
+  </div>
+
+  {% endfor %}
+</div>
+
+<!-- <title>
         {% block title %}
             {{ title }}
         {% endblock %}
@@ -64,7 +78,6 @@
             </div>
             </div>
         {% endfor %}
-    </div>
-
+    </div> -->
 
 {% endblock content %}

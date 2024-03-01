@@ -1,6 +1,9 @@
 @import url("header.css");
 @import url("footer.css");
 
+@import url("contacts.css");
+
+
 
 a {
     text-decoration: none;
