@@ -193,14 +193,14 @@ class ProjectCategoryView(ListView):
     paginate_by = 3
     template_name = 'mainapp/projects_category.html'
     model = ProjectCategory
-    slug_url_kwarg = 'slug'
+    # pk_url_kwarg = 'pk'
     context_object_name = 'post'
     extra_context = {
         'title': 'Проекты',
     }
 
-    def get_object(self, queryset=None):
-        return get_object_or_404(ProjectCategory, slug=self.kwargs[self.slug_url_kwarg])
+    # def get_object(self, queryset=None):
+    #     return get_object_or_404(ProjectCategory, pk=self.kwargs[self.pk_url_kwarg])
 
 
 class ProjectView(ListView):
@@ -213,14 +213,20 @@ class ProjectView(ListView):
         'title': 'Проекты',
     }
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['post'] = Project.objects.filter(category=self.kwargs[self.pk_url_kwarg])
-        return context
-
+    def get_queryset(self):
+        queryset = Project.objects.filter(category=self.kwargs[self.pk_url_kwarg])
+        return queryset
+    #
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     context['post'] = Project.objects.filter(category=self.kwargs[self.pk_url_kwarg])
+    #
+    #     print(context)
+    #     return context
+    #
 
 class ProjectDetailView(DetailView):
-    model = News
+    model = Project
     template_name = 'mainapp/projects_post.html'
     slug_url_kwarg = 'slug'
     context_object_name = 'post'
@@ -240,9 +246,6 @@ class AllYouNeedIsView(ListView):
     extra_context = {
         'title': 'Подопечные',
     }
-
-    # def get_object(self, queryset=None):
-    #     return get_object_or_404(AllYouNeedIs, slug=self.kwargs[self.slug_url_kwarg])
 
 
 class AllYouNeedIsDetailView(DetailView):
