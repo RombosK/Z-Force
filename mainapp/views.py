@@ -225,6 +225,7 @@ class ProjectView(ListView):
     #     return context
     #
 
+
 class ProjectDetailView(DetailView):
     model = Project
     template_name = 'mainapp/projects_post.html'
