@@ -1,3 +1,7 @@
+import asyncio
+
+import aiohttp
+
 from mainapp.forms import GiveHelpForm, GetHelpForm
 import logging
 import os
