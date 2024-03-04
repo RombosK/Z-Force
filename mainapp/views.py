@@ -70,10 +70,6 @@ class PartnersView(TemplateView):
 
 logger = logging.getLogger(__name__)
 
-''' в list.py в class MultipleObjectMixin(ContextMixin):
- изменено значение в переменной paginate_by = 3
- для пагинации'''
-
 
 # Контроллер главной страницы
 class IndexView(TemplateView):
@@ -216,6 +212,8 @@ class ProjectView(ListView):
     extra_context = {
         'title': 'Проекты',
     }
+    # В get_queryset переопределяется object_list в котором содержится наименование проектов отсортированный по
+    # категориям
 
     def get_queryset(self):
         queryset = Project.objects.filter(category=self.kwargs[self.pk_url_kwarg])
