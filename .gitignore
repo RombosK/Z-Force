@@ -23,7 +23,7 @@ sdist/
 var/
 wheels/
 share/python-wheels/
-media
+media/
 migrations
 *.egg-info/
 .installed.cfg
