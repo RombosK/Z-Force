@@ -19,7 +19,7 @@
             {% endif %}
             <p>{{ news_item.description|linebreaks|truncatewords:15 }}</p>
             <p>{{ news_item.created_at }}</p>
-            <button type="button" onclick="location.href='{{ news_item.slug }}'">More</button>
+            <button type="button" onclick="location.href='{{ news_item.slug }}'">Читать</button>
         </div>
     </div>
     {% endfor %}
