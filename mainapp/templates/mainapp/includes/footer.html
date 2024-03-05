@@ -15,9 +15,11 @@
           МЕЖДУНАРОДНЫЙ БЛАГОТВОРИТЕЛЬНЫЙ ФОНД "ОКНО В МИР"
         </p>
       </div>
-        <div>
-            <a class="footer__needs" href="{% url 'mainapp:get_help' %}">Нужна помощь</a>
-        </div>
+      <div>
+        <a class="footer__needs" href="{% url 'mainapp:get_help' %}"
+          >Нужна помощь</a
+        >
+      </div>
     </div>
     <!-- навигация -->
     <div class="footer__nav">
@@ -30,14 +32,18 @@
         <a class="footer__text" href="{% url 'mainapp:news' %}">Отчеты</a>
       </div>
       <div class="footer__navColumn">
-        <a class="footer__text" href="{% url 'mainapp:projects' %}">Проекты</a>
+        <a class="footer__text" href="{% url 'mainapp:projects_category' %}"
+          >Проекты</a
+        >
         <a class="footer__text" href="{% url 'mainapp:allyouneedis' %}"
           >Наши подопечные</a
         >
       </div>
       <div class="footer__navColumn">
         <a class="footer__text" href="{% url 'mainapp:partners' %}">Партнеры</a>
-        <a class="footer__text" href="{% url 'mainapp:give_help' %}">Анкета волонтёра</a>
+        <a class="footer__text" href="{% url 'mainapp:give_help' %}"
+          >Анкета волонтёра</a
+        >
       </div>
     </div>
     <!-- кнопка "помочь" -->

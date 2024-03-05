@@ -1,7 +1,7 @@
 /* шапка */
 .header {
     box-shadow: 0px 4px 9px 0px rgba(0, 0, 0, 0.15);
-    background: rgb(248, 248, 248);
+    background: rgba(23, 123, 159, 1.00);
 }
 
 .header__container {
