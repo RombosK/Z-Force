@@ -1,0 +1,81 @@
+{% load static %}
+
+<!-- мобильная шапка -->
+<div class="header__mobileMenu">
+  <div class="header__mobileMenuContainer">
+    <!-- лого -->
+    <div class="header__mobileMenuLogo">
+      <a href="{% url 'mainapp:home' %}">
+        <img
+          class="header__img"
+          src="{% static '/img/logo-header.png' %}"
+          alt="Окно в Мир"
+        />
+      </a>
+    </div>
+
+    <div class="header__mobileMenuContent">
+      <!-- бургер -->
+      <div class="header__burger" onclick="burgerMobile()">
+        <img
+          class="header__imgBurger"
+          src="{% static '/img/burger.png' %}"
+          alt="Окно в Мир"
+        />
+      </div>
+
+      <!-- кнопка "помочь"/"нужна помощь" -->
+      <div class="header__mobileHelp">
+        <a class="header__mobileButtonHelp" href="{% url 'mainapp:donation' %}"
+          >помочь</a
+        >
+        <a class="header__mobileButtonNeeds" href="{% url 'mainapp:get_help' %}"
+          >нужна помощь</a
+        >
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- шапка для всех других сустройств -->
+<header class="header">
+  <div class="header__container center">
+    <!-- лого -->
+    <div class="header__logo">
+      <a href="{% url 'mainapp:home' %}">
+        <img
+          class="header__img"
+          src="{% static '/img/logo-header.png' %}"
+          alt="Окно в Мир"
+        />
+      </a>
+    </div>
+
+    <!-- навигация -->
+    <nav class="header__nav">
+      <a class="header__text" href="{% url 'mainapp:about' %}">О НАС</a>
+      <a class="header__text" href="{% url 'mainapp:news' %}">НОВОСТИ</a>
+      <a class="header__text" href="{% url 'mainapp:projects_category' %}"
+        >ПРОЕКТЫ</a
+      >
+      <a class="header__text" href="{% url 'mainapp:allyouneedis' %}"
+        >ПОДОПЕЧНЫЕ</a
+      >
+      <a class="header__text" href="{% url 'mainapp:partners' %}">ПАРТНЕРЫ</a>
+    </nav>
+
+    <!-- кнопка "помочь"/"нужна помощь" -->
+    <div class="header__help">
+      <a class="header__buttonHelp" href="{% url 'mainapp:donation' %}"
+        >помочь</a
+      >
+      <a
+        class="header__buttonNeeds"
+        href="{% url 'mainapp:get_help' %}"
+        onmouseover="onHover()"
+        onmouseout="outHover()"
+        >нужна помощь</a
+      >
+    </div>
+  </div>
+</header>

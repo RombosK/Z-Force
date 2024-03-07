@@ -1,108 +1,134 @@
 {% load static %}
 
 <head>
-    <!-- Required meta tags -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Required meta tags -->
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="{% static '/css/bootstrap.min.css' %}">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="{% static '/css/bootstrap.min.css' %}" />
 
-    <!-- ChartJS -->
-    <link rel="stylesheet" href="{% static '/css/Chart.min.css' %}">
+  <!-- ChartJS -->
+  <link rel="stylesheet" href="{% static '/css/Chart.min.css' %}" />
 
-    <!-- FontAwesome -->
-    <link rel="stylesheet" href="{% static '/css/fontawesome.all.min.css' %}">
-    <title>{{ title }}</title>
-    <link rel="shortcut icon" href="{% static '/img/icon.png' %}"/>
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="{% static '/css/fontawesome.all.min.css' %}" />
+  <title>{{ title }}</title>
+  <link rel="shortcut icon" href="{% static '/img/icon.png' %}" />
 
+  <!-- css -->
+  <link rel="stylesheet" href="{% static '/css/main.css' %}" />
+
+  <!-- font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap"
+    rel="stylesheet"
+  />
 </head>
-    <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}">
+<link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}" />
 <body>
-
-
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
-        <a class="navbar-brand" href="{% url 'mainapp:home' %}">
-            <img src="{% static '/img/logo.jpg' %}" width="150" height="150" alt="Окно в Мир">
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+      <a class="navbar-brand" href="{% url 'mainapp:home' %}">
+        <img
+          src="{% static '/img/logo.jpg' %}"
+          width="150"
+          height="150"
+          alt="Окно в Мир"
+        />
+      </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-        {% include 'mainapp/includes/inc_main_menu.html' %}
-
+      {% include 'mainapp/includes/inc_main_menu.html' %}
     </div>
-</nav>
+  </nav> -->
+  {% include 'mainapp/includes/header.html' %}
+
+  
+  <div class="container-md">{% block content %} {% endblock content %}</div>
+
+  {% include 'mainapp/includes/footer.html' %}
 
 
-<div class="container-md">
-    {% block content %}
-    {% endblock content %}
-</div>
-
-<!-- Footer -->
-<div class="container-lg mt-auto">
-    <hr>
+  <!-- Footer -->
+  <!-- <div class="container-lg mt-auto">
+    <hr />
     <div class="row justify-content-center">
-        <div class="col-sm-6 col-md-3 text-center">
-            <p>
-                <strong>МЕЖДУНАРОДНЫЙ БЛАГОТВОРИТЕЛЬНЫЙ ФОНД "ОКНО В МИР"</strong>
-            </p>
-            <p>
-            <ul class="list-unstyled">
-                <li><a href="{% url 'mainapp:home' %}">Домашняя</a></li>
-
-            </ul>
+      <div class="col-sm-6 col-md-3 text-center">
+        <p>
+          <strong>МЕЖДУНАРОДНЫЙ БЛАГОТВОРИТЕЛЬНЫЙ ФОНД "ОКНО В МИР"</strong>
+        </p>
+        <p></p>
+        <ul class="list-unstyled">
+          <li><a href="{% url 'mainapp:home' %}">Домашняя</a></li>
+        </ul>
+      </div>
+      <div class="col-sm-6 col-md-3 text-center">
+        <p>
+          <strong>Политика безопасности</strong>
+        </p>
+        <p></p>
+        <ul class="list-unstyled">
+          <li><a href="{% url 'mainapp:legal' %}">Политика сайта</a></li>
+          <li>
+            <a href="{% url 'mainapp:personal_data' %}"
+              >Политика обработки персональных данных</a
+            >
+          </li>
+          <li><a href="{% url 'mainapp:offero' %}">Договор оферты</a></li>
+        </ul>
+      </div>
+      <div class="col-sm-6 col-md-3 text-center">
+        <p>
+          <strong>Связь с разработчиками</strong>
+        </p>
+        <p></p>
+        <div class="row justify-content-around">
+          <div>
+            <a href="https://t.me/bossa_matrossa"
+              ><i class="fab fa-telegram fa-2x"></i
+            ></a>
+          </div>
         </div>
-        <div class="col-sm-6 col-md-3 text-center">
-            <p>
-                <strong>Политика безопасности</strong>
-            </p>
-            <p>
-            <ul class="list-unstyled">
-                <li><a href="{% url 'mainapp:legal' %}">Политика сайта</a></li>
-                <li><a href="{% url 'mainapp:personal_data' %}">Политика обработки персональных данных</a></li>
-                <li><a href="{% url 'mainapp:offero' %}">Договор оферты</a></li>
-
-            </ul>
-
-        </div>
-        <div class="col-sm-6 col-md-3 text-center">
-            <p>
-                <strong>Связь с разработчиками</strong>
-            </p>
-            <p>
-            <div class="row justify-content-around">
-                <div><a href="https://t.me/bossa_matrossa"><i class="fab fa-telegram fa-2x"></i></a></div>
-            </div>
-        </div>
+      </div>
     </div>
     <div class="row justify-content-center">
-        <div>
-            <p><small>&copy; Z-Force IT 2024</small></p>
-        </div>
+      <div>
+        <p><small>&copy; Z-Force IT 2024</small></p>
+      </div>
     </div>
-</div>
+  </div> -->
 
-<!-- /Footer -->
+  <!-- /Footer -->
 
-
-<!-- JavaScript section -->
-<!-- Bootstrap -->
-<script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
-<script src="{% static 'js/popper.min.js' %}"></script>
-<script src="{% static 'js/bootstrap.min.js' %}"></script>
-
-<!-- ChartJs -->
-<script src="{% static 'js/Chart.min.js' %}"></script>
-
-<!-- FontAwesome -->
-<script src="{% static 'js/fontawesome.all.min.js' %}"></script>
-{% block js %}
-{% endblock %}
+  <!-- JavaScript section -->
+  <!-- Bootstrap -->
+  <!-- <script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+  <script src="{% static 'js/popper.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script> -->
+  <script src="{% static 'js/main.js' %}"></script>
 
 
+
+  <!-- ChartJs -->
+  <script src="{% static 'js/Chart.min.js' %}"></script>
+
+  <!-- FontAwesome -->
+  <script src="{% static 'js/fontawesome.all.min.js' %}"></script>
+  {% block js %} {% endblock %}
 </body>
-

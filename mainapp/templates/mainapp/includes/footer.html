@@ -1,0 +1,85 @@
+{% load static %}
+<footer class="footer">
+  <div class="footer__container center">
+    <!-- левая часть подвала -->
+    <div class="footer__left">
+      <div class="footer__logo">
+        <a href="{% url 'mainapp:home' %}">
+          <img
+            class="footer__img"
+            src="{% static '/img/logo-footer.png' %}"
+            alt="Окно в Мир"
+          />
+        </a>
+        <p class="footer__title">
+          МЕЖДУНАРОДНЫЙ БЛАГОТВОРИТЕЛЬНЫЙ ФОНД "ОКНО В МИР"
+        </p>
+      </div>
+      <!-- кнопки "помочь"/"нужна помощь" -->
+      <div class="footer__help">
+        <a class="footer__buttonHelp" href="{% url 'mainapp:donation' %}"
+          >Помочь</a
+        >
+        <a
+          class="footer__buttonNeeds"
+          href="{% url 'mainapp:get_help' %}"
+          onmouseover="onHoverFooter()"
+          onmouseout="outHoverFooter()"
+          >Нужна помощь</a
+        >
+      </div>
+    </div>
+    <!-- навигация -->
+    <div class="footer__nav">
+      <div class="footer__navColumn">
+        <a class="footer__text" href="{% url 'mainapp:about' %}">О Нас</a>
+        <a class="footer__text" href="{% url 'mainapp:contacts' %}">Контакты</a>
+      </div>
+      <div class="footer__navColumn">
+        <a class="footer__text" href="{% url 'mainapp:news' %}">Новости</a>
+        <a class="footer__text" href="{% url 'mainapp:news' %}">Отчеты</a>
+      </div>
+      <div class="footer__navColumn">
+        <a class="footer__text" href="{% url 'mainapp:projects_category' %}"
+          >Проекты</a
+        >
+        <a class="footer__text" href="{% url 'mainapp:allyouneedis' %}"
+          >Наши подопечные</a
+        >
+      </div>
+      <div class="footer__navColumn">
+        <a class="footer__text" href="{% url 'mainapp:partners' %}">Партнеры</a>
+        <a class="footer__text" href="{% url 'mainapp:give_help' %}"
+          >Анкета волонтёра</a
+        >
+      </div>
+    </div>
+  </div>
+
+  <!-- социальные сети -->
+  <div class="footer__social">
+    <!-- телега -->
+    <a href="https://t.me/oknovmirfond" target="_blank">
+      <img class="footer__socialTg" src="{% static '/img/tg.png' %}" alt="tg" />
+    </a>
+    <!-- vk -->
+    <a href="https://vk.com/mbfoknovmir" target="_blank">
+      <img class="footer__socialVk" src="{% static '/img/vk.png' %}" alt="vk" />
+    </a>
+  </div>
+
+  <!-- политика безопасности и связь с разработчиком -->
+  <div class="footer__bottom center">
+    <a href="{% url 'mainapp:legal' %}" class="footer__bottomText"
+      >Политика безопасности</a
+    >
+    <a href="https://t.me/bossa_matrossa" class="footer__bottomConnect">
+      <p class="footer__bottomText">Связь с разработчиком</p>
+      <img
+        class="footer__icon"
+        src="{% static '/img/telegram.png' %}"
+        alt="Окно в Мир"
+      />
+    </a>
+  </div>
+</footer>

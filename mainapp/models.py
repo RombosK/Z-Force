@@ -1,7 +1,7 @@
 from django.core.validators import RegexValidator
 from django.db import models
 from django.urls import reverse
-
+from django.utils import timezone
 from authapp.models import User
 
 
@@ -11,7 +11,7 @@ class News(models.Model):
     slug = models.SlugField(max_length=255, unique=True, db_index=True)
     description = models.TextField(verbose_name='текст статьи')
     photo = models.ImageField(upload_to='news_photos', blank=True)
-    created_at = models.DateTimeField(auto_now_add=True, verbose_name='дата создания', editable=False)
+    created_at = models.DateTimeField(default=timezone.now, verbose_name='дата создания', editable=True)
     updated_at = models.DateTimeField(auto_now=True, verbose_name='дата изменения', editable=False)
     is_closed = models.BooleanField(default=False, verbose_name='событие прошло')
 

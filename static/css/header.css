@@ -1,0 +1,354 @@
+/* шапка */
+
+/* шапка дял мобильной версии */
+.header__mobileMenu {
+    display: none;
+}
+
+/* шапка для всех остальный уствройст */
+.header {
+    box-shadow: 0px 4px 9px 0px rgba(0, 0, 0, 0.15);
+    background: rgba(23, 123, 159, 1.00);
+}
+
+.header__container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.header__img {
+    width: 89px;
+}
+
+.header__nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.header__text {
+    color: rgba(255, 255, 250, 1.00);
+    font-family: Nunito;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.header__text:hover {
+    color: rgba(254, 186, 166, 1.00);
+}
+
+.header__help {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+
+    border-radius: 20px;
+    background-color: rgba(255, 255, 250, 1.00);
+}
+
+.header__buttonHelp {
+    box-sizing: border-box;
+    border-radius: 20px;
+    background: rgba(109, 176, 195, 1.00);
+
+    color: rgba(255, 255, 250, 1.00);
+    font-family: Nunito;
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    padding: 8px 10px;
+    width: 180px;
+
+    transition: 0.3s;
+}
+
+.header__buttonNeeds {
+    box-sizing: border-box;
+    border-radius: 20px;
+    background: rgba(255, 255, 250, 1.00);
+
+    color: rgba(23, 123, 159, 1.00);
+    font-family: Nunito;
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    padding: 8px 0px;
+    width: 180px;
+
+    transition: 0.4s;
+}
+
+.header__buttonHelp:hover {
+    background: rgba(254, 186, 166, 1.00);
+    color: white;
+}
+
+.header__button:hover {
+    background: rgba(254, 186, 166, 1.00);
+    color: white;
+}
+
+.header__buttonHelpNotActiv {
+    background: rgba(255, 255, 250, 1.00);
+    color: rgba(23, 123, 159, 1.00);
+}
+
+.header__buttonNeedsActiv {
+    background: rgba(254, 186, 166, 1.00);
+    color: white;
+}
+
+/* адапрация */
+@media (min-width: 1320px) and (max-width: 1425px) {
+    .header__container {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+}
+
+@media (min-width: 1035px) and (max-width: 1320px) {
+    .header__container {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    .header__img {
+        width: 60px;
+    }
+
+    .header__nav {
+        gap: 20px;
+    }
+
+    .header__text {
+        font-size: 18px;
+    }
+
+    .header__buttonHelp {
+        font-size: 16px;
+        padding: 5px 10px;
+        width: 150px;
+    }
+
+    .header__buttonNeeds {
+        font-size: 16px;
+        padding: 5px 10px;
+        width: 150px;
+    }
+}
+
+
+@media (min-width: 835px) and (max-width: 1034px) {
+    .header__container {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .header__img {
+        width: 50px;
+    }
+
+    .header__nav {
+        gap: 15px;
+    }
+
+    .header__text {
+        font-size: 16px;
+    }
+
+    .header__buttonHelp {
+        font-size: 14px;
+        padding: 8px 30px;
+        width: auto;
+    }
+
+    .header__buttonNeeds {
+        font-size: 14px;
+        padding: 8px 10px;
+        width: auto;
+    }
+
+}
+
+@media (min-width: 766px) and (max-width: 834px) {
+    .header__container {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .header__img {
+        width: 40px;
+    }
+
+    .header__nav {
+        gap: 15px;
+    }
+
+    .header__text {
+        font-size: 15px;
+    }
+
+    .header__buttonHelp {
+        font-size: 14px;
+        padding: 5px 10px;
+        width: auto;
+    }
+
+    .header__buttonNeeds {
+        font-size: 13px;
+        padding: 5px 5px;
+        width: auto;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+
+    /* шапка для мобильного меню */
+    .header__mobileMenu {
+        display: block;
+        box-shadow: 0px 4px 9px 0px rgba(0, 0, 0, 0.15);
+        background: rgba(23, 123, 159, 1.00);
+        width: 100%;
+    }
+
+    .header__mobileMenuContainer {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        flex-wrap: wrap;
+
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+
+    .header__mobileMenuLogo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .header__mobileMenuContent {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 50px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .header__img {
+        width: 80px;
+    }
+
+    .header__imgBurger {
+        width: 30px;
+    }
+
+    .header__mobileHelp {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+
+        border-radius: 20px;
+        background-color: rgba(255, 255, 250, 1.00);
+    }
+
+    .header__mobileButtonHelp {
+        box-sizing: border-box;
+        border-radius: 20px;
+
+        background: rgba(109, 176, 195, 1.00);
+        color: rgba(255, 255, 250, 1.00);
+        font-family: Nunito;
+        font-size: 13px;
+        font-weight: 600;
+        text-align: center;
+        padding: 5px 10px;
+        width: auto;
+    }
+
+    .header__mobileButtonNeeds {
+        box-sizing: border-box;
+        border-radius: 20px;
+
+        background: rgba(255, 255, 250, 1.00);
+        color: rgba(23, 123, 159, 1.00);
+        font-family: Nunito;
+        font-size: 13px;
+        font-weight: 600;
+        text-align: center;
+        padding: 5px 5px;
+        width: auto;
+    }
+
+    /* выпадающий список */
+    .open {
+        display: flex !important;
+    }
+
+    .header {
+        display: none;
+        background: none;
+        position: absolute;
+        animation: burgerAnimation 0.7s;
+    }
+
+    .header__container {
+        justify-content: center;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
+    .header__logo {
+        display: none;
+    }
+
+    .header__help {
+        display: none;
+    }
+
+    .header__nav {
+        background: rgba(109, 176, 195, 1.00);
+        box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.15);
+        padding: 30px 20px 30px 20px;
+
+        flex-direction: column;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .header__text {
+        font-size: 15px;
+        justify-content: center;
+        padding: 0 30px 0 30px;
+    }
+
+    @keyframes burgerAnimation {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+}
+
+
+
+
+
+/* @media (max-width: 1024px) планшет */
+/* @media (min-width: 320px) and (max-width: 767px) телефон */
+/* transform: skewX(-15deg); */

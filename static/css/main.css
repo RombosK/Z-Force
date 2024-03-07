@@ -1,0 +1,17 @@
+@import url("header.css");
+@import url("footer.css");
+
+@import url("contacts.css");
+
+
+
+a {
+    text-decoration: none;
+}
+
+.center {
+    padding-right: calc(50% - 700px);
+    padding-left: calc(50% - 700px);
+}
+
+

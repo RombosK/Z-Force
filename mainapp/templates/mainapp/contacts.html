@@ -1,9 +1,53 @@
 {% extends 'mainapp/base.html' %}
+<!--  -->
 {% load crispy_forms_tags %}
+<!--  -->
 {% load email_to_link %}
 
+<!--  -->
 {% block content %}
-    <title>
+<div class="contacts_fild">
+  <p class="contacts__titleBlock">Наши контакты</p>
+
+  <div class="contacts__box center">
+    {% for contact in contacts %}
+    <div class="contacts__item">
+      <iframe src="{{ contact.map }}" class="contacts__mapBox"></iframe>
+      <div class="contacts__description">
+        <p class="contacts__textTitle">{{contact.city}}</p>
+        <p class="contacts__text">
+          <span class="contacts__textTitle">Телефон:</span> {{contact.phone}}
+        </p>
+        <p class="contacts__text">
+          <span class="contacts__textTitle">Email:</span>
+          {{contact.email|email_to_link}}
+        </p>
+        <p class="contacts__text">
+          <span class="contacts__textTitle">Адрес:</span> {{contact.address}}
+        </p>
+        <p>
+          <span class="contacts__textTitle">Руководитель:</span>
+          <span class="contacts__text">{{contact.manager}}</span>
+        </p>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <div class="contacts__request center">
+    <p class="contacts__requestText">
+      Если у вас есть вопросы или вы хотите присоединиться к инициативе, пишите
+      нам. В сообщении укажите способ связи. Будем рады сотрудничеству.
+    </p>
+    <form method="post" class="contacts__requestForm">
+      {% csrf_token %} {{ form.as_p }}
+      <textarea class="contacts__requestArea" name="message_body"></textarea>
+      <input type="submit" class="contacts__requestBtn" value="Отправить" />
+    </form>
+  </div>
+</div>
+
+<!-- <title>
         {% block title %}
             {{ title }}
         {% endblock %}
@@ -64,7 +108,6 @@
             </div>
             </div>
         {% endfor %}
-    </div>
-
+    </div> -->
 
 {% endblock content %}
