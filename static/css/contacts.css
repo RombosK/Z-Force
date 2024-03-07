@@ -1,5 +1,5 @@
 .contacts_fild {
-    background-color: rgba(248, 248, 255, 1.00);
+    background: rgba(255, 255, 250, 1.00);
     padding-bottom: 100px;
 
 }
@@ -40,8 +40,8 @@
 }
 
 .contacts__mapBox {
-    width: 100%;
-    height: 300px;
+    max-width: 300px;
+    height: 250px;
     padding: 10px 10px 0 10px;
     border: none
 }
@@ -120,4 +120,18 @@
 .contacts__requestBtn:hover {
     color: white;
     background: rgba(24, 121, 156, 0.8);
+}
+
+
+@media (min-width: 990px) and (max-width: 1430px) {
+    .contacts__item {
+        flex: 0 0 33%;
+    }
+    .contacts__mapBox {
+        max-width: 100%;
+        height: 250px;
+        padding: 10px 10px 0 10px;
+        border: none
+    }
+
 }

@@ -15,8 +15,16 @@
           МЕЖДУНАРОДНЫЙ БЛАГОТВОРИТЕЛЬНЫЙ ФОНД "ОКНО В МИР"
         </p>
       </div>
-      <div>
-        <a class="footer__needs" href="{% url 'mainapp:get_help' %}"
+      <!-- кнопки "помочь"/"нужна помощь" -->
+      <div class="footer__help">
+        <a class="footer__buttonHelp" href="{% url 'mainapp:donation' %}"
+          >Помочь</a
+        >
+        <a
+          class="footer__buttonNeeds"
+          href="{% url 'mainapp:get_help' %}"
+          onmouseover="onHoverFooter()"
+          onmouseout="outHoverFooter()"
           >Нужна помощь</a
         >
       </div>
@@ -46,11 +54,20 @@
         >
       </div>
     </div>
-    <!-- кнопка "помочь" -->
-    <div class="footer__help">
-      <button class="footer__helpBtn">Помочь</button>
-    </div>
   </div>
+
+  <!-- социальные сети -->
+  <div class="footer__social">
+    <!-- телега -->
+    <a href="https://t.me/oknovmirfond" target="_blank">
+      <img class="footer__socialTg" src="{% static '/img/tg.png' %}" alt="tg" />
+    </a>
+    <!-- vk -->
+    <a href="https://vk.com/mbfoknovmir" target="_blank">
+      <img class="footer__socialVk" src="{% static '/img/vk.png' %}" alt="vk" />
+    </a>
+  </div>
+
   <!-- политика безопасности и связь с разработчиком -->
   <div class="footer__bottom center">
     <a href="{% url 'mainapp:legal' %}" class="footer__bottomText"
