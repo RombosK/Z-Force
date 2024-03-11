@@ -2,8 +2,14 @@
 @import url("footer.css");
 
 @import url("contacts.css");
+@import url("volunteerPage.css");
 
-
+* {
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+  }
 
 a {
     text-decoration: none;
