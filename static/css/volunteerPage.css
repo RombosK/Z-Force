@@ -1,0 +1,190 @@
+.volounteerPageWrapper {
+  max-width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  gap: 5vw;
+  max-width: 90vw;
+  padding-top: 60px;
+  padding-bottom: 60px;
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.volounteerPageWrapperleftSide {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+
+  @media screen and (max-width: 768px) {
+    width: 90%;
+  }
+}
+
+.volounteerPageWrapperleftSide__heading {
+  color: rgb(9, 75, 99);
+  font-family: Nunito;
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 49px;
+  letter-spacing: 0px;
+  text-align: left;
+  margin-bottom: 24px;
+  margin-top: 19px;
+}
+
+.volounteerPageWrapperrightSide__bar {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.volounteerPageWrapperleftSide__text {
+  display: block;
+  color: rgb(9, 75, 99);
+  font-family: Nunito;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 25px;
+  letter-spacing: 0px;
+  text-align: justify;
+  text-indent: 24px;
+}
+
+.volounteerPageWrapperleftSide__ul {
+  list-style-position: inside;
+}
+
+.volounteerPageWrapperrightSide {
+  width: 60%;
+  height: fit-content;
+  border-radius: 20px;
+  box-shadow: 1px 2px 4px 0px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(4px);
+  background: rgba(255, 228, 198, 0.51);
+  padding: 11px 50px 11px 50px;
+
+  @media screen and (max-width: 768px) {
+    width: 90%;
+  }
+}
+
+.volounteerPageWrapperrightSide__heading {
+  color: rgba(9, 75, 99, 0.8);
+  font-family: Nunito;
+  font-size: 44px;
+  font-weight: 400;
+  line-height: 65px;
+  letter-spacing: 0px;
+  text-align: left;
+  margin-bottom: 11px;
+}
+
+.volounteerPageWrapperrightSide__bar {
+  width: 100%;
+  height: 1px;
+  background: rgb(196, 196, 196);
+}
+
+.volounteerFormWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 2vh 0 2vh 0;
+
+  @media screen and (max-width: 930px) {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.volounteerFormWrapper__leftSide {
+  width: 45%;
+
+  @media screen and (max-width: 930px) {
+    width: 90%;
+  }
+}
+
+.volounteerFormWrapper__rightSide {
+  width: 45%;
+
+  @media screen and (max-width: 930px) {
+    width: 90%;
+  }
+}
+
+.volounteerFormWrapper__element {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+
+.volounteerFormWrapper__check{
+  margin-bottom: 6px;
+  padding-left: 8px;
+}
+
+.volounteerFormWrapper__sign {
+  color: rgb(9, 75, 99);
+  font-family: Nunito;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 19px;
+  letter-spacing: 0px;
+  text-align: left;
+  margin-bottom: 4px;
+  margin-left: 8px;
+
+  @media screen and (max-width: 1300px) {
+    max-width: 85%;
+  }
+}
+
+.volounteerFormWrapper__input {
+  padding-left: 5px;
+  padding-right: 5px;
+  box-sizing: border-box;
+  border: 1px solid rgba(15, 121, 169, 0.48);
+  border-radius: 10px;
+  background: rgb(255, 255, 255);
+  width: 100%;
+  min-height: 32px;
+  color: rgb(9, 75, 99);
+  font-family: Nunito;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 19px;
+  letter-spacing: 0px;
+  text-align: left;
+}
+
+.volounteerFormWrapper__bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.volounteerFormWrapper__button {
+  border-radius: 15px;
+  border: none;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
+  background: rgb(24, 121, 156);
+  width: 300px;
+  height: 42px;
+  color: rgb(255, 255, 255);
+  font-family: Nunito;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 27px;
+  letter-spacing: 0px;
+  text-align: center;
+  margin-bottom: 1vh;
+  margin-top: 1vh;
+}
