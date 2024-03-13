@@ -8,7 +8,7 @@
 </title>
 
 {% block content %}
-    <h1>{{ post.name }}</h1>
+    <h1>{{ post.name }} {{ post.surname }}</h1>
 
     <div class="row justify-content-center align-items-center">
         <div class="col-md-7">
@@ -16,8 +16,9 @@
             <p><img class="img-header-photo" src="/home{{post.photo.url}}" width="300" height="250"></p>
             {% endif %}
             <p> {{ post.description|linebreaks }}</p>
-            <h3>Необходимая сумма</h3>
-            <p style="font-size: 25px">{{ post.donation }}</p>
+            <p style="font-size: 25px">Требуемая сумма: {{ post.donation }} руб</p>
+            <p style="font-size: 25px">Собрано: {{ post.collected }} руб</p>
+            <p style="font-size: 25px">Назначение платежа: {{ post.purpose }}</p>
             <p>{{ post.created_at }}</p>
             <button type="button" onclick="location.href='{% url 'mainapp:donation' %}'">Помочь</button>
             </div>

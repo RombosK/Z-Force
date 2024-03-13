@@ -1,35 +1,26 @@
 {% extends 'mainapp/base.html' %}
+{% load static %}
 
-<title>
-{% block title %}
-{{ title }}
-{% endblock %}
+<title xmlns="http://www.w3.org/1999/html">
+    {% block title %}
+        {{ post.name }}
+    {% endblock %}
 </title>
 
 {% block content %}
+    <h1>{{ post.name }}</h1>
 
-<h1>НАШИ ПОДОПЕЧНЫЕ</h1>
-
-{% for needs in object %}
-<!-- Фронтендерам подправить <b> <br> -->
     <div class="row justify-content-center align-items-center">
         <div class="col-md-7">
-
-            <h5><b>{{ needs.name }} {{ needs.surname }}</b></h5>
-            {% if needs.photo %}
-            <p><img class="img-header-photo" src="/home{{needs.photo.url}}" width="300" height="250"></p>
+            {% if post.photo %}
+            <p><img class="img-header-photo" src="/home{{post.photo.url}}" width="300" height="250"></p>
             {% endif %}
-            <p style="font-size: 25px">{{ needs.short_description }}</p>
-            <p style="font-size: 25px">Решение: {{ needs.solution }}</p>
-            <p style="font-size: 25px">Собрано: {{ needs.collected }} руб</p>
-            <p style="font-size: 25px">Требуемая сумма: {{ needs.donation }} руб</p>
-            <button type="button" onclick="location.href='{% url 'mainapp:allyouneedis_post' needs.slug %}'">Читать</button>
-        </div>
+            <p> {{ post.description|linebreaks }}</p>
+            <h3>Необходимая сумма</h3>
+            <p style="font-size: 25px">{{ post.donation }}</p>
+            <p>{{ post.created_at }}</p>
+            <button type="button" onclick="location.href='{% url 'mainapp:donation' %}'">Помочь</button>
+            </div>
     </div>
-{% endfor %}
-{% include 'mainapp/includes/paginator.html' %}
+    {% include 'mainapp/includes/Back.html' %}
 {% endblock %}
-
-
-
-

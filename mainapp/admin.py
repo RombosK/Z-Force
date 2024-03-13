@@ -47,19 +47,19 @@ class AllYouNeedIsAdmin(admin.ModelAdmin):
 
 @admin.register(GiveHelp)
 class RequestAdmin(admin.ModelAdmin):
-    list_display = ('company_name', 'first_name', 'last_name', 'city', 'email', 'phone', 'text')
+    list_display = ('name', 'surname', 'city', 'email', 'phone', 'text')
     list_per_page = 10
-    list_filter = ('last_name', 'city', 'email', 'phone')
-    search_fields = ('last_name', 'city', 'email', 'phone')
+    list_filter = ('surname', 'city', 'email', 'phone')
+    search_fields = ('surname', 'city', 'email', 'phone')
     show_full_result_count = False
 
 
 @admin.register(GetHelp)
 class RequestAdmin(admin.ModelAdmin):
-    list_display = ('first_name', 'last_name', 'city', 'email', 'phone', 'subject', 'text')
+    list_display = ('name', 'surname', 'city', 'email', 'phone', 'text')
     list_per_page = 10
-    list_filter = ('last_name', 'city', 'email', 'phone')
-    search_fields = ('last_name', 'city', 'email', 'phone')
+    list_filter = ('surname', 'city', 'email', 'phone')
+    search_fields = ('surname', 'city', 'email', 'phone')
     show_full_result_count = False
 
 

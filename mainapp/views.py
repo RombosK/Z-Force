@@ -320,6 +320,7 @@ class LoginView(TemplateView):
     template_name = 'mainapp/login.html'
 
 
+# Контроллер страницы с отчетами
 class ReportView(ListView):
     template_name = 'mainapp/report.html'
     model = Report
