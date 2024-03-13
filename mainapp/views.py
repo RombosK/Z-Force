@@ -15,7 +15,7 @@ from django.views.generic import ListView, DetailView
 from django.views.generic import TemplateView, View
 
 from mainapp.forms import GiveHelpForm, GetHelpForm
-from mainapp.models import GiveHelp, GetHelp, News, ProjectCategory, AllYouNeedIs, Project
+from mainapp.models import GiveHelp, GetHelp, News, ProjectCategory, AllYouNeedIs, Project, Report, ReportYear
 
 
 # # Контроллер страницы с анкетой
@@ -319,4 +319,12 @@ class OfferoView(TemplateView):
 class LoginView(TemplateView):
     template_name = 'mainapp/login.html'
 
+
+class ReportView(ListView):
+    template_name = 'mainapp/report.html'
+    model = Report
+    context_object_name = 'object'
+    extra_context = {
+        'title': 'Отчеты',
+    }
 

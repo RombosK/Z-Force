@@ -1,4 +1,4 @@
-from mainapp.models import News, ProjectCategory, Project, AllYouNeedIs, GiveHelp, GetHelp, Partners
+from mainapp.models import News, ProjectCategory, Project, AllYouNeedIs, GiveHelp, GetHelp, Partners, Report, ReportYear
 from django.contrib import admin
 
 
@@ -69,4 +69,22 @@ class PartnersAdmin(admin.ModelAdmin):
     list_per_page = 10
     list_filter = ('title', 'about')
     search_fields = ('title', 'about')
+    show_full_result_count = False
+
+
+@admin.register(Report)
+class ReportAdmin(admin.ModelAdmin):
+    list_display = ('name', 'upload', 'created_at',)
+    list_per_page = 12
+    list_filter = ('name', 'upload', 'created_at')
+    search_fields = ('name', 'upload', 'created_at')
+    show_full_result_count = False
+
+
+@admin.register(ReportYear)
+class ReportYearAdmin(admin.ModelAdmin):
+    list_display = ('name', 'created_at',)
+    list_per_page = 3
+    list_filter = ('name', 'created_at')
+    search_fields = ('name','created_at')
     show_full_result_count = False

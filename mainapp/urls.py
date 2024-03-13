@@ -28,6 +28,7 @@ urlpatterns = [
     path('projects_category/<int:pk>/', views.ProjectView.as_view(), name='projects'),
     path('projects_post/<slug:slug>/', views.ProjectDetailView.as_view(), name='projects_post'),
     path('AllYouNeedIs/<slug:slug>/', views.AllYouNeedIsDetailView.as_view(), name='allyouneedis_post'),
+    path('Report/', views.ReportView.as_view(), name='report'),
 ]
 
 if settings.DEBUG:

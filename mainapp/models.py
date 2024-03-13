@@ -1,8 +1,11 @@
+from django.core.files.storage import FileSystemStorage
 from django.core.validators import RegexValidator
 from django.db import models
 from django.urls import reverse
 from django.utils import timezone
 from authapp.models import User
+from config.settings import BASE_DIR
+from django.conf import settings
 
 
 # Модель новостей
@@ -196,3 +199,38 @@ class Partners(models.Model):
     class Meta:
         verbose_name = 'Партнер'
         verbose_name_plural = 'Партнеры'
+
+
+class ReportYear(models.Model):
+    name = models.CharField(max_length=75, verbose_name='Год')
+    created_at = models.DateTimeField(default=timezone.now, verbose_name='Дата создания', editable=True)
+
+    class Meta:
+        verbose_name = 'Год отчета'
+        verbose_name_plural = 'Год Отчета'
+
+    def __str__(self):
+        return f'{self.name}'
+
+
+# fs = FileSystemStorage(base_url=str(settings.MEDIA_ROOT) + "uploads/%Y/%m/%d/")
+# print(fs)
+
+class Report(models.Model):
+    name = models.CharField(max_length=75, verbose_name='Название')
+    year = models.ForeignKey(ReportYear, on_delete=models.CASCADE)
+    upload = models.FileField(upload_to='uploadsFiles/%Y/%m/%d/', verbose_name='Отчетный файл')
+    created_at = models.DateTimeField(default=timezone.now, verbose_name='Дата создания', editable=True)
+
+    def __str__(self):
+        return f'{self.name}'
+
+    class Meta:
+        verbose_name = 'Отчет'
+        verbose_name_plural = 'Отчеты'
+
+# def user_directory_path(instance, filename):
+#     # file will be uploaded to MEDIA_ROOT/user_<id>/<filename>
+#     return "user_{0}/{1}".format(instance.user.id, filename)
+
+
