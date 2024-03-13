@@ -6,8 +6,6 @@ __pycache__/
 # C extensions
 *.so
 .idea
-media/
-
 .gitignore
 .env.sample
 # Distribution / packaging
@@ -25,7 +23,7 @@ sdist/
 var/
 wheels/
 share/python-wheels/
-media/*
+media/
 migrations
 *.egg-info/
 .installed.cfg
