@@ -10,14 +10,22 @@
 
 {% block content %}
 
+{% regroup object by year as counter_list  %}
+{% for year, file_list in counter_list reversed %}
+<details>
 
-    {% for file in object %}
-        <li>
-            <a href="{{ file.upload.url }}" download="{{ file.name }}" >{{ file.name }}</a>
-        </li>
+        <summary>{{ year }}</summary>
+            <ul>
+                {% for file in file_list %}
+                <li>
+                    <a href="{{ file.upload.url }}" download="{{ file.name }}" >{{ file.name }}</a>
+                </li>
+
+            {% endfor %}
+            </ul>
 
 
-
+</details>
 
 
 {% endfor %}
