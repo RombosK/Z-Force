@@ -7,13 +7,12 @@
 </title>
 
 {% block content %}
-    <h1>{{ post.name }}</h1>
 
     <div class="row justify-content-center align-items-center">
         <div class="col-md-7">
-            {% if post.photo %}
-            <p><img class="img-header-photo" src="/home{{post.photo.url}}" width="300" height="250"></p>
-            {% endif %}
+            {% for item in image %}
+            <p><img class="img-header-photo" src="/home{{ item.image.url }}" width="300" height="250"></p>
+            {% endfor %}
             <p> {{ post.description|linebreaks }}</p>
             <p>{{ post.created_at }}</p>
             </div>
