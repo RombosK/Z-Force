@@ -8,12 +8,19 @@ from config.settings import BASE_DIR
 from django.conf import settings
 
 
+class Images(models.Model):
+    image = models.ImageField(upload_to='images/%Y/%m/%d/', blank=True)
+    post = models.ForeignKey('News', on_delete=models.CASCADE, null=True)
+
+
+
 # Модель новостей
 class News(models.Model):
     name = models.CharField(verbose_name='заголовок', max_length=64)
     slug = models.SlugField(max_length=255, unique=True, db_index=True)
-    description = models.TextField(verbose_name='текст статьи')
+    description = models.TextField(verbose_name='Описание')
     photo = models.ImageField(upload_to='news_photos', blank=True)
+    photo_image = models.ForeignKey('Images', on_delete=models.CASCADE, blank=True, null=True, verbose_name='доп фото')
     created_at = models.DateTimeField(default=timezone.now, verbose_name='дата создания', editable=True)
     updated_at = models.DateTimeField(auto_now=True, verbose_name='дата изменения', editable=False)
     is_closed = models.BooleanField(default=False, verbose_name='событие прошло')
@@ -24,7 +31,7 @@ class News(models.Model):
         ordering = ['id']
 
     def __str__(self):
-        return f'{self.id} - {self.name}'
+        return f'{self.id}'
 
 
 # Модель проектов фонда (категории для задач)

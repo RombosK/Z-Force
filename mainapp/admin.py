@@ -1,4 +1,5 @@
-from mainapp.models import News, ProjectCategory, Project, AllYouNeedIs, GiveHelp, GetHelp, Partners, Report, ReportYear
+from mainapp.models import News, ProjectCategory, Project, AllYouNeedIs, GiveHelp, GetHelp, Partners, Report, \
+    ReportYear, Images
 from django.contrib import admin
 
 
@@ -9,13 +10,31 @@ from django.contrib import admin
 # admin.site.register(AllYouNeedIs)
 
 
+class ImagesInline(admin.StackedInline):
+    model = Images
+    max_num = 10
+    extra = 0
+
+
 @admin.register(News)
 class NewsAdmin(admin.ModelAdmin):
+    prepopulated_fields = {
+        'slug': ('name',)
+    }
     list_display = ('name', 'description', 'created_at', 'updated_at', 'is_closed')
     list_per_page = 10
     list_filter = ('name', 'description', 'created_at')
     search_fields = ('name', 'description', 'created_at')
     show_full_result_count = False
+    inlines = [ImagesInline, ]
+
+
+@admin.register(Images)
+class ImagesAdmin(admin.ModelAdmin):
+    list_display = ('image',)
+    list_per_page = 10
+    list_filter = ('image',)
+    search_fields = ('images',)
 
 
 @admin.register(Project)

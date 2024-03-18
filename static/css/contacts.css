@@ -1,22 +1,23 @@
 .contacts_fild {
     background: rgba(255, 255, 250, 1.00);
     padding-bottom: 100px;
+    padding-left: 20px;
+    padding-right: 20px;
 
 }
 
 .contacts__titleBlock {
-    padding-top: 30px;
-    padding-bottom: 50px;
+    padding-top: 210px;
+    padding-bottom: 80px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 
     color: rgb(43, 43, 43);
     font-family: Nunito;
     font-size: 48px;
     font-weight: 700;
-    line-height: 65px;
-
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
 }
 
 .contacts__box {
@@ -35,23 +36,26 @@
     background: rgb(255, 255, 255);
 
     display: flex;
+    flex: 0 0 20%;
     flex-direction: column;
     gap: 20px;
 }
 
 .contacts__mapBox {
-    max-width: 300px;
+    max-width: 100%;
     height: 250px;
     padding: 10px 10px 0 10px;
-    border: none
+    border: none;
 }
 
 .contacts__description {
+    padding-bottom: 20px;
     padding-left: 10px;
+    padding-right: 10px;
     max-width: 300px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 20px;
 
 }
 
@@ -111,7 +115,6 @@
     font-family: Nunito;
     font-size: 20px;
     font-weight: 400;
-    line-height: 27px;
     text-align: center;
     padding: 4px 10px;
     max-width: 150px;
@@ -123,10 +126,12 @@
 }
 
 
-@media (min-width: 990px) and (max-width: 1430px) {
+@media (min-width: 1320px) and (max-width: 1430px) {
+
     .contacts__item {
         flex: 0 0 33%;
     }
+
     .contacts__mapBox {
         max-width: 100%;
         height: 250px;
@@ -134,4 +139,166 @@
         border: none
     }
 
+    .contacts__request {
+        gap: 30px;
+    }
+
+    .contacts__requestText {
+        max-width: 500px;
+        text-align: justify;
+
+    }
+
+}
+
+@media (min-width: 989px) and (max-width: 1320px) {
+    .contacts__titleBlock {
+        padding-top: 150px;
+    }
+
+    .contacts__item {
+        flex: 0 0 33%;
+    }
+
+    .contacts__mapBox {
+        max-width: 100%;
+        height: 250px;
+        padding: 10px 10px 0 10px;
+        border: none
+    }
+
+    .contacts__request {
+        gap: 30px;
+    }
+
+    .contacts__requestText {
+        max-width: 500px;
+        text-align: justify;
+
+    }
+}
+
+@media (min-width: 766px) and (max-width: 989px) {
+
+    .contacts__titleBlock {
+        padding-top: 200px;
+    }
+
+    .contacts__item {
+        flex: 0 0 40%;
+    }
+
+    .contacts__mapBox {
+        max-width: 100%;
+    }
+
+    .contacts__request {
+        gap: 30px;
+    }
+
+    .contacts__requestText {
+        max-width: 500px;
+        text-align: justify;
+
+    }
+}
+
+@media (min-width: 600px) and (max-width: 766px) {
+
+    .contacts__titleBlock {
+        padding-top: 200px;
+        text-align: center;
+        font-size: 40px;
+
+
+    }
+
+    .contacts__item {
+        flex: 0 0 55%;
+    }
+
+    .contacts__mapBox {
+        max-width: 100%;
+    }
+
+    .contacts__request {
+        gap: 30px;
+    }
+
+    .contacts__requestText {
+        max-width: 500px;
+        text-align: justify;
+
+    }
+
+}
+
+@media (min-width: 400px) and (max-width: 599px) {
+    .contacts__titleBlock {
+        padding-top: 200px;
+        text-align: center;
+        font-size: 36px;
+
+
+    }
+
+    .contacts__item {
+        flex: 0 0 80%;
+    }
+
+    .contacts__mapBox {
+        max-width: 100%;
+    }
+
+    .contacts__request {
+        gap: 20px;
+    }
+
+    .contacts__requestText {
+        max-width: 300px;
+        text-align: justify;
+
+    }
+
+    .contacts__requestArea {
+        width: 300px;
+
+    }
+}
+
+@media (min-width: 320px) and (max-width: 399px) {
+    .contacts__titleBlock {
+        padding-top: 200px;
+        text-align: center;
+        font-size: 30px;
+
+    }
+
+    .contacts__item {
+        flex: 0 0 80%;
+    }
+
+    .contacts__mapBox {
+        max-width: 100%;
+    }
+
+    .contacts__request {
+        gap: 10px;
+    }
+
+    .contacts__requestText {
+        max-width: 240px;
+        text-align: justify;
+
+    }
+
+    .contacts__requestArea {
+        width: 240px;
+
+    }
+
+    .contacts__requestBtn {
+        font-size: 16px;
+        padding: 4px 5px;
+    }
 }

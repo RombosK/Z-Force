@@ -1,0 +1,218 @@
+.donation {
+    background: rgba(255, 255, 250, 1.00);
+    padding-bottom: 100px;
+    padding-top: 200px;
+    margin-left: 20px;
+    margin-right: 20px;
+
+}
+
+.donation__title {
+    padding-bottom: 50px;
+
+    color: rgb(43, 43, 43);
+    font-family: Nunito;
+    font-size: 48px;
+    font-weight: 700;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+}
+
+.donation__qr {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 50px;
+}
+
+.donation__qr_spb, .donation__qr_alfa {
+    width: 300px;
+}
+
+
+.donation__titleBank {
+    padding-top: 50px;
+    padding-bottom: 10px;
+
+    color: rgb(43, 43, 43);
+    font-family: Nunito;
+    font-size: 36px;
+    font-weight: 700;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.donation__bank {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    flex-wrap: wrap;
+    align-content: center;
+}
+
+.donation__bank_item {
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+}
+
+.donation__bank_itemTitle {
+    color: rgb(43, 43, 43);
+    font-family: Nunito;
+    font-size: 18px;
+    font-weight: 600;
+    width: 300px;
+}
+
+.donation__bank_itemText {
+    color: rgb(43, 43, 43);
+    font-family: Nunito;
+    font-size: 17px;
+    font-weight: 400;
+    width: 600px;
+}
+
+
+/* адаптация */
+/* высота шапки 109px */
+@media (min-width: 1035px) and (max-width: 1320px) {
+    .donation {
+        padding-top: 170px;
+    }
+}
+
+/* высота шапки 100px */
+@media (min-width: 835px) and (max-width: 1035px) {
+    .donation {
+        padding-top: 140px;
+    }
+}
+
+/* млбилка - высота шапки 93px */
+@media (min-width: 768px) and (max-width: 835px) {
+    .donation {
+        padding-top: 130px;
+    }
+}
+
+/* млбилка - высота шапки 173px */
+@media (min-width: 320px) and (max-width: 767px) {
+    .donation {
+        padding-top: 200px;
+    }
+}
+
+
+
+@media (min-width: 710px) and (max-width: 1015px) {
+    .donation__bank_item {
+        gap: 30px;
+    }
+
+    .donation__bank_itemTitle {
+        font-size: 16px;
+        font-weight: 600;
+        width: 250px;
+    }
+
+    .donation__bank_itemText {
+        font-size: 16px;
+        font-weight: 400;
+        width: 350px;
+    }
+}
+
+@media (min-width: 510px) and (max-width: 709px) {
+    .donation__title {
+        font-size: 35px;
+    }
+
+    .donation__qr {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+
+    .donation__qr_spb, .donation__qr_alfa {
+        width: 275px;
+    }
+
+    .donation__titleBank {
+        padding-bottom: 0;
+        font-size: 28px;
+    }
+
+    .donation__bank {
+        gap: 10px;
+    }
+
+    .donation__bank_item {
+        flex-direction: column;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .donation__bank_itemTitle {
+        font-size: 18px;
+        font-weight: 600;
+        width: 80%;
+    }
+
+    .donation__bank_itemText {
+        font-size: 18px;
+        font-weight: 400;
+        width: 80%;
+    }
+}
+
+
+@media (min-width: 320px) and (max-width: 510px) {
+    .donation__title {
+        font-size: 28px;
+        display: flex;
+        text-align: center;
+    }
+
+    .donation__qr {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+
+    .donation__qr_spb, .donation__qr_alfa {
+        width: 260px;
+    }
+
+    .donation__titleBank {
+        padding-bottom: 0;
+        font-size: 28px;
+    }
+
+    .donation__bank {
+        gap: 10px;
+    }
+
+    .donation__bank_item {
+        flex-direction: column;
+        gap: 0;
+        justify-content: center;
+    }
+
+    .donation__bank_itemTitle {
+        font-size: 16px;
+        font-weight: 600;
+        width: 90%;
+    }
+
+    .donation__bank_itemText {
+        font-size: 16px;
+        font-weight: 400;
+        width: 90%;
+    }
+}

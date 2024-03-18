@@ -1,26 +1,23 @@
 <!--    # После блока content начинается пагинация на каждой странице сробатывает надо учитывать-->
-    <!-- # идет проверка о наличии страниц -->
+<!-- # идет проверка о наличии страниц -->
 {% if page_obj.has_other_pages %}
-<nav class="list-pages">
-        <ul><!-- #отоброжаем стрелку -->
-            {% if page_obj.has_previous %}
-                <a href="?page=1">&laquo;</a>
-                <a href="?page={{ page_obj.previous_page_number }}">&lt</a>
-            {% endif %}
-            {% for p in paginator.page_range %}<!-- цикл  for  переберает страницы -->
-            {% if page_obj.number == p %}
-                <li class="page-num page-num-selected">{{ p }}</li><!-- Дальше по документации
+<nav class="paginator">
+  <!-- #отоброжаем стрелку -->
+  {% if page_obj.has_previous %}
+  <a href="?page=1" class="paginator__text">&laquo;</a>
+  <a href="?page={{ page_obj.previous_page_number }}" class="paginator__text">&lt</a>
+  {% endif %} {% for p in paginator.page_range %}<!-- цикл  for  переберает страницы -->
+  {% if page_obj.number == p %}
+  <div class="page-num page-num-selected paginator__text">{{ p }}</div>
+  <!-- Дальше по документации
             https://docs.djangoproject.com/en/3.1/topics/pagination/ -->
-            {% elif p >= page_obj.number|add:-2 and p <= page_obj.number|add:2 %}
-            <li class="page-num">
-                <a href="?page={{ p }}">{{ p }}</a>
-            </li>
-            {% endif %}
-            {% endfor %}
-            {% if page_obj.has_next %}
-                <a href="?page={{ page_obj.next_page_number }}">&gt</a>
-                <a href="?page={{ page_obj.paginator.num_pages }}">&raquo;</a>
-            {% endif %}
-        </ul>
-    </nav>
+  {% elif p >= page_obj.number|add:-2 and p <= page_obj.number|add:2 %}
+  <div class="page-num paginator__text">
+    <a href="?page={{ p }}">{{ p }}</a>
+  </div>
+  {% endif %} {% endfor %} {% if page_obj.has_next %}
+  <a href="?page={{ page_obj.next_page_number }}" class="paginator__text">&gt</a>
+  <a href="?page={{ page_obj.paginator.num_pages }}" class="paginator__text">&raquo;</a>
+  {% endif %}
+</nav>
 {% endif %}
