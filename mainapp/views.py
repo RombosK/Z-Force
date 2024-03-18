@@ -19,6 +19,23 @@ from mainapp.models import GiveHelp, GetHelp, News, ProjectCategory, AllYouNeedI
 
 
 # # Контроллер страницы с анкетой
+# class GiveHelpView(View):
+#     model = GiveHelp
+#     form_class = GiveHelpForm
+#
+#     def get(self, request):
+#         form = GiveHelpForm()
+#         return render(request, 'mainapp/give_help.html', {'form': form})
+#
+#     def post(self, request):
+#         form = GiveHelpForm(request.POST)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('/home/success/')  # перенаправление на страницу успешного заполнения анкеты
+#
+#         # return render(request, 'mainapp/success.html')
+#         return render(request, 'mainapp/get_help.html', {'form': form})
+
 class GiveHelpView(View):
     model = GiveHelp
     form_class = GiveHelpForm
@@ -30,12 +47,14 @@ class GiveHelpView(View):
     def post(self, request):
         form = GiveHelpForm(request.POST)
         if form.is_valid():
-            form.save()
-            return redirect('/home/success/')  # перенаправление на страницу успешного заполнения анкеты
-
-        # return render(request, 'mainapp/success.html')
-        return render(request, 'mainapp/get_help.html', {'form': form})
-
+            # Проверяем, было ли отмечено согласие
+            if form.cleaned_data['agreement']:
+                form.save()
+                return redirect('/home/success/')  # перенаправление на страницу успешного заполнения анкеты
+            else:
+                # Если согласие не было отмечено, добавляем сообщение об ошибке
+                form.add_error('agreement', 'Пожалуйста, подтвердите свое согласие.')
+        return render(request, 'mainapp/give_help.html', {'form': form})
 
 #
 # # Контроллер страницы с запросом на помощь
