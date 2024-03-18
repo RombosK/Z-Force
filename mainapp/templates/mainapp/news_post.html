@@ -1,21 +1,63 @@
 {% extends 'mainapp/base.html' %}
+<!--  -->
+{% load static %}
+<!--  -->
 
 <title xmlns="http://www.w3.org/1999/html">
-    {% block title %}
-        {{ post.name }}
-    {% endblock %}
+  {% block title %} {{ post.name }} {% endblock %}
 </title>
 
 {% block content %}
 
-    <div class="row justify-content-center align-items-center">
-        <div class="col-md-7">
-            {% for item in image %}
-            <p><img class="img-header-photo" src="/home{{ item.image.url }}" width="300" height="250"></p>
-            {% endfor %}
-            <p> {{ post.description|linebreaks }}</p>
-            <p>{{ post.created_at }}</p>
-            </div>
+<!--шапка статьи  -->
+<div class="newsPost center">
+  <div class="newsPost__top">
+    {% if post.photo %}
+    <img class="newsPost__top_img" src="/home{{post.photo.url}}" />
+    {% endif %}
+    <p class="newsPost__title">{{ post.name }}</p>
+  </div>
+
+  <!-- текст статьи -->
+  <div class="newsPost__text">{{ post.description|linebreaks}}</div>
+  <p class="newsPost__data">{{ post.created_at }}</p>
+
+  <!-- слайлер -->
+  <div class="newsPost__slider">
+
+    <!-- фото -->
+    <div class="newsPost__slider_imgBox">
+      <div class="newsPost__slider_imgline">
+        {% for item in image %}
+
+        <img
+          class="newsPost__slider_img newsPost__slider_imgHidden"
+          src="/home{{ item.image.url }}"
+        />
+
+        {% endfor %}
+      </div>
     </div>
-    {% include 'mainapp/includes/Back.html' %}
+        <!-- стрелки и номера -->
+        <div class="newsPost__slider_nav">
+          <p class="newsPost__slider_navLeft"></p>
+          <p class="newsPost__slider_navNumber">1 из 21</p>
+          <p class="newsPost__slider_navRight"></p>
+        </div>
+  </div>
+
+  <!--  -->
+</div>
+
+
+<!--  -->
+{% include 'mainapp/includes/Back.html' %}
+
+<!-- !!!!!!!!!!!!!!!!!!!! Обязательно делать пустую строку в админке чтобы заключить строку в тег <p> -->
+
+<!-- linebreaks¶
+    Заменяет разрывы строк в обычном тексте на соответствующий HTML; одна <br>новая строка становится разрывом строки HTML ( ), а новая строка, за которой следует пустая строка, становится разрывом абзаца ( </p>). -->
+
+<script src="{% static 'js/news_post.js' %}"></script>
+
 {% endblock %}

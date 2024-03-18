@@ -1,3 +1,10 @@
+//  закрепеление шапки при прокрутке
+const headerElem = document.querySelector('.header');
+let headerHeight = headerElem.offsetHeight;
+
+// console.log(headerHeight);
+// localStorage.setItem("headerHeight", headerHeight);
+
 // методы для кнопок в шапке сайта
 function onHover() {
   document
@@ -50,3 +57,4 @@ function burgerMobile() {
 // document.querySelector(".header__burger").addEventListener("click", () => {
 //   document.querySelector(".header").classList.toggle("open");
 // });
+

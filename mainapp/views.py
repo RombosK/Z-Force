@@ -288,6 +288,26 @@ class AboutView(TemplateView):
         context['title'] = 'О нас'
         return context
 
+# Контроллер страницы Цели фонда
+class TargetsView(TemplateView):
+    template_name = 'mainapp/targets.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context['title'] = 'Цели фонда'
+        return context
+
+# Контроллер страницы История фонда
+class HistoryView(TemplateView):
+    template_name = 'mainapp/history.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context['title'] = 'История фонда'
+        return context
+
 
 # Контроллер страницы пожертвований
 class DonationView(TemplateView):

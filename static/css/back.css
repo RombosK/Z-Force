@@ -1,0 +1,28 @@
+.button__back_conteiner {
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+.button__back {
+    box-sizing: border-box;
+    border-radius: 30px;
+    background: rgba(109, 176, 195, 1.00);
+    border: none;
+
+    color: rgba(255, 255, 250, 1.00);
+    font-family: Nunito;
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    padding: 15px 10px;
+    width: 200px;
+
+    transition: 0.3s;
+}
+
+.button__back:hover {
+    background: rgba(254, 186, 166, 1.00);
+    color: white;
+}

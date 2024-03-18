@@ -1,38 +1,128 @@
 {% extends 'mainapp/base.html' %}
+<!--  -->
+{% load static %}
 
-<title>
-{% block title %}
-{{ title }}
-{% endblock %}
-</title>
+<title>{% block title %} {{ title }} {% endblock %}</title>
 
 {% block content %}
+<div class="donation">
+  <p class="donation__title">Сделать пожертвование</p>
+  <!-- qr коды -->
+  <div class="donation__qr center">
+    <img
+      onclick="donationQrZoom()"
+      class="donation__qr_spb"
+      src="{% static '/img/donation/spb.jpeg' %}"
+      alt="spb"
+    />
+    <img
+      class="donation__qr_alfa"
+      src="{% static '/img/donation/alfa.jpeg' %}"
+      alt="alfa"
+    />
+  </div>
+  <!-- реквизиты -->
+  <p class="donation__titleBank">Реквизиты</p>
+  <div class="donation__bank center">
+    <div class="donation__bank_item">
+      <span class="donation__bank_itemTitle">Юридический адрес</span>
+      <span class="donation__bank_itemText"
+        >143090 Московская область, г. Королёв, мкр. Болшево, ул.Маяковского
+        д.18 Г ПОМ IV</span
+      >
+    </div>
+    <div class="donation__bank_item">
+      <span class="donation__bank_itemTitle">Фактический адрес</span>
+      <span class="donation__bank_itemText"
+        >г. Королев, ул. Фрунзе, д.12, пом.9</span
+      >
+    </div>
+    <div class="donation__bank_item">
+      <span class="donation__bank_itemTitle"
+        >Наименование (Beneficiary Name)</span
+      >
+      <span class="donation__bank_itemText"
+        >МЕЖДУНАРОДНЫЙ БЛАГОТВОРИТЕЛЬНЫЙ ФОНД ПОМОЩИ ДЕТЯМ ИНВАЛИДАМ С
+        ОГРАНИЧЕННЫМИ ВОЗМОЖНОСТЯМИ ЗДОРОВЬЯ «ОКНО В МИР»</span
+      >
+    </div>
+    <div class="donation__bank_item">
+      <span class="donation__bank_itemTitle">Номер счёта (Account Number)</span>
+      <span class="donation__bank_itemText">40703810702760000079</span>
+    </div>
+    <div class="donation__bank_item">
+      <span class="donation__bank_itemTitle">Валюта (Currency)</span>
+      <span class="donation__bank_itemText">Российский рубль</span>
+    </div>
+    <div class="donation__bank_item">
+      <span class="donation__bank_itemTitle">ИНН (INN)</span>
+      <span class="donation__bank_itemText">5018180547</span>
+    </div>
+    <div class="donation__bank_item">
+      <span class="donation__bank_itemTitle">КПП (KPP)</span>
+      <span class="donation__bank_itemText">501801001</span>
+    </div>
+    <div class="donation__bank_item">
+      <span class="donation__bank_itemTitle">Банк (Bank)</span>
+      <span class="donation__bank_itemText">АО «АЛЬФА-БАНК»</span>
+    </div>
+    <div class="donation__bank_item">
+      <span class="donation__bank_itemTitle"
+        >Кор. счёт (Correspondent Account)</span
+      >
+      <span class="donation__bank_itemText">30101810200000000593</span>
+    </div>
+    <div class="donation__bank_item">
+      <span class="donation__bank_itemTitle">БИК (BIC)</span>
+      <span class="donation__bank_itemText">044525593</span>
+    </div>
+    <div class="donation__bank_item">
+      <span class="donation__bank_itemTitle">SWIFT</span>
+      <span class="donation__bank_itemText">ALFARUMM</span>
+    </div>
+    <div class="donation__bank_item">
+      <span class="donation__bank_itemTitle">Президент фонда</span>
+      <span class="donation__bank_itemText"
+        >Зеленцова Екатерина Валерьевна</span
+      >
+    </div>
+  </div>
+</div>
 
-<h1>СДЕЛАТЬ ПОЖЕРТВОВАНИЕ</h1>
+<!-- <h1>СДЕЛАТЬ ПОЖЕРТВОВАНИЕ</h1>
 
 <p>Здесь будет располагаться система приема платежей</p>
 
 <h1>РЕКВИЗИТЫ</h1>
-            <p>
-                Международный благотворительный фонд помощи детям инвалидам с ограниченными возможностями здоровья «ОКНО
-                В МИР»
+<p>
+  Международный благотворительный фонд помощи детям инвалидам с ограниченными
+  возможностями здоровья «ОКНО В МИР»
+</p>
 
-            <p><strong>Юридический адрес:</strong>143090 Московская область, г. Королёв, мкр. Болшево, ул.Маяковского
-                д.18 Г ПОМ IV</p>
-            <p><strong>Фактический адрес:</strong>г. Королев, ул. Фрунзе, д.12, пом.9</p>
+<p>
+  <strong>Юридический адрес:</strong>143090 Московская область, г. Королёв, мкр.
+  Болшево, ул.Маяковского д.18 Г ПОМ IV
+</p>
+<p><strong>Фактический адрес:</strong>г. Королев, ул. Фрунзе, д.12, пом.9</p>
 
-            <p><strong>Наименование (Beneficiary Name):</strong> МЕЖДУНАРОДНЫЙ БЛАГОТВОРИТЕЛЬНЫЙ ФОНД ПОМОЩИ ДЕТЯМ
-                ИНВАЛИДАМ С ОГРАНИЧЕННЫМИ ВОЗМОЖНОСТЯМИ ЗДОРОВЬЯ «ОКНО В МИР»</p>
-            <p><strong>Номер счёта (Account Number):</strong> 40703810702760000079</p>
+<p>
+  <strong>Наименование (Beneficiary Name):</strong> МЕЖДУНАРОДНЫЙ
+  БЛАГОТВОРИТЕЛЬНЫЙ ФОНД ПОМОЩИ ДЕТЯМ ИНВАЛИДАМ С ОГРАНИЧЕННЫМИ ВОЗМОЖНОСТЯМИ
+  ЗДОРОВЬЯ «ОКНО В МИР»
+</p>
+<p><strong>Номер счёта (Account Number):</strong> 40703810702760000079</p>
 
-            <p><strong>Валюта (Currency):</strong> Российский рубль</p>
-            <p><strong>ИНН (INN):</strong> 5018180547</p>
-            <p><strong>КПП (KPP):</strong> 501801001</p>
-            <p><strong>Банк (Bank):</strong> АО «АЛЬФА-БАНК»</p>
-            <p><strong>Кор. счёт (Correspondent Account):</strong> 30101810200000000593БИК (BIC): 044525593SWIFT:
-                ALFARUMM</p>
+<p><strong>Валюта (Currency):</strong> Российский рубль</p>
+<p><strong>ИНН (INN):</strong> 5018180547</p>
+<p><strong>КПП (KPP):</strong> 501801001</p>
+<p><strong>Банк (Bank):</strong> АО «АЛЬФА-БАНК»</p>
+<p>
+  <strong>Кор. счёт (Correspondent Account):</strong> 30101810200000000593БИК
+  (BIC): 044525593
+  SWIFT: ALFARUMM
+</p>
 
-            <strong>Президент фонда:</strong> Зеленцова Екатерина Валерьевна
+<strong>Президент фонда:</strong> Зеленцова Екатерина Валерьевна -->
 
-
+<!--  -->
 {% endblock content %}

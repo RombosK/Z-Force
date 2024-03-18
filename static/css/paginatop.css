@@ -1,0 +1,16 @@
+.paginator {
+    margin-bottom: 100px;
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.paginator__text {
+    color: rgb(43, 43, 43);
+    font-family: Nunito;
+    font-size: 20px;
+    font-weight: 400;
+    text-align: right;
+}

@@ -9,6 +9,14 @@
 .header {
     box-shadow: 0px 4px 9px 0px rgba(0, 0, 0, 0.15);
     background: rgba(23, 123, 159, 1.00);
+    width: 100%;
+}
+
+.header__fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
 }
 
 .header__container {
@@ -17,6 +25,7 @@
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
+    /* box-sizing: border-box; */
 
     padding-top: 30px;
     padding-bottom: 30px;
@@ -179,7 +188,7 @@
 
 }
 
-@media (min-width: 766px) and (max-width: 834px) {
+@media (min-width: 768px) and (max-width: 834px) {
     .header__container {
         margin-left: 10px;
         margin-right: 10px;
@@ -299,9 +308,12 @@
 
     .header {
         display: none;
+        /* position: absolute; */
         background: none;
-        position: absolute;
         animation: burgerAnimation 0.7s;
+        margin-top: 173px;
+        box-shadow: none;
+
     }
 
     .header__container {
