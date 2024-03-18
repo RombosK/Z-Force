@@ -15,7 +15,7 @@ from django.views.generic import ListView, DetailView
 from django.views.generic import TemplateView, View
 
 from mainapp.forms import GiveHelpForm, GetHelpForm
-from mainapp.models import GiveHelp, GetHelp, News, ProjectCategory, AllYouNeedIs, Project
+from mainapp.models import GiveHelp, GetHelp, News, ProjectCategory, AllYouNeedIs, Project, Report, ReportYear, Images
 
 
 # # Контроллер страницы с анкетой
@@ -171,13 +171,30 @@ class NewsDetailView(DetailView):
     template_name = 'mainapp/news_post.html'
     slug_url_kwarg = 'post_slug'
     context_object_name = 'post'
+    # extra_context = {
+    #     'image': Images.objects.filter(post=context['post'])
+    # }
 
     def get_object(self, queryset=None):
         return get_object_or_404(News, slug=self.kwargs[self.slug_url_kwarg])
 
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data(**kwargs)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # print(self.kwargs)
+        item = Images.objects.filter(post=context['object'])
+        # print(context['post'])
+        context['image'] = item
+        # print(item)
+        # print(context)
+        return context
 
+
+    # def get_queryset(self):
+    #     queryset = Images.objects.all()
+    #     print(queryset)
+    #     return queryset
+    #
+    # queryset = 'post'
 
 # def listing(request):
 #     contact_list = News.objects.all()
@@ -319,4 +336,13 @@ class OfferoView(TemplateView):
 class LoginView(TemplateView):
     template_name = 'mainapp/login.html'
 
+
+# Контроллер страницы с отчетами
+class ReportView(ListView):
+    template_name = 'mainapp/report.html'
+    model = Report
+    context_object_name = 'object'
+    extra_context = {
+        'title': 'Отчеты',
+    }
 

@@ -11,15 +11,15 @@
     <h1>НАШИ ПАРТНЕРЫ</h1>
 
     {% for partner in object %}
-
-        <div class="row justify-content-center align-items-center">
+    <div class="row justify-content-center align-items-center">
         <div class="col-md-7">
-
-            <h5>{{ partner.name }}</h5>
-            <p>{{ partner.description }}</p>
-
+            <h5>{{ partner.title }}</h5>
+            {% if partner.photo %}
+            <p><img class="img-header-photo" src="/home{{partner.photo.url}}" width="300" height="250"></p>
+            {% endif %}
+            <p>{{ partner.about }}</p>
         </div>
-
+    </div>
     {% endfor %}
 
 {% endblock %}

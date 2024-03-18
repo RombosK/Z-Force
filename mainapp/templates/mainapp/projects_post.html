@@ -17,7 +17,10 @@
             {% endif %}
             <p> {{ post.description|linebreaks }}</p>
             <h3>Необходимая сумма</h3>
-            <p style="font-size: 25px">{{ post.donation }}</p>
+            <p style="font-size: 25px">{{ post.donation }} руб</p>
+            <h3>Собрано</h3>
+            <p style="font-size: 25px">{{ post.collected }} руб</p>
+            <p style="font-size: 25px">Назначение платежа: {{ post.purpose }}</p>
             <p>{{ post.created_at }}</p>
             <button type="button" onclick="location.href='{% url 'mainapp:donation' %}'">Помочь</button>
             </div>
