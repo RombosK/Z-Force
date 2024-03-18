@@ -15,7 +15,7 @@ from django.views.generic import ListView, DetailView
 from django.views.generic import TemplateView, View
 
 from mainapp.forms import GiveHelpForm, GetHelpForm
-from mainapp.models import GiveHelp, GetHelp, News, ProjectCategory, AllYouNeedIs, Project, Report, ReportYear
+from mainapp.models import GiveHelp, GetHelp, News, ProjectCategory, AllYouNeedIs, Project, Report, ReportYear, Images
 
 
 # # Контроллер страницы с анкетой
@@ -171,13 +171,30 @@ class NewsDetailView(DetailView):
     template_name = 'mainapp/news_post.html'
     slug_url_kwarg = 'post_slug'
     context_object_name = 'post'
+    # extra_context = {
+    #     'image': Images.objects.filter(post=context['post'])
+    # }
 
     def get_object(self, queryset=None):
         return get_object_or_404(News, slug=self.kwargs[self.slug_url_kwarg])
 
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data(**kwargs)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # print(self.kwargs)
+        item = Images.objects.filter(post=context['object'])
+        # print(context['post'])
+        context['image'] = item
+        # print(item)
+        # print(context)
+        return context
 
+
+    # def get_queryset(self):
+    #     queryset = Images.objects.all()
+    #     print(queryset)
+    #     return queryset
+    #
+    # queryset = 'post'
 
 # def listing(request):
 #     contact_list = News.objects.all()
@@ -269,6 +286,26 @@ class AboutView(TemplateView):
         context = super().get_context_data(**kwargs)
 
         context['title'] = 'О нас'
+        return context
+
+# Контроллер страницы Цели фонда
+class TargetsView(TemplateView):
+    template_name = 'mainapp/targets.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context['title'] = 'Цели фонда'
+        return context
+
+# Контроллер страницы История фонда
+class HistoryView(TemplateView):
+    template_name = 'mainapp/history.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context['title'] = 'История фонда'
         return context
 
 

@@ -1,0 +1,68 @@
+{% extends 'mainapp/base.html' %}
+<!--  -->
+{% load static %}
+<!--  -->
+{% block content %}
+<div class="targets">
+  <p class="targets__title">Цели фонда</p>
+
+  <div class="targets__container center">
+    <div class="targets__mainTarget">
+      Основной целью фонда является поддержка наиболее уязвимых слоев населения:
+      семей с детьми-инвалидами, многодетных семей, малоимущих семей с детьми,
+      людей, попавших в трудную жизненную ситуацию.
+    </div>
+
+    <div class="targets__tasks">
+      <p class="targets__subTitle">Главные задачи фонда</p>
+      <ul class="targets__ul">
+        <li class="targets__text">
+          cоциальное обслуживание семей с детьми-инвалидами, малоимущих детей,
+          многодетных семей
+        </li>
+        <li class="targets__text">социальная поддержка и защита граждан</li>
+        <li class="targets__text">
+          создание положительного образа ребенка-инвалида, помощь в интеграции в
+          общество
+        </li>
+      </ul>
+    </div>
+    <div class="targets__type">
+      <p class="targets__subTitle">Виды деятельности</p>
+      <ul class="targets__ul">
+        <li class="targets__text">благотворительная деятельность</li>
+        <li class="targets__text">
+          финансовое посредничество деятельность в области улучшения
+          морально-психологического состояния граждан
+        </li>
+        <li class="targets__text">содействие духовному развитию личности</li>
+        <li class="targets__text">
+          оказание юридической помощи на безвозмездной или на льготной основе
+          гражданам
+        </li>
+        <li class="targets__text">правовое просвещение населения</li>
+        <li class="targets__text">
+          деятельность по защите прав и свобод человека и гражданина
+        </li>
+        <li class="targets__text">
+          профилактика социально опасных форм поведения граждан, включая участие
+          в деятельности по профилактике безнадзорности и правонарушений
+          несовершеннолетних
+        </li>
+        <li class="targets__text">виды издательской деятельности</li>
+
+        <li class="targets__text">
+          деятельность по уходу с обеспечением проживания
+        </li>
+        <li class="targets__text">
+          предоставление социальных услуг без обеспечения проживания престарелым
+          и инвалидам
+        </li>
+      </ul>
+    </div>
+
+    <a class="targets__button" href="{% url 'mainapp:about' %}">назад</a>
+  </div>
+</div>
+
+{% endblock content %}
