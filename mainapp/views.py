@@ -182,8 +182,13 @@ class NewsView(ListView):
     # context_object_name = 'object'
     extra_context = {
         'title': 'Новости',
-        'object': News.objects.order_by('created_at').reverse()
     }
+
+    # В --get_queryset-- переопределяется --object_list-- который отоброжает список новостей
+    # фильтруется чере менеджер --order_by-- по дате создания и реверсируется
+    def get_queryset(self):
+        queryset = News.objects.order_by('created_at').reverse()
+        return queryset
 
 
 class NewsDetailView(DetailView):
