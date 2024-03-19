@@ -4,11 +4,6 @@ from django.contrib import admin
 
 
 # Регистрация моделей в админке
-# admin.site.register(News)
-# admin.site.register(Project)
-# admin.site.register(ProjectCategory)
-# admin.site.register(AllYouNeedIs)
-
 
 class ImagesInline(admin.StackedInline):
     model = Images
@@ -66,10 +61,10 @@ class AllYouNeedIsAdmin(admin.ModelAdmin):
 
 @admin.register(GiveHelp)
 class RequestAdmin(admin.ModelAdmin):
-    list_display = ('name', 'surname', 'city', 'email', 'phone', 'text')
+    list_display = ('first_name', 'last_name', 'city', 'email', 'phone', 'text_1', 'text_2')
     list_per_page = 10
-    list_filter = ('surname', 'city', 'email', 'phone')
-    search_fields = ('surname', 'city', 'email', 'phone')
+    list_filter = ('last_name', 'city', 'email', 'phone')
+    search_fields = ('last_name', 'city', 'email', 'phone')
     show_full_result_count = False
 
 
