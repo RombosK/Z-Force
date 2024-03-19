@@ -9,8 +9,12 @@ from django.conf import settings
 
 
 class Images(models.Model):
-    image = models.ImageField(upload_to='images/%Y/%m/%d/', blank=True)
-    post = models.ForeignKey('News', on_delete=models.CASCADE, null=True)
+    image = models.ImageField(verbose_name='фотоальбом', upload_to='images/%Y/%m/%d/', blank=True)
+    post = models.ForeignKey('News', verbose_name='для новости', on_delete=models.CASCADE, null=True)
+
+    class Meta:
+        verbose_name = 'Фотография'
+        verbose_name_plural = 'Фотографии для слайдера новостей'
 
 
 # Модель новостей

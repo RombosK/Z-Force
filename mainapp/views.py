@@ -15,7 +15,7 @@ from django.views.generic import ListView, DetailView
 from django.views.generic import TemplateView, View
 
 from mainapp.forms import GiveHelpForm, GetHelpForm
-from mainapp.models import GiveHelp, GetHelp, News, ProjectCategory, AllYouNeedIs, Project, Report, ReportYear, Images
+from mainapp.models import GiveHelp, GetHelp, News, ProjectCategory, AllYouNeedIs, Partners,Project, Report, ReportYear, Images
 
 
 # # Контроллер страницы с анкетой
@@ -77,14 +77,13 @@ class GetHelpView(View):
 
 
 # # Контроллер страницы оферты
-class PartnersView(TemplateView):
+class PartnersView(ListView):
+    model = Partners
     template_name = 'mainapp/partners.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['title'] = 'Партнеры'
-
-        return context
+    context_object_name = 'object'
+    extra_context = {
+        'title': 'Партнеры',
+    }
 
 
 logger = logging.getLogger(__name__)
@@ -179,7 +178,7 @@ class NewsView(ListView):
     paginate_by = 3
     model = News
     template_name = 'mainapp/news.html'
-    # context_object_name = 'object'
+    context_object_name = 'object'
     extra_context = {
         'title': 'Новости',
     }
@@ -313,6 +312,7 @@ class AboutView(TemplateView):
         context['title'] = 'О нас'
         return context
 
+
 # Контроллер страницы Цели фонда
 class TargetsView(TemplateView):
     template_name = 'mainapp/targets.html'
@@ -322,6 +322,7 @@ class TargetsView(TemplateView):
 
         context['title'] = 'Цели фонда'
         return context
+
 
 # Контроллер страницы История фонда
 class HistoryView(TemplateView):
