@@ -160,9 +160,10 @@ class NewsView(ListView):
     paginate_by = 3
     model = News
     template_name = 'mainapp/news.html'
-    context_object_name = 'object'
+    # context_object_name = 'object'
     extra_context = {
         'title': 'Новости',
+        'object': News.objects.order_by('created_at').reverse()
     }
 
 
