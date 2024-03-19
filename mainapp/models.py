@@ -13,7 +13,6 @@ class Images(models.Model):
     post = models.ForeignKey('News', on_delete=models.CASCADE, null=True)
 
 
-
 # Модель новостей
 class News(models.Model):
     name = models.CharField(verbose_name='заголовок', max_length=64)
@@ -124,6 +123,58 @@ def validate_phone(value):
 
 
 # Модель анкеты волонтера
+# class GiveHelp(models.Model):
+#     TIME_1 = '2-3 часа в неделю'
+#     TIME_2 = '4-7 часов в неделю'
+#     TIME_3 = 'Более 7 часов в неделю'
+#
+#     SCHEDULE = (
+#         (TIME_1, '2-3 часа в неделю'),
+#         (TIME_2, '4-7 часов в неделю'),
+#         (TIME_3, 'Более 7 часов в неделю')
+#     )
+#
+#     CAR = 'На машине'
+#     WALK = 'Пешком'
+#     BOTH = 'Оба варианта возможны'
+#
+#     MOBILITY = (
+#         (CAR, 'На машине'),
+#         (WALK, 'Пешком'),
+#         (BOTH, 'Оба варианта возможны')
+#     )
+#
+#     MONEY = 'Деньгами'
+#     THINGS = 'Вещами'
+#     INVOLVEMENT = 'Участие'
+#     BOTH = 'Все варианты возможны'
+#
+#     HELP = (
+#         (MONEY, 'Деньгами'),
+#         (THINGS, 'Вещами'),
+#         (INVOLVEMENT, 'Участие'),
+#         (BOTH, 'Все варианты возможны')
+#     )
+#
+#     name = models.CharField(verbose_name='имя', max_length=100)
+#     surname = models.CharField(verbose_name='фамилия', max_length=100)
+#     age = models.IntegerField(verbose_name='возраст', default=18, validators=[validate_age])
+#     city = models.CharField(verbose_name='город проживания', max_length=100)
+#     email = models.EmailField(verbose_name='эл почта', unique=True)
+#     phone = models.CharField(verbose_name='телефон в формате +7xxxxxxxxxx', max_length=20, validators=[validate_phone])
+#     schedule = models.CharField(verbose_name='готовность посвящать время (в неделю)', choices=SCHEDULE, max_length=64, blank=True)
+#     help = models.CharField(verbose_name='варианты помощи', choices=HELP, max_length=64, blank=True)
+#     mobility = models.CharField(verbose_name='мобильность', choices=MOBILITY, max_length=64, blank=True)
+#     text = models.TextField(verbose_name='немного о себе')
+#     agreed = models.BooleanField(verbose_name='я согласен на обработку персональных данных', blank=False, default=True)
+#
+#     def __str__(self):
+#         return f'{self.name} - {self.surname} - {self.city}'
+#
+#     class Meta:
+#         verbose_name = 'Анкета волонтёра'
+#         verbose_name_plural = 'Анкеты волонтёров'
+
 class GiveHelp(models.Model):
     TIME_1 = '2-3 часа в неделю'
     TIME_2 = '4-7 часов в неделю'
@@ -157,20 +208,22 @@ class GiveHelp(models.Model):
         (BOTH, 'Все варианты возможны')
     )
 
-    name = models.CharField(verbose_name='имя', max_length=100)
-    surname = models.CharField(verbose_name='фамилия', max_length=100)
-    age = models.IntegerField(verbose_name='возраст', default=18, validators=[validate_age])
-    city = models.CharField(verbose_name='город проживания', max_length=100)
-    email = models.EmailField(verbose_name='эл почта', unique=True)
-    phone = models.CharField(verbose_name='телефон в формате +7xxxxxxxxxx', max_length=20, validators=[validate_phone])
-    schedule = models.CharField(verbose_name='готовность посвящать время (в неделю)', choices=SCHEDULE, max_length=64, blank=True)
+    first_name = models.CharField(verbose_name='Имя', max_length=100)
+    last_name = models.CharField(verbose_name='Фамилия', max_length=100)
+    city = models.CharField(verbose_name='Город проживания', max_length=100)
+    email = models.EmailField(verbose_name='Электронная почта', unique=True)
+    phone = models.CharField(verbose_name='Телефон', max_length=20,
+                             validators=[validate_phone])
+    text_1 = models.TextField(verbose_name='Немного о себе')
+    text_2 = models.TextField(verbose_name='Как я хочу помочь')
+
+    schedule = models.CharField(verbose_name='сколько времени в неделю готовы уделять', choices=SCHEDULE, max_length=64,
+                                blank=True)
     help = models.CharField(verbose_name='варианты помощи', choices=HELP, max_length=64, blank=True)
     mobility = models.CharField(verbose_name='мобильность', choices=MOBILITY, max_length=64, blank=True)
-    text = models.TextField(verbose_name='немного о себе')
-    agreed = models.BooleanField(verbose_name='я согласен на обработку персональных данных', blank=False, default=True)
 
     def __str__(self):
-        return f'{self.name} - {self.surname} - {self.city}'
+        return f'{self.first_name} - {self.last_name} - {self.text_1} - {self.text_2}'
 
     class Meta:
         verbose_name = 'Анкета волонтёра'
@@ -242,5 +295,3 @@ class Report(models.Model):
 # def user_directory_path(instance, filename):
 #     # file will be uploaded to MEDIA_ROOT/user_<id>/<filename>
 #     return "user_{0}/{1}".format(instance.user.id, filename)
-
-
