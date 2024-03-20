@@ -53,29 +53,52 @@
             </ul>
             Быть волонтером - значит быть частью позитивного изменения в мире и делать его ярче и добрее.
         </div>
+    </div>
+    <div class="volounteerPageWrapperrightSide">
+        <div class="volounteerPageWrapperrightSide__heading">
+            Анкета
+        </div>
+        <div class="volounteerPageWrapperrightSide__bar">
+            <svg width="758.000000" height="1.000000" viewBox="0 0 758 1" fill="none" xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink">
+                <desc>
+                    Created with Pixso.
+                </desc>
+                <defs />
+                <rect id="Rectangle 20" width="758.000000" height="1.000000" fill="#C4C4C4" fill-opacity="1.000000" />
+            </svg>
+        </div>
 
-
-                <form method="post">
-    {% csrf_token %}
-{#    {{ form.as_p }}#}
+        <form method="post">
+            <div class="volounteerFormWrapper">
+                <div class="volounteerFormWrapper__leftSide">
+                    {% csrf_token %}
+                    {# {{ form.as_p }}#}
                     {{ form|crispy }}
+                </div>
+
+            </div>
+            <div class="volounteerFormWrapper__bottom">
                 <button type="submit" class="volounteerFormWrapper__button" formmethod="post">
                     Хочу стать волонтером
                 </button>
-                      </form>
             </div>
+        </form>
     </div>
+</div>
 
 {% endblock %}
 
 {% block js %}
 <script>
+    document.getElementById('id_phone').setAttribute('placeholder', '+7 ( ___ ) ___-__-__');
+
     $(document).ready(function () {
         {% if messages %}
         $(".toast").toast({ delay: 5000 });
         $(".toast").toast("show");
         {% endif %}
     });
-    //document.getElementById('id_phone').setAttribute('placeholder', '+7 ( ___ ) ___-__-__');
+
 </script>
 {% endblock %}
