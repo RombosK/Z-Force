@@ -13,7 +13,9 @@
 <div class="newsPost center">
   <div class="newsPost__top">
     {% if post.photo %}
-    <img class="newsPost__top_img" src="/home{{post.photo.url}}" />
+    <div class="newsPost__top_imgBox">
+      <img class="newsPost__top_img" src="/home{{post.photo.url}}" />
+    </div>
     {% endif %}
     <p class="newsPost__title">{{ post.name }}</p>
   </div>
@@ -24,7 +26,6 @@
 
   <!-- слайлер -->
   <div class="newsPost__slider">
-
     <!-- фото -->
     <div class="newsPost__slider_imgBox">
       <div class="newsPost__slider_imgline">
@@ -38,17 +39,16 @@
         {% endfor %}
       </div>
     </div>
-        <!-- стрелки и номера -->
-        <div class="newsPost__slider_nav">
-          <p class="newsPost__slider_navLeft"></p>
-          <p class="newsPost__slider_navNumber">1 из 21</p>
-          <p class="newsPost__slider_navRight"></p>
-        </div>
+    <!-- стрелки и номера -->
+    <div class="newsPost__slider_nav">
+      <p class="newsPost__slider_navLeft"></p>
+      <p class="newsPost__slider_navNumber"></p>
+      <p class="newsPost__slider_navRight"></p>
+    </div>
   </div>
 
   <!--  -->
 </div>
-
 
 <!--  -->
 {% include 'mainapp/includes/Back.html' %}

@@ -175,6 +175,8 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+# CRISPY_TEMPLATE_PACK = 'uni_form'
+
 
 # Read about sending email:
 # https://docs.djangoproject.com/en/3.2/topics/email/
