@@ -4,13 +4,75 @@
     flex-direction: row;
     gap: 15px;
     justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
 }
 
 .paginator__text {
-    color: rgb(43, 43, 43);
+    color: rgba(109, 176, 195, 1.00);
     font-family: Nunito;
     font-size: 20px;
     font-weight: 400;
     text-align: right;
+}
+.paginator__text:hover {
+    color: rgba(254, 186, 166, 1.00);
+}
+
+.paginator__textActive {
+    color: rgba(254, 186, 166, 1.00);
+        font-family: Nunito;
+    font-size: 20px;
+    font-weight: 400;
+    text-align: right;
+}
+
+.paginator__left {
+    /* border: 20px solid transparent;
+    border-right: 20px solid rgba(109, 176, 195, 1.00); */
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-right: 13px solid rgba(109, 176, 195, 1.00);
+}
+
+.paginator__right {
+    /* border: 10px solid transparent;
+    border-left: 10px solid rgba(109, 176, 195, 1.00); */
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 13px solid rgba(109, 176, 195, 1.00);
+}
+
+.paginator__left:hover {
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-right: 13px solid rgba(254, 186, 166, 1.00);
+}
+
+.paginator__right:hover {
+    /* border: 20px solid transparent;
+    border-left: 20px solid rgba(254, 186, 166, 1.00); */
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 13px solid rgba(254, 186, 166, 1.00);
+
+}
+
+.paginator__end {
+    color: rgba(109, 176, 195, 1.00);
+    font-family: Nunito;
+    font-size: 36px;
+    font-weight: 400;
+    text-align: right;
+}
+.paginator__end:hover {
+    color: rgba(254, 186, 166, 1.00);
 }

@@ -4,210 +4,213 @@
 <!--  -->
 {% block content %}
 
-<div class="about">
-  <div class="about__conteiner center">
-    <p class="about__title">О нас</p>
-    <div class="about__quote">
-      <span class="about__quote_text"
-        >"В естественных науках существует понятие «Эффект бабочки», когда под
-        влиянием незначительных воздействий возникают большие и непредсказуемые
-        последствия, в том числе в другом месте и в другое время.</span
-      >
-      <span class="about__quote_text"
-        >Размах крыльев нашего фонда измеряется количеством счастливых людей,
-        которые после участия в наших проектах реализовали идеи, изменили
-        собственную жизнь, помогли другим и получили помощь.</span
-      >
-      <span class="about__quote_text"
-        >Эти люди придумывают замечательные проекты, находят ресурсы для
-        воплощения, знакомятся с единомышленниками и постоянно ищут новые
-        профессиональные и творческие инструменты. Эти активисты не сидят на
-        месте, а делают мир добрым, приветливым и комфортным.</span
-      >
-      <span class="about__quote_text"
-        >Я благодарю всех, кто причастен к работе Фонда"</span
-      >
-      <!-- <span class="about__quote_sign">Президент Фонда, Зеленцова Екатерина Валерьевна</span> -->
-    </div>
+<div class="about__conteiner center">
+  <p class="about__title">О нас</p>
+  <div class="about__quote">
+    <span class="about__quote_text"
+      >"В естественных науках существует понятие «Эффект бабочки», когда под
+      влиянием незначительных воздействий возникают большие и непредсказуемые
+      последствия, в том числе в другом месте и в другое время.</span
+    >
+    <span class="about__quote_text"
+      >Размах крыльев нашего фонда измеряется количеством счастливых людей,
+      которые после участия в наших проектах реализовали идеи, изменили
+      собственную жизнь, помогли другим и получили помощь.</span
+    >
+    <span class="about__quote_text"
+      >Эти люди придумывают замечательные проекты, находят ресурсы для
+      воплощения, знакомятся с единомышленниками и постоянно ищут новые
+      профессиональные и творческие инструменты. Эти активисты не сидят на
+      месте, а делают мир добрым, приветливым и комфортным.</span
+    >
+    <span class="about__quote_text"
+      >Я благодарю всех, кто причастен к работе Фонда"</span
+    >
+    <!-- <span class="about__quote_sign">Президент Фонда, Зеленцова Екатерина Валерьевна</span> -->
+  </div>
 
-    <!-- президент фонда -->
-    <div class="about__item">
-      <img
-        src="{% static 'img/about/zelentsova.jpg' %}"
-        alt="foto"
-        class="about__item_img"
-      />
-      <div class="about__item_description">
-        <p class="about__item_title">ПРЕЗИДЕНТ ФОНДА</p>
-        <p class="about__item_text">Зеленцова Екатерина Валерьевна</p>
-      </div>
-    </div>
-    <!-- члены правления -->
-    <div class="about__item">
-      <!-- блок с фото и навигационными точками -->
-      <div class="about__slider1">
-        <!--  блок обертка фото, чтобюы задать  position: absolute-->
-        <div class="about__item_imgBox">
-          <div class="about__item_imgLine about__item_imgLineTransition">
-            <img
-              src="{% static 'img/about/zelentsova.jpg' %}"
-              alt="foto"
-              class="about__item_img"
-            />
-            <img
-              src="{% static 'img/about/2.jpg' %}"
-              alt="foto"
-              class="about__item_img"
-            />
-            <img
-              src="{% static 'img/about/3.jpg' %}"
-              alt="foto"
-              class="about__item_img"
-            />
-            <img
-              src="{% static 'img/about/4.jpg' %}"
-              alt="foto"
-              class="about__item_img"
-            />
-          </div>
-        </div>
-        <div class="about__dots">
-          <div class="about__dot about__dot_activ"></div>
-          <div class="about__dot"></div>
-          <div class="about__dot"></div>
-          <div class="about__dot"></div>
-        </div>
-      </div>
-      <div class="about__item_description about__slider1_text">
-        <p class="about__item_title">ЧЛЕНЫ ПРАВЛЕНИЯ</p>
-        <p class="about__item_text about__item_text_active">
-          Зеленцова Екатерина Валерьевна
-        </p>
-        <p class="about__item_text">Никитина Илия Сергеевна</p>
-        <p class="about__item_text">Резцова Елена Олеговна</p>
-        <p class="about__item_text">Наумова Татьяна Рудольфовна</p>
-      </div>
-    </div>
-    <!-- ПЕРЕДСЕДАТЕЛЬ ФОНДА ПРАВЛЕНИЯ -->
-    <div class="about__item">
-      <img
-        src="{% static 'img/about/blago.jpg' %}"
-        alt="foto"
-        class="about__item_img"
-      />
-      <div class="about__item_description">
-        <p class="about__item_title">ПЕРЕДСЕДАТЕЛЬ ФОНДА ПРАВЛЕНИЯ</p>
-        <p class="about__item_text">Башарова Аида Радимова</p>
-      </div>
-    </div>
-    <!-- РУКОВОДИТЕЛИ ОТДЕЛЕНИЙ -->
-    <div class="about__item">
-      <!-- блок с фото и навигационными точками -->
-      <div class="about__slider2">
-        <!--  блок обертка фото, чтобюы задать  position: absolute-->
-        <div class="about__item_imgBox">
-          <div class="about__item_imgLine about__item_imgLineTransition">
-            <img
-              src="{% static 'img/about/zelentsova.jpg' %}"
-              alt="foto"
-              class="about__item_img"
-            />
-            <img
-              src="{% static 'img/about/2.jpg' %}"
-              alt="foto"
-              class="about__item_img"
-            />
-            <img
-              src="{% static 'img/about/3.jpg' %}"
-              alt="foto"
-              class="about__item_img"
-            />
-            <img
-              src="{% static 'img/about/4.jpg' %}"
-              alt="foto"
-              class="about__item_img"
-            />
-          </div>
-        </div>
-        <div class="about__dots">
-          <div class="about__dot about__dot_activ"></div>
-          <div class="about__dot"></div>
-          <div class="about__dot"></div>
-          <div class="about__dot"></div>
-        </div>
-      </div>
-      <div class="about__item_description about__slider2_text">
-        <p class="about__item_title">РУКОВОДИТЕЛИ ОТДЕЛЕНИЙ</p>
-        <div class="about__item_departments">
-          <span class="about__item_city">Королев</span>
-          <span class="about__item_text about__item_text_active">Шаройко Ольга Павловна</span>
-        </div>
-        <div class="about__item_departments">
-          <span class="about__item_city">Красноармейск</span>
-          <span class="about__item_text">Березикова Ирина Владимировна</span>
-        </div>
-        <div class="about__item_departments">
-          <span class="about__item_city">Подольск</span>
-          <span class="about__item_text">Лебедева Ольга Владимировна</span>
-        </div>
-        <div class="about__item_departments">
-          <span class="about__item_city">Апрелевка</span>
-          <span class="about__item_text">Пензина Юлия Сергеевна</span>
-        </div>
-      </div>
-    </div>
-    <!-- ревизоры -->
-    <div class="about__item">
-      <!-- блок с фото и навигационными точками -->
-      <div class="about__slider3">
-        <!--  блок обертка фото, чтобюы задать  position: absolute-->
-        <div class="about__item_imgBox">
-          <div class="about__item_imgLine about__item_imgLineTransition">
-            <img
-              src="{% static 'img/about/zelentsova.jpg' %}"
-              alt="foto"
-              class="about__item_img"
-            />
-            <img
-              src="{% static 'img/about/2.jpg' %}"
-              alt="foto"
-              class="about__item_img"
-            />
-            <img
-              src="{% static 'img/about/3.jpg' %}"
-              alt="foto"
-              class="about__item_img"
-            />
-          </div>
-        </div>
-        <div class="about__dots">
-          <div class="about__dot about__dot_activ"></div>
-          <div class="about__dot"></div>
-          <div class="about__dot"></div>
-        </div>
-      </div>
-      <div class="about__item_description about__slider3_text">
-        <p class="about__item_title">РЕВИЗОРЫ</p>
-        <p class="about__item_text about__item_text_active">Шмелева Дарья Романова</p>
-        <p class="about__item_text">Ноговицина Татьяна Андреевна</p>
-        <p class="about__item_text">Астахова Ирина Валерьевна</p>
-      </div>
-    </div>
-    <!-- кнопки история фонда и цели фонда -->
-    <div class="about__extraInfo">
-      <a class="about__buttonTarget" href="{% url 'mainapp:targets' %}"
-        >цели фонда</a
-      >
-      <a
-        class="about__buttonHistory"
-        href="{% url 'mainapp:history' %}"
-        onmouseover="aboutOnHover()"
-        onmouseout="aboutOutHover()"
-        >история фонда</a
-      >
+  <!-- президент фонда -->
+  <div class="about__item">
+    <img
+      src="{% static 'img/about/zelentsova.jpg' %}"
+      alt="foto"
+      class="about__item_img"
+    />
+    <div class="about__item_description">
+      <p class="about__item_title">ПРЕЗИДЕНТ ФОНДА</p>
+      <p class="about__item_text">Зеленцова Екатерина Валерьевна</p>
     </div>
   </div>
+  <!-- члены правления -->
+  <div class="about__item">
+    <!-- блок с фото и навигационными точками -->
+    <div class="about__slider1">
+      <!--  блок обертка фото, чтобюы задать  position: absolute-->
+      <div class="about__item_imgBox">
+        <div class="about__item_imgLine about__item_imgLineTransition">
+          <img
+            src="{% static 'img/about/zelentsova.jpg' %}"
+            alt="foto"
+            class="about__item_img"
+          />
+          <img
+            src="{% static 'img/about/2.jpg' %}"
+            alt="foto"
+            class="about__item_img"
+          />
+          <img
+            src="{% static 'img/about/3.jpg' %}"
+            alt="foto"
+            class="about__item_img"
+          />
+          <img
+            src="{% static 'img/about/4.jpg' %}"
+            alt="foto"
+            class="about__item_img"
+          />
+        </div>
+      </div>
+      <div class="about__dots">
+        <div class="about__dot about__dot_activ"></div>
+        <div class="about__dot"></div>
+        <div class="about__dot"></div>
+        <div class="about__dot"></div>
+      </div>
+    </div>
+    <div class="about__item_description about__slider1_text">
+      <p class="about__item_title">ЧЛЕНЫ ПРАВЛЕНИЯ</p>
+      <p class="about__item_text about__item_text_active">
+        Зеленцова Екатерина Валерьевна
+      </p>
+      <p class="about__item_text">Никитина Илия Сергеевна</p>
+      <p class="about__item_text">Резцова Елена Олеговна</p>
+      <p class="about__item_text">Наумова Татьяна Рудольфовна</p>
+    </div>
+  </div>
+  <!-- ПЕРЕДСЕДАТЕЛЬ ФОНДА ПРАВЛЕНИЯ -->
+  <div class="about__item">
+    <img
+      src="{% static 'img/about/blago.jpg' %}"
+      alt="foto"
+      class="about__item_img"
+    />
+    <div class="about__item_description">
+      <p class="about__item_title">ПЕРЕДСЕДАТЕЛЬ ФОНДА ПРАВЛЕНИЯ</p>
+      <p class="about__item_text">Башарова Аида Радимова</p>
+    </div>
+  </div>
+  <!-- РУКОВОДИТЕЛИ ОТДЕЛЕНИЙ -->
+  <div class="about__item">
+    <!-- блок с фото и навигационными точками -->
+    <div class="about__slider2">
+      <!--  блок обертка фото, чтобюы задать  position: absolute-->
+      <div class="about__item_imgBox">
+        <div class="about__item_imgLine about__item_imgLineTransition">
+          <img
+            src="{% static 'img/about/zelentsova.jpg' %}"
+            alt="foto"
+            class="about__item_img"
+          />
+          <img
+            src="{% static 'img/about/2.jpg' %}"
+            alt="foto"
+            class="about__item_img"
+          />
+          <img
+            src="{% static 'img/about/3.jpg' %}"
+            alt="foto"
+            class="about__item_img"
+          />
+          <img
+            src="{% static 'img/about/4.jpg' %}"
+            alt="foto"
+            class="about__item_img"
+          />
+        </div>
+      </div>
+      <div class="about__dots">
+        <div class="about__dot about__dot_activ"></div>
+        <div class="about__dot"></div>
+        <div class="about__dot"></div>
+        <div class="about__dot"></div>
+      </div>
+    </div>
+    <div class="about__item_description about__slider2_text">
+      <p class="about__item_title">РУКОВОДИТЕЛИ ОТДЕЛЕНИЙ</p>
+      <div class="about__item_departments">
+        <span class="about__item_city">Королев</span>
+        <span class="about__item_text about__item_text_active"
+          >Шаройко Ольга Павловна</span
+        >
+      </div>
+      <div class="about__item_departments">
+        <span class="about__item_city">Красноармейск</span>
+        <span class="about__item_text">Березикова Ирина Владимировна</span>
+      </div>
+      <div class="about__item_departments">
+        <span class="about__item_city">Подольск</span>
+        <span class="about__item_text">Лебедева Ольга Владимировна</span>
+      </div>
+      <div class="about__item_departments">
+        <span class="about__item_city">Апрелевка</span>
+        <span class="about__item_text">Пензина Юлия Сергеевна</span>
+      </div>
+    </div>
+  </div>
+  <!-- ревизоры -->
+  <div class="about__item">
+    <!-- блок с фото и навигационными точками -->
+    <div class="about__slider3">
+      <!--  блок обертка фото, чтобюы задать  position: absolute-->
+      <div class="about__item_imgBox">
+        <div class="about__item_imgLine about__item_imgLineTransition">
+          <img
+            src="{% static 'img/about/zelentsova.jpg' %}"
+            alt="foto"
+            class="about__item_img"
+          />
+          <img
+            src="{% static 'img/about/2.jpg' %}"
+            alt="foto"
+            class="about__item_img"
+          />
+          <img
+            src="{% static 'img/about/3.jpg' %}"
+            alt="foto"
+            class="about__item_img"
+          />
+        </div>
+      </div>
+      <div class="about__dots">
+        <div class="about__dot about__dot_activ"></div>
+        <div class="about__dot"></div>
+        <div class="about__dot"></div>
+      </div>
+    </div>
+    <div class="about__item_description about__slider3_text">
+      <p class="about__item_title">РЕВИЗОРЫ</p>
+      <p class="about__item_text about__item_text_active">
+        Шмелева Дарья Романова
+      </p>
+      <p class="about__item_text">Ноговицина Татьяна Андреевна</p>
+      <p class="about__item_text">Астахова Ирина Валерьевна</p>
+    </div>
+  </div>
+  <!-- кнопки история фонда и цели фонда -->
+  <div class="about__extraInfo">
+    <a class="about__buttonTarget" href="{% url 'mainapp:targets' %}"
+      >цели фонда</a
+    >
+    <a
+      class="about__buttonHistory"
+      href="{% url 'mainapp:history' %}"
+      onmouseover="aboutOnHover()"
+      onmouseout="aboutOutHover()"
+      >история фонда</a
+    >
+  </div>
 </div>
+
 <!-- скрипт -->
 <script src="{% static 'js/about.js' %}"></script>
 

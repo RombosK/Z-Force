@@ -1,8 +1,8 @@
-.about {
+/* .about {
     background: rgba(255, 255, 250, 1.00);
     padding-top: 200px;
     padding-bottom: 100px;
-}
+} */
 
 .about__conteiner {
     display: flex;
@@ -252,29 +252,29 @@
 } */
 
 /* высота шапки 109px */
-@media (min-width: 1035px) and (max-width: 1320px) {
+/* @media (min-width: 1035px) and (max-width: 1320px) {
     .about {
         padding-top: 170px;
     }
-}
+} */
 
 /* высота шапки 100px */
-@media (min-width: 835px) and (max-width: 1035px) {    
+/* @media (min-width: 835px) and (max-width: 1035px) {    
     .about {
     padding-top: 140px;
-}}
+}} */
 
 /* млбилка - высота шапки 93px */
-@media (min-width: 768px) and (max-width: 835px) {    
+/* @media (min-width: 768px) and (max-width: 835px) {    
     .about {
     padding-top: 130px;
-}}
+}} */
 
 /* млбилка - высота шапки 173px */
-@media (min-width: 320px) and (max-width: 767px) {    
+/* @media (min-width: 320px) and (max-width: 767px) {    
     .about {
     padding-top: 200px;
-}}
+}} */
 
 
 

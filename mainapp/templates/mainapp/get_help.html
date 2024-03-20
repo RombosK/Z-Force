@@ -1,28 +1,86 @@
 {% extends 'mainapp/base.html' %}
-
+<!--  -->
 {% load crispy_forms_tags i18n %}
+<!--  -->
+{% load static %}
 
-<title>
-{% block title %}
-{{ title }}
-{% endblock %}
-</title>
+<title>{% block title %} {{ title }} {% endblock %}</title>
 
 {% block content %}
 
-<h1>ПОПРОСИТЬ О ПОМОЩИ</h1>
+<div class="getHelp center">
+  <h1 class="getHelp__title">Попросить о помощи</h1>
 
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form|crispy }}
-        <button type=" submit" class="btn btn-primary btn-block">
-            {% translate 'Save' %}
-        </button>
-    </form>
+  <div class="getHelp__container">
+    <div class="getHelp__containerBoxText">
+      <p class="getHelp__text">
+        Если вы оказались в сложной жизненной ситуации и ваши дети страдают от
+        лишений или тяжелого заболевания, обязательно свяжитесь со специалистами
+        фонда. Мы можем найти решение для вашей жизненной проблемы.
+      </p>
+      <div class="getHelp__text getHelp__containerBoxSmall">
+        <p class="getHelp__text">Бесплатные консультации:</p>
+        
+        <!-- часть ддя адаптации -->
+        <p class="getHelp__textSmallAdapt">психолога, юриста, специалиста по программам лечения и реабилитации, социального работника, педагога или психолога</p>
+        <!-- конец частт ддя адаптации -->
+
+        <p class="getHelp__textSmall">
+          &#10004; консультации психолога, юриста, специалиста по программам
+          лечения и реабилитации. Поможем понять, какое решение будет
+          оптимальным, удобным и результативным;
+        </p>
+        <p class="getHelp__textSmall">
+          &#10004; консультации социального работника, педагога или психолога.
+          Поможем вам улучшить ваши отношения с детьми;
+        </p>
+        <p class="getHelp__textSmall">
+          &#10004; мы найдем специалиста для узкоспециализированных
+          консультаций, для диагностирования, лечения или реабилитации;
+        </p>
+        <p class="getHelp__textSmall">
+          &#10004; мы сможем привлечь к вашей проблеме внимание людей, которые
+          окажут вам материальную помощь;
+        </p>
+        <p class="getHelp__textSmall">
+          &#10004; организуем сбор средств для оплаты диагностирования, лечения
+          и реабилитации в случаях, которых не предусмотрена оплата программой
+          обязательного медицинского страхования;
+        </p>
+        <p class="getHelp__textSmall">
+          &#10004; выделем средства малоимущим семьям для покупки необходимых
+          детских вещей и одежды;
+        </p>
+      </div>
+      <div class="getHelp__text">
+        Для получения помощи, свяжитесь с координаторами фонда.
+      </div>
+
+      <div class="getHelp__text">
+        Если вы видите, что рядом с вами есть дети, живущие в тяжёлых бытовых
+        условиях или которым угрожает опасность, сообщите нам о проблеме удобным
+        способом
+      </div>
+    </div>
+
+    <div class="getHelp__form">
+      <div class="getHelp__formBox">
+        <form method="post" enctype="multipart/form-data">
+          {% csrf_token %} {{ form|crispy }}
+          <div class="getHelp__btnBox">
+            <button type=" submit" class="getHelp__btn">
+              {% translate 'Save' %}
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}
-
+<!--  -->
 {% block js %}
-    <script>
+<!-- <script>
         $(document).ready(function () {
             {% if messages %}
                 $(".toast").toast({delay: 5000});
@@ -30,7 +88,5 @@
             {% endif %}
         });
         document.getElementById('id_phone').setAttribute('placeholder','+7 ( ___ ) ___-__-__');
-    </script>
+    </script> -->
 {% endblock %}
-
-

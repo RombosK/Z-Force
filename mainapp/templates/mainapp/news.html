@@ -4,40 +4,38 @@
 
 {% block content %}
 
-<div class="news">
-  <p class="news__title">Новости</p>
+<p class="news__title">Новости</p>
 
-  <div class="news__itemBox center">
-    {% for news_item in object %}
-    <div class="news__item">
-      <!-- фото новости -->
-      {% if news_item.photo %}
-      <div class="news__item__imgBox">
-        <img
-          class="news__item__img"
-          src="/home{{news_item.photo.url}}"
-          width="300"
-          height="250"
-        />
-      </div>
-      {% endif %}
-      <!-- текстовая часть  -->
-      <div class="news__item__content">
-        <p class="news__item__content_title">{{ news_item.name }}</p>
-        <div class="news__item__content_description">
-          {{ news_item.description|linebreaks|truncatewords:15 }}
-        </div>
-        <p class="news__item__content_data">{{ news_item.created_at }}</p>
-        <button
-          class="news__item__content_btn"
-          onclick="location.href='{{ news_item.slug }}'"
-        >
-          Читать
-        </button>
-      </div>
+<div class="news__itemBox center">
+  {% for news_item in object %}
+  <div class="news__item">
+    <!-- фото новости -->
+    {% if news_item.photo %}
+    <div class="news__item__imgBox">
+      <img
+        class="news__item__img"
+        src="/home{{news_item.photo.url}}"
+        width="300"
+        height="250"
+      />
     </div>
-    {% endfor %}
+    {% endif %}
+    <!-- текстовая часть  -->
+    <div class="news__item__content">
+      <p class="news__item__content_title">{{ news_item.name }}</p>
+      <div class="news__item__content_description">
+        {{ news_item.description|linebreaks|truncatewords:15 }}
+      </div>
+      <p class="news__item__content_data">{{ news_item.created_at }}</p>
+      <button
+        class="news__item__content_btn"
+        onclick="location.href='{{ news_item.slug }}'"
+      >
+        Читать
+      </button>
+    </div>
   </div>
+  {% endfor %}
 </div>
 
 <!-- {% for news_item in object %}

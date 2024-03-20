@@ -232,11 +232,13 @@ class GiveHelp(models.Model):
 
 # Модель анкеты на помощь
 class GetHelp(models.Model):
-    name = models.CharField(verbose_name='имя', max_length=100)
+    # name = models.CharField(verbose_name='имя', max_length=100)
+    name = models.CharField(verbose_name='Имя', max_length=100)
+
     surname = models.CharField(verbose_name='фамилия', max_length=100)
     city = models.CharField(verbose_name='город проживания', max_length=100)
-    email = models.EmailField(verbose_name='эл почта', unique=True)
-    phone = models.CharField(verbose_name='телефон в формате +7xxxxxxxxxx', max_length=20, validators=[validate_phone])
+    email = models.EmailField(verbose_name='e-mail', unique=True)
+    phone = models.CharField(verbose_name='телефон', max_length=20, validators=[validate_phone])
     text = models.TextField(verbose_name='опиcание ситуации')
     agreed = models.BooleanField(verbose_name='я согласен на обработку персональных данных', blank=False, default=True)
 
