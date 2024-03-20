@@ -14,12 +14,14 @@ class GiveHelpForm(forms.ModelForm):
 
 # Форма запроса на помощь
 class GetHelpForm(forms.ModelForm):
+    agreement = forms.BooleanField(
+        label='Согласие на обработку персональных данных', required=True)
 
     class Meta:
         model = GetHelp
         # fields = '__all__'
         fields = ['name', 'surname', 'city',
-                  'email', 'phone', 'text', 'agreed']
+                  'email', 'phone', 'text', ]
 
         widgets = {
             'name': forms.TextInput(attrs={'class': 'getHelp_input'}),
@@ -28,7 +30,7 @@ class GetHelpForm(forms.ModelForm):
             'email': forms.TextInput(attrs={'class': 'getHelp_input'}),
             'phone': forms.TextInput(attrs={'class': 'getHelp_input', 'placeholder': '+7(___)___-__-__'}),
             'text': forms.Textarea(attrs={'class': 'getHelp_inputTextArea', 'rows': 10}),
-            'agreed': forms.CheckboxInput(attrs={'class': 'getHelp_inputCheckbox'}),
+            # 'agreed': forms.CheckboxInput(attrs={'class': 'getHelp_inputCheckbox'}),
         }
 # , 'cols': 50, 'rows': 10
         # labels = {'name': "bvz"}
