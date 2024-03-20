@@ -56,7 +56,7 @@ class GiveHelpView(View):
                 form.add_error('agreement', 'Пожалуйста, подтвердите свое согласие.')
         return render(request, 'mainapp/give_help.html', {'form': form})
 
-#
+
 # # Контроллер страницы с запросом на помощь
 class GetHelpView(View):
     model = GetHelp

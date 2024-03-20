@@ -13,6 +13,7 @@ class GiveHelpForm(forms.ModelForm):
 
 # Форма запроса на помощь
 class GetHelpForm(forms.ModelForm):
+
     class Meta:
         model = GetHelp
         fields = '__all__'
