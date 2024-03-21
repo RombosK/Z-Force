@@ -1,16 +1,28 @@
 {% extends 'mainapp/base.html' %}
 
-<title>
-    {% block title %}
-        {{ title }}
-    {% endblock %}
-</title>
+<title>{% block title %} {{ title }} {% endblock %}</title>
 
 {% block content %}
+<p class="partners__title">Наши партнеры</p>
 
-    <h1 style="padding-top: 200px">НАШИ ПАРТНЕРЫ</h1>
+<div class="partners__conteiner center">
+  {% for partner in object %}
+  <div class="partners__item">
+    <!-- <div class="partners__itemTitle">{{ partner.title }}</div> -->
+    <div class="partners__imgBox">
+      {% if partner.picture %}
 
-    {% for partner in object %}
+      <img class="partners__img" src="/home{{partner.picture.url}}" />
+      {% endif %}
+    </div>
+    <div class="partners__description">{{ partner.about }}</div>
+  </div>
+  {% endfor %}
+</div>
+
+<!-- <h1 style="padding-top: 200px">НАШИ ПАРТНЕРЫ</h1> -->
+
+<!-- {% for partner in object %}
     <div class="row justify-content-center align-items-center">
         <div class="col-md-7">
             <h5>{{ partner.title }}</h5>
@@ -20,11 +32,6 @@
             <p>{{ partner.about }}</p>
         </div>
     </div>
-    {% endfor %}
+    {% endfor %} -->
 
 {% endblock %}
-</div>
-
-
-
-
