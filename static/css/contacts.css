@@ -1,13 +1,13 @@
-.contacts_fild {
+/* .contacts {
     background: rgba(255, 255, 250, 1.00);
+    padding-top: 200px;
     padding-bottom: 100px;
     padding-left: 20px;
     padding-right: 20px;
 
-}
+} */
 
 .contacts__titleBlock {
-    padding-top: 210px;
     padding-bottom: 80px;
 
     display: flex;
@@ -18,6 +18,8 @@
     font-family: Nunito;
     font-size: 48px;
     font-weight: 700;
+
+    text-align: center;
 }
 
 .contacts__box {
@@ -126,6 +128,35 @@
 }
 
 
+/* адаптация */
+/* высота шапки 109px */
+/* @media (min-width: 1035px) and (max-width: 1320px) {
+    .contacts {
+        padding-top: 170px;
+    }
+} */
+
+/* высота шапки 100px */
+/* @media (min-width: 835px) and (max-width: 1035px) {    
+    .contacts {
+    padding-top: 140px;
+}} */
+
+/* млбилка - высота шапки 93px */
+/* @media (min-width: 768px) and (max-width: 835px) {    
+    .contacts {
+    padding-top: 130px;
+}} */
+
+/* млбилка - высота шапки 173px */
+/* @media (min-width: 320px) and (max-width: 767px) {    
+    .contacts {
+    padding-top: 200px;
+}} */
+
+
+/* остальная адаптация */
+
 @media (min-width: 1320px) and (max-width: 1430px) {
 
     .contacts__item {
@@ -152,9 +183,6 @@
 }
 
 @media (min-width: 989px) and (max-width: 1320px) {
-    .contacts__titleBlock {
-        padding-top: 150px;
-    }
 
     .contacts__item {
         flex: 0 0 33%;
@@ -180,10 +208,6 @@
 
 @media (min-width: 766px) and (max-width: 989px) {
 
-    .contacts__titleBlock {
-        padding-top: 200px;
-    }
-
     .contacts__item {
         flex: 0 0 40%;
     }
@@ -204,14 +228,6 @@
 }
 
 @media (min-width: 600px) and (max-width: 766px) {
-
-    .contacts__titleBlock {
-        padding-top: 200px;
-        text-align: center;
-        font-size: 40px;
-
-
-    }
 
     .contacts__item {
         flex: 0 0 55%;
@@ -235,11 +251,7 @@
 
 @media (min-width: 400px) and (max-width: 599px) {
     .contacts__titleBlock {
-        padding-top: 200px;
-        text-align: center;
         font-size: 36px;
-
-
     }
 
     .contacts__item {
@@ -257,21 +269,16 @@
     .contacts__requestText {
         max-width: 300px;
         text-align: justify;
-
     }
 
     .contacts__requestArea {
         width: 300px;
-
     }
 }
 
 @media (min-width: 320px) and (max-width: 399px) {
     .contacts__titleBlock {
-        padding-top: 200px;
-        text-align: center;
         font-size: 30px;
-
     }
 
     .contacts__item {
@@ -289,12 +296,10 @@
     .contacts__requestText {
         max-width: 240px;
         text-align: justify;
-
     }
 
     .contacts__requestArea {
         width: 240px;
-
     }
 
     .contacts__requestBtn {
