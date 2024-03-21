@@ -69,14 +69,13 @@
             </svg>
         </div>
 
-        <form method="post">
+        <form method="post" class="givehelp__form">
             <div class="volounteerFormWrapper">
-                <div class="volounteerFormWrapper__leftSide">
+                <!-- <div class="volounteerFormWrapper__leftSide"> -->
                     {% csrf_token %}
                     {# {{ form.as_p }}#}
                     {{ form|crispy }}
-                </div>
-
+                <!-- </div> -->
             </div>
             <div class="volounteerFormWrapper__bottom">
                 <button type="submit" class="volounteerFormWrapper__button" formmethod="post">
@@ -91,7 +90,7 @@
 
 {% block js %}
 <script>
-    document.getElementById('id_phone').setAttribute('placeholder', '+7 ( ___ ) ___-__-__');
+    // document.getElementById('id_phone').setAttribute('placeholder', '+7 ( ___ ) ___-__-__');
 
     $(document).ready(function () {
         {% if messages %}

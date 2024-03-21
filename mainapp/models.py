@@ -218,13 +218,13 @@ class GiveHelp(models.Model):
     email = models.EmailField(verbose_name='Электронная почта', unique=True)
     phone = models.CharField(verbose_name='Телефон', max_length=20,
                              validators=[validate_phone])
-    text_1 = models.TextField(verbose_name='Немного о себе')
-    text_2 = models.TextField(verbose_name='Как я хочу помочь')
-
     schedule = models.CharField(verbose_name='сколько времени в неделю готовы уделять', choices=SCHEDULE, max_length=64,
                                 blank=True)
     help = models.CharField(verbose_name='варианты помощи', choices=HELP, max_length=64, blank=True)
     mobility = models.CharField(verbose_name='мобильность', choices=MOBILITY, max_length=64, blank=True)
+    text_1 = models.TextField(verbose_name='Немного о себе')
+    text_2 = models.TextField(verbose_name='Как я хочу помочь')
+  
 
     def __str__(self):
         return f'{self.first_name} - {self.last_name} - {self.text_1} - {self.text_2}'
