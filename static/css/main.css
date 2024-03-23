@@ -16,9 +16,18 @@
 @import url("offero.css");
 @import url("get_help.css");
 @import url("partners.css");
+@import url("index.css");
+@import url("report.css");
 
+/* проекты с перечислением категорий */
+@import url("projects_category.css");
+/* страница с проектами конкретной категории проектов */
+@import url("projects.css");
+/* конкретная задаяча в проекте */
+@import url("projects_post.css");
 
-
+/* подопечные */
+@import url("allyouneedis.css");
 
 
 
@@ -49,25 +58,16 @@ body {
 
 .container-md {
     background: rgba(255, 255, 250, 1.00);
+    /* background: red; */
+
     padding-top: 200px; 
     padding-bottom: 100px;
     padding-left: 20px;
     padding-right: 20px;
 }
 
-.zxc {
-    /* margin-top: 133px;
-    text-align: center;
-    width: 100vw;
-    height: 400px;
-    /* background: linear-gradient(180.00deg, rgb(23, 123, 159) 0%, rgb(109, 176, 195) 51.09%, rgb(255, 255, 250) 88.09%); */
-    /* background: linear-gradient(180.00deg, rgb(23, 123, 159) 0%, rgb(204, 239, 252) 100%); */
-    /* background: linear-gradient(180.00deg, rgb(23, 123, 159) 0%,rgba(255, 255, 250, 0) 122.697%); */
-    /* background: linear-gradient(180.00deg, rgb(23, 123, 159) 0%,rgb(255, 255, 250) 99.987%);
 
-    display: flex;
-    flex-direction: row;  */
-}
+
 
 /* адаптация */
 /* высота шапки 109px */
@@ -97,3 +97,7 @@ body {
         padding-top: 200px;
     }
 }
+
+
+
+

@@ -1,30 +1,79 @@
 {% extends 'mainapp/base.html' %}
+<!--  -->
 {% load static %}
-<title>
-    {% block title %}
-    {{ title }}
-    {% endblock %}
-</title>
+<title>{% block title %} {{ title }} {% endblock %}</title>
 
 {% block content %}
 
-<h1>{{ title }}</h1>
-{% include 'mainapp/includes/Back.html' %}
-{% for project_item in post %}
-    <div class="row justify-content-center align-items-center">
-        <div class="col-md-7">
+<h1 class="projects__title">{{ title }}</h1>
 
-            <h5>{{ project_item.name }}</h5>
-            {% if project_item.photo %}
-            <p><img class="img-header-photo" src="/home{{project_item.photo.url}}" width="300" height="250"></p>
-            {% endif %}
-            <p>{{ project_item.short_description|linebreaks }}</p>
-            <button type="button" onclick="location.href='{% url 'mainapp:projects_post' project_item.slug %}'">Читать</button>
+
+<!-- заголовок категории -->
+<!-- <div class="projects__subTitleBox">
+  {% for project_item in post %}
+  <h1 class="projects__subTitle">{{project_item.category}}</h1>
+  {% endfor %}
+</div> -->
+
+<p class="projects__subTitleBox">{{category}}</p>
+
+
+
+<div class="projects">
+    {% for project_item in post %}
+    <div class="projects__item">
+      <div class="projects__item_imgBox">
+        {% if project_item.photo %}
+        <img
+          class="projects__item_img"
+          src="/home{{project_item.photo.url}}"
+          width="300"
+          height="250"
+        />
+      </div>
+  
+      {% endif %}
+      <div class="projects__item_textBox">
+        <div class="projects__item_title">{{ project_item.name }}</div>
+        <!-- <button
+            type="button"
+            onclick="location.href='{% url 'mainapp:projects' project_item.pk %}'"
+          >
+            Смотреть
+          </button> -->
+        <div
+          class="projects__item_btn"
+          onclick="location.href='{% url 'mainapp:projects_post' project_item.slug %}'"
+        >
+          <!-- <img
+              class="projectCategory__item_arrow"
+              src="{% static '/img/projects/arrow.png' %}"
+              alt="Окно в Мир"
+            /> -->
+          &#10148;
         </div>
+      </div>
     </div>
-{% endfor %}
-{% include 'mainapp/includes/paginator.html' %}
-{% endblock %}
+    {% endfor %}
+  </div>
+
+<!--  -->
+{% include 'mainapp/includes/paginator.html' %} 
+<!--  -->
 {% include 'mainapp/includes/Back.html' %}
 
+<!--  -->
+<script>
+//   const subTitleElem = document.querySelector(".projects__subTitle").textContent;
+//   document.querySelector(".projects__subTitleBox").textContent = subTitleElem;
+</script>
+<!--  -->
+{% endblock %}
 
+<!--  -->
+<!-- <button
+type="button"
+onclick="location.href='{% url 'mainapp:projects_post' project_item.slug %}'"
+>
+Читать
+</button> -->

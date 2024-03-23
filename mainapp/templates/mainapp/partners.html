@@ -7,18 +7,28 @@
 
 <div class="partners__conteiner center">
   {% for partner in object %}
-  <div class="partners__item">
-    <!-- <div class="partners__itemTitle">{{ partner.title }}</div> -->
-    <div class="partners__imgBox">
-      {% if partner.picture %}
-
-      <img class="partners__img" src="/home{{partner.picture.url}}" />
-      {% endif %}
-    </div>
-    <div class="partners__description">{{ partner.about }}</div>
+  <div class="partners__imgBox">
+    {% if partner.picture %}
+    <img class="partners__img" src="/home{{partner.picture.url}}" />
+    {% endif %}
   </div>
   {% endfor %}
 </div>
+
+<!-- <div class="partners__conteiner center">
+    {% for partner in object %}
+    <div class="partners__item">
+      <div class="partners__itemTitle">{{ partner.title }}</div>
+      <div class="partners__imgBox">
+        {% if partner.picture %}
+  
+        <img class="partners__img" src="/home{{partner.picture.url}}" />
+        {% endif %}
+      </div>
+      <div class="partners__description">{{ partner.about }}</div>
+    </div>
+    {% endfor %}
+  </div> -->
 
 <!-- <h1 style="padding-top: 200px">НАШИ ПАРТНЕРЫ</h1> -->
 

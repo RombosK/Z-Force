@@ -1,32 +1,27 @@
 {% extends 'mainapp/base.html' %}
-
+<!--  -->
 {% load static %}
 
-<title>
-{% block title %}
-{{ title }}
-{% endblock %}
-</title>
+<title>{% block title %} {{ title }} {% endblock %}</title>
 
 {% block content %}
-
-{% regroup object by year as counter_list  %}
-{% for year, file_list in counter_list reversed %}
-<details>
-
-        <summary>{{ year }}</summary>
-            <ul>
-                {% for file in file_list %}
-                <li>
-                    <a href="{{ file.upload.url }}" download="{{ file.name }}" >{{ file.name }}</a>
-                </li>
-
-            {% endfor %}
-            </ul>
-
-
-</details>
-
-
-{% endfor %}
+<!--  -->
+<div class="box">
+    {% regroup object by year as counter_list %}
+    <!--  -->
+    {% for year, file_list in counter_list %}
+    <details>
+      <summary>{{ year }}</summary>
+      <ul>
+        {% for file in file_list %}
+        <li>
+          <!-- <a href="{{ file.upload.url }}" download="{{ file.name }}">{{ file.name }}</a> -->
+          <a href="{{ file.upload.url }}" target="_blank">{{ file.name }}</a>
+        </li>
+        {% endfor %}
+      </ul>
+    </details>
+    {% endfor %}
+</div>
+<!--  -->
 {% endblock %}

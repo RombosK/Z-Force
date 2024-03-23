@@ -1,29 +1,67 @@
-{% extends 'mainapp/base.html' %}
-{% load static %}
+{% extends 'mainapp/base.html' %} {% load static %}
 
 <title xmlns="http://www.w3.org/1999/html">
-    {% block title %}
-        {{ post.name }}
-    {% endblock %}
+  {% block title %} {{ post.name }} {% endblock %}
 </title>
 
 {% block content %}
-    <h1>{{ post.name }}</h1>
+<h1 class="projectsPost_title">{{ post.name }}</h1>
 
-    <div class="row justify-content-center align-items-center">
-        <div class="col-md-7">
-            {% if post.photo %}
-            <p><img class="img-header-photo" src="/home{{post.photo.url}}" width="300" height="250"></p>
-            {% endif %}
-            <p> {{ post.description|linebreaks }}</p>
-            <h3>Необходимая сумма</h3>
-            <p style="font-size: 25px">{{ post.donation }} руб</p>
-            <h3>Собрано</h3>
-            <p style="font-size: 25px">{{ post.collected }} руб</p>
-            <p style="font-size: 25px">Назначение платежа: {{ post.purpose }}</p>
-            <p>{{ post.created_at }}</p>
-            <button type="button" onclick="location.href='{% url 'mainapp:donation' %}'">Помочь</button>
-            </div>
+<div class="projectsPost_article center">
+  <p>{{ post.description|linebreaks }}</p>
+</div>
+
+<div class="projectsPost_paymentInfo center">
+  <div class="projectsPost_paymentInfo_column">
+    <p class="projectsPost_paymentInfo_text">
+      Необходимая сумма
+      <span class="projectsPost_paymentInfo_sumNeed"
+        >{{ post.donation }} руб</span
+      >
+    </p>
+    <p class="projectsPost_paymentInfo_text">
+      Собрано
+      <span class="projectsPost_paymentInfo_sumDone"
+        >{{ post.collected }} руб</span
+      >
+    </p>
+  </div>
+  <div class="projectsPost_paymentInfo_column">
+    <div class="projectsPost_paymentInfo_btnBox">
+      <button
+        class="projectsPost_paymentInfo_btn"
+        onclick="location.href='{% url 'mainapp:donation' %}'"
+      >
+        Помочь
+      </button>
     </div>
-    {% include 'mainapp/includes/Back.html' %}
+    <p class="projectsPost_paymentInfo_target">
+      Назначение платежа: {{ post.purpose }}
+    </p>
+  </div>
+</div>
+
+<div class="projectsPost_slider center">
+  <h1 class="projectsPost_slider_text">Зlесь будет слайдер</h1>
+</div>
+
+<!--  -->
+{% include 'mainapp/includes/Back.html' %}
+<!--  -->
 {% endblock %}
+
+<!-- <div class="row justify-content-center align-items-center">
+    <div class="col-md-7">
+        {% if post.photo %}
+        <p><img class="img-header-photo" src="/home{{post.photo.url}}" width="300" height="250"></p>
+        {% endif %}
+        <p> {{ post.description|linebreaks }}</p>
+        <h3>Необходимая сумма</h3>
+        <p style="font-size: 25px">{{ post.donation }} руб</p>
+        <h3>Собрано</h3>
+        <p style="font-size: 25px">{{ post.collected }} руб</p>
+        <p style="font-size: 25px">Назначение платежа: {{ post.purpose }}</p>
+        <p>{{ post.created_at }}</p>
+        <button type="button" onclick="location.href='{% url 'mainapp:donation' %}'">Помочь</button>
+        </div>
+</div> -->
