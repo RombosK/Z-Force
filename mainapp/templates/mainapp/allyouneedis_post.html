@@ -26,6 +26,9 @@
     <p style="font-size: 25px">Собрано: {{ post.collected }} руб</p>
     <p style="font-size: 25px">Назначение платежа: {{ post.purpose }}</p>
     <p>{{ post.created_at }}</p>
+    {% for item in image %}
+      <img src="{{ item.image.url }}" width="300" height="200" alt="image">
+    {% endfor %}
     <button
       type="button"
       onclick="location.href='{% url 'mainapp:donation' %}'"

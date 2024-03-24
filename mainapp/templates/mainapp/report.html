@@ -7,7 +7,7 @@
 {% block content %}
 <!--  -->
 <div class="box">
-    {% regroup object by year as counter_list %}
+    {% regroup object|dictsort:'year_id' by year as counter_list %}
     <!--  -->
     {% for year, file_list in counter_list %}
     <details>

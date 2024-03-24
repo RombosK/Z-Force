@@ -34,7 +34,7 @@ class News(models.Model):
         ordering = ['id']
 
     def __str__(self):
-        return f'{self.id}'
+        return f'{self.name}'
 
 
 # Модель проектов фонда (категории для задач)
@@ -65,7 +65,6 @@ class ImagesProject(models.Model):
         verbose_name_plural = 'Фотографии для слайдера Задачи'
 
 
-
 # Модель конкретного проекта (задачи)
 class Project(models.Model):
     category = models.ForeignKey(ProjectCategory, on_delete=models.CASCADE)
@@ -86,7 +85,16 @@ class Project(models.Model):
         ordering = ['id']
 
     def __str__(self):
-        return f'{self.id}'
+        return f'{self.name} - {self.category}'
+
+
+class ImagesAllYouNeedIs(models.Model):
+    image = models.ImageField(verbose_name='фотоальбом', upload_to='images/AllYouNeedIs/%Y/%m/%d/', blank=True)
+    post = models.ForeignKey('AllYouNeedIs', verbose_name='для Подопечных', on_delete=models.CASCADE, null=True)
+
+    class Meta:
+        verbose_name = 'Фотография'
+        verbose_name_plural = 'Фотографии для слайдера Подопечных'
 
 
 # Модель подопечных
