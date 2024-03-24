@@ -15,7 +15,8 @@ from django.views.generic import ListView, DetailView
 from django.views.generic import TemplateView, View
 
 from mainapp.forms import GiveHelpForm, GetHelpForm
-from mainapp.models import GiveHelp, GetHelp, News, ProjectCategory, AllYouNeedIs, Partners, Project, Report, ReportYear, Images
+from mainapp.models import GiveHelp, GetHelp, News, ProjectCategory, AllYouNeedIs, Partners, Project, Report, \
+    ReportYear, Images, ImagesProject
 
 
 # # Контроллер страницы с анкетой
@@ -50,12 +51,10 @@ class GiveHelpView(View):
             # Проверяем, было ли отмечено согласие
             if form.cleaned_data['agreement']:
                 form.save()
-                # перенаправление на страницу успешного заполнения анкеты
-                return redirect('/home/success/')
+                return redirect('/home/success/')  # перенаправление на страницу успешного заполнения анкеты
             else:
                 # Если согласие не было отмечено, добавляем сообщение об ошибке
-                form.add_error(
-                    'agreement', 'Пожалуйста, подтвердите свое согласие.')
+                form.add_error('agreement', 'Пожалуйста, подтвердите свое согласие.')
         return render(request, 'mainapp/give_help.html', {'form': form})
 
 
@@ -72,8 +71,7 @@ class GetHelpView(View):
         form = GetHelpForm(request.POST)
         if form.is_valid():
             form.save()
-            # перенаправление на страницу успешного заполнения анкеты
-            return redirect('/home/success/')
+            return redirect('/home/success/')  # перенаправление на страницу успешного заполнения анкеты
 
         # return render(request, 'mainapp/get_help.html')
         return render(request, 'mainapp/get_help.html', {'form': form})
@@ -178,7 +176,7 @@ class ContactsView(TemplateView):
 # Контроллер страницы новостей
 # родитель ListView для удобства работы со страницами, где нужна пагинация
 class NewsView(ListView):
-    paginate_by = 3
+    paginate_by = 6
     model = News
     template_name = 'mainapp/news.html'
     context_object_name = 'object'
@@ -215,6 +213,7 @@ class NewsDetailView(DetailView):
         # print(context)
         return context
 
+
     # def get_queryset(self):
     #     queryset = Images.objects.all()
     #     print(queryset)
@@ -232,8 +231,6 @@ class NewsDetailView(DetailView):
 
 # Контроллер проектов
 # родитель ListView для удобства работы со страницами где нужна пагинация
-
-
 class ProjectCategoryView(ListView):
     # paginate_by = 3
     template_name = 'mainapp/projects_category.html'
@@ -268,6 +265,7 @@ class ProjectView(ListView):
         context = super().get_context_data(**kwargs)
         context['category'] = ProjectCategory.objects.filter(id=self.kwargs[self.pk_url_kwarg]).get()
 
+        # print(context)
         return context
 
 
@@ -280,6 +278,17 @@ class ProjectDetailView(DetailView):
 
     def get_object(self, queryset=None):
         return get_object_or_404(Project, slug=self.kwargs[self.slug_url_kwarg])
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # print(self.kwargs)
+        item = ImagesProject.objects.filter(post=context['object'])
+        print(context['post'])
+        context['image'] = item
+        print(item)
+        print(context)
+        return context
+
 
 
 # Контроллер нуждающихся
@@ -297,7 +306,7 @@ class AllYouNeedIsView(ListView):
 
 class AllYouNeedIsDetailView(DetailView):
     model = AllYouNeedIs
-    template_name = 'mainapp/projects_post.html'
+    template_name = 'mainapp/allyouneedis_post.html'
     slug_url_kwarg = 'slug'
     context_object_name = 'post'
 
@@ -394,3 +403,4 @@ class ReportView(ListView):
     extra_context = {
         'title': 'Отчеты',
     }
+

@@ -56,6 +56,16 @@ class ProjectCategory(models.Model):
         return f'{self.name}'
 
 
+class ImagesProject(models.Model):
+    image = models.ImageField(verbose_name='фотоальбом', upload_to='images/%Y/%m/%d/', blank=True)
+    post = models.ForeignKey('Project', verbose_name='для Проектов', on_delete=models.CASCADE, null=True)
+
+    class Meta:
+        verbose_name = 'Фотография'
+        verbose_name_plural = 'Фотографии для слайдера Задачи'
+
+
+
 # Модель конкретного проекта (задачи)
 class Project(models.Model):
     category = models.ForeignKey(ProjectCategory, on_delete=models.CASCADE)
@@ -76,12 +86,11 @@ class Project(models.Model):
         ordering = ['id']
 
     def __str__(self):
-        return f'{self.name} - {self.category.name}'
+        return f'{self.id}'
 
 
 # Модель подопечных
 class AllYouNeedIs(models.Model):
-    category = models.ForeignKey(ProjectCategory, on_delete=models.CASCADE)
     slug = models.SlugField(max_length=255, unique=True, db_index=True)
     name = models.CharField(verbose_name='имя подопечного', max_length=32)
     surname = models.CharField(verbose_name='фамилия подопечного', max_length=32)
@@ -101,7 +110,7 @@ class AllYouNeedIs(models.Model):
         ordering = ['id']
 
     def __str__(self):
-        return f'{self.name} {self.surname} - {self.category.name}'
+        return f'{self.name} {self.surname}'
 
 
 from django.core.exceptions import ValidationError

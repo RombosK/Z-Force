@@ -7,7 +7,7 @@
     margin-bottom: 30px;
 }
 
-.projects__subTitleBox {
+.projects__subTitle {
     color: rgba(23, 123, 159, 1.00);
     font-family: Nunito;
     font-size: 46px;
@@ -31,7 +31,7 @@
     grid-template-columns: repeat(3, 300px);
     justify-content: center;
     grid-column-gap: 8%;
-    grid-row-gap: 12%;
+    grid-row-gap: 50px;
 
     margin-bottom: 100px;
 
@@ -56,7 +56,7 @@
 .projects__item_img {
     width: 100%;
     height: 250px;
-    object-fit: cover; 
+    object-fit: cover;
 }
 
 .projects__item_textBox {
@@ -97,4 +97,55 @@
 .projects__item_arrow {
     width: 30px;
     padding: 10px;
+}
+
+
+/* адаптация */
+@media (min-width: 700px) and (max-width: 1120px) {
+    .projects {
+        display: grid;
+        grid-template-columns: repeat(2, 300px);
+        justify-content: center;
+        grid-column-gap: 8%;
+        grid-row-gap: 50px;
+    }
+}
+
+
+@media (min-width: 400px) and (max-width: 699px) {
+    .projects {
+        display: grid;
+        grid-template-columns: repeat(1, 300px);
+        justify-content: center;
+        grid-column-gap: 8%;
+        grid-row-gap: 50px;
+    }
+
+    .projects__title {
+        font-size: 38px;
+    }
+
+    .projects__subTitle {
+        font-size: 36px;
+    }
+
+}
+
+@media (min-width: 320px) and (max-width: 400px) {
+    .projects {
+        display: grid;
+        grid-template-columns: repeat(1, 250px);
+        justify-content: center;
+        grid-column-gap: 8%;
+        grid-row-gap: 50px;
+    }
+
+    .projects__subTitle {
+        font-size: 26px;
+    }
+
+    .projects__title {
+        font-size: 38px;
+    }
+
 }

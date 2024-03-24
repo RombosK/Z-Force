@@ -28,13 +28,20 @@
     justify-content: center;
     gap: 50px;
 
-    margin-bottom: 200px;
+    margin-bottom: 100px;
 }
 
 .projectsPost_paymentInfo_column {
     display: flex;
     flex-direction: column;
     gap: 30px;
+    align-items: flex-start;
+}
+
+.projectsPost_paymentInfo_textBox {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
 }
 
 .projectsPost_paymentInfo_text {
@@ -42,7 +49,7 @@
     font-family: Nunito;
     font-size: 24px;
     font-weight: 700;
-    text-align: justify;
+    text-align: left;
 }
 
 .projectsPost_paymentInfo_sumNeed {
@@ -50,7 +57,7 @@
     font-family: Nunito;
     font-size: 26px;
     font-weight: 700;
-    text-align: justify;
+    text-align: left;
 }
 
 .projectsPost_paymentInfo_sumDone {
@@ -58,10 +65,11 @@
     font-family: Nunito;
     font-size: 26x;
     font-weight: 700;
-    text-align: justify;
+    text-align: left;
 }
 
 .projectsPost_paymentInfo_btnBox {
+    width: 100%;
     display: flex;
     justify-content: center;
 }
@@ -94,13 +102,362 @@
     font-family: Nunito;
     font-size: 20px;
     font-weight: 400;
-    text-align: justify;
+    text-align: left;
 }
 
-.projectsPost_slider {
-    margin-bottom: 200px;
+.projectsPost__slider {
+    margin-bottom: 100px;
 }
 
 .projectsPost_slider_text {
     text-align: center;
+}
+
+
+.projectsPost__slider {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.projectsPost__slider_NotActive {
+    display: none !important;
+}
+
+.projectsPost__slider_imgBox {
+    width: 100%;
+}
+
+.projectsPost__slider_imgline {
+    position: relative;
+    overflow: hidden;
+    height: 500px;
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.projectsPost__slider_img {
+    position: absolute;
+    width: auto;
+    height: 100%;
+}
+
+.projectsPost__slider_imgHidden {
+    visibility: hidden;
+}
+
+.projectsPost__slider_nav {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: flex-end;
+}
+
+.projectsPost__slider_navLeft {
+    border: 20px solid transparent;
+    border-right: 20px solid rgba(109, 176, 195, 1.00);
+}
+
+.projectsPost__slider_navRight {
+    border: 20px solid transparent;
+    border-left: 20px solid rgba(109, 176, 195, 1.00);
+}
+
+.projectsPost__slider_navLeft:hover {
+    border: 20px solid transparent;
+    border-right: 20px solid rgba(254, 186, 166, 1.00);
+}
+
+.projectsPost__slider_navRight:hover {
+    border: 20px solid transparent;
+    border-left: 20px solid rgba(254, 186, 166, 1.00);
+}
+
+.projectsPost__slider_navNumber {
+    box-sizing: border-box;
+    color: rgb(43, 43, 43);
+    font-family: Nunito;
+    font-size: 36px;
+    font-weight: 700;
+}
+
+
+
+/* адаптация */
+@media (min-width: 910px) and (max-width: 1000px) {
+    .projectsPost_title {
+        font-size: 38px;
+    }
+
+    .projectsPost_article {
+        width: 90%;
+        margin-left: 5%;
+    }
+}
+
+@media (min-width: 767px) and (max-width: 910px) {
+    .projectsPost_title {
+        font-size: 38px;
+    }
+
+    .projectsPost_article {
+        width: 90%;
+        margin-left: 5%;
+    }
+
+    .projectsPost_paymentInfo_text {
+        font-size: 20px;
+    }
+
+    .projectsPost_paymentInfo_sumNeed {
+        font-size: 20px;
+    }
+
+    .projectsPost_paymentInfo_sumDone {
+        font-size: 20px;
+    }
+
+    .projectsPost_paymentInfo_target {
+        font-size: 16px;
+    }
+}
+
+@media (min-width: 490px) and (max-width: 797px) {
+    .projectsPost_title {
+        font-size: 38px;
+    }
+
+    .projectsPost_article {
+        width: 96%;
+        margin-left: 2%;
+    }
+
+    .projectsPost_paymentInfo {
+        flex-direction: column;
+        margin-left: 4%;
+
+    }
+
+    .projectsPost_paymentInfo_text {
+        font-size: 20px;
+    }
+
+    .projectsPost_paymentInfo_sumNeed {
+        font-size: 20px;
+    }
+
+    .projectsPost_paymentInfo_sumDone {
+        font-size: 20px;
+    }
+
+    .projectsPost_paymentInfo_btnBox {
+        justify-content: left;
+    }
+
+
+    .projectsPost_paymentInfo_target {
+        font-size: 16px;
+    }
+
+    .projectsPost__slider_imgline {
+        height: 400px;
+        width: 100%;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .projectsPost__slider_nav {
+        align-items: center;
+    }
+
+    .projectsPost__slider_navLeft {
+        border: 15px solid transparent;
+        border-right: 15px solid rgba(109, 176, 195, 1.00);
+    }
+
+    .projectsPost__slider_navRight {
+        border: 15px solid transparent;
+        border-left: 15px solid rgba(109, 176, 195, 1.00);
+    }
+
+    .projectsPost__slider_navLeft:hover {
+        border: 15px solid transparent;
+        border-right: 15px solid rgba(254, 186, 166, 1.00);
+    }
+
+    .projectsPost__slider_navRight:hover {
+        border: 15px solid transparent;
+        border-left: 15px solid rgba(254, 186, 166, 1.00);
+    }
+
+    .projectsPost__slider_navNumber {
+        font-size: 30px;
+    }
+}
+
+@media (min-width: 430px) and (max-width: 489px) {
+    .projectsPost_title {
+        font-size: 28px;
+    }
+
+    .projectsPost_article {
+        width: 96%;
+        margin-left: 2%;
+        font-size: 20px;
+
+    }
+
+    .projectsPost_paymentInfo {
+        flex-direction: column;
+        margin-left: 2%;
+
+    }
+
+    .projectsPost_paymentInfo_text {
+        font-size: 20px;
+    }
+
+    .projectsPost_paymentInfo_sumNeed {
+        font-size: 20px;
+    }
+
+    .projectsPost_paymentInfo_sumDone {
+        font-size: 20px;
+    }
+
+    .projectsPost_paymentInfo_btnBox {
+        justify-content: left;
+    }
+
+
+    .projectsPost_paymentInfo_target {
+        font-size: 16px;
+    }
+
+    .projectsPost__slider_imgline {
+        height: 300px;
+        width: 100%;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .projectsPost__slider_nav {
+        align-items: center;
+    }
+
+    .projectsPost__slider_navLeft {
+        border: 15px solid transparent;
+        border-right: 15px solid rgba(109, 176, 195, 1.00);
+    }
+
+    .projectsPost__slider_navRight {
+        border: 15px solid transparent;
+        border-left: 15px solid rgba(109, 176, 195, 1.00);
+    }
+
+    .projectsPost__slider_navLeft:hover {
+        border: 15px solid transparent;
+        border-right: 15px solid rgba(254, 186, 166, 1.00);
+    }
+
+    .projectsPost__slider_navRight:hover {
+        border: 15px solid transparent;
+        border-left: 15px solid rgba(254, 186, 166, 1.00);
+    }
+
+    .projectsPost__slider_navNumber {
+        font-size: 30px;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 429px) {
+    .projectsPost_title {
+        font-size: 26px;
+    }
+
+    .projectsPost_article {
+        width: 96%;
+        margin-left: 2%;
+        font-size: 20px;
+
+    }
+
+    .projectsPost_paymentInfo {
+        flex-direction: column;
+        margin-left: 2%;
+
+    }
+
+    .projectsPost_paymentInfo_textBox {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .projectsPost_paymentInfo_text {
+        font-size: 18px;
+    }
+
+    .projectsPost_paymentInfo_sumNeed {
+        font-size: 18px;
+    }
+
+    .projectsPost_paymentInfo_sumDone {
+        font-size: 18px;
+    }
+
+    .projectsPost_paymentInfo_btnBox {
+        justify-content: left;
+    }
+
+
+    .projectsPost_paymentInfo_target {
+        font-size: 14px;
+    }
+
+    .projectsPost__slider_imgline {
+        height: 300px;
+        width: 100%;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .projectsPost__slider_nav {
+        align-items: center;
+    }
+
+    .projectsPost__slider_navLeft {
+        border: 15px solid transparent;
+        border-right: 15px solid rgba(109, 176, 195, 1.00);
+    }
+
+    .projectsPost__slider_navRight {
+        border: 15px solid transparent;
+        border-left: 15px solid rgba(109, 176, 195, 1.00);
+    }
+
+    .projectsPost__slider_navLeft:hover {
+        border: 15px solid transparent;
+        border-right: 15px solid rgba(254, 186, 166, 1.00);
+    }
+
+    .projectsPost__slider_navRight:hover {
+        border: 15px solid transparent;
+        border-left: 15px solid rgba(254, 186, 166, 1.00);
+    }
+
+    .projectsPost__slider_navNumber {
+        font-size: 24px;
+    }
 }

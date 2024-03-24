@@ -1,5 +1,5 @@
 from mainapp.models import News, ProjectCategory, Project, AllYouNeedIs, GiveHelp, GetHelp, Partners, Report, \
-    ReportYear, Images
+    ReportYear, Images, ImagesProject
 from django.contrib import admin
 
 
@@ -10,6 +10,11 @@ class ImagesInline(admin.StackedInline):
     max_num = 10
     extra = 0
 
+
+class ImagesProjectInline(admin.StackedInline):
+    model = ImagesProject
+    max_num = 10
+    extra = 0
 
 @admin.register(News)
 class NewsAdmin(admin.ModelAdmin):
@@ -32,17 +37,32 @@ class ImagesAdmin(admin.ModelAdmin):
     search_fields = ('images',)
 
 
+@admin.register(ImagesProject)
+class ImagesProjectAdmin(admin.ModelAdmin):
+    list_display = ('image',)
+    list_per_page = 10
+    list_filter = ('image',)
+    search_fields = ('images',)
+
+
 @admin.register(Project)
 class ProjectAdmin(admin.ModelAdmin):
     list_display = ('name', 'short_description', 'category', 'donation')
+    prepopulated_fields = {
+        'slug': ('name',)
+    }
     list_per_page = 10
     list_filter = ('name', 'short_description', 'category')
     search_fields = ('name', 'short_description', 'category')
     show_full_result_count = False
+    inlines = [ImagesProjectInline, ]
 
 
 @admin.register(ProjectCategory)
 class ProjectCategoryAdmin(admin.ModelAdmin):
+    prepopulated_fields = {
+        'slug': ('name',)
+    }
     list_display = ('name', 'description')
     list_per_page = 10
     list_filter = ('name', 'description')
@@ -52,9 +72,15 @@ class ProjectCategoryAdmin(admin.ModelAdmin):
 
 @admin.register(AllYouNeedIs)
 class AllYouNeedIsAdmin(admin.ModelAdmin):
-    list_display = ('name', 'surname', 'category', 'city', 'short_description', 'in_process', 'is_closed')
+    prepopulated_fields = {
+        'slug': ('name', 'id')
+    }
+    list_display = ('name', 'surname', 'city', 'short_description', 'in_process', 'is_closed')
+    prepopulated_fields = {
+        'slug': ('name',)
+    }
     list_per_page = 10
-    list_filter = ('name', 'surname', 'category', 'city', 'in_process', 'is_closed')
+    list_filter = ('name', 'surname', 'city', 'in_process', 'is_closed')
     search_fields = ('name', 'surname', 'city', 'short_description', 'in_process', 'is_closed')
     show_full_result_count = False
 

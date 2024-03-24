@@ -18,20 +18,16 @@
             {% if post.photo %}
             <p><img class="img-header-photo" src="/home{{post.photo.url}}" width="300" height="250"></p>
             {% endif %}
-            <p> {{ post.description|linebreaks }}</p>
+            <!-- <p> {{ post.description|linebreaks }}</p> -->
             <h3>Необходимая сумма</h3> <p style="font-size: 25px">{{ post.donation }} руб</p>
             <h3>Собрано</h3> <p style="font-size: 25px">{{ post.collected }} руб</p>
             <h3>Назначение платежа</h3> <p style="font-size: 25px">{{ post.purpose }}</p>
             <p>{{ post.created_at }}</p>
-            <button
-          class="news__item__content_btn"
-          onclick="location.href='{{ news_item.slug }}'"
-        >
-          Подробнее
-        </button>
+            <button class="news__item__content_btn" onclick="location.href='{{ post.slug }}'">Подробнее</button>
             <button type="button" onclick="location.href='{% url 'mainapp:donation' %}'">Помочь</button>
             </div>
     </div>
-    {% include 'mainapp/includes/Back.html' %}
+
 {% endfor %}
+{% include 'mainapp/includes/Back.html' %}
 {% endblock %}

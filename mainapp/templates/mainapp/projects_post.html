@@ -1,4 +1,6 @@
-{% extends 'mainapp/base.html' %} {% load static %}
+{% extends 'mainapp/base.html' %}
+<!--  -->
+{% load static %}
 
 <title xmlns="http://www.w3.org/1999/html">
   {% block title %} {{ post.name }} {% endblock %}
@@ -13,12 +15,10 @@
 
 <div class="projectsPost_paymentInfo center">
   <div class="projectsPost_paymentInfo_column">
-    <p class="projectsPost_paymentInfo_text">
-      Необходимая сумма
-      <span class="projectsPost_paymentInfo_sumNeed"
-        >{{ post.donation }} руб</span
-      >
-    </p>
+    <div class="projectsPost_paymentInfo_textBox">
+      <p class="projectsPost_paymentInfo_text">Необходимая сумма</p>
+      <p class="projectsPost_paymentInfo_sumNeed">{{ post.donation }} руб</p>
+    </div>
     <p class="projectsPost_paymentInfo_text">
       Собрано
       <span class="projectsPost_paymentInfo_sumDone"
@@ -41,13 +41,41 @@
   </div>
 </div>
 
-<div class="projectsPost_slider center">
-  <h1 class="projectsPost_slider_text">Зlесь будет слайдер</h1>
+<!-- слайлер -->
+<div class="projectsPost__slider center">
+  <!-- фото -->
+  <div class="projectsPost__slider_imgBox">
+    <div class="projectsPost__slider_imgline">
+      {% for item in image %}
+
+      <img
+        class="projectsPost__slider_img projectsPost__slider_imgHidden"
+        src="/home{{ item.image.url }}"
+      />
+
+      {% endfor %}
+    </div>
+  </div>
+  <!-- стрелки и номера -->
+  <div class="projectsPost__slider_nav">
+    <p class="projectsPost__slider_navLeft"></p>
+    <p class="projectsPost__slider_navNumber"></p>
+    <p class="projectsPost__slider_navRight"></p>
+  </div>
 </div>
+
+<!-- <div class="projectsPost_slider center">
+  {% for item in image %}
+  <img src="/home{{ item.image.url }}" width="300" height="250" />
+  {% endfor %}
+ -->
 
 <!--  -->
 {% include 'mainapp/includes/Back.html' %}
 <!--  -->
+
+<script src="{% static 'js/projects_post.js' %}"></script>
+
 {% endblock %}
 
 <!-- <div class="row justify-content-center align-items-center">
