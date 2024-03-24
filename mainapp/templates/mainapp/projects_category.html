@@ -4,9 +4,17 @@
 <!--  -->
 <title>{% block title %} {{ title }} {% endblock %}</title>
 
+
 {% block content %}
 
-<h1 class="projectCategory__title">{{ title }}</h1>
+<div class="projectCategory__titleBox center">
+  <h1 class="projectCategory__title">{{ title }}</h1>
+  <img
+    class="projectCategory__title_img"
+    src="{% static '/img/projects/project3.png' %}"
+    alt="Окно в Мир"
+  />
+</div>
 
 <div class="projectCategory">
   {% for project_item in post %}

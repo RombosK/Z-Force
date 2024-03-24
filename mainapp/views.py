@@ -238,7 +238,7 @@ class ProjectCategoryView(ListView):
     # pk_url_kwarg = 'pk'
     context_object_name = 'post'
     extra_context = {
-        'title': 'Проекты',
+        'title': 'Наши проекты',
     }
 
     # def get_object(self, queryset=None):
