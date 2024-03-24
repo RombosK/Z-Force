@@ -1,11 +1,11 @@
 from mainapp.models import News, ProjectCategory, Project, AllYouNeedIs, GiveHelp, GetHelp, Partners, Report, \
-    ReportYear, Images, ImagesProject
+    ReportYear, Images, ImagesProject, ImagesAllYouNeedIs
 from django.contrib import admin
 
 
 # Регистрация моделей в админке
 
-class ImagesInline(admin.StackedInline):
+class ImagesNewsInline(admin.StackedInline):
     model = Images
     max_num = 10
     extra = 0
@@ -15,6 +15,13 @@ class ImagesProjectInline(admin.StackedInline):
     model = ImagesProject
     max_num = 10
     extra = 0
+
+
+class ImagesAllYouNeedIsInline(admin.StackedInline):
+    model = ImagesAllYouNeedIs
+    max_num = 10
+    extra = 0
+
 
 @admin.register(News)
 class NewsAdmin(admin.ModelAdmin):
@@ -26,7 +33,7 @@ class NewsAdmin(admin.ModelAdmin):
     list_filter = ('name', 'description', 'created_at')
     search_fields = ('name', 'description', 'created_at')
     show_full_result_count = False
-    inlines = [ImagesInline, ]
+    inlines = [ImagesNewsInline, ]
 
 
 @admin.register(Images)
@@ -45,11 +52,19 @@ class ImagesProjectAdmin(admin.ModelAdmin):
     search_fields = ('images',)
 
 
+@admin.register(ImagesAllYouNeedIs)
+class ImagesAllYouNeedIsAdmin(admin.ModelAdmin):
+    list_display = ('image',)
+    list_per_page = 10
+    list_filter = ('image',)
+    search_fields = ('images',)
+
+
 @admin.register(Project)
 class ProjectAdmin(admin.ModelAdmin):
     list_display = ('name', 'short_description', 'category', 'donation')
     prepopulated_fields = {
-        'slug': ('name',)
+        'slug': ('name', 'category')
     }
     list_per_page = 10
     list_filter = ('name', 'short_description', 'category')
@@ -73,16 +88,14 @@ class ProjectCategoryAdmin(admin.ModelAdmin):
 @admin.register(AllYouNeedIs)
 class AllYouNeedIsAdmin(admin.ModelAdmin):
     prepopulated_fields = {
-        'slug': ('name', 'id')
+        'slug': ('name', 'surname', 'city')
     }
     list_display = ('name', 'surname', 'city', 'short_description', 'in_process', 'is_closed')
-    prepopulated_fields = {
-        'slug': ('name',)
-    }
     list_per_page = 10
     list_filter = ('name', 'surname', 'city', 'in_process', 'is_closed')
     search_fields = ('name', 'surname', 'city', 'short_description', 'in_process', 'is_closed')
     show_full_result_count = False
+    inlines = [ImagesAllYouNeedIsInline, ]
 
 
 @admin.register(GiveHelp)
