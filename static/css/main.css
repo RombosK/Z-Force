@@ -60,7 +60,7 @@ body {
     background: rgba(255, 255, 250, 1.00);
     /* background: red; */
 
-    padding-top: 133px; 
+    padding-top: 133px;  /* отступ будет 67px */
     padding-bottom: 100px;
     /* padding-left: 20px;
     padding-right: 20px; */
@@ -70,31 +70,31 @@ body {
 
 
 /* адаптация */
-/* высота шапки 109px */
+/* высота шапки 109px  отступ будет 61px*/
 @media (min-width: 1035px) and (max-width: 1320px) {
     .container-md {
-        padding-top: 170px;
+        padding-top: 109px;
     }
 }
 
-/* высота шапки 100px */
+/* высота шапки 100px отступ будет 40px */
 @media (min-width: 835px) and (max-width: 1035px) {
     .container-md {
-        padding-top: 140px;
+        padding-top: 100px;
     }
 }
 
-/* млбилка - высота шапки 93px */
+/* млбилка - высота шапки 93px - отступ будет 37px*/
 @media (min-width: 768px) and (max-width: 835px) {
     .container-md {
-        padding-top: 130px;
+        padding-top: 93px;
     }
 }
 
-/* млбилка - высота шапки 173px */
+/* млбилка - высота шапки 173px - отступ будет 27px*/
 @media (min-width: 320px) and (max-width: 767px) {
     .container-md {
-        padding-top: 200px;
+        padding-top: 173px;
     }
 }
 

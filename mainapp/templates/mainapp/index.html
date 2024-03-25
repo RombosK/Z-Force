@@ -3,71 +3,79 @@
 {% load static %}
 <!--  -->
 {% block content %}
-<div class="index">
-  <!-- элемент слайдера  1-->
-  <div class="index__slider_item">
-    <div>
-      <img
-        class="index__slider_img02"
-        src="{% static '/img/index/02-2.png' %}"
-        alt="Окно в Мир"
-      />
-    </div>
+<div class="index__slider">
+  <div class="index__slider_items">
+    <!-- элемент слайдера  1-->
 
-    <div class="index____slider_textBox">
-      <h1 class="index____slider_title">
-        МЕЖДУНАРОДНЫЙ БЛАГОТВОРИТЕЛЬНЫЙ ФОНД "ОКНО В МИР"
-      </h1>
-      <p class="index____slider_text">
-        Среди нас живут семьи, которым требуется помощь: семьи с
-        детьми-инвалидами; многодетные семьи; семьи, попавшие в трудную
-        жизненную ситуацию.
-      </p>
+    <div class="index__slider_item">
+      <div class="index__slider_imgs">
+        <img
+          class="index__slider_img01"
+          src="{% static '/img/index/01.png' %}"
+          alt="Окно в Мир"
+        />
+        <img
+          class="index__slider_img02"
+          src="{% static '/img/index/02.png' %}"
+          alt="Окно в Мир"
+        />
+      </div>
+      <div class="index__slider_textBox">
+        <h1 class="index__slider_title">
+          МЕЖДУНАРОДНЫЙ БЛАГОТВОРИТЕЛЬНЫЙ ФОНД "ОКНО В МИР"
+        </h1>
+        <p class="index__slider_text">
+          Среди нас живут семьи, которым требуется помощь: семьи с
+          детьми-инвалидами; многодетные семьи; семьи, попавшие в трудную
+          жизненную ситуацию.
+        </p>
+      </div>
     </div>
-    <div>
-      <img
-        class="index__slider_img01"
-        src="{% static '/img/index/01.png' %}"
-        alt="Окно в Мир"
-      />
+    <!-- элемент слайдера  2-->
+    <div class="index__slider_item">
+      <div class="index__slider_imgs">
+        <img
+          class="index__slider_img03"
+          src="{% static '/img/index/03.png' %}"
+          alt="Окно в Мир"
+        />
+        <img
+          class="index__slider_img04"
+          src="{% static '/img/index/04.png' %}"
+          alt="Окно в Мир"
+        />
+      </div>
+      <div class="index__slider_textBox">
+        <h1 class="index__slider_title">
+          Детям в сложных жизненных ситуациях постоянно нужна ваша поддержка
+        </h1>
+        <p class="index__slider_text">Не откладывайте. Помогите прямо сейчас</p>
+      </div>
+    </div>
+    <!-- элемент слайдера  3-->
+    <div class="index__slider_item">
+      <div class="index__slider_imgs">
+        <img
+          class="index__slider_img05"
+          src="{% static '/img/index/05.png' %}"
+          alt="Окно в Мир"
+        />
+        <img
+          class="index__slider_img06"
+          src="{% static '/img/index/06.png' %}"
+          alt="Окно в Мир"
+        />
+      </div>
+      <div class="index__slider_textBox">
+        <h1 class="index__slider_title">Мы будем благодарны любой помощи</h1>
+        <p class="index__slider_text">Станьте волонтёром</p>
+      </div>
     </div>
   </div>
-
   <!-- точки -->
-  <div class="index__dots">
-    <div class="index__dot index__dot_activ"></div>
-    <div class="index__dot"></div>
-    <div class="index__dot"></div>
-  </div>
-</div>
-
-<div class="index2">
-  <!-- элемент слайдера  2-->
-  <div class="index__slider_item">
-    <div>
-      <img
-        class="index__slider_img02"
-        src="{% static '/img/index/3.png' %}"
-        alt="Окно в Мир"
-      />
-    </div>
-
-    <div class="index____slider_textBox">
-      <h1 class="index____slider_title">
-        Детям в сложных жизненных ситуациях постоянно нужна ваша поддержка
-                   
-      </h1>
-      <p class="index____slider_text">
-        Не откладывайте. Помогите прямо сейчас
-      </p>
-    </div>
-    <div>
-      <img
-        class="index__slider_img01"
-        src="{% static '/img/index/04.png' %}"
-        alt="Окно в Мир"
-      />
-    </div>
+  <div class="index__slider_arrows">
+    <div class="index__slider_arrowLeft">&#10148;</div>
+    <div class="index__slider_arrowRight">&#10148;</div>
   </div>
 </div>
 
@@ -289,3 +297,92 @@
     </div> -->
 
 {% endblock content %}
+
+<!-- <div class="index">
+  элемент слайдера  1
+  <div class="index__slider_item">
+    <div>
+      <img
+        class="index__slider_img01"
+        src="{% static '/img/index/01.png' %}"
+        alt="Окно в Мир"
+      />
+    </div>
+
+    <div class="index____slider_textBox">
+      <h1 class="index____slider_title">
+        МЕЖДУНАРОДНЫЙ БЛАГОТВОРИТЕЛЬНЫЙ ФОНД "ОКНО В МИР"
+      </h1>
+      <p class="index____slider_text">
+        Среди нас живут семьи, которым требуется помощь: семьи с
+        детьми-инвалидами; многодетные семьи; семьи, попавшие в трудную
+        жизненную ситуацию.
+      </p>
+    </div>
+    <div>
+      <img
+        class="index__slider_img02"
+        src="{% static '/img/index/02.png' %}"
+        alt="Окно в Мир"
+      />
+    </div>
+  </div>
+</div>
+
+<div class="index2">
+  элемент слайдера  2
+  <div class="index__slider_item">
+    <div>
+      <img
+        class="index__slider_img03"
+        src="{% static '/img/index/03.png' %}"
+        alt="Окно в Мир"
+      />
+    </div>
+
+    <div class="index____slider_textBox">
+      <h1 class="index____slider_title">
+        Детям в сложных жизненных ситуациях постоянно нужна ваша поддержка
+      </h1>
+      <p class="index____slider_text">Не откладывайте. Помогите прямо сейчас</p>
+    </div>
+    <div>
+      <img
+        class="index__slider_img04"
+        src="{% static '/img/index/04.png' %}"
+        alt="Окно в Мир"
+      />
+    </div>
+  </div>
+</div>
+
+<div class="index3">
+  элемент слайдера  3
+  <div class="index__slider_item">
+    <div>
+      <img
+        class="index__slider_img05"
+        src="{% static '/img/index/05.png' %}"
+        alt="Окно в Мир"
+      />
+    </div>
+
+    <div class="index____slider_textBox">
+      <h1 class="index____slider_title">Мы будем благодарны любой помощи</h1>
+      <p class="index____slider_text">Станьте волонтёром</p>
+    </div>
+    <div>
+      <img
+        class="index__slider_img06"
+        src="{% static '/img/index/06.png' %}"
+        alt="Окно в Мир"
+      />
+    </div>
+  </div>
+  точки
+  <div class="index__dots">
+    <div class="index__dot index__dot_activ"></div>
+    <div class="index__dot"></div>
+    <div class="index__dot"></div>
+  </div>
+</div> -->

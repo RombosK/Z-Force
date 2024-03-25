@@ -6,6 +6,7 @@
     padding: 10px 0 10px 0;
     margin-bottom: 100px;
     background-color: rgba(23, 123, 159, 1.00);
+    min-height: 350px;
 }
 
 .projectCategory__title {
@@ -20,7 +21,7 @@
 }
 
 .projectCategory__title_img {
-    width: 350px;
+    width: 300px;
 }
 
 .projectCategory {

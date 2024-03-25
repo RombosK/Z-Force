@@ -1,33 +1,79 @@
 {% extends 'mainapp/base.html' %}
-{% load static %}
+<!--  -->
+{% load static %} {% block content %}
 
-{% block content %}
-
-{% for post in object %}
-
-<title xmlns="http://www.w3.org/1999/html">
+<!-- <title xmlns="http://www.w3.org/1999/html">
     {% block title %}
         {{ post.name }}
     {% endblock %}
-</title>
+</title> -->
 
-    <h1>{{ post.name }}</h1>
+<div class="allYouNeedis__titleBox center">
+  <h1 class="allYouNeedis__title">{{ title }}</h1>
+  <img
+    class="allYouNeedis__title_img"
+    src="{% static '/img/allYouNeedis/01.png' %}"
+    alt="Окно в Мир"
+  />
+</div>
 
-    <div class="row justify-content-center align-items-center">
-        <div class="col-md-7">
-            {% if post.photo %}
-            <p><img class="img-header-photo" src="/home{{post.photo.url}}" width="300" height="250"></p>
-            {% endif %}
-            <!-- <p> {{ post.description|linebreaks }}</p> -->
-            <h3>Необходимая сумма</h3> <p style="font-size: 25px">{{ post.donation }} руб</p>
-            <h3>Собрано</h3> <p style="font-size: 25px">{{ post.collected }} руб</p>
-            <h3>Назначение платежа</h3> <p style="font-size: 25px">{{ post.purpose }}</p>
-            <p>{{ post.created_at }}</p>
-            <button class="news__item__content_btn" onclick="location.href='{{ post.slug }}'">Подробнее</button>
-            <button type="button" onclick="location.href='{% url 'mainapp:donation' %}'">Помочь</button>
-            </div>
+<div class="allYouNeedis center">
+  {% for post in object %}
+  <div class="allYouNeedis__item">
+    <div class="allYouNeedis__item_imgBox">
+      {% if post.photo %}
+      <img class="allYouNeedis__item_img" src="/home{{post.photo.url}}" />
+      {% endif %}
     </div>
+    <div class="allYouNeedis__item_descriptionBox">
+      <p class="allYouNeedis__item_title">{{ post.name }} {{post.surname }}</p>
+      <div class="allYouNeedis__item_payment">
+        <p class="allYouNeedis__item_collectedSum">
+          {{ post.collected }}
+        </p>
+        <p class="allYouNeedis__item_totalSum">{{ post.donation }}</p>
+      </div>
+      <!-- <p class="allYouNeedis__item_collectedSum">{{ post.collected }}</p>
+      <p class="allYouNeedis__item_totalSum">{{ post.donation }}</p> -->
+      <div class="allYouNeedis__item_donations">
+        <!--  линия необходимой суумы-->
+        <div class="allYouNeedis__item_donationsProgress">
+          <!-- линия собранной суммы -->
+        </div>
+      </div>
 
-{% endfor %}
-{% include 'mainapp/includes/Back.html' %}
+      <div class="allYouNeedis__item_btnHelpBox">
+        <button
+          class="allYouNeedis__item_btnHelp"
+          onclick="location.href='{{ post.slug }}'"
+        >
+          Помочь
+        </button>
+      </div>
+      <!-- <p class="allYouNeedis__item_t">Необходимая сумма</p>
+      <p class="allYouNeedis__item_totalSum">{{ post.donation }} руб</p>
+      <p>Собрано</p>
+      <p class="allYouNeedis__item_collectedSum">{{ post.collected }} руб</p>
+      <div class="allYouNeedis__item_line">линия</div>
+      <p>Назначение платежа</p>
+      <p>{{ post.purpose }}</p>
+      <p>{{ post.created_at }}</p> -->
+
+      <p
+        onclick="location.href='{% url 'mainapp:donation' %}'"
+        class="allYouNeedis__item_history"
+      >
+        Узнать историю
+      </p>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+<!--  -->
+{% include 'mainapp/includes/paginator.html' %}
+
+<!-- {% include 'mainapp/includes/Back.html' %} -->
+<script src="{% static 'js/allyouneedis.js' %}"></script>
+
 {% endblock %}

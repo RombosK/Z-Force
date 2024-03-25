@@ -276,13 +276,14 @@ class ProjectDetailView(DetailView):
 # Контроллер нуждающихся
 # родитель ListView для удобства работы со страницами где нужна пагинация
 class AllYouNeedIsView(ListView):
-    paginate_by = 3
+    paginate_by = 6 
+    # в дальнейшем нужно поставить 9
     template_name = 'mainapp/allyouneedis.html'
     model = AllYouNeedIs
     slug_url_kwarg = 'post'
     context_object_name = 'object'
     extra_context = {
-        'title': 'Подопечные',
+        'title': 'Наши подопечные',
     }
 
 
