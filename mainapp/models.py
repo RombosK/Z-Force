@@ -106,6 +106,7 @@ class AllYouNeedIs(models.Model):
     birthdate = models.CharField(verbose_name='Год рождения', max_length=4, null=True)
     description = models.TextField(verbose_name='описание проблемы')
     short_description = models.CharField(verbose_name='краткое описание проблемы', max_length=128, blank=True)
+    # name_for_payment = models.CharField(verbose_name='напишите имя в дательном пажеде', max_length=32, blank=True)
     photo = models.ImageField(upload_to='needs_photos')
     purpose = models.CharField(verbose_name='назначение платежа', max_length=64, blank=True)
     donation = models.DecimalField(verbose_name='необходимая сумма', max_digits=12, decimal_places=0, default=0)

@@ -292,6 +292,9 @@ class AllYouNeedIsDetailView(DetailView):
     template_name = 'mainapp/allyouneedis_post.html'
     slug_url_kwarg = 'slug'
     context_object_name = 'post'
+    extra_context = {
+        'title': 'Наши подопечные',
+    }
 
     def get_object(self, queryset=None):
         return get_object_or_404(AllYouNeedIs, slug=self.kwargs[self.slug_url_kwarg])

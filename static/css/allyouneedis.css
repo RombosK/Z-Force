@@ -36,6 +36,7 @@
 
     margin-left: 20px;
     margin-right: 20px;
+    margin-bottom: 50px;
 }
 
 .allYouNeedis__item {
@@ -161,4 +162,5 @@
 
 .allYouNeedis__item_history:hover {
     color: rgba(254, 186, 166, 1.00);
+    cursor: pointer;
 }
