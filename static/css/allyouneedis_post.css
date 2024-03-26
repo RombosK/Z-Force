@@ -1,0 +1,274 @@
+.allYouNeedisPost__titleBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px 0 10px 0;
+    margin-bottom: 100px;
+    background-color: rgba(23, 123, 159, 1.00);
+    min-height: 150px;
+
+}
+
+.allYouNeedisPost__titleMain {
+    /* color: rgb(43, 43, 43); */
+    color: rgba(255, 255, 250, 1.00);
+
+    font-family: Nunito;
+    font-size: 36px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.allYouNeedisPost__title_img {
+    width: 150px;
+    padding-bottom: 35px;
+}
+
+.allYouNeedisPost {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 100px;
+}
+
+.allYouNeedisPost__mainInfo {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 5%
+}
+
+
+.allYouNeedisPost__imgBox {
+    width: 30%;
+    height: 370px;
+
+}
+
+.allYouNeedisPost__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.allYouNeedisPost__mainInfo_description {
+    display: flex;
+    flex-direction: column;
+    /* width: 60%; */
+    gap: 10px;
+    min-width: 400px;
+}
+
+
+.allYouNeedisPost__title {
+    color: rgb(43, 43, 43);
+    font-family: Nunito;
+    font-size: 36px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.allYouNeedisPost__target {
+    color: rgb(43, 43, 43);
+    font-family: Nunito;
+    font-size: 16px;
+    font-weight: 700;
+    text-align: left;
+}
+
+.allYouNeedisPost__text {
+    color: rgb(43, 43, 43);
+    font-family: Nunito;
+    font-size: 16px;
+    font-weight: 500;
+    text-align: left;
+}
+
+.allYouNeedisPost__paymentnBox {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin-left: 5%;
+
+    box-sizing: border-box;
+    border: 0.5px solid rgb(200, 198, 198);
+    box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.15);
+    background: rgba(255, 255, 250, 1.00);
+    border-radius: 15px;
+    padding: 20px 30px 10px 30px;
+}
+
+.allYouNeedisPost__payment {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.allYouNeedisPost__collectedSum {
+    color: rgba(254, 186, 166, 1.00);
+    font-family: Nunito;
+    font-size: 16px;
+    font-weight: 800;
+}
+
+.allYouNeedisPost__totalSum {
+    color: rgba(23, 123, 159, 1.00);
+    font-family: Nunito;
+    font-size: 16px;
+    font-weight: 800;
+}
+
+.allYouNeedisPost__donations {
+    position: relative;
+    height: 7px;
+    background-color: rgba(248, 248, 248, 1.00);
+    border-radius: 4px;
+}
+
+.allYouNeedisPost__donationsProgress {
+    position: absolute;
+    height: 7px;
+    background-color: rgba(254, 186, 166, 1.00);
+    border-radius: 4px;
+}
+
+.allYouNeedisPost__stillNeed {
+    margin-top: 10px;
+    color: rgba(254, 186, 166, 1.00);
+    font-family: Nunito;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.allYouNeedisPost__btnHelpBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.allYouNeedisPost__btnHelp {
+    margin-top: 20px;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 30px;
+    background: rgba(109, 176, 195, 1.00);
+
+    color: rgba(255, 255, 250, 1.00);
+    font-family: Nunito;
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
+    padding: 3px 10px;
+    width: 150px;
+
+    transition: 0.3s;
+}
+
+.allYouNeedisPost__btnHelp:hover {
+    background: rgba(254, 186, 166, 1.00);
+    color: white;
+}
+
+.allYouNeedisPost__textTargetPay {
+    margin-top: 20px;
+    color: rgb(43, 43, 43);
+    font-family: Nunito;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+
+.allYouNeedisPost__history {
+    width: 94%;
+    padding-left: 3%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    color: rgb(43, 43, 43);
+    font-family: Nunito;
+    font-size: 24px;
+    font-weight: 400;
+    text-align: justify;
+    margin-bottom: 50px;
+}
+
+
+
+.allYouNeedisPost__slider {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.allYouNeedisPost__slider_NotActive {
+    display: none !important;
+}
+
+.allYouNeedisPost__slider_imgBox {
+    width: 100%;
+}
+
+.allYouNeedisPost__slider_imgline {
+    position: relative;
+    overflow: hidden;
+    height: 500px;
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.allYouNeedisPost__slider_img {
+    position: absolute;
+    width: auto;
+    height: 100%;
+}
+
+.allYouNeedisPost__slider_imgHidden {
+    visibility: hidden;
+}
+
+.allYouNeedisPost__slider_nav {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: flex-end;
+}
+
+.allYouNeedisPost__slider_navLeft {
+    border: 20px solid transparent;
+    border-right: 20px solid rgba(109, 176, 195, 1.00);
+}
+
+.allYouNeedisPost__slider_navRight {
+    border: 20px solid transparent;
+    border-left: 20px solid rgba(109, 176, 195, 1.00);
+}
+
+.allYouNeedisPost__slider_navLeft:hover {
+    border: 20px solid transparent;
+    border-right: 20px solid rgba(254, 186, 166, 1.00);
+}
+
+.allYouNeedisPost__slider_navRight:hover {
+    border: 20px solid transparent;
+    border-left: 20px solid rgba(254, 186, 166, 1.00);
+}
+
+.allYouNeedisPost__slider_navNumber {
+    box-sizing: border-box;
+    color: rgb(43, 43, 43);
+    font-family: Nunito;
+    font-size: 36px;
+    font-weight: 700;
+}

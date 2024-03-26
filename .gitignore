@@ -161,3 +161,9 @@ cython_debug/
 media/
 .idea
 .xml
+/mainapp/migrations/0002_imagesallyouneedis.py
+/mainapp/migrations/0001_initial.py
+/authapp/migrations/0001_initial.py
+/mainapp/migrations/*
+/authapp/migrations/*
+/data.json
