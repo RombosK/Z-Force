@@ -1,7 +1,7 @@
 {% extends 'mainapp/base.html' %}
 <!--  -->
 {% load static %} {% block content %}
-
+{% load pymorphy_tags %}
 <!-- <title xmlns="http://www.w3.org/1999/html">
     {% block title %}
         {{ post.name }}
@@ -45,7 +45,7 @@
           class="allYouNeedis__item_btnHelp"
           onclick="location.href='{% url 'mainapp:donation' %}'"
         >
-          Помочь
+          Помочь {{ post.name|inflect_to_dative }}
         </button>
       </div>
       <!-- <p class="allYouNeedis__item_t">Необходимая сумма</p>
