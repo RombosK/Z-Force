@@ -7,6 +7,19 @@
 </title>
 
 {% block content %}
+<!-- шапка страницы -->
+<div class="projectsPost__titleBox center">
+  <h1 class="projectsPost__titleMain" onclick="history.back();">
+    {{ post.category }}
+  </h1>
+  <img
+    class="projectsPost__title_img"
+    src="{% static '/img/projects/project3.png' %}"
+    alt="Окно в Мир"
+  />
+</div>
+<!-- <p class="projects__subTitle">{{post.category}}</p> -->
+
 <h1 class="projectsPost_title">{{ post.name }}</h1>
 
 <div class="projectsPost_article center">
@@ -64,12 +77,6 @@
   </div>
 </div>
 
-<!-- <div class="projectsPost_slider center">
-  {% for item in image %}
-  <img src="/home{{ item.image.url }}" width="300" height="250" />
-  {% endfor %}
- -->
-
 <!--  -->
 {% include 'mainapp/includes/Back.html' %}
 <!--  -->
@@ -77,19 +84,3 @@
 <script src="{% static 'js/projects_post.js' %}"></script>
 
 {% endblock %}
-
-<!-- <div class="row justify-content-center align-items-center">
-    <div class="col-md-7">
-        {% if post.photo %}
-        <p><img class="img-header-photo" src="/home{{post.photo.url}}" width="300" height="250"></p>
-        {% endif %}
-        <p> {{ post.description|linebreaks }}</p>
-        <h3>Необходимая сумма</h3>
-        <p style="font-size: 25px">{{ post.donation }} руб</p>
-        <h3>Собрано</h3>
-        <p style="font-size: 25px">{{ post.collected }} руб</p>
-        <p style="font-size: 25px">Назначение платежа: {{ post.purpose }}</p>
-        <p>{{ post.created_at }}</p>
-        <button type="button" onclick="location.href='{% url 'mainapp:donation' %}'">Помочь</button>
-        </div>
-</div> -->

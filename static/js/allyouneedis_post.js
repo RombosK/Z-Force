@@ -91,5 +91,7 @@ leftArrowElem.addEventListener("click", () => {
   
 //   image.style.width = '200%';
 //   image.style.height = '200%';
-  
+//   image.style.position = 'absolute';
+//   image.style.top = '0';
+//   image.style.left = '0';
 //   }

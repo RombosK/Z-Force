@@ -1,11 +1,40 @@
-.projects__title {
+/* шапка страницы */
+.projects__titleBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px 0 10px 0;
+    margin-bottom: 30px;
+    background-color: rgba(23, 123, 159, 1.00);
+    height: 150px;
+}
+
+.projects__titleMain {
+    color: rgba(255, 255, 250, 1.00);
+    font-family: Nunito;
+    font-size: 36px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.projects__titleMain:hover {
+    color: rgba(254, 186, 166, 1.00);
+}
+
+.projects__title_img {
+    width: 150px;
+    padding-bottom: 15px;
+}
+
+/* .projects__title {
     color: rgb(43, 43, 43);
     font-family: Nunito;
     font-size: 48px;
     font-weight: 700;
     text-align: center;
     margin-bottom: 30px;
-}
+} */
 
 .projects__subTitle {
     color: rgba(23, 123, 159, 1.00);
@@ -102,6 +131,20 @@
 
 /* адаптация */
 @media (min-width: 700px) and (max-width: 1120px) {
+
+    .projects__titleBox {
+        height: 100px;
+    }
+    
+    .projects__titleMain {
+        font-size: 26px;
+    }
+    
+    .projects__title_img {
+        width: 100px;
+        padding-bottom: 5px;
+    }
+
     .projects {
         display: grid;
         grid-template-columns: repeat(2, 300px);
@@ -113,6 +156,20 @@
 
 
 @media (min-width: 400px) and (max-width: 699px) {
+
+    .projects__titleBox {
+        height: 100px;
+    }
+    
+    .projects__titleMain {
+        font-size: 26px;
+    }
+    
+    .projects__title_img {
+        width: 80px;
+        padding-bottom: 5px;
+    }
+
     .projects {
         display: grid;
         grid-template-columns: repeat(1, 300px);
@@ -132,6 +189,20 @@
 }
 
 @media (min-width: 320px) and (max-width: 400px) {
+
+    .projects__titleBox {
+        height: 100px;
+    }
+    
+    .projects__titleMain {
+        font-size: 26px;
+    }
+    
+    .projects__title_img {
+        width: 80px;
+        padding-bottom: 5px;
+    }
+
     .projects {
         display: grid;
         grid-template-columns: repeat(1, 250px);

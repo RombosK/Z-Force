@@ -7,7 +7,8 @@
     padding: 10px 0 10px 0;
     margin-bottom: 100px;
     background-color: rgba(23, 123, 159, 1.00);
-    min-height: 350px;
+    /* min-height: 350px; */
+    height: 250px;
 }
 
 .allYouNeedis__title {
@@ -20,8 +21,8 @@
 }
 
 .allYouNeedis__title_img {
-    width: 350px;
-    padding-bottom: 65px;
+    width: 250px;
+    padding-bottom: 40px;
 }
 
 /* обертка для контента */
@@ -136,8 +137,8 @@
     font-size: 18px;
     font-weight: 600;
     text-align: center;
-    padding: 3px 10px;
-    width: 150px;
+    padding: 5px 15px;
+    min-width: 150px;
 
     transition: 0.3s;
 }
@@ -166,12 +167,12 @@
 @media (min-width: 1035px) and (max-width: 1420px) {
 
     .allYouNeedis__titleBox {
-        min-height: 250px;
+        /* min-height: 250px; */
+        height: 200px;
     }
 
     .allYouNeedis__title_img {
-        width: 300px;
-        padding-bottom: 45px;
+        width: 200px;
     }
 
     .allYouNeedis__item {
@@ -183,7 +184,9 @@
 @media (min-width: 768px) and (max-width: 1034px) {
 
     .allYouNeedis__titleBox {
-        min-height: 200px;
+        /* min-height: 200px; */
+        height: 200px;
+
     }
 
     .allYouNeedis__title {
@@ -191,8 +194,7 @@
     }
 
     .allYouNeedis__title_img {
-        width: 250px;
-        padding-bottom: 45px;
+        width: 200px;
     }
 
     .allYouNeedis__item {
@@ -203,7 +205,7 @@
 @media (min-width: 620px) and (max-width: 767px) {
 
     .allYouNeedis__titleBox {
-        min-height: 100px;
+        height: 100px;
     }
 
     .allYouNeedis__title {
@@ -212,12 +214,13 @@
 
     .allYouNeedis__title_img {
         width: 100px;
-        padding-bottom: 25px;
+        padding-bottom: 5px;
+
     }
 
     .allYouNeedis {
         column-gap: 2%;
-    
+
         margin-left: 20px;
         margin-right: 20px;
         margin-bottom: 50px;
@@ -232,7 +235,7 @@
 @media (min-width: 500px) and (max-width: 619px) {
 
     .allYouNeedis__titleBox {
-        min-height: 100px;
+        height: 100px;
     }
 
     .allYouNeedis__title {
@@ -246,7 +249,7 @@
 
     .allYouNeedis {
         column-gap: 2%;
-    
+
         margin-left: 20px;
         margin-right: 20px;
         margin-bottom: 50px;
@@ -261,7 +264,7 @@
 @media (min-width: 390px) and (max-width: 499px) {
 
     .allYouNeedis__titleBox {
-        min-height: 80px;
+        height: 80px;
     }
 
     .allYouNeedis__title {
@@ -286,7 +289,7 @@
 @media (min-width: 320px) and (max-width: 389px) {
 
     .allYouNeedis__titleBox {
-        min-height: 80px;
+        height: 80px;
     }
 
     .allYouNeedis__title {

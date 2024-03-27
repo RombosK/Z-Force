@@ -7,7 +7,7 @@
     padding: 10px 0 10px 0;
     margin-bottom: 100px;
     background-color: rgba(23, 123, 159, 1.00);
-    min-height: 150px;
+    height: 150px;
 }
 
 .allYouNeedisPost__titleMain {
@@ -16,6 +16,10 @@
     font-size: 36px;
     font-weight: 700;
     text-align: center;
+}
+
+.allYouNeedisPost__titleMain:hover {
+    color: rgba(254, 186, 166, 1.00);
 }
 
 .allYouNeedisPost__title_img {
@@ -165,8 +169,8 @@
     font-size: 18px;
     font-weight: 600;
     text-align: center;
-    padding: 3px 10px;
-    width: 150px;
+    padding: 5px 15px;
+    min-width: 150px;
 
     transition: 0.3s;
 }
@@ -208,6 +212,7 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+    position: relative;
 }
 
 .allYouNeedisPost__slider_NotActive {
@@ -336,7 +341,7 @@
 @media (min-width: 450px) and (max-width: 768px) {
 
     .allYouNeedisPost__titleBox {
-        min-height: 150px;
+        height: 100px;
     }
 
     .allYouNeedisPost__titleMain {
@@ -345,6 +350,7 @@
 
     .allYouNeedisPost__title_img {
         width: 100px;
+        padding-bottom: 15px;
     }
 
 
@@ -406,7 +412,7 @@
 @media (min-width: 320px) and (max-width: 449px) {
 
     .allYouNeedisPost__titleBox {
-        min-height: 100px;
+        height: 80px;
     }
 
     .allYouNeedisPost__titleMain {

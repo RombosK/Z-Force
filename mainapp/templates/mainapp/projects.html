@@ -4,76 +4,51 @@
 <title>{% block title %} {{ title }} {% endblock %}</title>
 
 {% block content %}
-
-<h1 class="projects__title">{{ title }}</h1>
-
-
-<!-- заголовок категории -->
-<!-- <div class="projects__subTitleBox">
-  {% for project_item in post %}
-  <h1 class="projects__subTitle">{{project_item.category}}</h1>
-  {% endfor %}
-</div> -->
+<!-- шапка страницы -->
+<div class="projects__titleBox center">
+  <a class="projects__titleMain" href="{% url 'mainapp:projects_category' %}"
+    >{{ title }}</a
+  >
+  <img
+    class="projects__title_img"
+    src="{% static '/img/projects/project3.png' %}"
+    alt="Окно в Мир"
+  />
+</div>
 
 <p class="projects__subTitle">{{category}}</p>
 
-
-
 <div class="projects">
-    {% for project_item in post %}
-    <div class="projects__item">
-      <div class="projects__item_imgBox">
-        {% if project_item.photo %}
-        <img
-          class="projects__item_img"
-          src="/home{{project_item.photo.url}}"
-          width="300"
-          height="250"
-        />
-      </div>
-  
-      {% endif %}
-      <div class="projects__item_textBox">
-        <div class="projects__item_title">{{ project_item.name }}</div>
-        <!-- <button
-            type="button"
-            onclick="location.href='{% url 'mainapp:projects' project_item.pk %}'"
-          >
-            Смотреть
-          </button> -->
-        <div
-          class="projects__item_btn"
-          onclick="location.href='{% url 'mainapp:projects_post' project_item.slug %}'"
-        >
-          <!-- <img
-              class="projectCategory__item_arrow"
-              src="{% static '/img/projects/arrow.png' %}"
-              alt="Окно в Мир"
-            /> -->
-          &#10148;
-        </div>
+  {% for project_item in post %}
+  <div class="projects__item">
+    <div class="projects__item_imgBox">
+      {% if project_item.photo %}
+      <img
+        class="projects__item_img"
+        src="/home{{project_item.photo.url}}"
+        width="300"
+        height="250"
+      />
+    </div>
+
+    {% endif %}
+    <div class="projects__item_textBox">
+      <div class="projects__item_title">{{ project_item.name }}</div>
+      <div
+        class="projects__item_btn"
+        onclick="location.href='{% url 'mainapp:projects_post' project_item.slug %}'"
+      >
+        &#10148;
       </div>
     </div>
-    {% endfor %}
   </div>
+  {% endfor %}
+</div>
 
 <!--  -->
-{% include 'mainapp/includes/paginator.html' %} 
+{% include 'mainapp/includes/paginator.html' %}
 <!--  -->
 {% include 'mainapp/includes/Back.html' %}
 
 <!--  -->
-<script>
-//   const subTitleElem = document.querySelector(".projects__subTitle").textContent;
-//   document.querySelector(".projects__subTitleBox").textContent = subTitleElem;
-</script>
-<!--  -->
 {% endblock %}
-
-<!--  -->
-<!-- <button
-type="button"
-onclick="location.href='{% url 'mainapp:projects_post' project_item.slug %}'"
->
-Читать
-</button> -->

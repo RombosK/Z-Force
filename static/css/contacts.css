@@ -8,6 +8,7 @@
 } */
 
 .contacts__titleBlock {
+    padding-top: 67px;
     padding-bottom: 80px;
 
     display: flex;

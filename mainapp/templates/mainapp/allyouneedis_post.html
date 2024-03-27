@@ -2,6 +2,8 @@
 <!--  -->
 {% load static %}
 <!--  -->
+{% load pymorphy_tags %}
+<!--  -->
 
 <title xmlns="http://www.w3.org/1999/html">
   {% block title %} {{ post.name }} {% endblock %}
@@ -10,7 +12,11 @@
 {% block content %}
 <!-- шапка страницы -->
 <div class="allYouNeedisPost__titleBox center">
-  <h1 class="allYouNeedisPost__titleMain">{{ title }}</h1>
+  <a
+    class="allYouNeedisPost__titleMain"
+    href="{% url 'mainapp:allyouneedis' %}"
+    >{{ title }}</a
+  >
   <img
     class="allYouNeedisPost__title_img"
     src="{% static '/img/allYouNeedis/01.png' %}"
@@ -33,7 +39,9 @@
         {{ post.name }} {{ post.surname }}
       </h1>
       <p class="allYouNeedisPost__target">{{ post.short_description }}</p>
-      <p class="allYouNeedisPost__text allYouNeedisPost__age">{{ post.birthdate }}</p>
+      <p class="allYouNeedisPost__text allYouNeedisPost__age">
+        {{ post.birthdate }}
+      </p>
       <p class="allYouNeedisPost__text">Регион: {{ post.city }}</p>
 
       <!-- блок о суммах -->
@@ -57,7 +65,7 @@
             class="allYouNeedisPost__btnHelp"
             onclick="location.href='{% url 'mainapp:donation' %}'"
           >
-            Помочь 
+            Помочь {{ post.name|inflect_to_dative }}
           </button>
         </div>
         <!-- назначение платежа -->
@@ -70,32 +78,32 @@
   <!-- конец блока с фото и информацией о сборе -->
 
   <!-- история ребенка -->
-  <div class="allYouNeedisPost__history center">{{ post.description|linebreaks }}</div>
+  <div class="allYouNeedisPost__history center">
+    {{ post.description|linebreaks }}
+  </div>
 
-    <!-- слайлер -->
-    <div class="allYouNeedisPost__slider">
-      <!-- фото -->
-      <div class="allYouNeedisPost__slider_imgBox">
-        <div class="allYouNeedisPost__slider_imgline">
-          {% for item in image %}
-          <img
-            class="allYouNeedisPost__slider_img allYouNeedisPost__slider_imgHidden"
-            src="{{ item.image.url }}"
-            onclick="zoomIn()"
-          />
-          {% endfor %}
-        </div>
-      </div>
-      <!-- стрелки и номера -->
-      <div class="allYouNeedisPost__slider_nav">
-        <p class="allYouNeedisPost__slider_navLeft"></p>
-        <p class="allYouNeedisPost__slider_navNumber"></p>
-        <p class="allYouNeedisPost__slider_navRight"></p>
+  <!-- слайлер -->
+  <div class="allYouNeedisPost__slider">
+    <!-- фото -->
+    <div class="allYouNeedisPost__slider_imgBox">
+      <div class="allYouNeedisPost__slider_imgline">
+        {% for item in image %}
+        <img
+          class="allYouNeedisPost__slider_img allYouNeedisPost__slider_imgHidden"
+          src="{{ item.image.url }}"
+          onclick="zoomIn()"
+        />
+        {% endfor %}
       </div>
     </div>
-
+    <!-- стрелки и номера -->
+    <div class="allYouNeedisPost__slider_nav">
+      <p class="allYouNeedisPost__slider_navLeft"></p>
+      <p class="allYouNeedisPost__slider_navNumber"></p>
+      <p class="allYouNeedisPost__slider_navRight"></p>
+    </div>
+  </div>
 </div>
-
 
 {% include 'mainapp/includes/Back.html' %}
 <!--  -->
@@ -103,7 +111,3 @@
 <script src="{% static 'js/allyouneedis_post.js' %}"></script>
 
 {% endblock %}
-
-
-
-

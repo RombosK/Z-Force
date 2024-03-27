@@ -8,6 +8,15 @@
 </title>
 
 {% block content %}
+<!-- шапка страницы -->
+<div class="newsPost__titleBox center">
+  <a class="newsPost__titleMain" href="{% url 'mainapp:news' %}">{{ title }}</a>
+  <img
+    class="newsPost__title_img"
+    src="{% static '/img/news/news2.png' %}"
+    alt="Окно в Мир"
+  />
+</div>
 
 <!--шапка статьи  -->
 <div class="newsPost center">

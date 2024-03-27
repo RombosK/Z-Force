@@ -4,9 +4,9 @@
 <!--  -->
 <title>{% block title %} {{ title }} {% endblock %}</title>
 
-
 {% block content %}
 
+<!-- шапка страницы -->
 <div class="projectCategory__titleBox center">
   <h1 class="projectCategory__title">{{ title }}</h1>
   <img
@@ -16,9 +16,12 @@
   />
 </div>
 
+<!-- основной контейнер -->
 <div class="projectCategory">
   {% for project_item in post %}
+  <!-- item категории проекта -->
   <div class="projectCategory__item">
+    <!-- фото категории проекта -->
     <div class="projectCategory__item_imgBox">
       {% if project_item.photo %}
       <img
@@ -26,31 +29,20 @@
         src="/home{{project_item.photo.url}}"
       />
     </div>
-
     {% endif %}
+    <!-- название категории проекта -->
     <div class="projectCategory__item_textBox">
       <div class="projectCategory__item_title">{{ project_item.name }}</div>
-      <!-- <button
-            type="button"
-            onclick="location.href='{% url 'mainapp:projects' project_item.pk %}'"
-          >
-            Смотреть
-          </button> -->
+      <!-- стрелка для перехода в категорию -->
       <div
         class="projectCategory__item_btn"
         onclick="location.href='{% url 'mainapp:projects' project_item.pk %}'"
       >
-        <!-- <img
-              class="projectCategory__item_arrow"
-              src="{% static '/img/projects/arrow.png' %}"
-              alt="Окно в Мир"
-            /> -->
         &#10148;
       </div>
     </div>
   </div>
   {% endfor %}
 </div>
-<!--  -->
 <!--  -->
 {% endblock %}

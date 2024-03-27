@@ -83,7 +83,7 @@ class PartnersView(ListView):
     template_name = 'mainapp/partners.html'
     context_object_name = 'object'
     extra_context = {
-        'title': 'Партнеры',
+        'title': 'Наши партнеры',
     }
 
 
@@ -196,6 +196,9 @@ class NewsDetailView(DetailView):
     template_name = 'mainapp/news_post.html'
     slug_url_kwarg = 'post_slug'
     context_object_name = 'post'
+    extra_context = {
+        'title': 'Новости',
+    }
 
     def get_object(self, queryset=None):
         return get_object_or_404(News, slug=self.kwargs[self.slug_url_kwarg])
@@ -240,7 +243,7 @@ class ProjectView(ListView):
     pk_url_kwarg = 'pk'
     context_object_name = 'post'
     extra_context = {
-        'title': 'Проекты',
+        'title': 'Наши проекты',
     }
     # В get_queryset переопределяется object_list в котором содержится наименование проектов отсортированный по
     # категориям
