@@ -3,7 +3,7 @@
 const totalSum = [];
 const collectedSum = [];
 
-
+// массив с суммой сбора
 [...document.querySelectorAll(".allYouNeedis__item_totalSum")].forEach(
   (item) => {
     let temp = item.innerHTML;
@@ -12,6 +12,7 @@ const collectedSum = [];
   }
 );
 
+// массив с собранной суммой
 [...document.querySelectorAll(".allYouNeedis__item_collectedSum")].forEach(
   (item) => {
     let temp = item.innerHTML;
@@ -20,18 +21,15 @@ const collectedSum = [];
   }
 );
 
-console.log(totalSum);
-console.log(collectedSum);
 
 const percentages = [];
-
+// массив собранной суммы в процентах
 for (let i = 0; i < totalSum.length; i++) {
   percentages.push(((collectedSum[i] / totalSum[i]) * 100).toFixed(2));
 }
 
-console.log(percentages);
 
-
+// задание свойства ширины блока (в процентаХ)
 const percentagesSet = document.querySelectorAll(
   ".allYouNeedis__item_donationsProgress"
 );
@@ -40,13 +38,7 @@ for (let i = 0; i < percentagesSet.length; i++) {
   percentagesSet[i].style.width = percentages[i] + "%";
 }
 
-for (let i = 0; i < totalSum.length; i++) {
-  percentages.push(
-    ((collectedSum[i].split(" ")[0] / totalSum[i].split(" ")[0]) * 100).toFixed(
-      2
-    )
-  );
-}
+
 
 
 

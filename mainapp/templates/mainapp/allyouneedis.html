@@ -1,13 +1,19 @@
 {% extends 'mainapp/base.html' %}
 <!--  -->
-{% load static %} {% block content %}
-{% load pymorphy_tags %}
-<!-- <title xmlns="http://www.w3.org/1999/html">
-    {% block title %}
-        {{ post.name }}
-    {% endblock %}
-</title> -->
+{% load static %}
 
+<!--  -->
+{% load pymorphy_tags %}
+<!--  -->
+<!-- <title xmlns="http://www.w3.org/1999/html">
+  {% block title %} {{ post.name }} {% endblock %}
+</title> -->
+<!--  -->
+{% block content %}
+
+
+
+<!-- шапка страницы -->
 <div class="allYouNeedis__titleBox center">
   <h1 class="allYouNeedis__title">{{ title }}</h1>
   <img
@@ -19,12 +25,15 @@
 
 <div class="allYouNeedis center">
   {% for post in object %}
+  <!-- блок для item -->
   <div class="allYouNeedis__item">
+    <!-- фото item -->
     <div class="allYouNeedis__item_imgBox">
       {% if post.photo %}
       <img class="allYouNeedis__item_img" src="/home{{post.photo.url}}" />
       {% endif %}
     </div>
+    <!-- блок с информацие о подопечном и о суммах  -->
     <div class="allYouNeedis__item_descriptionBox">
       <p class="allYouNeedis__item_title">{{ post.name }} {{post.surname }}</p>
       <div class="allYouNeedis__item_payment">
@@ -39,7 +48,7 @@
           <!-- линия собранной суммы -->
         </div>
       </div>
-
+      <!-- кнопка помочь -->
       <div class="allYouNeedis__item_btnHelpBox">
         <button
           class="allYouNeedis__item_btnHelp"
@@ -48,15 +57,7 @@
           Помочь {{ post.name|inflect_to_dative }}
         </button>
       </div>
-      <!-- <p class="allYouNeedis__item_t">Необходимая сумма</p>
-      <p class="allYouNeedis__item_totalSum">{{ post.donation }} руб</p>
-      <p>Собрано</p>
-      <p class="allYouNeedis__item_collectedSum">{{ post.collected }} руб</p>
-      <div class="allYouNeedis__item_line">линия</div>
-      <p>Назначение платежа</p>
-      <p>{{ post.purpose }}</p>
-      <p>{{ post.created_at }}</p> -->
-
+      <!-- ссылка на страницу с более подробной информацией -->
       <p
         onclick="location.href='{{ post.slug }}'"
         class="allYouNeedis__item_history"
@@ -72,6 +73,7 @@
 {% include 'mainapp/includes/paginator.html' %}
 
 <!-- {% include 'mainapp/includes/Back.html' %} -->
+<!-- скрипт -->
 <script src="{% static 'js/allyouneedis.js' %}"></script>
 
 {% endblock %}

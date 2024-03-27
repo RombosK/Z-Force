@@ -1,3 +1,4 @@
+/* шапка страницы */
 .allYouNeedisPost__titleBox {
     display: flex;
     flex-direction: row;
@@ -7,18 +8,14 @@
     margin-bottom: 100px;
     background-color: rgba(23, 123, 159, 1.00);
     min-height: 150px;
-
 }
 
 .allYouNeedisPost__titleMain {
-    /* color: rgb(43, 43, 43); */
     color: rgba(255, 255, 250, 1.00);
-
     font-family: Nunito;
     font-size: 36px;
     font-weight: 700;
     text-align: center;
-    margin-bottom: 50px;
 }
 
 .allYouNeedisPost__title_img {
@@ -26,6 +23,7 @@
     padding-bottom: 35px;
 }
 
+/* контент */
 .allYouNeedisPost {
     display: flex;
     flex-direction: column;
@@ -35,6 +33,7 @@
     margin-bottom: 100px;
 }
 
+/* блок с фото и информацией о сборе */
 .allYouNeedisPost__mainInfo {
     display: flex;
     flex-direction: row;
@@ -42,11 +41,10 @@
     gap: 5%
 }
 
-
+/* фото  */
 .allYouNeedisPost__imgBox {
     width: 30%;
     height: 370px;
-
 }
 
 .allYouNeedisPost__img {
@@ -55,6 +53,7 @@
     object-fit: cover;
 }
 
+/* имя, прогресс линия, кнопка */
 .allYouNeedisPost__mainInfo_description {
     display: flex;
     flex-direction: column;
@@ -89,6 +88,7 @@
     text-align: left;
 }
 
+/* блок о суммах */
 .allYouNeedisPost__paymentnBox {
     display: flex;
     flex-direction: column;
@@ -123,6 +123,7 @@
     font-weight: 800;
 }
 
+/* програсс линия */
 .allYouNeedisPost__donations {
     position: relative;
     height: 7px;
@@ -145,6 +146,7 @@
     font-weight: 700;
 }
 
+/* книпка "помочь" */
 .allYouNeedisPost__btnHelpBox {
     display: flex;
     flex-direction: row;
@@ -185,7 +187,7 @@
 
 .allYouNeedisPost__history {
     width: 94%;
-    padding-left: 3%;
+    margin-left: 3%;
     display: flex;
     flex-direction: column;
     gap: 30px;
@@ -198,8 +200,7 @@
     margin-bottom: 50px;
 }
 
-
-
+/* слайдер */
 .allYouNeedisPost__slider {
     display: flex;
     flex-direction: column;
@@ -271,4 +272,204 @@
     font-family: Nunito;
     font-size: 36px;
     font-weight: 700;
+}
+
+
+
+/* адаптация */
+@media (min-width: 1000px) and (max-width: 1420px) {
+
+    .allYouNeedisPost__imgBox {
+        width: 40%;
+    }
+}
+
+
+@media (min-width: 768px) and (max-width: 999px) {
+
+    .allYouNeedisPost__imgBox {
+        width: 50%;
+        /* height: 250px; */
+    }
+
+    .allYouNeedisPost__mainInfo_description {
+        min-width: 300px;
+    }
+
+    .allYouNeedisPost__title {
+        margin-bottom: 20px;
+    }
+
+    .allYouNeedisPost__slider_imgBox {
+        width: 80%;
+    }
+
+    .allYouNeedisPost__slider_imgline {
+        height: 350px;
+    }
+
+    .allYouNeedisPost__slider_navLeft {
+        border: 15px solid transparent;
+        border-right: 15px solid rgba(109, 176, 195, 1.00);
+    }
+
+    .allYouNeedisPost__slider_navRight {
+        border: 15px solid transparent;
+        border-left: 15px solid rgba(109, 176, 195, 1.00);
+    }
+
+    .allYouNeedisPost__slider_navLeft:hover {
+        border: 15px solid transparent;
+        border-right: 15px solid rgba(254, 186, 166, 1.00);
+    }
+
+    .allYouNeedisPost__slider_navRight:hover {
+        border: 15px solid transparent;
+        border-left: 15px solid rgba(254, 186, 166, 1.00);
+    }
+
+    .allYouNeedisPost__slider_navNumber {
+        font-size: 30px;
+    }
+}
+
+@media (min-width: 450px) and (max-width: 768px) {
+
+    .allYouNeedisPost__titleBox {
+        min-height: 150px;
+    }
+
+    .allYouNeedisPost__titleMain {
+        font-size: 30px;
+    }
+
+    .allYouNeedisPost__title_img {
+        width: 100px;
+    }
+
+
+    .allYouNeedisPost__mainInfo {
+        flex-direction: column;
+        align-items: center;
+        gap: 5%
+    }
+
+    .allYouNeedisPost__imgBox {
+        width: 96%;
+        /* height: 250px; */
+    }
+
+    .allYouNeedisPost__mainInfo_description {
+        min-width: 300px;
+        width: 96%;
+    }
+
+    .allYouNeedisPost__title {
+        margin-bottom: 20px;
+    }
+
+    .allYouNeedisPost__history {
+        width: 96%;
+        margin-left: 2%;
+        font-size: 20px;
+    }
+
+    .allYouNeedisPost__slider_imgline {
+        height: 250px;
+    }
+
+    .allYouNeedisPost__slider_navLeft {
+        border: 10px solid transparent;
+        border-right: 10px solid rgba(109, 176, 195, 1.00);
+    }
+
+    .allYouNeedisPost__slider_navRight {
+        border: 10px solid transparent;
+        border-left: 10px solid rgba(109, 176, 195, 1.00);
+    }
+
+    .allYouNeedisPost__slider_navLeft:hover {
+        border: 10px solid transparent;
+        border-right: 10px solid rgba(254, 186, 166, 1.00);
+    }
+
+    .allYouNeedisPost__slider_navRight:hover {
+        border: 10px solid transparent;
+        border-left: 10px solid rgba(254, 186, 166, 1.00);
+    }
+
+    .allYouNeedisPost__slider_navNumber {
+        font-size: 26px;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 449px) {
+
+    .allYouNeedisPost__titleBox {
+        min-height: 100px;
+    }
+
+    .allYouNeedisPost__titleMain {
+        font-size: 22px;
+    }
+
+    .allYouNeedisPost__title_img {
+        width: 60px;
+        padding-bottom: 5px;
+    }
+
+
+    .allYouNeedisPost__mainInfo {
+        flex-direction: column;
+        align-items: center;
+        gap: 5%
+    }
+
+    .allYouNeedisPost__imgBox {
+        width: 96%;
+        height: 250px;
+    }
+
+    .allYouNeedisPost__mainInfo_description {
+        min-width: 280px;
+        width: 96%;
+    }
+
+    .allYouNeedisPost__title {
+        margin-bottom: 20px;
+    }
+
+    .allYouNeedisPost__history {
+        width: 96%;
+        margin-left: 2%;
+        font-size: 18px;
+    }
+
+    .allYouNeedisPost__slider_imgline {
+        height: 150px;
+    }
+
+    .allYouNeedisPost__slider_navLeft {
+        border: 10px solid transparent;
+        border-right: 10px solid rgba(109, 176, 195, 1.00);
+    }
+
+    .allYouNeedisPost__slider_navRight {
+        border: 10px solid transparent;
+        border-left: 10px solid rgba(109, 176, 195, 1.00);
+    }
+
+    .allYouNeedisPost__slider_navLeft:hover {
+        border: 10px solid transparent;
+        border-right: 10px solid rgba(254, 186, 166, 1.00);
+    }
+
+    .allYouNeedisPost__slider_navRight:hover {
+        border: 10px solid transparent;
+        border-left: 10px solid rgba(254, 186, 166, 1.00);
+    }
+
+    .allYouNeedisPost__slider_navNumber {
+        font-size: 20px;
+    }
 }

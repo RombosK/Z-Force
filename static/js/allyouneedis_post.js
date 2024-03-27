@@ -22,19 +22,21 @@ const stillNeed = totalSum - collectedSum;
 document.querySelector(".allYouNeedisPost__stillNeed").innerHTML =
   "Осталось собрать " + stillNeed;
 
-const age = new Date().getFullYear() - document.querySelector(".allYouNeedisPost__age").innerHTML;
+const age =
+  new Date().getFullYear() -
+  document.querySelector(".allYouNeedisPost__age").innerHTML;
 
-document.querySelector(".allYouNeedisPost__age").innerHTML =
-  "Возраст: "  + age;
-
-
-
+document.querySelector(".allYouNeedisPost__age").innerHTML = "Возраст: " + age;
 
 // елемент слайдера, чтобы не отображь его при отсутствии фото
 const sliderElem = document.querySelector(".allYouNeedisPost__slider");
 // стрелки
-const leftArrowElem = document.querySelector(".allYouNeedisPost__slider_navLeft");
-const rightArrowElem = document.querySelector(".allYouNeedisPost__slider_navRight");
+const leftArrowElem = document.querySelector(
+  ".allYouNeedisPost__slider_navLeft"
+);
+const rightArrowElem = document.querySelector(
+  ".allYouNeedisPost__slider_navRight"
+);
 //  массив фото
 const imagesElem = document.querySelectorAll(".allYouNeedisPost__slider_img");
 // элемент для фобавления номера текущего фото
@@ -82,3 +84,12 @@ leftArrowElem.addEventListener("click", () => {
     numberElem.textContent = index + 1 + " из " + imagesElem.length;
   }
 });
+
+// function zoomIn() {
+
+//   var image = document.querySelector('.allYouNeedisPost__slider_img ');
+  
+//   image.style.width = '200%';
+//   image.style.height = '200%';
+  
+//   }

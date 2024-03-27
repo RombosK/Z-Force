@@ -1,3 +1,4 @@
+/* шапка страницы */
 .allYouNeedis__titleBox {
     display: flex;
     flex-direction: row;
@@ -7,18 +8,15 @@
     margin-bottom: 100px;
     background-color: rgba(23, 123, 159, 1.00);
     min-height: 350px;
-
 }
 
 .allYouNeedis__title {
-    /* color: rgb(43, 43, 43); */
     color: rgba(255, 255, 250, 1.00);
 
     font-family: Nunito;
     font-size: 48px;
     font-weight: 700;
     text-align: center;
-    margin-bottom: 50px;
 }
 
 .allYouNeedis__title_img {
@@ -26,6 +24,7 @@
     padding-bottom: 65px;
 }
 
+/* обертка для контента */
 .allYouNeedis {
     display: flex;
     flex-direction: row;
@@ -39,6 +38,7 @@
     margin-bottom: 50px;
 }
 
+/* блок для item */
 .allYouNeedis__item {
     display: flex;
     flex: 0 0 25%;
@@ -52,23 +52,21 @@
     background: rgba(255, 255, 250, 1.00);
 }
 
+/* фото item */
 .allYouNeedis__item_imgBox {
     width: 90%;
     height: 300px;
     display: flex;
     justify-content: center;
-
 }
 
 .allYouNeedis__item_img {
     width: 100%;
-    /* height: 300px; */
     object-fit: cover;
-    /* border-radius: 0 0 20px 20px; */
-    /* padding-left: 5%; */
     padding-top: 10px;
 }
 
+/* блок с информацие о подопечном и о суммах */
 .allYouNeedis__item_descriptionBox {
     width: 80%;
     display: flex;
@@ -149,8 +147,6 @@
     color: white;
 }
 
-
-
 .allYouNeedis__item_history {
     color: rgb(43, 43, 43);
     font-family: Nunito;
@@ -163,4 +159,150 @@
 .allYouNeedis__item_history:hover {
     color: rgba(254, 186, 166, 1.00);
     cursor: pointer;
+}
+
+
+/* адаптация */
+@media (min-width: 1035px) and (max-width: 1420px) {
+
+    .allYouNeedis__titleBox {
+        min-height: 250px;
+    }
+
+    .allYouNeedis__title_img {
+        width: 300px;
+        padding-bottom: 45px;
+    }
+
+    .allYouNeedis__item {
+        flex: 0 0 30%;
+    }
+}
+
+
+@media (min-width: 768px) and (max-width: 1034px) {
+
+    .allYouNeedis__titleBox {
+        min-height: 200px;
+    }
+
+    .allYouNeedis__title {
+        font-size: 38px;
+    }
+
+    .allYouNeedis__title_img {
+        width: 250px;
+        padding-bottom: 45px;
+    }
+
+    .allYouNeedis__item {
+        flex: 0 0 45%;
+    }
+}
+
+@media (min-width: 620px) and (max-width: 767px) {
+
+    .allYouNeedis__titleBox {
+        min-height: 100px;
+    }
+
+    .allYouNeedis__title {
+        font-size: 32px;
+    }
+
+    .allYouNeedis__title_img {
+        width: 100px;
+        padding-bottom: 25px;
+    }
+
+    .allYouNeedis {
+        column-gap: 2%;
+    
+        margin-left: 20px;
+        margin-right: 20px;
+        margin-bottom: 50px;
+    }
+
+    .allYouNeedis__item {
+        flex: 0 0 48%;
+    }
+}
+
+
+@media (min-width: 500px) and (max-width: 619px) {
+
+    .allYouNeedis__titleBox {
+        min-height: 100px;
+    }
+
+    .allYouNeedis__title {
+        font-size: 32px;
+    }
+
+    .allYouNeedis__title_img {
+        width: 100px;
+        padding-bottom: 5px;
+    }
+
+    .allYouNeedis {
+        column-gap: 2%;
+    
+        margin-left: 20px;
+        margin-right: 20px;
+        margin-bottom: 50px;
+    }
+
+    .allYouNeedis__item {
+        flex: 0 0 80%;
+    }
+}
+
+
+@media (min-width: 390px) and (max-width: 499px) {
+
+    .allYouNeedis__titleBox {
+        min-height: 80px;
+    }
+
+    .allYouNeedis__title {
+        font-size: 26px;
+    }
+
+    .allYouNeedis__title_img {
+        width: 80px;
+        padding-bottom: 5px;
+    }
+
+    .allYouNeedis {
+        column-gap: 2%;
+    }
+
+    .allYouNeedis__item {
+        flex: 0 0 90%;
+    }
+}
+
+
+@media (min-width: 320px) and (max-width: 389px) {
+
+    .allYouNeedis__titleBox {
+        min-height: 80px;
+    }
+
+    .allYouNeedis__title {
+        font-size: 20px;
+    }
+
+    .allYouNeedis__title_img {
+        width: 50px;
+        padding-bottom: 5px;
+    }
+
+    .allYouNeedis {
+        column-gap: 2%;
+    }
+
+    .allYouNeedis__item {
+        flex: 0 0 96%;
+    }
 }

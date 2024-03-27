@@ -1,6 +1,7 @@
 {% extends 'mainapp/base.html' %}
 <!--  -->
 {% load static %}
+<!--  -->
 
 <title xmlns="http://www.w3.org/1999/html">
   {% block title %} {{ post.name }} {% endblock %}
@@ -56,7 +57,7 @@
             class="allYouNeedisPost__btnHelp"
             onclick="location.href='{% url 'mainapp:donation' %}'"
           >
-            Помочь
+            Помочь 
           </button>
         </div>
         <!-- назначение платежа -->
@@ -69,7 +70,7 @@
   <!-- конец блока с фото и информацией о сборе -->
 
   <!-- история ребенка -->
-  <div class="allYouNeedisPost__history">{{ post.description|linebreaks }}</div>
+  <div class="allYouNeedisPost__history center">{{ post.description|linebreaks }}</div>
 
     <!-- слайлер -->
     <div class="allYouNeedisPost__slider">
@@ -80,6 +81,7 @@
           <img
             class="allYouNeedisPost__slider_img allYouNeedisPost__slider_imgHidden"
             src="{{ item.image.url }}"
+            onclick="zoomIn()"
           />
           {% endfor %}
         </div>
@@ -101,3 +103,7 @@
 <script src="{% static 'js/allyouneedis_post.js' %}"></script>
 
 {% endblock %}
+
+
+
+
