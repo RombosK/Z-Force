@@ -91,13 +91,13 @@ class ImagesAdmin(admin.ModelAdmin):
 
 @admin.register(Project)
 class ProjectAdmin(admin.ModelAdmin):
-    list_display = ('name', 'short_description', 'category', 'donation')
+    list_display = ('name', 'short_description', 'category', 'created_at', 'donation')
     prepopulated_fields = {
         'slug': ('name', 'category')
     }
     list_per_page = 10
-    list_filter = ('name', 'short_description', 'category')
-    search_fields = ('name', 'short_description', 'category')
+    list_filter = ('name', 'short_description', 'category', 'created_at')
+    search_fields = ('name', 'short_description', 'category', 'created_at')
     show_full_result_count = False
     inlines = [ImagesProjectInline, ]
 
@@ -119,10 +119,10 @@ class AllYouNeedIsAdmin(admin.ModelAdmin):
     prepopulated_fields = {
         'slug': ('name', 'surname', 'city')
     }
-    list_display = ('name', 'surname', 'city', 'short_description', 'in_process', 'is_closed')
+    list_display = ('name', 'surname', 'city', 'short_description', 'created_at', 'in_process', 'is_closed')
     list_per_page = 10
-    list_filter = ('name', 'surname', 'city', 'in_process', 'is_closed')
-    search_fields = ('name', 'surname', 'city', 'short_description', 'in_process', 'is_closed')
+    list_filter = ('name', 'surname', 'city', 'in_process', 'is_closed', 'created_at')
+    search_fields = ('name', 'surname', 'city', 'short_description', 'in_process', 'is_closed', 'created_at')
     show_full_result_count = False
     inlines = [ImagesAllyouneedisInline, ]
 

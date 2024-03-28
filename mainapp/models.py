@@ -90,6 +90,7 @@ class Project(models.Model):
     collected = models.DecimalField(verbose_name='собрано', max_digits=12, decimal_places=2, default=0)
     in_process = models.BooleanField(default=True, verbose_name='помощь актуальна')
     is_closed = models.BooleanField(default=False, verbose_name='помощь получена')
+    created_at = models.DateTimeField(default=timezone.now, verbose_name='дата создания', editable=True)
     images = models.ManyToManyField('Images', through="ImagesMany", through_fields=("projects_image", "image"),
                                     blank=True)
 
