@@ -16,7 +16,7 @@ from django.views.generic import TemplateView, View
 
 from mainapp.forms import GiveHelpForm, GetHelpForm
 from mainapp.models import GiveHelp, GetHelp, News, ProjectCategory, AllYouNeedIs, Partners, Project, Report, \
-    ReportYear, Images, ImagesProject, ImagesAllYouNeedIs
+    ReportYear, Images, ImagesMany
 
 
 # # Контроллер страницы с анкетой
@@ -207,8 +207,9 @@ class NewsDetailView(DetailView):
     # slug пренодлежит опреджеленной новости которая имеет опред id
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        item = Images.objects.filter(post=News.objects.filter(slug=self.kwargs[self.slug_url_kwarg]).get())
+        item = ImagesMany.objects.filter(news_image=News.objects.filter(slug=self.kwargs[self.slug_url_kwarg]).get())
         context['image'] = item
+        print(context)
         return context
 
 
@@ -271,7 +272,7 @@ class ProjectDetailView(DetailView):
     # смотреть 206 строку
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        item = ImagesProject.objects.filter(post=Project.objects.filter(slug=self.kwargs[self.slug_url_kwarg]).get())
+        item = ImagesMany.objects.filter(projects_image=Project.objects.filter(slug=self.kwargs[self.slug_url_kwarg]).get())
         context['image'] = item
         return context
 
@@ -294,7 +295,6 @@ class AllYouNeedIsView(ListView):
         return queryset
 
 
-
 class AllYouNeedIsDetailView(DetailView):
     model = AllYouNeedIs
     template_name = 'mainapp/allyouneedis_post.html'
@@ -310,7 +310,9 @@ class AllYouNeedIsDetailView(DetailView):
     # смотреть 206 строку
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        item = ImagesAllYouNeedIs.objects.filter(post=AllYouNeedIs.objects.filter(slug=self.kwargs[self.slug_url_kwarg]).get())
+        item = ImagesMany.objects.filter(allyouneedis_image=AllYouNeedIs.objects.filter(
+            slug=self.kwargs[self.slug_url_kwarg]).get())
+        print(item)
         context['image'] = item
         return context
 
