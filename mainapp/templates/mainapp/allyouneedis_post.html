@@ -90,7 +90,7 @@
         {% for item in image %}
         <img
           class="allYouNeedisPost__slider_img allYouNeedisPost__slider_imgHidden"
-          src="{{ item.image.url }}"
+          src="{{ item.image.image.url }}"
           onclick="zoomIn()"
         />
         {% endfor %}

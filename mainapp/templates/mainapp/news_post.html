@@ -39,10 +39,10 @@
     <div class="newsPost__slider_imgBox">
       <div class="newsPost__slider_imgline">
         {% for item in image %}
-
+        {{ item.news_image }}
         <img
           class="newsPost__slider_img newsPost__slider_imgHidden"
-          src="/home{{ item.image.url }}"
+          src="{{ item.image.image.url }}"
         />
 
         {% endfor %}
