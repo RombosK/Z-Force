@@ -111,6 +111,7 @@ class AllYouNeedIs(models.Model):
     purpose = models.CharField(verbose_name='назначение платежа', max_length=64, blank=True)
     donation = models.DecimalField(verbose_name='необходимая сумма', max_digits=12, decimal_places=0, default=0)
     collected = models.DecimalField(verbose_name='собрано', max_digits=12, decimal_places=0, default=0)
+    created_at = models.DateTimeField(default=timezone.now, verbose_name='дата создания', editable=True)
     in_process = models.BooleanField(default=True, verbose_name='помощь актуальна')
     is_closed = models.BooleanField(default=False, verbose_name='помощь получена')
 

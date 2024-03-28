@@ -289,6 +289,11 @@ class AllYouNeedIsView(ListView):
         'title': 'Наши подопечные',
     }
 
+    def get_queryset(self):
+        queryset = AllYouNeedIs.objects.order_by('created_at').reverse()
+        return queryset
+
+
 
 class AllYouNeedIsDetailView(DetailView):
     model = AllYouNeedIs
