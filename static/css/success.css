@@ -1,0 +1,47 @@
+.success {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+
+    padding-top: 67px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.success__title {
+    color: rgb(43, 43, 43);
+    font-family: Nunito;
+    font-size: 36px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.success__text {
+    color: rgb(43, 43, 43);
+    font-family: Nunito;
+    font-size: 30px;
+    font-weight: 600;
+    text-align: center;
+}
+
+
+/* адаптация */
+@media (min-width: 725px) and (max-width: 950px) {
+    .success__title {
+        font-size: 30px;
+    }
+
+    .success__text {
+        font-size: 26px;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 724px) {
+    .success__title {
+        font-size: 26px;
+    }
+
+    .success__text {
+        font-size: 22px;
+    }
+}

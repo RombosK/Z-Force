@@ -1,19 +1,6 @@
-{% extends 'mainapp/base.html' %}
-{% load static %}
-
-{% block content %}
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card mt-5">
-                <div class="card-body text-center">
-                    <h1>Ваше обращение было успешно отправлено!</h1>
-                    <p> Администратор с Вами обязательно свяжется!</p>
-                </div>
-            </div>
-        </div>
-    </div>
+{% extends 'mainapp/base.html' %} {% load static %} {% block content %}
+<div class="success">
+  <h1 class="success__title">Ваше обращение было успешно отправлено!</h1>
+  <p class="success__text">Администратор с Вами обязательно свяжется!</p>
 </div>
 {% endblock content %}
-
-

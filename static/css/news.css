@@ -30,6 +30,10 @@
     /* padding-bottom: 40px; */
 }
 
+.news {
+    margin-bottom: 80px;
+}
+
 .news__itemBox {
     display: flex;
     flex-direction: column;
@@ -76,11 +80,8 @@
     gap: 30px;
     align-items: center;
     justify-content: space-between;
-
-
     /* width: 60%; */
     padding: 20px 20px;
-
     /* padding-left: calc(50% - 700px); */
     width: calc(100% - 450px);
 }

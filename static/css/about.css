@@ -123,6 +123,7 @@
 
 .about__dot:hover {
     background-color: rgba(254, 186, 166, 1.00);
+    cursor: pointer;
 }
 
 .about__dot_activ {

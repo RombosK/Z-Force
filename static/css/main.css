@@ -25,11 +25,11 @@
 @import url("projects.css");
 /* конкретная задаяча в проекте */
 @import url("projects_post.css");
-
 /* подопечные */
 @import url("allyouneedis.css");
 @import url("allyouneedis_post.css");
-
+/* ваще обращение отправлено */
+@import url("success.css");
 
 
 
