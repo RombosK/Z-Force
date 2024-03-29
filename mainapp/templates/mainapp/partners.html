@@ -1,30 +1,29 @@
 {% extends 'mainapp/base.html' %}
+<!--  -->
+{% load static %}
+<!--  -->
 
-<title>
-    {% block title %}
-        {{ title }}
-    {% endblock %}
-</title>
+<title>{% block title %} {{ title }} {% endblock %}</title>
 
 {% block content %}
-
-    <h1 style="padding-top: 200px">НАШИ ПАРТНЕРЫ</h1>
-
-    {% for partner in object %}
-    <div class="row justify-content-center align-items-center">
-        <div class="col-md-7">
-            <h5>{{ partner.title }}</h5>
-            {% if partner.picture %}
-            <p><img class="img-header-photo" src="/home{{partner.picture.url}}" width="300" height="250"></p>
-            {% endif %}
-            <p>{{ partner.about }}</p>
-        </div>
-    </div>
-    {% endfor %}
-
-{% endblock %}
+<!-- шапка страницы -->
+<div class="partners__titleBox center">
+  <h1 class="partners__title">{{ title }}</h1>
+  <img
+    class="partners__title_img"
+    src="{% static '/img/partners/partners2.png' %}"
+    alt="Окно в Мир"
+  />
 </div>
 
+<div class="partners__conteiner center">
+  {% for partner in object %}
+  <div class="partners__imgBox">
+    {% if partner.picture %}
+    <img class="partners__img" src="/home{{partner.picture.url}}" />
+    {% endif %}
+  </div>
+  {% endfor %}
+</div>
 
-
-
+{% endblock %}

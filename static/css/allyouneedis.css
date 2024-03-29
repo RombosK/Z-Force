@@ -1,0 +1,321 @@
+/* шапка страницы */
+.allYouNeedis__titleBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px 0 10px 0;
+    margin-bottom: 100px;
+    background-color: rgba(23, 123, 159, 1.00);
+    /* min-height: 350px; */
+    height: 250px;
+}
+
+.allYouNeedis__title {
+    color: rgba(255, 255, 250, 1.00);
+
+    font-family: Nunito;
+    font-size: 48px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.allYouNeedis__title_img {
+    width: 250px;
+    padding-bottom: 40px;
+}
+
+/* обертка для контента */
+.allYouNeedis {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 50px;
+    column-gap: 3%;
+
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 50px;
+}
+
+/* блок для item */
+.allYouNeedis__item {
+    display: flex;
+    flex: 0 0 25%;
+    gap: 10px;
+    flex-direction: column;
+    align-items: center;
+
+    box-sizing: border-box;
+    border: 0.5px solid rgb(200, 198, 198);
+    box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.15);
+    background: rgba(255, 255, 250, 1.00);
+}
+
+/* фото item */
+.allYouNeedis__item_imgBox {
+    width: 90%;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+}
+
+.allYouNeedis__item_img {
+    width: 100%;
+    object-fit: cover;
+    padding-top: 10px;
+}
+
+/* блок с информацие о подопечном и о суммах */
+.allYouNeedis__item_descriptionBox {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+}
+
+.allYouNeedis__item_title {
+    color: rgb(43, 43, 43);
+    font-family: Nunito;
+    font-size: 22px;
+    font-weight: 700;
+    padding-bottom: 10px;
+}
+
+.allYouNeedis__item_target {
+    color: rgb(43, 43, 43);
+    font-family: Nunito;
+    font-size: 12px;
+    font-weight: 700;
+    text-align: left;
+    padding-bottom: 20px;
+
+}
+
+.allYouNeedis__item_payment {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.allYouNeedis__item_collectedSum {
+    color: rgba(254, 186, 166, 1.00);
+    font-family: Nunito;
+    font-size: 14px;
+    font-weight: 800;
+}
+
+.allYouNeedis__item_totalSum {
+    color: rgba(23, 123, 159, 1.00);
+    font-family: Nunito;
+    font-size: 14px;
+    font-weight: 800;
+}
+
+.allYouNeedis__item_donations {
+    position: relative;
+    height: 7px;
+    background-color: rgba(248, 248, 248, 1.00);
+    border-radius: 4px;
+}
+
+.allYouNeedis__item_donationsProgress {
+    position: absolute;
+    height: 7px;
+    background-color: rgba(254, 186, 166, 1.00);
+    border-radius: 4px;
+}
+
+.allYouNeedis__item_btnHelpBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.allYouNeedis__item_btnHelp {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 30px;
+    background: rgba(109, 176, 195, 1.00);
+
+    color: rgba(255, 255, 250, 1.00);
+    font-family: Nunito;
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
+    padding: 5px 15px;
+    min-width: 150px;
+
+    transition: 0.3s;
+}
+
+.allYouNeedis__item_btnHelp:hover {
+    background: rgba(254, 186, 166, 1.00);
+    color: white;
+}
+
+.allYouNeedis__item_history {
+    color: rgb(43, 43, 43);
+    font-family: Nunito;
+    font-size: 14px;
+    font-weight: 400;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.allYouNeedis__item_history:hover {
+    color: rgba(254, 186, 166, 1.00);
+    cursor: pointer;
+}
+
+
+/* адаптация */
+@media (min-width: 1035px) and (max-width: 1420px) {
+
+    .allYouNeedis__titleBox {
+        /* min-height: 250px; */
+        height: 200px;
+    }
+
+    .allYouNeedis__title_img {
+        width: 200px;
+    }
+
+    .allYouNeedis__item {
+        flex: 0 0 30%;
+    }
+}
+
+
+@media (min-width: 768px) and (max-width: 1034px) {
+
+    .allYouNeedis__titleBox {
+        /* min-height: 200px; */
+        height: 200px;
+
+    }
+
+    .allYouNeedis__title {
+        font-size: 38px;
+    }
+
+    .allYouNeedis__title_img {
+        width: 200px;
+    }
+
+    .allYouNeedis__item {
+        flex: 0 0 45%;
+    }
+}
+
+@media (min-width: 620px) and (max-width: 767px) {
+
+    .allYouNeedis__titleBox {
+        height: 100px;
+    }
+
+    .allYouNeedis__title {
+        font-size: 32px;
+    }
+
+    .allYouNeedis__title_img {
+        width: 100px;
+        padding-bottom: 5px;
+
+    }
+
+    .allYouNeedis {
+        column-gap: 2%;
+
+        margin-left: 20px;
+        margin-right: 20px;
+        margin-bottom: 50px;
+    }
+
+    .allYouNeedis__item {
+        flex: 0 0 48%;
+    }
+}
+
+
+@media (min-width: 500px) and (max-width: 619px) {
+
+    .allYouNeedis__titleBox {
+        height: 100px;
+    }
+
+    .allYouNeedis__title {
+        font-size: 32px;
+    }
+
+    .allYouNeedis__title_img {
+        width: 100px;
+        padding-bottom: 5px;
+    }
+
+    .allYouNeedis {
+        column-gap: 2%;
+
+        margin-left: 20px;
+        margin-right: 20px;
+        margin-bottom: 50px;
+    }
+
+    .allYouNeedis__item {
+        flex: 0 0 80%;
+    }
+}
+
+
+@media (min-width: 390px) and (max-width: 499px) {
+
+    .allYouNeedis__titleBox {
+        height: 80px;
+    }
+
+    .allYouNeedis__title {
+        font-size: 26px;
+    }
+
+    .allYouNeedis__title_img {
+        width: 80px;
+        padding-bottom: 5px;
+    }
+
+    .allYouNeedis {
+        column-gap: 2%;
+    }
+
+    .allYouNeedis__item {
+        flex: 0 0 90%;
+    }
+}
+
+
+@media (min-width: 320px) and (max-width: 389px) {
+
+    .allYouNeedis__titleBox {
+        height: 80px;
+    }
+
+    .allYouNeedis__title {
+        font-size: 20px;
+    }
+
+    .allYouNeedis__title_img {
+        width: 50px;
+        padding-bottom: 5px;
+    }
+
+    .allYouNeedis {
+        column-gap: 2%;
+    }
+
+    .allYouNeedis__item {
+        flex: 0 0 96%;
+    }
+}

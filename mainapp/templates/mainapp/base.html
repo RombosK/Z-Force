@@ -23,9 +23,12 @@
   <link rel="stylesheet" href="{% static '/css/main.css' %}" />
 
   <!-- font -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+    rel="stylesheet"
+  />
 </head>
 <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}" />
 <body>
@@ -56,11 +59,9 @@
   </nav> -->
   {% include 'mainapp/includes/header.html' %}
 
-  
   <div class="container-md">{% block content %} {% endblock content %}</div>
 
   {% include 'mainapp/includes/footer.html' %}
-
 
   <!-- Footer -->
   <!-- <div class="container-lg mt-auto">
@@ -119,8 +120,7 @@
   <script src="{% static 'js/popper.min.js' %}"></script>
   <script src="{% static 'js/bootstrap.min.js' %}"></script> -->
   <script src="{% static 'js/main.js' %}"></script>
-
-
+  <!-- <script src="{% static 'js/index.js' %}"></script> -->
 
   <!-- ChartJs -->
   <script src="{% static 'js/Chart.min.js' %}"></script>

@@ -1,56 +1,57 @@
 {% extends 'mainapp/base.html' %}
+<!--  -->
+{% load static %}
+<!--  -->
 
 <title>{% block title %} {{ post.name }} {% endblock %}</title>
 
 {% block content %}
 
-<p class="news__title">Новости</p>
+<!-- шапка страницы -->
+<div class="news__titleBox center">
+  <h1 class="news__title">{{ title }}</h1>
+  <img
+    class="news__title_img"
+    src="{% static '/img/news/news2.png' %}"
+    alt="Окно в Мир"
+  />
+</div>
 
-<div class="news__itemBox center">
-  {% for news_item in object %}
-  <div class="news__item">
-    <!-- фото новости -->
-    {% if news_item.photo %}
-    <div class="news__item__imgBox">
-      <img
-        class="news__item__img"
-        src="/home{{news_item.photo.url}}"
-        width="300"
-        height="250"
-      />
-    </div>
-    {% endif %}
-    <!-- текстовая часть  -->
-    <div class="news__item__content">
-      <p class="news__item__content_title">{{ news_item.name }}</p>
-      <div class="news__item__content_description">
-        {{ news_item.description|linebreaks|truncatewords:15 }}
+<!-- контент-->
+<div class="news">
+  <div class="news__itemBox center">
+    {% for news_item in object %}
+    <div class="news__item">
+      <!-- фото новости -->
+      {% if news_item.photo %}
+      <div class="news__item__imgBox">
+        <img
+          class="news__item__img"
+          src="/home{{news_item.photo.url}}"
+          width="300"
+          height="250"
+        />
       </div>
-      <p class="news__item__content_data">{{ news_item.created_at }}</p>
-      <button
-        class="news__item__content_btn"
-        onclick="location.href='{{ news_item.slug }}'"
-      >
-        Читать
-      </button>
+      {% endif %}
+      <!-- текстовая часть  -->
+      <div class="news__item__content">
+        <p class="news__item__content_title">{{ news_item.name }}</p>
+        <div class="news__item__content_description">
+          {{ news_item.description|linebreaks|truncatewords:15 }}
+        </div>
+        <p class="news__item__content_data">{{ news_item.created_at|date:"d M Y" }}</p>
+        <button
+          class="news__item__content_btn"
+          onclick="location.href='{{ news_item.slug }}'"
+        >
+          Читать
+        </button>
+      </div>
     </div>
+    {% endfor %}
   </div>
-  {% endfor %}
 </div>
 
-<!-- {% for news_item in object %}
-<div class="row justify-content-center align-items-center">
-  <div class="col-md-7">
-            <h5>{{ news_item.name }}</h5>
-            {% if news_item.photo %}
-            <p><img class="img-header-photo" src="/home{{news_item.photo.url}}" width="300" height="250"></p>
-            {% endif %}
-            <p>{{ news_item.description|linebreaks|truncatewords:15 }}</p>
-            <p>{{ news_item.created_at }}</p>
-            <button type="button" onclick="location.href='{{ news_item.slug }}'">Читать</button>
-        </div>
-</div>
-{% endfor %}  -->
 <!--  -->
 {% include 'mainapp/includes/paginator.html' %}
 <!--  -->

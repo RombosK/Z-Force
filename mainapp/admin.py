@@ -1,14 +1,52 @@
 from mainapp.models import News, ProjectCategory, Project, AllYouNeedIs, GiveHelp, GetHelp, Partners, Report, \
-    ReportYear, Images
+    ReportYear, Images, ImagesMany
 from django.contrib import admin
 
 
 # Регистрация моделей в админке
 
-class ImagesInline(admin.StackedInline):
-    model = Images
+# class Image(admin.StackedInline):
+#     model = Images
+#
+#     fields = ["image", "name"]
+#     max_num = 10
+#     extra = 0
+
+
+class ImagesNewsInline(admin.StackedInline):
+    model = ImagesMany
+    fields = ["image", ]
     max_num = 10
     extra = 0
+    fk_name = "news_image"
+
+
+class ImagesProjectInline(admin.StackedInline):
+    model = ImagesMany
+    fields = ["image",]
+    max_num = 10
+    extra = 0
+    fk_name = "projects_image"
+
+
+class ImagesAllyouneedisInline(admin.StackedInline):
+    model = ImagesMany
+    fields = ["image", ]
+    max_num = 10
+    extra = 0
+    fk_name = "allyouneedis_image"
+
+
+# class ImagesProjectInline(admin.StackedInline):
+#     model = Images
+#     max_num = 10
+#     extra = 0
+#
+#
+# class ImagesAllYouNeedIsInline(admin.StackedInline):
+#     model = Images
+#     max_num = 10
+#     extra = 0
 
 
 @admin.register(News)
@@ -21,28 +59,54 @@ class NewsAdmin(admin.ModelAdmin):
     list_filter = ('name', 'description', 'created_at')
     search_fields = ('name', 'description', 'created_at')
     show_full_result_count = False
-    inlines = [ImagesInline, ]
+    inlines = [ImagesNewsInline, ]
 
 
 @admin.register(Images)
 class ImagesAdmin(admin.ModelAdmin):
-    list_display = ('image',)
-    list_per_page = 10
-    list_filter = ('image',)
-    search_fields = ('images',)
+    list_display = ('name', 'image')
+    # prepopulated_fields = {
+    #     'name': ('image',)
+    # }
+    list_per_page = 25
+    list_filter = ('image', 'name')
+    search_fields = ('image', 'name')
+
+
+# @admin.register(ImagesProject)
+# class ImagesProjectAdmin(admin.ModelAdmin):
+#     list_display = ('image',)
+#     list_per_page = 10
+#     list_filter = ('image',)
+#     search_fields = ('images',)
+#
+#
+# @admin.register(ImagesAllYouNeedIs)
+# class ImagesAllYouNeedIsAdmin(admin.ModelAdmin):
+#     list_display = ('image',)
+#     list_per_page = 10
+#     list_filter = ('image',)
+#     search_fields = ('images',)
 
 
 @admin.register(Project)
 class ProjectAdmin(admin.ModelAdmin):
-    list_display = ('name', 'short_description', 'category', 'donation')
+    list_display = ('name', 'short_description', 'category', 'created_at', 'donation')
+    prepopulated_fields = {
+        'slug': ('name', 'category')
+    }
     list_per_page = 10
-    list_filter = ('name', 'short_description', 'category')
-    search_fields = ('name', 'short_description', 'category')
+    list_filter = ('name', 'short_description', 'category', 'created_at')
+    search_fields = ('name', 'short_description', 'category', 'created_at')
     show_full_result_count = False
+    inlines = [ImagesProjectInline, ]
 
 
 @admin.register(ProjectCategory)
 class ProjectCategoryAdmin(admin.ModelAdmin):
+    prepopulated_fields = {
+        'slug': ('name',)
+    }
     list_display = ('name', 'description')
     list_per_page = 10
     list_filter = ('name', 'description')
@@ -52,11 +116,15 @@ class ProjectCategoryAdmin(admin.ModelAdmin):
 
 @admin.register(AllYouNeedIs)
 class AllYouNeedIsAdmin(admin.ModelAdmin):
-    list_display = ('name', 'surname', 'category', 'city', 'short_description', 'in_process', 'is_closed')
+    prepopulated_fields = {
+        'slug': ('name', 'surname', 'city')
+    }
+    list_display = ('name', 'surname', 'city', 'short_description', 'created_at', 'in_process', 'is_closed')
     list_per_page = 10
-    list_filter = ('name', 'surname', 'category', 'city', 'in_process', 'is_closed')
-    search_fields = ('name', 'surname', 'city', 'short_description', 'in_process', 'is_closed')
+    list_filter = ('name', 'surname', 'city', 'in_process', 'is_closed', 'created_at')
+    search_fields = ('name', 'surname', 'city', 'short_description', 'in_process', 'is_closed', 'created_at')
     show_full_result_count = False
+    inlines = [ImagesAllyouneedisInline, ]
 
 
 @admin.register(GiveHelp)
