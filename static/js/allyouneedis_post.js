@@ -15,18 +15,32 @@ console.log(collectedSum);
 
 const percentages = ((collectedSum / totalSum) * 100).toFixed(2);
 
-document.querySelector(".allYouNeedisPost__donationsProgress").style.width =
-  percentages + "%";
+if (percentages >= 100) {
+  document.querySelector(".allYouNeedisPost__donationsProgress").style.width =
+    100 + "%";
+} else {
+  document.querySelector(".allYouNeedisPost__donationsProgress").style.width =
+    percentages + "%";
+}
+
 
 const stillNeed = totalSum - collectedSum;
-document.querySelector(".allYouNeedisPost__stillNeed").innerHTML =
-  "Осталось собрать " + stillNeed;
+
+if (percentages >= 100) {
+  document.querySelector(".allYouNeedisPost__stillNeed").style.display = "none";
+} else {
+  document.querySelector(".allYouNeedisPost__stillNeed").innerHTML =
+    "Осталось собрать " + stillNeed;
+}
 
 const age =
   new Date().getFullYear() -
   document.querySelector(".allYouNeedisPost__age").innerHTML;
 
 document.querySelector(".allYouNeedisPost__age").innerHTML = "Возраст: " + age;
+
+
+
 
 // елемент слайдера, чтобы не отображь его при отсутствии фото
 const sliderElem = document.querySelector(".allYouNeedisPost__slider");
@@ -88,7 +102,7 @@ leftArrowElem.addEventListener("click", () => {
 // function zoomIn() {
 
 //   var image = document.querySelector('.allYouNeedisPost__slider_img ');
-  
+
 //   image.style.width = '200%';
 //   image.style.height = '200%';
 //   image.style.position = 'absolute';

@@ -13,6 +13,11 @@
     text-align: center;
 }
 
+.report {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
 .report__description {
     display: flex;
     flex-direction: row;
@@ -58,8 +63,6 @@
 }
 
 .report__reports {
-    margin-left: 20px;
-    margin-right: 20px;
     display: grid;
     grid-template-columns: repeat(3, 30%);
     grid-column-gap: 5%;
@@ -78,11 +81,11 @@
 }
 
 .report__reports_year {
-        color: rgba(255, 228, 198, 1.00);
-        font-family: Nunito;
-        font-size: 20px;
-        font-weight: 700;
-        text-align: center;
+    color: rgba(255, 228, 198, 1.00);
+    font-family: Nunito;
+    font-size: 20px;
+    font-weight: 700;
+    text-align: center;
 }
 
 .report__reports_file {
@@ -93,3 +96,48 @@
     font-weight: 400;
     text-align: center;
 }
+
+.report__reports_file:hover {
+    color: rgba(255, 228, 198, 1.00);
+}
+
+
+/* адаптация */
+@media (min-width: 600px) and (max-width: 950px) {
+    .report__description {
+        flex-direction: column;
+        align-content: center;
+
+    }
+
+    .report__itemDescription_title {
+        min-height: auto;
+    }
+
+    .report__reports {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+@media (min-width: 320px) and (max-width: 599px) {
+    .report__description {
+        flex-direction: column;
+        align-content: center;
+
+    }
+
+    .report__itemDescription_title {
+        font-size: 18px;
+        min-height: auto;
+    }
+
+    .report__itemDescription_text {
+        font-size: 16px;
+    }
+
+    .report__reports {
+        grid-template-columns: repeat(1, 90%);
+    }
+}
+

@@ -7,79 +7,66 @@
 {% block content %}
 <h1 class="report__title">Отчеты</h1>
 <!--  -->
-<div class="report center">
-  <div class="report__description">
-    <div class="report__itemDescription">
-      <p class="report__itemDescription_title">Прозрачность</p>
-      <p class="report__itemDescription_text">
-        Каждый благотворитель имеет доступ к документам, подтверждающим сумму
-        сбора денег на благотворительность (спецификация, счет), а также к
-        документам, подтверждающим оплату (платежное поручение с печатью банка)
-      </p>
-    </div>
-    <div class="report__itemDescription">
-      <p class="report__itemDescription_title">
-        Только целевое расходование пожертвований
-      </p>
-      <p class="report__itemDescription_text">
-        Мы расходуем средства только согласно уставу благотворительного фонда,
-        мы не выдаем денежные средства наличными физическим лицам. Мы оплачиваем
-        счета, выставленные учреждениями и поставщиками услуг.
-      </p>
-    </div>
-    <div class="report__itemDescription">
-      <p class="report__itemDescription_title">Ежемесячная отчетность</p>
-      <p class="report__itemDescription_text">
-        На официальном сайте фонда благотворитель может ознакомиться с
-        актуальным отчетом о поступлении денежных средств на благотворительность
-        и отчетом о расходовании денежных средств.
-      </p>
-    </div>
-    <div class="report__itemDescription">
-      <p class="report__itemDescription_title">
-        Минимизация административных затрат фонда
-      </p>
-      <p class="report__itemDescription_text">
-        Наши благотворители предоставляют нам бесплатное офисное помещение,
-        Интернет, телефонную связь и услуги типографии. Таким образом,
-        добровольные пожертвования благотворителей максимально расходуются на
-        помощь детям.
-      </p>
+<div class="report">
+  <div class="report center">
+    <div class="report__description">
+      <div class="report__itemDescription">
+        <p class="report__itemDescription_title">Прозрачность</p>
+        <p class="report__itemDescription_text">
+          Каждый благотворитель имеет доступ к документам, подтверждающим сумму
+          сбора денег на благотворительность (спецификация, счет), а также к
+          документам, подтверждающим оплату (платежное поручение с печатью банка)
+        </p>
+      </div>
+      <div class="report__itemDescription">
+        <p class="report__itemDescription_title">
+          Только целевое расходование пожертвований
+        </p>
+        <p class="report__itemDescription_text">
+          Мы расходуем средства только согласно уставу благотворительного фонда,
+          мы не выдаем денежные средства наличными физическим лицам. Мы оплачиваем
+          счета, выставленные учреждениями и поставщиками услуг.
+        </p>
+      </div>
+      <div class="report__itemDescription">
+        <p class="report__itemDescription_title">Ежемесячная отчетность</p>
+        <p class="report__itemDescription_text">
+          На официальном сайте фонда благотворитель может ознакомиться с
+          актуальным отчетом о поступлении денежных средств на благотворительность
+          и отчетом о расходовании денежных средств.
+        </p>
+      </div>
+      <div class="report__itemDescription">
+        <p class="report__itemDescription_title">
+          Минимизация административных затрат фонда
+        </p>
+        <p class="report__itemDescription_text">
+          Наши благотворители предоставляют нам бесплатное офисное помещение,
+          Интернет, телефонную связь и услуги типографии. Таким образом,
+          добровольные пожертвования благотворителей максимально расходуются на
+          помощь детям.
+        </p>
+      </div>
     </div>
   </div>
-</div>
-
-<div class="report__reports center">
-  {% regroup object|dictsort:'year_id' by year as counter_list %}
-  <!--  -->
-    {% for year, file_list in counter_list %}
-    <div class="report__reports_item center">
-
-    <div class="report__reports_year">{{ year }} год</div>
-
-    {% for file in file_list %}
-    <div class="report__reports_filesList">
-      <a class="report__reports_file" href="{{ file.upload.url }}" target="_blank">{{ file.name }}</a>
+  
+  <div class="report__reports center">
+    {% regroup object|dictsort:'year_id' by year as counter_list %}
+    <!--  -->
+      {% for year, file_list in counter_list %}
+      <div class="report__reports_item center">
+  
+      <div class="report__reports_year">{{ year }} год</div>
+  
+      {% for file in file_list %}
+      <div class="report__reports_filesList">
+        <a class="report__reports_file" href="{{ file.upload.url }}" target="_blank">{{ file.name }}</a>
+      </div>
+      {% endfor %}
     </div>
     {% endfor %}
+  
   </div>
-  {% endfor %}
-
-  <!-- {% regroup object|dictsort:'year_id' by year as counter_list %}
-  {% for year, file_list in counter_list %}
-  <details>
-    <summary>{{ year }}</summary>
-    <ul>
-      {% for file in file_list %}
-      <li>
-        <a href="{{ file.upload.url }}" target="_blank">{{ file.name }}</a>
-      </li>
-      {% endfor %}
-    </ul>
-  </details>
-  {% endfor %} -->
 </div>
 <!--  -->
 {% endblock %}
-
-<!-- <a href="{{ file.upload.url }}" download="{{ file.name }}">{{ file.name }}</a> -->

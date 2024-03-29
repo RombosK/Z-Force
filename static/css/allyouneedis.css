@@ -81,7 +81,17 @@
     font-family: Nunito;
     font-size: 22px;
     font-weight: 700;
+    padding-bottom: 10px;
+}
+
+.allYouNeedis__item_target {
+    color: rgb(43, 43, 43);
+    font-family: Nunito;
+    font-size: 12px;
+    font-weight: 700;
+    text-align: left;
     padding-bottom: 20px;
+
 }
 
 .allYouNeedis__item_payment {

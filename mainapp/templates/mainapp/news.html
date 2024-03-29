@@ -39,7 +39,7 @@
         <div class="news__item__content_description">
           {{ news_item.description|linebreaks|truncatewords:15 }}
         </div>
-        <p class="news__item__content_data">{{ news_item.created_at }}</p>
+        <p class="news__item__content_data">{{ news_item.created_at|date:"d M Y" }}</p>
         <button
           class="news__item__content_btn"
           onclick="location.href='{{ news_item.slug }}'"

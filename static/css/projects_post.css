@@ -5,7 +5,7 @@
     justify-content: space-around;
     align-items: center;
     padding: 10px 0 10px 0;
-    margin-bottom: 30px;
+    margin-bottom: 100px;
     background-color: rgba(23, 123, 159, 1.00);
     height: 150px;
 }
@@ -29,13 +29,149 @@
     padding-bottom: 15px;
 }
 
-.projectsPost_title {
+/* контент */
+.projectsPost {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 100px;
+}
+
+/* блок с фото и информацией о сборе */
+.projectsPost__mainInfo {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 5%
+}
+
+/* фото  */
+.projectsPost__imgBox {
+    width: 30%;
+    height: 370px;
+}
+
+.projectsPost__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* имя, прогресс линия, кнопка */
+.projectsPost__mainInfo_description {
+    display: flex;
+    flex-direction: column;
+    /* width: 60%; */
+    gap: 40px;
+    min-width: 400px;
+}
+
+
+.projectsPost__title {
     color: rgb(43, 43, 43);
     font-family: Nunito;
-    font-size: 48px;
+    font-size: 36px;
     font-weight: 700;
     text-align: center;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
+}
+
+/* блок о суммах */
+.projectsPost__paymentnBox {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin-left: 5%;
+
+    box-sizing: border-box;
+    border: 0.5px solid rgb(200, 198, 198);
+    box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.15);
+    background: rgba(255, 255, 250, 1.00);
+    border-radius: 15px;
+    padding: 20px 30px 10px 30px;
+}
+
+.projectsPost__payment {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.projectsPost__collectedSum {
+    color: rgba(254, 186, 166, 1.00);
+    font-family: Nunito;
+    font-size: 16px;
+    font-weight: 800;
+}
+
+.projectsPost__totalSum {
+    color: rgba(23, 123, 159, 1.00);
+    font-family: Nunito;
+    font-size: 16px;
+    font-weight: 800;
+}
+
+/* програсс линия */
+.projectsPost__donations {
+    position: relative;
+    height: 7px;
+    background-color: rgba(248, 248, 248, 1.00);
+    border-radius: 4px;
+}
+
+.projectsPost__donationsProgress {
+    position: absolute;
+    height: 7px;
+    background-color: rgba(254, 186, 166, 1.00);
+    border-radius: 4px;
+}
+
+.projectsPost__stillNeed {
+    margin-top: 10px;
+    color: rgba(254, 186, 166, 1.00);
+    font-family: Nunito;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+/* книпка "помочь" */
+.projectsPost__btnHelpBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.projectsPost__btnHelp {
+    margin-top: 20px;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 30px;
+    background: rgba(109, 176, 195, 1.00);
+
+    color: rgba(255, 255, 250, 1.00);
+    font-family: Nunito;
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
+    padding: 5px 15px;
+    min-width: 150px;
+
+    transition: 0.3s;
+}
+
+.projectsPost__btnHelp:hover {
+    background: rgba(254, 186, 166, 1.00);
+    color: white;
+}
+
+.projectsPost__textTargetPay {
+    margin-top: 20px;
+    color: rgb(43, 43, 43);
+    font-family: Nunito;
+    font-size: 12px;
+    font-weight: 400;
 }
 
 .projectsPost_article {
@@ -53,99 +189,9 @@
     margin-bottom: 50px;
 }
 
-.projectsPost_paymentInfo {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    gap: 50px;
-
-    margin-bottom: 100px;
-}
-
-.projectsPost_paymentInfo_column {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    align-items: flex-start;
-}
-
-.projectsPost_paymentInfo_textBox {
-    display: flex;
-    flex-direction: row;
-    gap: 8px;
-}
-
-.projectsPost_paymentInfo_text {
-    color: rgb(43, 43, 43);
-    font-family: Nunito;
-    font-size: 24px;
-    font-weight: 700;
-    text-align: left;
-}
-
-.projectsPost_paymentInfo_sumNeed {
-    color: rgba(254, 186, 166, 1.00);
-    font-family: Nunito;
-    font-size: 26px;
-    font-weight: 700;
-    text-align: left;
-}
-
-.projectsPost_paymentInfo_sumDone {
-    color: rgba(23, 123, 159, 1.00);
-    font-family: Nunito;
-    font-size: 26x;
-    font-weight: 700;
-    text-align: left;
-}
-
-.projectsPost_paymentInfo_btnBox {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
-
-.projectsPost_paymentInfo_btn {
-
-    box-sizing: border-box;
-    border-radius: 30px;
-    background: rgba(109, 176, 195, 1.00);
-    border: none;
-
-    color: rgba(255, 255, 250, 1.00);
-    font-family: Nunito;
-    font-size: 20px;
-    font-weight: 600;
-    text-align: center;
-    padding: 5px 10px;
-    width: 150px;
-
-    transition: 0.3s;
-}
-
-.projectsPost_paymentInfo_btn:hover {
-    background: rgba(254, 186, 166, 1.00);
-    color: white;
-}
-
-.projectsPost_paymentInfo_target {
-    color: rgb(43, 43, 43);
-    font-family: Nunito;
-    font-size: 20px;
-    font-weight: 400;
-    text-align: left;
-}
 
 .projectsPost__slider {
     margin-bottom: 100px;
-}
-
-.projectsPost_slider_text {
-    text-align: center;
-}
-
-
-.projectsPost__slider {
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -153,6 +199,7 @@
     align-items: center;
     justify-content: center;
 }
+
 
 .projectsPost__slider_NotActive {
     display: none !important;
@@ -165,7 +212,7 @@
 .projectsPost__slider_imgline {
     position: relative;
     overflow: hidden;
-    height: 500px;
+    height: 600px;
     width: 100%;
 
     display: flex;
@@ -191,39 +238,40 @@
 }
 
 .projectsPost__slider_navLeft {
-    border: 20px solid transparent;
-    border-right: 20px solid rgba(109, 176, 195, 1.00);
+    border: 15px solid transparent;
+    border-right: 15px solid rgba(109, 176, 195, 1.00);
 }
 
 .projectsPost__slider_navRight {
-    border: 20px solid transparent;
-    border-left: 20px solid rgba(109, 176, 195, 1.00);
+    border: 15px solid transparent;
+    border-left: 15px solid rgba(109, 176, 195, 1.00);
 }
 
 .projectsPost__slider_navLeft:hover {
-    border: 20px solid transparent;
-    border-right: 20px solid rgba(254, 186, 166, 1.00);
+    border: 15px solid transparent;
+    border-right: 15px solid rgba(254, 186, 166, 1.00);
 }
 
 .projectsPost__slider_navRight:hover {
-    border: 20px solid transparent;
-    border-left: 20px solid rgba(254, 186, 166, 1.00);
+    border: 15px solid transparent;
+    border-left: 15px solid rgba(254, 186, 166, 1.00);
 }
 
 .projectsPost__slider_navNumber {
     box-sizing: border-box;
     color: rgb(43, 43, 43);
     font-family: Nunito;
-    font-size: 36px;
+    font-size: 26px;
     font-weight: 700;
 }
 
 
 
 /* адаптация */
-@media (min-width: 910px) and (max-width: 1000px) {
-    .projectsPost_title {
-        font-size: 38px;
+@media (min-width:1000px) and (max-width: 1400px) {
+
+    .projectsPost__imgBox {
+        width: 40%;
     }
 
     .projectsPost_article {
@@ -232,9 +280,9 @@
     }
 }
 
-@media (min-width: 767px) and (max-width: 910px) {
+@media (min-width: 768px) and (max-width: 999px) {
+
     .projectsPost__titleBox {
-        margin-bottom: 30px;
         background-color: rgba(23, 123, 159, 1.00);
         height: 100px;
     }
@@ -248,13 +296,25 @@
         padding-bottom: 5px;
     }
 
-    .projectsPost_title {
-        font-size: 38px;
+    .projectsPost__imgBox {
+        width: 50%;
+        height: 250px;
     }
 
+    .projectsPost__mainInfo_description {
+        min-width: 300px;
+        gap: 10px;
+    }
+
+    .projectsPost__title {
+        margin-bottom: 0;
+        font-size: 30px;
+    }
+
+
     .projectsPost_article {
-        width: 90%;
-        margin-left: 5%;
+        width: 94%;
+        margin-left: 3%;
     }
 
     .projectsPost_paymentInfo_text {
@@ -274,10 +334,9 @@
     }
 }
 
-@media (min-width: 490px) and (max-width: 797px) {
+@media (min-width: 490px) and (max-width: 767px) {
 
     .projectsPost__titleBox {
-        margin-bottom: 30px;
         background-color: rgba(23, 123, 159, 1.00);
         height: 100px;
     }
@@ -291,9 +350,27 @@
         padding-bottom: 5px;
     }
 
-    .projectsPost_title {
-        font-size: 38px;
+    .projectsPost__mainInfo {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px
     }
+
+    .projectsPost__imgBox {
+        width: 90%;
+        /* height: 250px; */
+    }
+
+    .projectsPost__mainInfo_description {
+        min-width: 300px;
+        width: 90%;
+    }
+
+    .projectsPost__title {
+        margin-bottom: 20px;
+        font-size: 30px;
+    }
+
 
     .projectsPost_article {
         width: 96%;
@@ -341,27 +418,27 @@
     }
 
     .projectsPost__slider_navLeft {
-        border: 15px solid transparent;
-        border-right: 15px solid rgba(109, 176, 195, 1.00);
+        border: 10px solid transparent;
+        border-right: 10px solid rgba(109, 176, 195, 1.00);
     }
 
     .projectsPost__slider_navRight {
-        border: 15px solid transparent;
-        border-left: 15px solid rgba(109, 176, 195, 1.00);
+        border: 10px solid transparent;
+        border-left: 10px solid rgba(109, 176, 195, 1.00);
     }
 
     .projectsPost__slider_navLeft:hover {
-        border: 15px solid transparent;
-        border-right: 15px solid rgba(254, 186, 166, 1.00);
+        border: 10px solid transparent;
+        border-right: 10px solid rgba(254, 186, 166, 1.00);
     }
 
     .projectsPost__slider_navRight:hover {
-        border: 15px solid transparent;
-        border-left: 15px solid rgba(254, 186, 166, 1.00);
+        border: 10px solid transparent;
+        border-left: 10px solid rgba(254, 186, 166, 1.00);
     }
 
     .projectsPost__slider_navNumber {
-        font-size: 30px;
+        font-size: 22px;
     }
 }
 
@@ -381,8 +458,25 @@
         padding-bottom: 5px;
     }
 
-    .projectsPost_title {
-        font-size: 28px;
+    .projectsPost__mainInfo {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .projectsPost__imgBox {
+        width: 96%;
+        height: 250px;
+    }
+
+    .projectsPost__mainInfo_description {
+        min-width: 280px;
+        width: 96%;
+    }
+
+    .projectsPost__title {
+        margin-bottom: 20px;
+        font-size: 26px;
     }
 
     .projectsPost_article {
@@ -433,34 +527,33 @@
     }
 
     .projectsPost__slider_navLeft {
-        border: 15px solid transparent;
-        border-right: 15px solid rgba(109, 176, 195, 1.00);
+        border: 10px solid transparent;
+        border-right: 10px solid rgba(109, 176, 195, 1.00);
     }
 
     .projectsPost__slider_navRight {
-        border: 15px solid transparent;
-        border-left: 15px solid rgba(109, 176, 195, 1.00);
+        border: 10px solid transparent;
+        border-left: 10px solid rgba(109, 176, 195, 1.00);
     }
 
     .projectsPost__slider_navLeft:hover {
-        border: 15px solid transparent;
-        border-right: 15px solid rgba(254, 186, 166, 1.00);
+        border: 10px solid transparent;
+        border-right: 10px solid rgba(254, 186, 166, 1.00);
     }
 
     .projectsPost__slider_navRight:hover {
-        border: 15px solid transparent;
-        border-left: 15px solid rgba(254, 186, 166, 1.00);
+        border: 10px solid transparent;
+        border-left: 10px solid rgba(254, 186, 166, 1.00);
     }
 
     .projectsPost__slider_navNumber {
-        font-size: 30px;
+        font-size: 22px;
     }
 }
 
 @media (min-width: 320px) and (max-width: 429px) {
 
     .projectsPost__titleBox {
-        margin-bottom: 30px;
         background-color: rgba(23, 123, 159, 1.00);
         height: 80px;
     }
@@ -474,7 +567,24 @@
         padding-bottom: 5px;
     }
 
-    .projectsPost_title {
+    .projectsPost__mainInfo {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .projectsPost__imgBox {
+        width: 96%;
+        height: 250px;
+    }
+
+    .projectsPost__mainInfo_description {
+        min-width: 280px;
+        width: 96%;
+    }
+
+    .projectsPost__title {
+        margin-bottom: 20px;
         font-size: 26px;
     }
 
@@ -531,26 +641,26 @@
     }
 
     .projectsPost__slider_navLeft {
-        border: 15px solid transparent;
-        border-right: 15px solid rgba(109, 176, 195, 1.00);
+        border: 10px solid transparent;
+        border-right: 10px solid rgba(109, 176, 195, 1.00);
     }
 
     .projectsPost__slider_navRight {
-        border: 15px solid transparent;
-        border-left: 15px solid rgba(109, 176, 195, 1.00);
+        border: 10px solid transparent;
+        border-left: 10px solid rgba(109, 176, 195, 1.00);
     }
 
     .projectsPost__slider_navLeft:hover {
-        border: 15px solid transparent;
-        border-right: 15px solid rgba(254, 186, 166, 1.00);
+        border: 10px solid transparent;
+        border-right: 10px solid rgba(254, 186, 166, 1.00);
     }
 
     .projectsPost__slider_navRight:hover {
-        border: 15px solid transparent;
-        border-left: 15px solid rgba(254, 186, 166, 1.00);
+        border: 10px solid transparent;
+        border-left: 10px solid rgba(254, 186, 166, 1.00);
     }
 
     .projectsPost__slider_navNumber {
-        font-size: 24px;
+        font-size: 22px;
     }
 }

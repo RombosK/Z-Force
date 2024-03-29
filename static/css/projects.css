@@ -99,7 +99,7 @@
 }
 
 .projects__item_title {
-    color: rgb(43, 43, 43);
+    color: rgba(23, 123, 159, 1.00);
     font-family: Nunito;
     font-size: 20px;
     font-weight: 700;
@@ -110,7 +110,7 @@
     /* border: 1px solid rgba(200, 198, 198, 1.00);
     border-radius: 50%; */
 
-    color: rgb(43, 43, 43);
+    color: rgba(23, 123, 159, 1.00);
     font-family: Nunito;
     font-size: 25px;
     font-weight: 700;
