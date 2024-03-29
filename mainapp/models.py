@@ -9,12 +9,23 @@ from django.conf import settings
 
 
 class Images(models.Model):
-    image = models.ImageField(verbose_name='фотоальбом', upload_to='images/%Y/%m/%d/', blank=True)
-    post = models.ForeignKey('News', verbose_name='для новости', on_delete=models.CASCADE, null=True)
+    name = models.CharField(max_length=50)
+    image = models.ImageField(verbose_name='фотоальбом', upload_to='images/%Y/%m/%d/')
+    # post = models.ForeignKey('ImagesMany', on_delete=models.PROTECT, null=True)
 
     class Meta:
         verbose_name = 'Фотография'
-        verbose_name_plural = 'Фотографии для слайдера новостей'
+        verbose_name_plural = 'Фотографии'
+
+    def __str__(self):
+        return self.name
+
+
+class ImagesMany(models.Model):
+    image = models.ForeignKey('Images', on_delete=models.CASCADE, blank=True, null=True)
+    news_image = models.ForeignKey('News', blank=True, on_delete=models.CASCADE, null=True)
+    projects_image = models.ForeignKey('Project',  blank=True, on_delete=models.CASCADE, null=True)
+    allyouneedis_image = models.ForeignKey('AllYouNeedIs', on_delete=models.CASCADE, blank=True, null=True)
 
 
 # Модель новостей
@@ -23,10 +34,11 @@ class News(models.Model):
     slug = models.SlugField(max_length=255, unique=True, db_index=True)
     description = models.TextField(verbose_name='Описание')
     photo = models.ImageField(upload_to='news_photos', blank=True)
-    photo_image = models.ForeignKey('Images', on_delete=models.CASCADE, blank=True, null=True, verbose_name='доп фото')
     created_at = models.DateTimeField(default=timezone.now, verbose_name='дата создания', editable=True)
     updated_at = models.DateTimeField(auto_now=True, verbose_name='дата изменения', editable=False)
     is_closed = models.BooleanField(default=False, verbose_name='событие прошло')
+    images = models.ManyToManyField('Images', through="ImagesMany", through_fields=("news_image", "image"),
+                                    blank=True)
 
     class Meta:
         verbose_name = 'Новость'
@@ -34,7 +46,7 @@ class News(models.Model):
         ordering = ['id']
 
     def __str__(self):
-        return f'{self.id}'
+        return f'{self.name}'
 
 
 # Модель проектов фонда (категории для задач)
@@ -56,6 +68,15 @@ class ProjectCategory(models.Model):
         return f'{self.name}'
 
 
+# class ImagesProject(models.Model):
+#     image = models.ImageField(verbose_name='фотоальбом', upload_to='images/%Y/%m/%d/', blank=True)
+#     post = models.ForeignKey('Project', verbose_name='для Проектов', on_delete=models.CASCADE, null=True)
+#
+#     class Meta:
+#         verbose_name = 'Фотография'
+#         verbose_name_plural = 'Фотографии для слайдера Задачи'
+#
+
 # Модель конкретного проекта (задачи)
 class Project(models.Model):
     category = models.ForeignKey(ProjectCategory, on_delete=models.CASCADE)
@@ -65,10 +86,13 @@ class Project(models.Model):
     short_description = models.CharField(verbose_name='краткое описание задачи', max_length=255, blank=True)
     photo = models.ImageField(upload_to='project_photos')
     purpose = models.CharField(verbose_name='назначение платежа', max_length=64, blank=True)
-    donation = models.DecimalField(verbose_name='необходимая сумма', max_digits=12, decimal_places=2, default=0)
-    collected = models.DecimalField(verbose_name='собрано', max_digits=12, decimal_places=2, default=0)
+    donation = models.DecimalField(verbose_name='необходимая сумма', max_digits=12, decimal_places=0, default=0)
+    collected = models.DecimalField(verbose_name='собрано', max_digits=12, decimal_places=0, default=0)
     in_process = models.BooleanField(default=True, verbose_name='помощь актуальна')
     is_closed = models.BooleanField(default=False, verbose_name='помощь получена')
+    created_at = models.DateTimeField(default=timezone.now, verbose_name='дата создания', editable=True)
+    images = models.ManyToManyField('Images', through="ImagesMany", through_fields=("projects_image", "image"),
+                                    blank=True)
 
     class Meta:
         verbose_name = 'Задача'
@@ -76,24 +100,37 @@ class Project(models.Model):
         ordering = ['id']
 
     def __str__(self):
-        return f'{self.name} - {self.category.name}'
+        return f'{self.name} - {self.category}'
 
+
+# class ImagesAllYouNeedIs(models.Model):
+#     image = models.ImageField(verbose_name='фотоальбом', upload_to='images/AllYouNeedIs/%Y/%m/%d/', blank=True)
+#     post = models.ForeignKey('AllYouNeedIs', verbose_name='для Подопечных', on_delete=models.CASCADE, null=True)
+#
+#     class Meta:
+#         verbose_name = 'Фотография'
+#         verbose_name_plural = 'Фотографии для слайдера Подопечных'
+#
 
 # Модель подопечных
 class AllYouNeedIs(models.Model):
-    category = models.ForeignKey(ProjectCategory, on_delete=models.CASCADE)
     slug = models.SlugField(max_length=255, unique=True, db_index=True)
     name = models.CharField(verbose_name='имя подопечного', max_length=32)
     surname = models.CharField(verbose_name='фамилия подопечного', max_length=32)
     city = models.CharField(verbose_name='город, регион', max_length=64, blank=True)
+    birthdate = models.CharField(verbose_name='Год рождения', max_length=4, null=True)
     description = models.TextField(verbose_name='описание проблемы')
     short_description = models.CharField(verbose_name='краткое описание проблемы', max_length=128, blank=True)
+    # name_for_payment = models.CharField(verbose_name='напишите имя в дательном пажеде', max_length=32, blank=True)
     photo = models.ImageField(upload_to='needs_photos')
     purpose = models.CharField(verbose_name='назначение платежа', max_length=64, blank=True)
-    donation = models.DecimalField(verbose_name='необходимая сумма', max_digits=12, decimal_places=2, default=0)
-    collected = models.DecimalField(verbose_name='собрано', max_digits=12, decimal_places=2, default=0)
+    donation = models.DecimalField(verbose_name='необходимая сумма', max_digits=12, decimal_places=0, default=0)
+    collected = models.DecimalField(verbose_name='собрано', max_digits=12, decimal_places=0, default=0)
+    created_at = models.DateTimeField(default=timezone.now, verbose_name='дата создания', editable=True)
     in_process = models.BooleanField(default=True, verbose_name='помощь актуальна')
     is_closed = models.BooleanField(default=False, verbose_name='помощь получена')
+    images = models.ManyToManyField('Images', through="ImagesMany", through_fields=("allyouneedis_image", "image"),
+                                    blank=True)
 
     class Meta:
         verbose_name = 'Подопечный'
@@ -101,7 +138,7 @@ class AllYouNeedIs(models.Model):
         ordering = ['id']
 
     def __str__(self):
-        return f'{self.name} {self.surname} - {self.category.name}'
+        return f'{self.name} {self.surname}'
 
 
 from django.core.exceptions import ValidationError

@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     margin-top: 50px;
-    margin-bottom: 100px;
+    /* margin-bottom: 100px; */
 }
 
 .button__back {
@@ -25,4 +25,16 @@
 .button__back:hover {
     background: rgba(254, 186, 166, 1.00);
     color: white;
+}
+
+/* адаптация */
+@media (min-width: 320px) and (max-width: 767px) {
+    .button__back {
+        font-size: 18px;
+        font-weight: 600;
+        padding: 10px 10px;
+        width: 150px;
+    
+        transition: 0.3s;
+    }
 }

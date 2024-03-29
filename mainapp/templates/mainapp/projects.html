@@ -1,30 +1,54 @@
 {% extends 'mainapp/base.html' %}
+<!--  -->
 {% load static %}
-<title>
-    {% block title %}
-    {{ title }}
-    {% endblock %}
-</title>
+<title>{% block title %} {{ title }} {% endblock %}</title>
 
 {% block content %}
+<!-- шапка страницы -->
+<div class="projects__titleBox center">
+  <a class="projects__titleMain" href="{% url 'mainapp:projects_category' %}"
+    >{{ title }}</a
+  >
+  <img
+    class="projects__title_img"
+    src="{% static '/img/projects/project3.png' %}"
+    alt="Окно в Мир"
+  />
+</div>
 
-<h1>{{ title }}</h1>
-{% include 'mainapp/includes/Back.html' %}
-{% for project_item in post %}
-    <div class="row justify-content-center align-items-center">
-        <div class="col-md-7">
+<p class="projects__subTitle">{{category}}</p>
 
-            <h5>{{ project_item.name }}</h5>
-            {% if project_item.photo %}
-            <p><img class="img-header-photo" src="/home{{project_item.photo.url}}" width="300" height="250"></p>
-            {% endif %}
-            <p>{{ project_item.short_description|linebreaks }}</p>
-            <button type="button" onclick="location.href='{% url 'mainapp:projects_post' project_item.slug %}'">Читать</button>
-        </div>
+<div class="projects">
+  {% for project_item in post %}
+  <div class="projects__item">
+    <div class="projects__item_imgBox">
+      {% if project_item.photo %}
+      <img
+        class="projects__item_img"
+        src="/home{{project_item.photo.url}}"
+        width="300"
+        height="250"
+      />
     </div>
-{% endfor %}
+
+    {% endif %}
+    <div class="projects__item_textBox">
+      <div class="projects__item_title">{{ project_item.name }}</div>
+      <div
+        class="projects__item_btn"
+        onclick="location.href='{% url 'mainapp:projects_post' project_item.slug %}'"
+      >
+        &#10148;
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+<!--  -->
 {% include 'mainapp/includes/paginator.html' %}
-{% endblock %}
+<!--  -->
 {% include 'mainapp/includes/Back.html' %}
 
-
+<!--  -->
+{% endblock %}

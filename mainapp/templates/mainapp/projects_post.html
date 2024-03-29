@@ -1,29 +1,101 @@
 {% extends 'mainapp/base.html' %}
+<!--  -->
 {% load static %}
 
 <title xmlns="http://www.w3.org/1999/html">
-    {% block title %}
-        {{ post.name }}
-    {% endblock %}
+  {% block title %} {{ post.name }} {% endblock %}
 </title>
 
 {% block content %}
-    <h1>{{ post.name }}</h1>
+<!-- шапка страницы -->
+<div class="projectsPost__titleBox center">
+  <h1 class="projectsPost__titleMain" onclick="history.back();">
+    {{ post.category }}
+  </h1>
+  <img
+    class="projectsPost__title_img"
+    src="{% static '/img/projects/project3.png' %}"
+    alt="Окно в Мир"
+  />
+</div>
 
-    <div class="row justify-content-center align-items-center">
-        <div class="col-md-7">
-            {% if post.photo %}
-            <p><img class="img-header-photo" src="/home{{post.photo.url}}" width="300" height="250"></p>
-            {% endif %}
-            <p> {{ post.description|linebreaks }}</p>
-            <h3>Необходимая сумма</h3>
-            <p style="font-size: 25px">{{ post.donation }} руб</p>
-            <h3>Собрано</h3>
-            <p style="font-size: 25px">{{ post.collected }} руб</p>
-            <p style="font-size: 25px">Назначение платежа: {{ post.purpose }}</p>
-            <p>{{ post.created_at }}</p>
-            <button type="button" onclick="location.href='{% url 'mainapp:donation' %}'">Помочь</button>
-            </div>
+<!-- <h1 class="projectsPost_title">{{ post.name }}</h1> -->
+
+<div class="projectsPost center">
+  <!-- блок с фото и информацией о сборе -->
+  <div class="projectsPost__mainInfo">
+    <!-- фото -->
+    {% if post.photo %}
+    <div class="projectsPost__imgBox">
+      <img class="projectsPost__img" src="/home{{post.photo.url}}" />
     </div>
-    {% include 'mainapp/includes/Back.html' %}
+    {% endif %}
+    <!-- имя, прогресс линия, кнопка -->
+    <div class="projectsPost__mainInfo_description">
+      <h1 class="projectsPost__title">{{ post.name }} </h1>
+      <!-- блок о суммах -->
+      <div class="projectsPost__paymentnBox">
+        <div class="projectsPost__payment">
+          <p class="projectsPost__collectedSum">{{ post.collected }} &#8381;</p>
+          <p class="projectsPost__totalSum">{{ post.donation }} &#8381;</p>
+        </div>
+        <div class="projectsPost__donations">
+          <!--  линия необходимой суумы-->
+          <div class="projectsPost__donationsProgress">
+            <!-- линия собранной суммы -->
+          </div>
+        </div>
+        <div class="projectsPost__stillNeed"></div>
+        <!-- кнопка помочь -->
+        <div class="projectsPost__btnHelpBox">
+          <button
+            class="projectsPost__btnHelp"
+            onclick="location.href='{% url 'mainapp:donation' %}'"
+          >
+            Помочь
+          </button>
+        </div>
+        <!-- назначение платежа -->
+        <p class="projectsPost__textTargetPay">
+          Назначение платежа: {{ post.purpose }}
+        </p>
+      </div>
+    </div>
+  </div>
+  <!-- конец блока с фото и информацией о сборе -->
+
+  <div class="projectsPost_article center">
+    <p>{{ post.description|linebreaks }}</p>
+  </div>
+
+  <!-- слайлер -->
+  <div class="projectsPost__slider center">
+    <!-- фото -->
+    <div class="projectsPost__slider_imgBox">
+      <div class="projectsPost__slider_imgline">
+        {% for item in image %}
+
+        <img
+          class="projectsPost__slider_img projectsPost__slider_imgHidden"
+          src="{{ item.image.image.url }}"
+        />
+
+        {% endfor %}
+      </div>
+    </div>
+    <!-- стрелки и номера -->
+    <div class="projectsPost__slider_nav">
+      <p class="projectsPost__slider_navLeft"></p>
+      <p class="projectsPost__slider_navNumber"></p>
+      <p class="projectsPost__slider_navRight"></p>
+    </div>
+  </div>
+</div>
+
+<!--  -->
+{% include 'mainapp/includes/Back.html' %}
+<!--  -->
+
+<script src="{% static 'js/projects_post.js' %}"></script>
+
 {% endblock %}

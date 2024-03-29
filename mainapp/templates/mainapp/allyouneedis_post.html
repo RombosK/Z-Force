@@ -1,27 +1,113 @@
 {% extends 'mainapp/base.html' %}
+<!--  -->
 {% load static %}
+<!--  -->
+{% load pymorphy_tags %}
+<!--  -->
 
 <title xmlns="http://www.w3.org/1999/html">
-    {% block title %}
-        {{ post.name }}
-    {% endblock %}
+  {% block title %} {{ post.name }} {% endblock %}
 </title>
 
 {% block content %}
-    <h1>{{ post.name }} {{ post.surname }}</h1>
+<!-- шапка страницы -->
+<div class="allYouNeedisPost__titleBox center">
+  <a
+    class="allYouNeedisPost__titleMain"
+    href="{% url 'mainapp:allyouneedis' %}"
+    >{{ title }}</a
+  >
+  <img
+    class="allYouNeedisPost__title_img"
+    src="{% static '/img/allYouNeedis/01.png' %}"
+    alt="Окно в Мир"
+  />
+</div>
 
-    <div class="row justify-content-center align-items-center">
-        <div class="col-md-7">
-            {% if post.photo %}
-            <p><img class="img-header-photo" src="/home{{post.photo.url}}" width="300" height="250"></p>
-            {% endif %}
-            <p> {{ post.description|linebreaks }}</p>
-            <p style="font-size: 25px">Требуемая сумма: {{ post.donation }} руб</p>
-            <p style="font-size: 25px">Собрано: {{ post.collected }} руб</p>
-            <p style="font-size: 25px">Назначение платежа: {{ post.purpose }}</p>
-            <p>{{ post.created_at }}</p>
-            <button type="button" onclick="location.href='{% url 'mainapp:donation' %}'">Помочь</button>
-            </div>
+<div class="allYouNeedisPost center">
+  <!-- блок с фото и информацией о сборе -->
+  <div class="allYouNeedisPost__mainInfo">
+    <!-- фото -->
+    {% if post.photo %}
+    <div class="allYouNeedisPost__imgBox">
+      <img class="allYouNeedisPost__img" src="/home{{post.photo.url}}" />
     </div>
-    {% include 'mainapp/includes/Back.html' %}
+    {% endif %}
+    <!-- имя, прогресс линия, кнопка -->
+    <div class="allYouNeedisPost__mainInfo_description">
+      <h1 class="allYouNeedisPost__title">
+        {{ post.name }} {{ post.surname }}
+      </h1>
+      <p class="allYouNeedisPost__target">{{ post.short_description }}</p>
+      <p class="allYouNeedisPost__text allYouNeedisPost__age">
+        {{ post.birthdate }}
+      </p>
+      <p class="allYouNeedisPost__text">Регион: {{ post.city }}</p>
+
+      <!-- блок о суммах -->
+      <div class="allYouNeedisPost__paymentnBox">
+        <div class="allYouNeedisPost__payment">
+          <p class="allYouNeedisPost__collectedSum">
+            {{ post.collected }} &#8381;
+          </p>
+          <p class="allYouNeedisPost__totalSum">{{ post.donation }} &#8381;</p>
+        </div>
+        <div class="allYouNeedisPost__donations">
+          <!--  линия необходимой суумы-->
+          <div class="allYouNeedisPost__donationsProgress">
+            <!-- линия собранной суммы -->
+          </div>
+        </div>
+        <div class="allYouNeedisPost__stillNeed"></div>
+        <!-- кнопка помочь -->
+        <div class="allYouNeedisPost__btnHelpBox">
+          <button
+            class="allYouNeedisPost__btnHelp"
+            onclick="location.href='{% url 'mainapp:donation' %}'"
+          >
+            Помочь {{ post.name|inflect_to_dative }}
+          </button>
+        </div>
+        <!-- назначение платежа -->
+        <p class="allYouNeedisPost__textTargetPay">
+          Назначение платежа: {{ post.purpose }}
+        </p>
+      </div>
+    </div>
+  </div>
+  <!-- конец блока с фото и информацией о сборе -->
+
+  <!-- история ребенка -->
+  <div class="allYouNeedisPost__history center">
+    {{ post.description|linebreaks }}
+  </div>
+
+  <!-- слайлер -->
+  <div class="allYouNeedisPost__slider">
+    <!-- фото -->
+    <div class="allYouNeedisPost__slider_imgBox">
+      <div class="allYouNeedisPost__slider_imgline">
+        {% for item in image %}
+        <img
+          class="allYouNeedisPost__slider_img allYouNeedisPost__slider_imgHidden"
+          src="{{ item.image.image.url }}"
+          onclick="zoomIn()"
+        />
+        {% endfor %}
+      </div>
+    </div>
+    <!-- стрелки и номера -->
+    <div class="allYouNeedisPost__slider_nav">
+      <p class="allYouNeedisPost__slider_navLeft"></p>
+      <p class="allYouNeedisPost__slider_navNumber"></p>
+      <p class="allYouNeedisPost__slider_navRight"></p>
+    </div>
+  </div>
+</div>
+
+{% include 'mainapp/includes/Back.html' %}
+<!--  -->
+
+<script src="{% static 'js/allyouneedis_post.js' %}"></script>
+
 {% endblock %}
