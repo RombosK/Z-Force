@@ -253,19 +253,19 @@ class ProjectView(ListView):
 # Функция вывода случайного проекта
 def get_projects():
     projects = Project.objects.all()
-    return random.sample(list(projects), 1)[0]
+    return random.choice(list(projects))
 
 
 # Функция вывода случайного подопечного
 def get_kids():
     kids = AllYouNeedIs.objects.all()
-    return random.sample(list(kids), 1)[0]
+    return random.choice(list(kids))
 
 
 # Функция вывода случайной новости
 def get_news():
     news = News.objects.all()
-    return random.sample(list(news), 1)[0]
+    return random.choice(list(news))
 
 
 class ProjectDetailView(DetailView):
