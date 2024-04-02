@@ -1,4 +1,5 @@
 import asyncio
+import random
 
 import aiohttp
 
@@ -88,17 +89,6 @@ class PartnersView(ListView):
 
 
 logger = logging.getLogger(__name__)
-
-
-# Контроллер главной страницы
-class IndexView(TemplateView):
-    template_name = 'mainapp/index.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['title'] = 'Окно в Мир'
-
-        return context
 
 
 # Контроллер страницы контактов
@@ -260,6 +250,24 @@ class ProjectView(ListView):
         return context
 
 
+# Функция вывода случайного проекта
+def get_projects():
+    projects = Project.objects.all()
+    return random.choice(list(projects))
+
+
+# Функция вывода случайного подопечного
+def get_kids():
+    kids = AllYouNeedIs.objects.all()
+    return random.choice(list(kids))
+
+
+# Функция вывода случайной новости
+def get_news():
+    news = News.objects.all()
+    return random.choice(list(news))
+
+
 class ProjectDetailView(DetailView):
     model = Project
     template_name = 'mainapp/projects_post.html'
@@ -314,6 +322,24 @@ class AllYouNeedIsDetailView(DetailView):
             slug=self.kwargs[self.slug_url_kwarg]).get())
         print(item)
         context['image'] = item
+        return context
+
+
+# Контроллер главной страницы
+class IndexView(TemplateView):
+    template_name = 'mainapp/index.html'
+    # hot_projects = get_hot_projects()
+
+    def get_context_data(self, **kwargs):
+        random_projects = get_projects()
+        random_kids = get_kids()
+        random_news = get_news()
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Окно в Мир'
+        context['random_projects'] = random_projects
+        context['random_kids'] = random_kids
+        context['random_news'] = random_news
+
         return context
 
 

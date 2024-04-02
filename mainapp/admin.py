@@ -61,7 +61,6 @@ class NewsAdmin(admin.ModelAdmin):
     show_full_result_count = False
     inlines = [ImagesNewsInline, ]
 
-
 @admin.register(Images)
 class ImagesAdmin(admin.ModelAdmin):
     list_display = ('name', 'image')
