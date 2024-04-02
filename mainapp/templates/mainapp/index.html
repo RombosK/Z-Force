@@ -5,7 +5,7 @@
 {% block content %}
 <div class="index__slider">
   <div class="index__slider_items">
-    <!-- элемент слайдера  1-->
+    <!-- элемент слайдера 1-->
 
     <div class="index__slider_item">
       <div class="index__slider_imgs">
@@ -31,7 +31,7 @@
         </p>
       </div>
     </div>
-    <!-- элемент слайдера  2-->
+    <!-- элемент слайдера 2-->
     <div class="index__slider_item">
       <div class="index__slider_imgs">
         <img
@@ -52,7 +52,7 @@
         <p class="index__slider_text">Не откладывайте. Помогите прямо сейчас</p>
       </div>
     </div>
-    <!-- элемент слайдера  3-->
+    <!-- элемент слайдера 3-->
     <div class="index__slider_item">
       <div class="index__slider_imgs">
         <img
@@ -78,6 +78,69 @@
     <div class="index__slider_arrowRight">&#10148;</div>
   </div>
 </div>
+
+<div class="latest-products">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="section-heading">
+              <h3>Последние новости</h3>
+              <a href="projects"> смотреть все <i class="fa fa-angle-right"></i></a>
+            </div>
+            {% if random_news %}
+            <img src="/media/{{ random_news.photo }}">
+          </div>
+          <div class="col-md-6">
+            <div class="product-item" style="width: 260px;">
+
+              <div class="down-content">
+                <a href="#"><h3>{{ random_news.name }} </h3></a>
+                </ul>
+                {% endif %}
+              </div>
+
+              <div class="latest-products">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="section-heading">
+              <h3>Помогите детям</h3>
+              <a href="projects">смотреть все <i class="fa fa-angle-right"></i></a>
+            </div>
+            {% if random_kids %}
+            <img src="/media/{{ random_kids.photo }}">
+          </div>
+          <div class="col-md-4">
+            <div class="product-item" style="width: 260px;">
+
+              <div class="down-content">
+                <a href="#"><h3>{{ random_kids.name }} {{ random_kids.surname }}</h3></a>
+                <p>{{ random_kids.short_description }}</p>
+                </ul>
+                {% endif %}
+              </div>
+
+<div class="latest-products">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="section-heading">
+              <h3>Срочные задачи</h3>
+              <a href="projects">смотреть все <i class="fa fa-angle-right"></i></a>
+            </div>
+            {% if random_projects %}
+            <img src="/media/{{ random_projects.photo }}">
+          </div>
+          <div class="col-md-6">
+            <div class="product-item" style="width: 260px;">
+
+              <div class="down-content">
+                <a href="#"><h3>{{ random_projects.name }} </h3></a>
+                </ul>
+                {% endif %}
+              </div>
+            </div>
+          </div>
 
 <div class="index__content">
   Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugit, neque eum
@@ -274,7 +337,7 @@
                 Международный благотворительный фонд помощи детям инвалидам с ограниченными возможностями здоровья «ОКНО
                 В МИР»
 
-            <p><strong>Юридический адрес:</strong>143090 Московская область, г. Королёв, мкр. Болшево, ул.Маяковского
+            <p><strong>Юридический адрес:</strong>143090 Московская область, г. Королёв, мкр. Болшево, ул. Маяковского
                 д.18 Г ПОМ IV</p>
             <p><strong>Фактический адрес:</strong>г. Королев, ул. Фрунзе, д.12, пом.9</p>
 
