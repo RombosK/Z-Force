@@ -1,6 +1,6 @@
 // убираем общую обертки для всех страниц
-const containerMDElem = document.querySelector(".container-md");
-containerMDElem.classList.remove("container-md");
+// const containerMDElem = document.querySelector(".container-md");
+// containerMDElem.classList.remove("container-md");
 
 // слейдер
 
@@ -64,7 +64,7 @@ setInterval(() => {
     activeImage++;
   }
   slider();
-}, 3000);
+}, 9000);
 
 // второй вариант
 // const initSlider = () => {

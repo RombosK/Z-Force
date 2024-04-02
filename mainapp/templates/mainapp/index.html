@@ -81,75 +81,119 @@
 </div>
 
 <!-- контент -->
-<div class="latest-products">
-  <div class="container__12">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="section-heading">
-          <h3>Последние новости</h3>
-          <a href="/projects">
-            смотреть все <i class="fa fa-angle-right"></i
-          ></a>
-        </div>
-        {% if random_news %}
-        <img src="/media/{{ random_news.photo }}" style="width: 300px" />
+<div class="index__content center">
+  <h2 class="index__news_title">Последние события</h2>
+  <div class="index__event center">
+    <!-- новости -->
+    <div class="index__news">
+      {% if random_news %}
+      <div class="index__news_boxImg">
+        <img src="/media/{{ random_news.photo }}" class="index__news_img" />
       </div>
-      <div class="col-md-6">
-        <div class="product-item" style="width: 260px">
-          <div class="down-content">
-            <a href="#"><h3>{{ random_news.name }}</h3></a>
+      <a href="#" class="index__news_subTitle">{{ random_news.name }}</a>
+      {% endif %}
+      <div class="index__news_btnBox">
+        <button class="index__news_btn">смотреть все</button>
+      </div>
+    </div>
 
-            {% endif %}
-          </div>
+    <!-- подопечный -->
+    <div class="index__news">
+      {% if random_kids %}
+      <div class="index__news_boxImg">
+        <img src="/media/{{ random_kids.photo }}" class="index__news_img" />
+      </div>
+      <a href="#" class="index__news_subTitle">
+        {{ random_kids.name }} {{ random_kids.surname }}</a
+      >
+      {% endif %}
+      <div class="index__news_btnBox">
+        <button class="index__news_btn">смотреть все</button>
+      </div>
+    </div>
 
-          <div class="latest-products">
-            <div class="container__12">
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="section-heading">
-                    <h3>Помогите детям</h3>
-                    <a href="projects"
-                      >смотреть все <i class="fa fa-angle-right"></i
-                    ></a>
-                  </div>
-                  {% if random_kids %}
-                  <img src="/media/{{ random_kids.photo }}" />
+    <!-- проект -->
+    <div class="index__news">
+      {% if random_projects %}
+      <div class="index__news_boxImg">
+        <img src="/media/{{ random_projects.photo }}" class="index__news_img" />
+      </div>
+      <a href="#" class="index__news_subTitle">
+        {{ random_projects.name}}</a
+      >
+      {% endif %}
+      <div class="index__news_btnBox">
+        <button class="index__news_btn">смотреть все</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="container__12">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="section-heading">
+        <h3>Последние новости</h3>
+        <a href="/projects"> смотреть все <i class="fa fa-angle-right"></i></a>
+      </div>
+      {% if random_news %}
+      <img src="/media/{{ random_news.photo }}" style="width: 300px" />
+    </div>
+    <div class="col-md-6">
+      <div class="product-item" style="width: 260px">
+        <div class="down-content">
+          <a href="#"><h3>{{ random_news.name }}</h3></a>
+
+          {% endif %}
+        </div>
+
+        <div class="latest-products">
+          <div class="container__12">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="section-heading">
+                  <h3>Помогите детям</h3>
+                  <a href="projects"
+                    >смотреть все <i class="fa fa-angle-right"></i
+                  ></a>
                 </div>
-                <div class="col-md-4">
-                  <div class="product-item" style="width: 260px">
-                    <div class="down-content">
-                      <a href="#"
-                        ><h3>
-                          {{ random_kids.name }} {{ random_kids.surname }}
-                        </h3></a
-                      >
-                      <p>{{ random_kids.short_description }}</p>
+                {% if random_kids %}
+                <img src="/media/{{ random_kids.photo }}" />
+              </div>
+              <div class="col-md-4">
+                <div class="product-item" style="width: 260px">
+                  <div class="down-content">
+                    <a href="#"
+                      ><h3>
+                        {{ random_kids.name }} {{ random_kids.surname }}
+                      </h3></a
+                    >
+                    <p>{{ random_kids.short_description }}</p>
 
-                      {% endif %}
-                    </div>
+                    {% endif %}
+                  </div>
 
-                    <div class="latest-products">
-                      <div class="container__12">
-                        <div class="row">
-                          <div class="col-md-12">
-                            <div class="section-heading">
-                              <h3>Срочные задачи</h3>
-                              <a href="projects"
-                                >смотреть все <i class="fa fa-angle-right"></i
-                              ></a>
-                            </div>
-                            {% if random_projects %}
-                            <img src="/media/{{ random_projects.photo }}" />
+                  <div class="latest-products">
+                    <div class="container__12">
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="section-heading">
+                            <h3>Срочные задачи</h3>
+                            <a href="projects"
+                              >смотреть все <i class="fa fa-angle-right"></i
+                            ></a>
                           </div>
-                          <div class="col-md-6">
-                            <div class="product-item" style="width: 260px">
-                              <div class="down-content">
-                                <a href="#"
-                                  ><h3>{{ random_projects.name }}</h3></a
-                                >
+                          {% if random_projects %}
+                          <img src="/media/{{ random_projects.photo }}" />
+                        </div>
+                        <div class="col-md-6">
+                          <div class="product-item" style="width: 260px">
+                            <div class="down-content">
+                              <a href="#"
+                                ><h3>{{ random_projects.name }}</h3></a
+                              >
 
-                                {% endif %}
-                              </div>
+                              {% endif %}
                             </div>
                           </div>
                         </div>
@@ -164,7 +208,8 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
+
 <!-- скрипт -->
 <script src="{% static 'js/index.js' %}"></script>
 <!--  -->
