@@ -1,9 +1,218 @@
 {% extends 'mainapp/base.html' %}
-
+<!--  -->
 {% load static %}
-
+<!--  -->
 {% block content %}
-    <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-ride="carousel">
+<div class="index__slider">
+  <div class="index__slider_items">
+    <!-- элемент слайдера 1-->
+
+    <div class="index__slider_item">
+      <div class="index__slider_imgs">
+        <img
+          class="index__slider_img01"
+          src="{% static '/img/index/01.png' %}"
+          alt="Окно в Мир"
+        />
+        <img
+          class="index__slider_img02"
+          src="{% static '/img/index/02.png' %}"
+          alt="Окно в Мир"
+        />
+      </div>
+      <div class="index__slider_textBox">
+        <h1 class="index__slider_title">
+          МЕЖДУНАРОДНЫЙ БЛАГОТВОРИТЕЛЬНЫЙ ФОНД "ОКНО В МИР"
+        </h1>
+        <p class="index__slider_text">
+          Среди нас живут семьи, которым требуется помощь: семьи с
+          детьми-инвалидами; многодетные семьи; семьи, попавшие в трудную
+          жизненную ситуацию.
+        </p>
+      </div>
+    </div>
+    <!-- элемент слайдера 2-->
+    <div class="index__slider_item">
+      <div class="index__slider_imgs">
+        <img
+          class="index__slider_img03"
+          src="{% static '/img/index/03.png' %}"
+          alt="Окно в Мир"
+        />
+        <img
+          class="index__slider_img04"
+          src="{% static '/img/index/04.png' %}"
+          alt="Окно в Мир"
+        />
+      </div>
+      <div class="index__slider_textBox">
+        <h1 class="index__slider_title">
+          Детям в сложных жизненных ситуациях постоянно нужна ваша поддержка
+        </h1>
+        <p class="index__slider_text">Не откладывайте. Помогите прямо сейчас</p>
+      </div>
+    </div>
+    <!-- элемент слайдера 3-->
+    <div class="index__slider_item">
+      <div class="index__slider_imgs">
+        <img
+          class="index__slider_img05"
+          src="{% static '/img/index/05.png' %}"
+          alt="Окно в Мир"
+        />
+        <img
+          class="index__slider_img06"
+          src="{% static '/img/index/06.png' %}"
+          alt="Окно в Мир"
+        />
+      </div>
+      <div class="index__slider_textBox">
+        <h1 class="index__slider_title">Мы будем благодарны любой помощи</h1>
+        <p class="index__slider_text">Станьте волонтёром</p>
+      </div>
+    </div>
+  </div>
+  <!-- точки -->
+  <div class="index__slider_arrows">
+    <div class="index__slider_arrowLeft">&#10148;</div>
+    <div class="index__slider_arrowRight">&#10148;</div>
+  </div>
+</div>
+
+<div class="latest-products">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="section-heading">
+              <h3>Последние новости</h3>
+              <a href="projects"> смотреть все <i class="fa fa-angle-right"></i></a>
+            </div>
+            {% if random_news %}
+            <img src="/media/{{ random_news.photo }}">
+          </div>
+          <div class="col-md-6">
+            <div class="product-item" style="width: 260px;">
+
+              <div class="down-content">
+                <a href="#"><h3>{{ random_news.name }} </h3></a>
+                </ul>
+                {% endif %}
+              </div>
+
+              <div class="latest-products">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="section-heading">
+              <h3>Помогите детям</h3>
+              <a href="projects">смотреть все <i class="fa fa-angle-right"></i></a>
+            </div>
+            {% if random_kids %}
+            <img src="/media/{{ random_kids.photo }}">
+          </div>
+          <div class="col-md-4">
+            <div class="product-item" style="width: 260px;">
+
+              <div class="down-content">
+                <a href="#"><h3>{{ random_kids.name }} {{ random_kids.surname }}</h3></a>
+                <p>{{ random_kids.short_description }}</p>
+                </ul>
+                {% endif %}
+              </div>
+
+<div class="latest-products">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="section-heading">
+              <h3>Срочные задачи</h3>
+              <a href="projects">смотреть все <i class="fa fa-angle-right"></i></a>
+            </div>
+            {% if random_projects %}
+            <img src="/media/{{ random_projects.photo }}">
+          </div>
+          <div class="col-md-6">
+            <div class="product-item" style="width: 260px;">
+
+              <div class="down-content">
+                <a href="#"><h3>{{ random_projects.name }} </h3></a>
+                </ul>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+
+<div class="index__content">
+  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugit, neque eum
+  magnam, optio commodi accusamus quas quasi non asperiores vero quam enim illo
+  quod porro nihil! Odit mollitia aut fugiat. Quo alias eveniet dolorum
+  adipisci, harum, voluptatibus nisi sequi at atque nobis, reprehenderit veniam
+  officiis exercitationem natus voluptatem sit quibusdam mollitia placeat
+  excepturi libero voluptas quidem fuga blanditiis. Quaerat, illo. Eligendi
+  animi laudantium, rem at illo recusandae? Laudantium, mollitia eos commodi
+  voluptatem dolore blanditiis fugit aspernatur, natus explicabo nam magni,
+  aliquam est hic sint. Eos sunt ducimus quas nam cupiditate. Nam molestiae
+  illum in. Ipsum dolorum saepe aliquam voluptas aspernatur enim unde
+  architecto, alias eum praesentium porro quae, amet rerum, perferendis sint
+  totam iure! Mollitia laborum quos vero tempore. Cupiditate. Facilis dolores
+  saepe ducimus ex quae pariatur necessitatibus libero, mollitia natus ratione
+  sed alias sapiente nulla, qui nemo deserunt itaque quidem, consectetur et
+  officia ut dolor optio. Nemo, adipisci hic! Repudiandae, id quo voluptatum
+  earum cupiditate doloremque itaque saepe natus, odit dignissimos porro
+  corporis iusto hic dolorem, magnam ullam repellendus. Sequi deleniti rerum
+  illo ipsum omnis, officiis unde maxime nisi! Beatae, voluptate! Laboriosam sed
+  rerum unde dolore suscipit laborum optio, facere esse necessitatibus!
+  Reiciendis dignissimos et perspiciatis, id quo inventore iste accusantium nemo
+  ipsam. Veniam eius maxime eveniet laudantium tenetur. Nobis maxime deleniti
+  perferendis! Voluptates doloribus voluptate fugiat eligendi, sit velit
+  repudiandae aperiam laborum voluptas sunt beatae facilis, officiis similique
+  alias sint! Culpa similique nemo ab autem deleniti quisquam sint. Eum sed et
+  necessitatibus, numquam ratione quae ipsam iusto aspernatur facilis
+  repudiandae pariatur odit ut vel, quo nobis modi consequuntur? Tempore est
+  labore iusto aspernatur fugit excepturi molestiae fuga quam? Sapiente enim
+  distinctio vitae quam quod ea natus earum molestias dicta facere quaerat error
+  ut pariatur architecto et consectetur adipisci, quo reprehenderit excepturi,
+  aliquid sint eos quia! Sed, fugit et. Eos non nemo voluptatem, perferendis
+  odit impedit sequi quidem debitis ut quam tempore provident distinctio nostrum
+  ea iusto sunt magnam reprehenderit animi ratione aut molestiae maxime
+  corrupti. Praesentium, unde beatae! Minima numquam dignissimos, velit tempora
+  similique accusamus veniam ipsa consequuntur atque quibusdam adipisci
+  architecto unde, est expedita quas aperiam hic eveniet fugit, consequatur
+  culpa quisquam eaque ipsum incidunt? Recusandae, sapiente. Vel a sunt quaerat
+  voluptas sequi ipsa quam nam error? Fugiat maiores aspernatur et, repellat
+  officiis veritatis temporibus voluptatibus, voluptatum, nemo consequatur cum
+  dicta. Itaque quam obcaecati a corrupti quibusdam. Odit non officia suscipit
+  repellat doloremque accusantium alias cum dolore, in minima delectus quibusdam
+  maiores aperiam nemo omnis itaque recusandae. Neque, deleniti illum? Soluta
+  praesentium est omnis mollitia a laboriosam. Tenetur quam dolore officiis,
+  reprehenderit et repellendus dicta ipsa unde qui ea aliquam dolorem sed
+  consectetur provident suscipit commodi architecto natus sit nostrum omnis. In
+  accusantium neque dolor molestiae enim. Itaque sed necessitatibus vero iste
+  quisquam, nulla dolor dolorem molestias. Excepturi, suscipit, dolorum ducimus
+  minus voluptatem nesciunt ullam iste at voluptatibus animi sequi! Magnam hic
+  recusandae eligendi eos, cupiditate dolores. Recusandae, provident reiciendis.
+  Quaerat iusto molestiae nostrum blanditiis, eius eveniet, aliquam delectus
+  voluptatem beatae iste modi dolorem harum repellat veniam ut rem vel
+  veritatis, cum quam eligendi quas culpa? Quibusdam? Ex, quos. Omnis nam
+  voluptas quas repellendus exercitationem laudantium deleniti facere commodi
+  repudiandae blanditiis! Inventore nobis temporibus numquam est illum
+  repellendus mollitia quasi modi non et aut tempora, sapiente voluptates. Optio
+  itaque fugit, autem voluptate doloremque maiores soluta, facere tenetur non,
+  consectetur neque sapiente harum! Quae facilis in qui repudiandae ab vitae
+  mollitia debitis, tempora laboriosam neque repellat iure voluptas. Veritatis
+  sit, similique, ducimus impedit totam distinctio est labore error, cupiditate
+  illo eaque nulla iste cum! In harum tempora nemo repellat accusamus
+  praesentium minus nam ut placeat, consectetur enim laborum. Fugit voluptatibus
+  et laudantium assumenda tenetur eius error iusto consequatur. Recusandae
+  dolorum minima vel repudiandae? Vel dolore dolorem, natus quis impedit nemo
+  id. Iste totam sint et vitae aspernatur dignissimos. Animi nobis voluptates,
+  natus vitae voluptatibus sequi repellat facere cum illo dolore laudantium vel
+</div>
+
+<!-- скрипт -->
+<script src="{% static 'js/index.js' %}"></script>
+<!--  -->
+<!-- <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-ride="carousel">
         <ol class="carousel-indicators">
             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
             <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -41,9 +250,9 @@
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
         </a>
-    </div>
+    </div> -->
 
-    <div class="jumbotron">
+<!-- <div class="jumbotron">
         <h1 class="display-4">Мы рады, что вы зашли к нам на страничку</h1>
         <p class="lead">
             В нашем благотворительном фоне собрались люди неравнодушные к чужим проблемам
@@ -128,7 +337,7 @@
                 Международный благотворительный фонд помощи детям инвалидам с ограниченными возможностями здоровья «ОКНО
                 В МИР»
 
-            <p><strong>Юридический адрес:</strong>143090 Московская область, г. Королёв, мкр. Болшево, ул.Маяковского
+            <p><strong>Юридический адрес:</strong>143090 Московская область, г. Королёв, мкр. Болшево, ул. Маяковского
                 д.18 Г ПОМ IV</p>
             <p><strong>Фактический адрес:</strong>г. Королев, ул. Фрунзе, д.12, пом.9</p>
 
@@ -148,6 +357,95 @@
         <div class="col-md-5">
             <img src="{% static 'img/blago.jpg' %}" alt="" class="w-100 h-100 rounded" style="opacity: 0.7;">
         </div>
-    </div>
+    </div> -->
+
 {% endblock content %}
 
+<!-- <div class="index">
+  элемент слайдера  1
+  <div class="index__slider_item">
+    <div>
+      <img
+        class="index__slider_img01"
+        src="{% static '/img/index/01.png' %}"
+        alt="Окно в Мир"
+      />
+    </div>
+
+    <div class="index____slider_textBox">
+      <h1 class="index____slider_title">
+        МЕЖДУНАРОДНЫЙ БЛАГОТВОРИТЕЛЬНЫЙ ФОНД "ОКНО В МИР"
+      </h1>
+      <p class="index____slider_text">
+        Среди нас живут семьи, которым требуется помощь: семьи с
+        детьми-инвалидами; многодетные семьи; семьи, попавшие в трудную
+        жизненную ситуацию.
+      </p>
+    </div>
+    <div>
+      <img
+        class="index__slider_img02"
+        src="{% static '/img/index/02.png' %}"
+        alt="Окно в Мир"
+      />
+    </div>
+  </div>
+</div>
+
+<div class="index2">
+  элемент слайдера  2
+  <div class="index__slider_item">
+    <div>
+      <img
+        class="index__slider_img03"
+        src="{% static '/img/index/03.png' %}"
+        alt="Окно в Мир"
+      />
+    </div>
+
+    <div class="index____slider_textBox">
+      <h1 class="index____slider_title">
+        Детям в сложных жизненных ситуациях постоянно нужна ваша поддержка
+      </h1>
+      <p class="index____slider_text">Не откладывайте. Помогите прямо сейчас</p>
+    </div>
+    <div>
+      <img
+        class="index__slider_img04"
+        src="{% static '/img/index/04.png' %}"
+        alt="Окно в Мир"
+      />
+    </div>
+  </div>
+</div>
+
+<div class="index3">
+  элемент слайдера  3
+  <div class="index__slider_item">
+    <div>
+      <img
+        class="index__slider_img05"
+        src="{% static '/img/index/05.png' %}"
+        alt="Окно в Мир"
+      />
+    </div>
+
+    <div class="index____slider_textBox">
+      <h1 class="index____slider_title">Мы будем благодарны любой помощи</h1>
+      <p class="index____slider_text">Станьте волонтёром</p>
+    </div>
+    <div>
+      <img
+        class="index__slider_img06"
+        src="{% static '/img/index/06.png' %}"
+        alt="Окно в Мир"
+      />
+    </div>
+  </div>
+  точки
+  <div class="index__dots">
+    <div class="index__dot index__dot_activ"></div>
+    <div class="index__dot"></div>
+    <div class="index__dot"></div>
+  </div>
+</div> -->

@@ -1,4 +1,5 @@
 import asyncio
+import random
 
 import aiohttp
 
@@ -15,7 +16,8 @@ from django.views.generic import ListView, DetailView
 from django.views.generic import TemplateView, View
 
 from mainapp.forms import GiveHelpForm, GetHelpForm
-from mainapp.models import GiveHelp, GetHelp, News, ProjectCategory, AllYouNeedIs, Partners,Project, Report, ReportYear, Images
+from mainapp.models import GiveHelp, GetHelp, News, ProjectCategory, AllYouNeedIs, Partners, Project, Report, \
+    ReportYear, Images, ImagesMany
 
 
 # # Контроллер страницы с анкетой
@@ -82,22 +84,11 @@ class PartnersView(ListView):
     template_name = 'mainapp/partners.html'
     context_object_name = 'object'
     extra_context = {
-        'title': 'Партнеры',
+        'title': 'Наши партнеры',
     }
 
 
 logger = logging.getLogger(__name__)
-
-
-# Контроллер главной страницы
-class IndexView(TemplateView):
-    template_name = 'mainapp/index.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['title'] = 'Окно в Мир'
-
-        return context
 
 
 # Контроллер страницы контактов
@@ -175,7 +166,7 @@ class ContactsView(TemplateView):
 # Контроллер страницы новостей
 # родитель ListView для удобства работы со страницами, где нужна пагинация
 class NewsView(ListView):
-    paginate_by = 3
+    paginate_by = 6
     model = News
     template_name = 'mainapp/news.html'
     context_object_name = 'object'
@@ -195,21 +186,20 @@ class NewsDetailView(DetailView):
     template_name = 'mainapp/news_post.html'
     slug_url_kwarg = 'post_slug'
     context_object_name = 'post'
-    # extra_context = {
-    #     'image': Images.objects.filter(post=context['post'])
-    # }
+    extra_context = {
+        'title': 'Новости',
+    }
 
     def get_object(self, queryset=None):
         return get_object_or_404(News, slug=self.kwargs[self.slug_url_kwarg])
 
+    # В get_context_data добовляем  context['image'] фотографии которые сортируються по id через slug
+    # slug пренодлежит опреджеленной новости которая имеет опред id
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        # print(self.kwargs)
-        item = Images.objects.filter(post=context['object'])
-        # print(context['post'])
+        item = ImagesMany.objects.filter(news_image=News.objects.filter(slug=self.kwargs[self.slug_url_kwarg]).get())
         context['image'] = item
-        # print(item)
-        # print(context)
+        print(context)
         return context
 
 
@@ -220,24 +210,17 @@ class NewsDetailView(DetailView):
     #
     # queryset = 'post'
 
-# def listing(request):
-#     contact_list = News.objects.all()
-#     paginator = Paginator(contact_list, 2) # отоброжение количества новостей на странице
-#
-#     page_number = request.GET.get('page')
-#     page_obj = paginator.get_page(page_number)
-#     return render(request, 'News.html', {'page_obj': page_obj})
 
 # Контроллер проектов
 # родитель ListView для удобства работы со страницами где нужна пагинация
 class ProjectCategoryView(ListView):
-    paginate_by = 3
+    # paginate_by = 3
     template_name = 'mainapp/projects_category.html'
     model = ProjectCategory
     # pk_url_kwarg = 'pk'
     context_object_name = 'post'
     extra_context = {
-        'title': 'Проекты',
+        'title': 'Наши проекты',
     }
 
     # def get_object(self, queryset=None):
@@ -245,13 +228,13 @@ class ProjectCategoryView(ListView):
 
 
 class ProjectView(ListView):
-    paginate_by = 3
+    paginate_by = 6
     template_name = 'mainapp/projects.html'
     model = Project
     pk_url_kwarg = 'pk'
     context_object_name = 'post'
     extra_context = {
-        'title': 'Проекты',
+        'title': 'Наши проекты',
     }
     # В get_queryset переопределяется object_list в котором содержится наименование проектов отсортированный по
     # категориям
@@ -259,14 +242,30 @@ class ProjectView(ListView):
     def get_queryset(self):
         queryset = Project.objects.filter(category=self.kwargs[self.pk_url_kwarg])
         return queryset
-    #
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #     context['post'] = Project.objects.filter(category=self.kwargs[self.pk_url_kwarg])
-    #
-    #     print(context)
-    #     return context
-    #
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['category'] = ProjectCategory.objects.filter(id=self.kwargs[self.pk_url_kwarg]).get()
+        # print(context)
+        return context
+
+
+# Функция вывода случайного проекта
+def get_projects():
+    projects = Project.objects.all()
+    return random.sample(list(projects), k=3)[0]
+
+
+# Функция вывода случайного подопечного
+def get_kids():
+    kids = AllYouNeedIs.objects.all()
+    return random.sample(list(kids), k=3)[0]
+
+
+# Функция вывода случайной новости
+def get_news():
+    news = News.objects.all()
+    return random.sample(list(news), k=3)[0]
 
 
 class ProjectDetailView(DetailView):
@@ -278,28 +277,70 @@ class ProjectDetailView(DetailView):
     def get_object(self, queryset=None):
         return get_object_or_404(Project, slug=self.kwargs[self.slug_url_kwarg])
 
+    # смотреть 206 строку
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        item = ImagesMany.objects.filter(projects_image=Project.objects.filter(slug=self.kwargs[self.slug_url_kwarg]).get())
+        context['image'] = item
+        return context
+
 
 # Контроллер нуждающихся
 # родитель ListView для удобства работы со страницами где нужна пагинация
 class AllYouNeedIsView(ListView):
-    paginate_by = 3
+    paginate_by = 6 
+    # в дальнейшем нужно поставить 9
     template_name = 'mainapp/allyouneedis.html'
     model = AllYouNeedIs
     slug_url_kwarg = 'post'
     context_object_name = 'object'
     extra_context = {
-        'title': 'Подопечные',
+        'title': 'Наши подопечные',
     }
+
+    def get_queryset(self):
+        queryset = AllYouNeedIs.objects.order_by('created_at').reverse()
+        return queryset
 
 
 class AllYouNeedIsDetailView(DetailView):
     model = AllYouNeedIs
-    template_name = 'mainapp/projects_post.html'
+    template_name = 'mainapp/allyouneedis_post.html'
     slug_url_kwarg = 'slug'
     context_object_name = 'post'
+    extra_context = {
+        'title': 'Наши подопечные',
+    }
 
     def get_object(self, queryset=None):
         return get_object_or_404(AllYouNeedIs, slug=self.kwargs[self.slug_url_kwarg])
+
+    # смотреть 206 строку
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        item = ImagesMany.objects.filter(allyouneedis_image=AllYouNeedIs.objects.filter(
+            slug=self.kwargs[self.slug_url_kwarg]).get())
+        print(item)
+        context['image'] = item
+        return context
+
+
+# Контроллер главной страницы
+class IndexView(TemplateView):
+    template_name = 'mainapp/index.html'
+    # hot_projects = get_hot_projects()
+
+    def get_context_data(self, **kwargs):
+        random_projects = get_projects()
+        random_kids = get_kids()
+        random_news = get_news()
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Окно в Мир'
+        context['random_projects'] = random_projects
+        context['random_kids'] = random_kids
+        context['random_news'] = random_news
+
+        return context
 
 
 # Контроллер страницы О нас
