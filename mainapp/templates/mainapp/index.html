@@ -80,7 +80,32 @@
   </div>
 </div>
 
+
+ {# 3 последних события каждой категории поставил условие if т.е все 3 категории должны быть если что можно убрать #}
+  {% if list_news and list_projects and list_allyouneedis %}
+  <p>
+    {% for item_news in list_news %}
+    <img src="{{ item_news.photo.url }}" alt="foto"><br>
+    {% endfor %}
+  </p>
+<hr>
+  <p>
+    {% for item_projects in list_projects %}
+      <img src="{{ item_projects.photo.url }}" alt="foto"><br>
+      {{ item_projects.name }}<br>
+    {% endfor %}
+  </p>
+<hr>
+  <p>
+    {% for item_allyouneedis in list_allyouneedis %}
+    <img src="{{ item_allyouneedis.photo.url }}" alt="foto"><br>
+      {{ item_allyouneedis.name }}<br>
+    {% endfor %}
+  </p>
+<hr>
+  {% endif %}
 <!-- контент -->
+
 <div class="index__content center">
   <h2 class="index__news_title">Последние события</h2>
   <div class="index__event center">
@@ -129,7 +154,7 @@
   </div>
 </div>
 
-<!-- <div class="container__12">
+<!--<div class="container__12">
   <div class="row">
     <div class="col-md-12">
       <div class="section-heading">
