@@ -85,20 +85,20 @@
   {% if list_news and list_projects and list_allyouneedis %}
   <p>
     {% for item_news in list_news %}
-    <img src="{{ item_news.photo.url }}" alt="foto"><br>
+    <img src="{{ item_news.photo.url }}" alt="foto" width="500" height="500"><br>
     {% endfor %}
   </p>
 <hr>
   <p>
     {% for item_projects in list_projects %}
-      <img src="{{ item_projects.photo.url }}" alt="foto"><br>
+      <img src="{{ item_projects.photo.url }}" alt="foto" width="500" height="500"><br>
       {{ item_projects.name }}<br>
     {% endfor %}
   </p>
 <hr>
   <p>
     {% for item_allyouneedis in list_allyouneedis %}
-    <img src="{{ item_allyouneedis.photo.url }}" alt="foto"><br>
+    <img src="{{ item_allyouneedis.photo.url }}" alt="foto" width="500" height="500"><br>
       {{ item_allyouneedis.name }}<br>
     {% endfor %}
   </p>
