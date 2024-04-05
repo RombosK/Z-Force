@@ -1,6 +1,5 @@
 .footer {
     background: rgb(24, 121, 156);
-    /* margin-top: 120px; */
 }
 
 .footer__container {
@@ -166,7 +165,6 @@
 }
 
 /* адаптация */
-
 @media (min-width: 1110px) and (max-width: 1450px) {
     .center {
         padding-right: 0;

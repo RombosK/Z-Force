@@ -7,7 +7,7 @@
         <a href="{% url 'mainapp:home' %}">
           <img
             class="footer__img"
-            src="{% static '/img/logo-footer.png' %}"
+            src="{% static '/img/icons/logo-footer.png' %}"
             alt="Окно в Мир"
           />
         </a>
@@ -18,14 +18,14 @@
       <!-- кнопки "помочь"/"нужна помощь" -->
       <div class="footer__help">
         <a class="footer__buttonHelp" href="{% url 'mainapp:donation' %}"
-          >Помочь</a
+          >помочь</a
         >
         <a
           class="footer__buttonNeeds"
           href="{% url 'mainapp:get_help' %}"
           onmouseover="onHoverFooter()"
           onmouseout="outHoverFooter()"
-          >Нужна помощь</a
+          >нужна помощь</a
         >
       </div>
     </div>
@@ -60,11 +60,11 @@
   <div class="footer__social">
     <!-- телега -->
     <a href="https://t.me/oknovmirfond" target="_blank">
-      <img class="footer__socialTg" src="{% static '/img/tg.png' %}" alt="tg" />
+      <img class="footer__socialTg" src="{% static '/img/icons/tg.png' %}" alt="tg" />
     </a>
     <!-- vk -->
     <a href="https://vk.com/mbfoknovmir" target="_blank">
-      <img class="footer__socialVk" src="{% static '/img/vk.png' %}" alt="vk" />
+      <img class="footer__socialVk" src="{% static '/img/icons/vk.png' %}" alt="vk" />
     </a>
   </div>
 
@@ -77,7 +77,7 @@
       <p class="footer__bottomText">Связь с разработчиком</p>
       <img
         class="footer__icon"
-        src="{% static '/img/telegram.png' %}"
+        src="{% static '/img/icons/telegram.png' %}"
         alt="Окно в Мир"
       />
     </a>

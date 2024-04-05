@@ -23,7 +23,6 @@
     cursor: pointer;
 }
 
-
 .projectsPost__title_img {
     width: 130px;
     padding-bottom: 15px;
@@ -67,7 +66,6 @@
     gap: 40px;
     min-width: 400px;
 }
-
 
 .projectsPost__title {
     color: rgb(43, 43, 43);
@@ -200,7 +198,6 @@
     justify-content: center;
 }
 
-
 .projectsPost__slider_NotActive {
     display: none !important;
 }
@@ -264,7 +261,6 @@
     font-size: 26px;
     font-weight: 700;
 }
-
 
 
 /* адаптация */
@@ -358,7 +354,6 @@
 
     .projectsPost__imgBox {
         width: 90%;
-        /* height: 250px; */
     }
 
     .projectsPost__mainInfo_description {
@@ -380,7 +375,6 @@
     .projectsPost_paymentInfo {
         flex-direction: column;
         margin-left: 4%;
-
     }
 
     .projectsPost_paymentInfo_text {
@@ -398,7 +392,6 @@
     .projectsPost_paymentInfo_btnBox {
         justify-content: left;
     }
-
 
     .projectsPost_paymentInfo_target {
         font-size: 16px;
@@ -483,13 +476,11 @@
         width: 96%;
         margin-left: 2%;
         font-size: 20px;
-
     }
 
     .projectsPost_paymentInfo {
         flex-direction: column;
         margin-left: 2%;
-
     }
 
     .projectsPost_paymentInfo_text {
@@ -507,7 +498,6 @@
     .projectsPost_paymentInfo_btnBox {
         justify-content: left;
     }
-
 
     .projectsPost_paymentInfo_target {
         font-size: 16px;
@@ -592,13 +582,11 @@
         width: 96%;
         margin-left: 2%;
         font-size: 20px;
-
     }
 
     .projectsPost_paymentInfo {
         flex-direction: column;
         margin-left: 2%;
-
     }
 
     .projectsPost_paymentInfo_textBox {

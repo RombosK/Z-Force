@@ -7,7 +7,6 @@
     padding: 10px 0 10px 0;
     margin-bottom: 100px;
     background-color: rgba(23, 123, 159, 1.00);
-    /* min-height: 350px; */
     height: 250px;
 }
 
@@ -22,9 +21,7 @@
 
 .partners__title_img {
     width: 250px;
-    /* padding-bottom: 40px; */
 }
-
 
 /* контейнер для логопита */
 .partners__conteiner {
@@ -68,13 +65,10 @@
     width: 80%;
 }
 
-
-
 /* адаптация */
 @media (min-width: 1035px) and (max-width: 1420px) {
 
     .partners__titleBox {
-        /* min-height: 250px; */
         height: 200px;
     }
 
@@ -86,7 +80,6 @@
 @media (min-width: 768px) and (max-width: 1034px) {
 
     .partners__titleBox {
-        /* min-height: 250px; */
         height: 180px;
     }
 
@@ -109,7 +102,6 @@
 @media (min-width: 500px) and (max-width: 767px) {
 
     .partners__titleBox {
-        /* min-height: 250px; */
         height: 100px;
     }
 
@@ -133,7 +125,6 @@
 @media (min-width: 500px) and (max-width: 767px) {
 
     .partners__titleBox {
-        /* min-height: 250px; */
         height: 100px;
     }
 
@@ -157,7 +148,6 @@
 @media (min-width: 370px) and (max-width: 499px) {
 
     .partners__titleBox {
-        /* min-height: 250px; */
         height: 80px;
     }
 
@@ -180,7 +170,6 @@
 @media (min-width: 320px) and (max-width: 369px) {
 
     .partners__titleBox {
-        /* min-height: 250px; */
         height: 80px;
     }
 

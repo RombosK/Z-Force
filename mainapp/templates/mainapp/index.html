@@ -3,13 +3,12 @@
 {% load static %}
 <!--  -->
 {% load pymorphy_tags %}
-
 <!--  -->
 {% block content %}
+<!-- слайдер -->
 <div class="index__slider">
   <div class="index__slider_items">
     <!-- элемент слайдера 1-->
-
     <div class="index__slider_item">
       <div class="index__slider_imgs">
         <img
@@ -34,6 +33,7 @@
         </p>
       </div>
     </div>
+
     <!-- элемент слайдера 2-->
     <div class="index__slider_item">
       <div class="index__slider_imgs">
@@ -55,6 +55,7 @@
         <p class="index__slider_text">Не откладывайте. Помогите прямо сейчас</p>
       </div>
     </div>
+
     <!-- элемент слайдера 3-->
     <div class="index__slider_item">
       <div class="index__slider_imgs">
@@ -88,7 +89,7 @@
   <div class="index__about_imgBox">
     <img
       class="index__about_img"
-      src="{% static '/img/logo-fond-main.png' %}"
+      src="{% static '/img/index/logo-fond-main.png' %}"
       alt="Окно в Мир"
     />
   </div>
@@ -105,9 +106,9 @@
       У Фонда есть отделения в Кородеве, Подольске и Красноармейске.
     </p>
     <p class="index__about_text">
-      Мы оказываем регулярную помощь регионам: Новгородской и Костромской
-      области, детским домам в регионах, а также вещевая помощь различным
-      учреждениям для взрослых.
+      Мы оказываем регулярную помощь Новгородской и Костромской областям,
+      детским домам в регионах, а также вещевую помощь различным учреждениям для
+      взрослых.
     </p>
   </div>
 </div>
@@ -117,22 +118,22 @@
   <!-- 3 последних события каждой категории поставил условие if т.е все 3 категории должны быть если что можно убрать -->
   <!--  -->
   <!-- блок подопечные -->
-  <div class="index__allYouNeedis_box center">
-    <h1 class="index__allYouNeedis_title">Помочь детям</h1>
+  <div class="index__box center">
+    <h1 class="index__title">Помочь детям</h1>
     {% if list_news and list_projects and list_allyouneedis %}
-    <div class="index__allYouNeedis center">
+    <div class="index__itemBox">
       {% for item_allyouneedis in list_allyouneedis %}
-      <div class="index__allYouNeedis_item">
-        <div class="index__allYouNeedis_imgBox">
+      <div class="index__item">
+        <div class="index__imgBox">
           <img
-            class="index__allYouNeedis_img"
+            class="index__img"
             src="{{ item_allyouneedis.photo.url }}"
             alt="foto"
           />
         </div>
         <!-- блок с информацие о подопечном и о суммах  -->
         <div class="index__allYouNeedis_descriptionBox">
-          <p class="index__allYouNeedis_subTitle">
+          <p class="index__subTitle">
             {{ item_allyouneedis.name }} {{item_allyouneedis.surname }}
           </p>
           <p class="index__allYouNeedis_target">
@@ -162,20 +163,22 @@
             </button>
           </div>
           <!-- ссылка на страницу с более подробной информацией -->
-          <div
-            onclick="location.href='allyouneedis/{{ item_allyouneedis.slug }}'"
-            class="index__allYouNeedis_history"
-          >
-            Узнать историю
+          <div class="index__article_box">
+            <div
+              onclick="location.href='allyouneedis/{{ item_allyouneedis.slug }}'"
+              class="index__article"
+            >
+              Узнать историю
+            </div>
           </div>
         </div>
       </div>
       {% endfor %}
     </div>
-    <div class="index__allYouNeedis_btnCategoryBox center">
+    <div class="index__btnCategoryBox">
       <button
         onclick="location.href ='{% url 'mainapp:allyouneedis' %}'"
-        class="index__allYouNeedis_btnCategory"
+        class="index__btnCategory"
       >
         Узнать больше историй
       </button>
@@ -183,34 +186,32 @@
   </div>
 
   <!-- блок новостей -->
-  <div class="index__news_box center">
-    <h1 class="index__news_title">Последние события</h1>
+  <div class="index__box index__news_box center">
+    <h1 class="index__title">Последние события</h1>
     <!-- обертка для item -->
-    <div class="index__news_itemBox center">
+    <div class="index__itemBox">
       {% for item_news in list_news %}
-      <div class="index__news_item">
-        <div class="index__news_imgBox">
-          <img
-            class="index__news_img"
-            src="{{ item_news.photo.url }}"
-            alt="foto"
-          />
+      <div class="index__item">
+        <div class="index__imgBox">
+          <img class="index__img" src="{{ item_news.photo.url }}" alt="foto" />
         </div>
-        <div class="index__news_subTitle">{{ item_news.name }}</div>
+
+        <div class="index__subTitle">{{ item_news.name }}</div>
         <!-- перейти к новости -->
         <div
           onclick="location.href='news/{{ item_news.slug }}'"
-          class="index__news_article"
+          class="index__article"
         >
           Читать новость
         </div>
       </div>
       {% endfor %}
     </div>
-    <div class="index__news_btnCategoryBox center">
+    <!-- переход в раздел новости -->
+    <div class="index__btnCategoryBox">
       <button
         onclick="location.href ='{% url 'mainapp:news' %}'"
-        class="index__news_btnCategory"
+        class="index__btnCategory"
       >
         Читать больше новостей
       </button>
@@ -218,182 +219,41 @@
   </div>
 
   <!-- проекты -->
-  <div class="index__allYouNeedis_box center">
-    <h1 class="index__news_title">Наши задачи в проектах</h1>
+  <div class="index__box center">
+    <h1 class="index__title">Наши задачи в проектах</h1>
     <!-- обертка для item -->
-    <div class="index__news_itemBox center">
+    <div class="index__itemBox">
       {% for item_projects in list_projects %}
-      <div class="index__news_item">
-        <div class="index__news_imgBox">
+      <div class="index__item">
+        <div class="index__imgBox">
           <img
-            class="index__news_img"
+            class="index__img"
             src="{{ item_projects.photo.url }}"
             alt="foto"
           />
         </div>
-        <div class="index__news_subTitle">{{ item_projects.name }}</div>
+        <div class="index__subTitle">{{ item_projects.name }}</div>
         <!-- перейти к задаче -->
         <div
           onclick="location.href='projects_post/{{ item_projects.slug }}'"
-          class="index__news_article"
+          class="index__article"
         >
           Узнать больше
         </div>
       </div>
       {% endfor %}
     </div>
-    <div class="index__news_btnCategoryBox center">
+    <!-- переход в раздел проекты -->
+    <div class="index__btnCategoryBox">
       <button
         onclick="location.href ='{% url 'mainapp:projects_category' %}'"
-        class="index__news_btnCategory"
+        class="index__btnCategory index__btnCategory_project"
       >
         Читать больше о проектах
       </button>
     </div>
   </div>
-
-  <!-- <p>
-    {% for item_projects in list_projects %}
-    <img
-      src="{{ item_projects.photo.url }}"
-      alt="foto"
-      width="500"
-      height="500"
-    /><br />
-    {{ item_projects.name }}<br />
-    {% endfor %}
-  </p>
-  <hr />
-
-  <hr /> -->
   {% endif %}
-
-  <!-- контент -->
-  <!-- <h2 class="index__news_title">Последние события</h2>
-  <div class="index__event center"> -->
-  <!-- новости -->
-  <!-- <div class="index__news">
-      {% if random_news %}
-      <div class="index__news_boxImg">
-        <img src="/media/{{ random_news.photo }}" class="index__news_img" />
-      </div>
-      <a href="#" class="index__news_subTitle">{{ random_news.name }}</a>
-      {% endif %}
-      <div class="index__news_btnBox">
-        <button class="index__news_btn">смотреть все</button>
-      </div>
-    </div> -->
-
-  <!-- подопечный -->
-  <!-- <div class="index__news">
-      {% if random_kids %}
-      <div class="index__news_boxImg">
-        <img src="/media/{{ random_kids.photo }}" class="index__news_img" />
-      </div>
-      <a href="#" class="index__news_subTitle">
-        {{ random_kids.name }} {{ random_kids.surname }}</a
-      >
-      {% endif %}
-      <div class="index__news_btnBox">
-        <button class="index__news_btn">смотреть все</button>
-      </div>
-    </div> -->
-
-  <!-- проект -->
-  <!-- <div class="index__news">
-      {% if random_projects %}
-      <div class="index__news_boxImg">
-        <img src="/media/{{ random_projects.photo }}" class="index__news_img" />
-      </div>
-      <a href="#" class="index__news_subTitle"> {{ random_projects.name}}</a>
-      {% endif %}
-      <div class="index__news_btnBox">
-        <button class="index__news_btn">смотреть все</button>
-      </div>
-    </div>
-  </div>
-</div> -->
-
-  <!--<div class="container__12">
-  <div class="row">
-    <div class="col-md-12">
-      <div class="section-heading">
-        <h3>Последние новости</h3>
-        <a href="/projects"> смотреть все <i class="fa fa-angle-right"></i></a>
-      </div>
-      {% if random_news %}
-      <img src="/media/{{ random_news.photo }}" style="width: 300px" />
-    </div>
-    <div class="col-md-6">
-      <div class="product-item" style="width: 260px">
-        <div class="down-content">
-          <a href="#"><h3>{{ random_news.name }}</h3></a>
-
-          {% endif %}
-        </div>
-
-        <div class="latest-products">
-          <div class="container__12">
-            <div class="row">
-              <div class="col-md-6">
-                <div class="section-heading">
-                  <h3>Помогите детям</h3>
-                  <a href="projects"
-                    >смотреть все <i class="fa fa-angle-right"></i
-                  ></a>
-                </div>
-                {% if random_kids %}
-                <img src="/media/{{ random_kids.photo }}" />
-              </div>
-              <div class="col-md-4">
-                <div class="product-item" style="width: 260px">
-                  <div class="down-content">
-                    <a href="#"
-                      ><h3>
-                        {{ random_kids.name }} {{ random_kids.surname }}
-                      </h3></a
-                    >
-                    <p>{{ random_kids.short_description }}</p>
-
-                    {% endif %}
-                  </div>
-
-                  <div class="latest-products">
-                    <div class="container__12">
-                      <div class="row">
-                        <div class="col-md-12">
-                          <div class="section-heading">
-                            <h3>Срочные задачи</h3>
-                            <a href="projects"
-                              >смотреть все <i class="fa fa-angle-right"></i
-                            ></a>
-                          </div>
-                          {% if random_projects %}
-                          <img src="/media/{{ random_projects.photo }}" />
-                        </div>
-                        <div class="col-md-6">
-                          <div class="product-item" style="width: 260px">
-                            <div class="down-content">
-                              <a href="#"
-                                ><h3>{{ random_projects.name }}</h3></a
-                              >
-
-                              {% endif %}
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div> -->
 
   <!-- скрипт -->
   <script src="{% static 'js/index.js' %}"></script>

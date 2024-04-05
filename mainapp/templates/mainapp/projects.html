@@ -16,7 +16,9 @@
   />
 </div>
 
-<p class="projects__subTitle">{{category}}</p>
+<p class="projects__subTitle">{{category.name}}</p>
+
+<p class="projects__description">{{category.description}}</p>
 
 <div class="projects">
   {% for project_item in post %}

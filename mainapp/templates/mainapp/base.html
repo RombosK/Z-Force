@@ -16,8 +16,9 @@
 
   <!-- FontAwesome -->
   <!-- <link rel="stylesheet" href="{% static '/css/fontawesome.all.min.css' %}" /> -->
-  <title>{{ title }}</title>
   <!-- <link rel="shortcut icon" href="{% static '/img/icon.png' %}" /> -->
+
+  <title>{{ title }}</title>
 
   <!-- css -->
   <link rel="stylesheet" href="{% static '/css/main.css' %}" />
@@ -32,100 +33,22 @@
 </head>
 <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}" />
 <body>
-  <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container">
-      <a class="navbar-brand" href="{% url 'mainapp:home' %}">
-        <img
-          src="{% static '/img/logo.jpg' %}"
-          width="150"
-          height="150"
-          alt="Окно в Мир"
-        />
-      </a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      {% include 'mainapp/includes/inc_main_menu.html' %}
-    </div>
-  </nav> -->
+  <!-- шапка -->
   {% include 'mainapp/includes/header.html' %}
 
+  <!-- контент -->
   <div class="container-md">{% block content %} {% endblock content %}</div>
 
+  <!-- подвал -->
   {% include 'mainapp/includes/footer.html' %}
 
-  <!-- Footer -->
-  <!-- <div class="container-lg mt-auto">
-    <hr />
-    <div class="row justify-content-center">
-      <div class="col-sm-6 col-md-3 text-center">
-        <p>
-          <strong>МЕЖДУНАРОДНЫЙ БЛАГОТВОРИТЕЛЬНЫЙ ФОНД "ОКНО В МИР"</strong>
-        </p>
-        <p></p>
-        <ul class="list-unstyled">
-          <li><a href="{% url 'mainapp:home' %}">Домашняя</a></li>
-        </ul>
-      </div>
-      <div class="col-sm-6 col-md-3 text-center">
-        <p>
-          <strong>Политика безопасности</strong>
-        </p>
-        <p></p>
-        <ul class="list-unstyled">
-          <li><a href="{% url 'mainapp:legal' %}">Политика сайта</a></li>
-          <li>
-            <a href="{% url 'mainapp:personal_data' %}"
-              >Политика обработки персональных данных</a
-            >
-          </li>
-          <li><a href="{% url 'mainapp:offero' %}">Договор оферты</a></li>
-        </ul>
-      </div>
-      <div class="col-sm-6 col-md-3 text-center">
-        <p>
-          <strong>Связь с разработчиками</strong>
-        </p>
-        <p></p>
-        <div class="row justify-content-around">
-          <div>
-            <a href="https://t.me/bossa_matrossa"
-              ><i class="fab fa-telegram fa-2x"></i
-            ></a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row justify-content-center">
-      <div>
-        <p><small>&copy; Z-Force IT 2024</small></p>
-      </div>
-    </div>
-  </div> -->
-
-  <!-- /Footer -->
-
-  <!-- JavaScript section -->
-  <!-- Bootstrap -->
-  <!-- <script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
-  <script src="{% static 'js/popper.min.js' %}"></script>
-  <script src="{% static 'js/bootstrap.min.js' %}"></script> -->
+  <!-- скрипт -->
   <script src="{% static 'js/main.js' %}"></script>
-  <!-- <script src="{% static 'js/index.js' %}"></script> -->
 
   <!-- ChartJs -->
-  <script src="{% static 'js/Chart.min.js' %}"></script>
+  <!-- <script src="{% static 'js/Chart.min.js' %}"></script> -->
 
   <!-- FontAwesome -->
-  <script src="{% static 'js/fontawesome.all.min.js' %}"></script>
+  <!-- <script src="{% static 'js/fontawesome.all.min.js' %}"></script> -->
   {% block js %} {% endblock %}
 </body>

@@ -1,11 +1,8 @@
-/* .donation {
-    background: rgba(255, 255, 250, 1.00);
-    padding-bottom: 100px;
-    padding-top: 200px;
-    margin-left: 20px;
-    margin-right: 20px;
+.donation {
+    padding-left: 20px;
+    padding-right: 20px;
 
-} */
+}
 
 .donation__title {
     padding-top: 67px;
@@ -81,36 +78,6 @@
 
 
 /* адаптация */
-/* высота шапки 109px */
-/* @media (min-width: 1035px) and (max-width: 1320px) {
-    .donation {
-        padding-top: 170px;
-    }
-} */
-
-/* высота шапки 100px */
-/* @media (min-width: 835px) and (max-width: 1035px) {
-    .donation {
-        padding-top: 140px;
-    }
-} */
-
-/* млбилка - высота шапки 93px */
-/* @media (min-width: 768px) and (max-width: 835px) {
-    .donation {
-        padding-top: 130px;
-    }
-} */
-
-/* млбилка - высота шапки 173px */
-/* @media (min-width: 320px) and (max-width: 767px) {
-    .donation {
-        padding-top: 200px;
-    }
-} */
-
-
-
 @media (min-width: 710px) and (max-width: 1015px) {
     .donation__bank_item {
         gap: 30px;
