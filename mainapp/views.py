@@ -1,13 +1,9 @@
 import asyncio
+import logging
+import os
 import random
 
 import aiohttp
-
-from mainapp.forms import GiveHelpForm, GetHelpForm
-import logging
-import os
-
-import requests
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from django.shortcuts import render, redirect
@@ -17,26 +13,8 @@ from django.views.generic import TemplateView, View
 
 from mainapp.forms import GiveHelpForm, GetHelpForm
 from mainapp.models import GiveHelp, GetHelp, News, ProjectCategory, AllYouNeedIs, Partners, Project, Report, \
-    ReportYear, Images, ImagesMany
+    ImagesMany
 
-
-# # Контроллер страницы с анкетой
-# class GiveHelpView(View):
-#     model = GiveHelp
-#     form_class = GiveHelpForm
-#
-#     def get(self, request):
-#         form = GiveHelpForm()
-#         return render(request, 'mainapp/give_help.html', {'form': form})
-#
-#     def post(self, request):
-#         form = GiveHelpForm(request.POST)
-#         if form.is_valid():
-#             form.save()
-#             return redirect('/home/success/')  # перенаправление на страницу успешного заполнения анкеты
-#
-#         # return render(request, 'mainapp/success.html')
-#         return render(request, 'mainapp/get_help.html', {'form': form})
 
 class GiveHelpView(View):
     model = GiveHelp
@@ -74,7 +52,6 @@ class GetHelpView(View):
             form.save()
             return redirect('/home/success/')  # перенаправление на страницу успешного заполнения анкеты
 
-        # return render(request, 'mainapp/get_help.html')
         return render(request, 'mainapp/get_help.html', {'form': form})
 
 
@@ -202,7 +179,6 @@ class NewsDetailView(DetailView):
         print(context)
         return context
 
-
     # def get_queryset(self):
     #     queryset = Images.objects.all()
     #     print(queryset)
@@ -236,6 +212,7 @@ class ProjectView(ListView):
     extra_context = {
         'title': 'Наши проекты',
     }
+
     # В get_queryset переопределяется object_list в котором содержится наименование проектов отсортированный по
     # категориям
 
@@ -280,7 +257,8 @@ class ProjectDetailView(DetailView):
     # смотреть 206 строку
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        item = ImagesMany.objects.filter(projects_image=Project.objects.filter(slug=self.kwargs[self.slug_url_kwarg]).get())
+        item = ImagesMany.objects.filter(
+            projects_image=Project.objects.filter(slug=self.kwargs[self.slug_url_kwarg]).get())
         context['image'] = item
         return context
 
@@ -288,7 +266,7 @@ class ProjectDetailView(DetailView):
 # Контроллер нуждающихся
 # родитель ListView для удобства работы со страницами где нужна пагинация
 class AllYouNeedIsView(ListView):
-    paginate_by = 6 
+    paginate_by = 6
     # в дальнейшем нужно поставить 9
     template_name = 'mainapp/allyouneedis.html'
     model = AllYouNeedIs
@@ -328,6 +306,7 @@ class AllYouNeedIsDetailView(DetailView):
 # Контроллер главной страницы
 class IndexView(TemplateView):
     template_name = 'mainapp/index.html'
+
     # hot_projects = get_hot_projects()
 
     def get_context_data(self, **kwargs):
@@ -434,4 +413,3 @@ class ReportView(ListView):
     extra_context = {
         'title': 'Отчеты',
     }
-

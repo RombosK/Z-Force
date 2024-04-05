@@ -6,12 +6,13 @@ from django.utils import timezone
 from authapp.models import User
 from config.settings import BASE_DIR
 from django.conf import settings
+from django.core.exceptions import ValidationError
+import phonenumbers
 
 
 class Images(models.Model):
     name = models.CharField(max_length=50)
     image = models.ImageField(verbose_name='фотоальбом', upload_to='images/%Y/%m/%d/')
-    # post = models.ForeignKey('ImagesMany', on_delete=models.PROTECT, null=True)
 
     class Meta:
         verbose_name = 'Фотография'
@@ -24,7 +25,7 @@ class Images(models.Model):
 class ImagesMany(models.Model):
     image = models.ForeignKey('Images', on_delete=models.CASCADE, blank=True, null=True)
     news_image = models.ForeignKey('News', blank=True, on_delete=models.CASCADE, null=True)
-    projects_image = models.ForeignKey('Project',  blank=True, on_delete=models.CASCADE, null=True)
+    projects_image = models.ForeignKey('Project', blank=True, on_delete=models.CASCADE, null=True)
     allyouneedis_image = models.ForeignKey('AllYouNeedIs', on_delete=models.CASCADE, blank=True, null=True)
 
 
@@ -68,15 +69,6 @@ class ProjectCategory(models.Model):
         return f'{self.name}'
 
 
-# class ImagesProject(models.Model):
-#     image = models.ImageField(verbose_name='фотоальбом', upload_to='images/%Y/%m/%d/', blank=True)
-#     post = models.ForeignKey('Project', verbose_name='для Проектов', on_delete=models.CASCADE, null=True)
-#
-#     class Meta:
-#         verbose_name = 'Фотография'
-#         verbose_name_plural = 'Фотографии для слайдера Задачи'
-#
-
 # Модель конкретного проекта (задачи)
 class Project(models.Model):
     category = models.ForeignKey(ProjectCategory, on_delete=models.CASCADE)
@@ -102,15 +94,6 @@ class Project(models.Model):
     def __str__(self):
         return f'{self.name} - {self.category}'
 
-
-# class ImagesAllYouNeedIs(models.Model):
-#     image = models.ImageField(verbose_name='фотоальбом', upload_to='images/AllYouNeedIs/%Y/%m/%d/', blank=True)
-#     post = models.ForeignKey('AllYouNeedIs', verbose_name='для Подопечных', on_delete=models.CASCADE, null=True)
-#
-#     class Meta:
-#         verbose_name = 'Фотография'
-#         verbose_name_plural = 'Фотографии для слайдера Подопечных'
-#
 
 # Модель подопечных
 class AllYouNeedIs(models.Model):
@@ -141,10 +124,6 @@ class AllYouNeedIs(models.Model):
         return f'{self.name} {self.surname}'
 
 
-from django.core.exceptions import ValidationError
-import phonenumbers
-
-
 # Валидатор для строки с указанием возраста
 def validate_age(value):
     if value < 18:
@@ -162,59 +141,6 @@ def validate_phone(value):
     except phonenumbers.phonenumberutil.NumberParseException:
         raise ValidationError("Некорректный формат номера телефона")
 
-
-# Модель анкеты волонтера
-# class GiveHelp(models.Model):
-#     TIME_1 = '2-3 часа в неделю'
-#     TIME_2 = '4-7 часов в неделю'
-#     TIME_3 = 'Более 7 часов в неделю'
-#
-#     SCHEDULE = (
-#         (TIME_1, '2-3 часа в неделю'),
-#         (TIME_2, '4-7 часов в неделю'),
-#         (TIME_3, 'Более 7 часов в неделю')
-#     )
-#
-#     CAR = 'На машине'
-#     WALK = 'Пешком'
-#     BOTH = 'Оба варианта возможны'
-#
-#     MOBILITY = (
-#         (CAR, 'На машине'),
-#         (WALK, 'Пешком'),
-#         (BOTH, 'Оба варианта возможны')
-#     )
-#
-#     MONEY = 'Деньгами'
-#     THINGS = 'Вещами'
-#     INVOLVEMENT = 'Участие'
-#     BOTH = 'Все варианты возможны'
-#
-#     HELP = (
-#         (MONEY, 'Деньгами'),
-#         (THINGS, 'Вещами'),
-#         (INVOLVEMENT, 'Участие'),
-#         (BOTH, 'Все варианты возможны')
-#     )
-#
-#     name = models.CharField(verbose_name='имя', max_length=100)
-#     surname = models.CharField(verbose_name='фамилия', max_length=100)
-#     age = models.IntegerField(verbose_name='возраст', default=18, validators=[validate_age])
-#     city = models.CharField(verbose_name='город проживания', max_length=100)
-#     email = models.EmailField(verbose_name='эл почта', unique=True)
-#     phone = models.CharField(verbose_name='телефон в формате +7xxxxxxxxxx', max_length=20, validators=[validate_phone])
-#     schedule = models.CharField(verbose_name='готовность посвящать время (в неделю)', choices=SCHEDULE, max_length=64, blank=True)
-#     help = models.CharField(verbose_name='варианты помощи', choices=HELP, max_length=64, blank=True)
-#     mobility = models.CharField(verbose_name='мобильность', choices=MOBILITY, max_length=64, blank=True)
-#     text = models.TextField(verbose_name='немного о себе')
-#     agreed = models.BooleanField(verbose_name='я согласен на обработку персональных данных', blank=False, default=True)
-#
-#     def __str__(self):
-#         return f'{self.name} - {self.surname} - {self.city}'
-#
-#     class Meta:
-#         verbose_name = 'Анкета волонтёра'
-#         verbose_name_plural = 'Анкеты волонтёров'
 
 class GiveHelp(models.Model):
     TIME_1 = '2-3 часа в неделю'
@@ -261,7 +187,6 @@ class GiveHelp(models.Model):
     mobility = models.CharField(verbose_name='мобильность', choices=MOBILITY, max_length=64, blank=True)
     text_1 = models.TextField(verbose_name='Немного о себе')
     text_2 = models.TextField(verbose_name='Как я хочу помочь')
-  
 
     def __str__(self):
         return f'{self.first_name} - {self.last_name} - {self.text_1} - {self.text_2}'
@@ -318,9 +243,6 @@ class ReportYear(models.Model):
         return f'{self.name}'
 
 
-# fs = FileSystemStorage(base_url=str(settings.MEDIA_ROOT) + "uploads/%Y/%m/%d/")
-# print(fs)
-
 # Модель для страницы с отчетами
 class Report(models.Model):
     name = models.CharField(max_length=75, verbose_name='название отчета')
@@ -334,7 +256,3 @@ class Report(models.Model):
     class Meta:
         verbose_name = 'Отчет'
         verbose_name_plural = 'Отчеты'
-
-# def user_directory_path(instance, filename):
-#     # file will be uploaded to MEDIA_ROOT/user_<id>/<filename>
-#     return "user_{0}/{1}".format(instance.user.id, filename)
