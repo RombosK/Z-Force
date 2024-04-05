@@ -35,6 +35,11 @@ const percentagesSet = document.querySelectorAll(
 for (let i = 0; i < percentagesSet.length; i++) {
   if (percentages[i] >= 100) {
     percentagesSet[i].style.width = 100 + "%";
+    document
+      .querySelectorAll(".allYouNeedis__item_payment")
+      [i].classList.add("allYouNeedis__item_collectedSum");
+    document.querySelectorAll(".allYouNeedis__item_payment")[i].textContent =
+      "Сбор закрыт";
   } else {
     percentagesSet[i].style.width = percentages[i] + "%";
   }

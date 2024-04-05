@@ -339,7 +339,9 @@ class IndexView(TemplateView):
         context['random_projects'] = random_projects
         context['random_kids'] = random_kids
         context['random_news'] = random_news
-
+        context['list_news'] = News.objects.all().reverse()[:3]
+        context['list_projects'] = Project.objects.all().reverse()[:3]
+        context['list_allyouneedis'] = AllYouNeedIs.objects.all().reverse()[:3]
         return context
 
 

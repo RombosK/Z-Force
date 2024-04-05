@@ -28,8 +28,6 @@
 }
 
 .paginator__left {
-    /* border: 20px solid transparent;
-    border-right: 20px solid rgba(109, 176, 195, 1.00); */
     width: 0;
     height: 0;
     border-top: 10px solid transparent;
@@ -38,8 +36,6 @@
 }
 
 .paginator__right {
-    /* border: 10px solid transparent;
-    border-left: 10px solid rgba(109, 176, 195, 1.00); */
     width: 0;
     height: 0;
     border-top: 10px solid transparent;
@@ -56,8 +52,6 @@
 }
 
 .paginator__right:hover {
-    /* border: 20px solid transparent;
-    border-left: 20px solid rgba(254, 186, 166, 1.00); */
     width: 0;
     height: 0;
     border-top: 10px solid transparent;

@@ -1,16 +1,7 @@
-const headerElem1 = document.querySelector('.header');
+const headerElem1 = document.querySelector(".header");
 const headerHeight1 = headerElem1.offsetHeight;
-// let headerHeight1 = localStorage.getItem("headerHeight");
-console.log(headerHeight1);
 
-// document.querySelector('.about').style['padding-top'] = `${headerHeight1}px`;
-
-console.log(headerHeight1);
-
-
-// this.sliderLine.style.transform = `translateX(${ -this.sliderWidth * this.slidIdx
-//   }px)`;
-
+// эффект наведения на кнопки
 function aboutOnHover() {
   document
     .querySelector(".about__buttonHistory")
@@ -112,50 +103,12 @@ class AboutSlider {
       this.changImg();
     }, 4000);
   }
-
-  //   шаг перелистывания
-  // function rollSlider(slides, slidIdx, sliderWidth) {
-  //   slides.style.transform = `translateX(${-slidIdx * sliderWidth}px)`;
-  // }
-
-  //   abouInit() {
-  //     this.dots.forEach((dot, index) => {
-  //       dot.addEventListener("click", () => {
-  //         this.slidIdx = index;
-
-  //         // смена активновного класа у фотографии
-  //         this.slides.forEach((img) => {
-  //           img.classList.add("about__item_img_hidden");
-  //         });
-  //         this.slides[this.slidIdx].classList.remove("about__item_img_hidden");
-
-  //         // смена активновного класа у точки
-  //         this.dots.forEach((item) => {
-  //           item.classList.remove("about__dot_activ");
-  //         });
-  //         this.dots[this.slidIdx].classList.add("about__dot_activ");
-
-  //         // смена активновного класа у текста
-  //         this.texts.forEach((text) => {
-  //           text.classList.remove("about__item_text_active");
-  //         });
-  //         this.texts[this.slidIdx].classList.add("about__item_text_active");
-
-  //         console.log(this.slidIdx);
-
-  //         console.log(this.dots);
-  //         console.log(this.slides);
-  //       });
-  //     });
-  //   }
 }
 
 const slider1 = new AboutSlider(".about__slider1", ".about__slider1_text");
 const slider2 = new AboutSlider(".about__slider2", ".about__slider2_text");
 const slider3 = new AboutSlider(".about__slider3", ".about__slider3_text");
 
-
 slider1.abouInit();
 slider2.abouInit();
 slider3.abouInit();
-

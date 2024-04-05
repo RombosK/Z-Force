@@ -2,7 +2,6 @@
     padding-top: 67px;
 }
 
-
 .legal__title {
     color: rgb(43, 43, 43);
     font-family: Nunito;
@@ -42,46 +41,7 @@
 }
 
 
-
-
-
 /* адаптация */
-/* высота шапки 133px */
-/* @media (min-width: 1320px) and (max-width: 1600px) {
-    .legal {
-        padding-top: 200px;
-    }
-} */
-
-/* высота шапки 109px */
-/* @media (min-width: 1035px) and (max-width: 1320px) {
-    .legal {
-        padding-top: 170px;
-    }
-} */
-
-/* высота шапки 100px */
-/* @media (min-width: 835px) and (max-width: 1035px) {
-    .legal {
-        padding-top: 140px;
-    }
-} */
-
-/* млбилка - высота шапки 93px */
-/* @media (min-width: 768px) and (max-width: 835px) {
-    .legal {
-        padding-top: 130px;
-    }
-} */
-
-/* млбилка - высота шапки 173px */
-/* @media (min-width: 320px) and (max-width: 767px) {
-    .legal {
-        padding-top: 200px;
-    }
-} */
-
-/* остальная адаптация */
 
 @media (min-width: 410px) and (max-width: 767px) {
     .legal__title {
@@ -97,7 +57,6 @@
         font-size: 20px;
         text-align: left;
     }
-
 }
 
 @media (min-width: 320px) and (max-width: 409px) {
@@ -114,5 +73,4 @@
         font-size: 20px;
         text-align: left;
     }
-
 }

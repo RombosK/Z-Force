@@ -18,11 +18,15 @@ const percentages = ((collectedSum / totalSum) * 100).toFixed(2);
 if (percentages >= 100) {
   document.querySelector(".allYouNeedisPost__donationsProgress").style.width =
     100 + "%";
+  document
+    .querySelector(".allYouNeedisPost__payment")
+    .classList.add("allYouNeedisPost__collectedSum");
+  document.querySelector(".allYouNeedisPost__payment").textContent =
+    "Сбор закрыт";
 } else {
   document.querySelector(".allYouNeedisPost__donationsProgress").style.width =
     percentages + "%";
 }
-
 
 const stillNeed = totalSum - collectedSum;
 
@@ -38,9 +42,6 @@ const age =
   document.querySelector(".allYouNeedisPost__age").innerHTML;
 
 document.querySelector(".allYouNeedisPost__age").innerHTML = "Возраст: " + age;
-
-
-
 
 // елемент слайдера, чтобы не отображь его при отсутствии фото
 const sliderElem = document.querySelector(".allYouNeedisPost__slider");

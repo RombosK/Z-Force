@@ -2,11 +2,13 @@
 <!--  -->
 {% load static %}
 <!--  -->
+{% load pymorphy_tags %}
+<!--  -->
 {% block content %}
+<!-- слайдер -->
 <div class="index__slider">
   <div class="index__slider_items">
     <!-- элемент слайдера 1-->
-
     <div class="index__slider_item">
       <div class="index__slider_imgs">
         <img
@@ -31,6 +33,7 @@
         </p>
       </div>
     </div>
+
     <!-- элемент слайдера 2-->
     <div class="index__slider_item">
       <div class="index__slider_imgs">
@@ -52,6 +55,7 @@
         <p class="index__slider_text">Не откладывайте. Помогите прямо сейчас</p>
       </div>
     </div>
+
     <!-- элемент слайдера 3-->
     <div class="index__slider_item">
       <div class="index__slider_imgs">
@@ -72,6 +76,7 @@
       </div>
     </div>
   </div>
+
   <!-- точки -->
   <div class="index__slider_arrows">
     <div class="index__slider_arrowLeft">&#10148;</div>
@@ -79,373 +84,180 @@
   </div>
 </div>
 
-<div class="latest-products">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="section-heading">
-              <h3>Последние новости</h3>
-              <a href="projects"> смотреть все <i class="fa fa-angle-right"></i></a>
-            </div>
-            {% if random_news %}
-            <img src="/media/{{ random_news.photo }}">
-          </div>
-          <div class="col-md-6">
-            <div class="product-item" style="width: 260px;">
-
-              <div class="down-content">
-                <a href="#"><h3>{{ random_news.name }} </h3></a>
-                </ul>
-                {% endif %}
-              </div>
-
-              <div class="latest-products">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6">
-            <div class="section-heading">
-              <h3>Помогите детям</h3>
-              <a href="projects">смотреть все <i class="fa fa-angle-right"></i></a>
-            </div>
-            {% if random_kids %}
-            <img src="/media/{{ random_kids.photo }}">
-          </div>
-          <div class="col-md-4">
-            <div class="product-item" style="width: 260px;">
-
-              <div class="down-content">
-                <a href="#"><h3>{{ random_kids.name }} {{ random_kids.surname }}</h3></a>
-                <p>{{ random_kids.short_description }}</p>
-                </ul>
-                {% endif %}
-              </div>
-
-<div class="latest-products">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="section-heading">
-              <h3>Срочные задачи</h3>
-              <a href="projects">смотреть все <i class="fa fa-angle-right"></i></a>
-            </div>
-            {% if random_projects %}
-            <img src="/media/{{ random_projects.photo }}">
-          </div>
-          <div class="col-md-6">
-            <div class="product-item" style="width: 260px;">
-
-              <div class="down-content">
-                <a href="#"><h3>{{ random_projects.name }} </h3></a>
-                </ul>
-                {% endif %}
-              </div>
-            </div>
-          </div>
-
-<div class="index__content">
-  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugit, neque eum
-  magnam, optio commodi accusamus quas quasi non asperiores vero quam enim illo
-  quod porro nihil! Odit mollitia aut fugiat. Quo alias eveniet dolorum
-  adipisci, harum, voluptatibus nisi sequi at atque nobis, reprehenderit veniam
-  officiis exercitationem natus voluptatem sit quibusdam mollitia placeat
-  excepturi libero voluptas quidem fuga blanditiis. Quaerat, illo. Eligendi
-  animi laudantium, rem at illo recusandae? Laudantium, mollitia eos commodi
-  voluptatem dolore blanditiis fugit aspernatur, natus explicabo nam magni,
-  aliquam est hic sint. Eos sunt ducimus quas nam cupiditate. Nam molestiae
-  illum in. Ipsum dolorum saepe aliquam voluptas aspernatur enim unde
-  architecto, alias eum praesentium porro quae, amet rerum, perferendis sint
-  totam iure! Mollitia laborum quos vero tempore. Cupiditate. Facilis dolores
-  saepe ducimus ex quae pariatur necessitatibus libero, mollitia natus ratione
-  sed alias sapiente nulla, qui nemo deserunt itaque quidem, consectetur et
-  officia ut dolor optio. Nemo, adipisci hic! Repudiandae, id quo voluptatum
-  earum cupiditate doloremque itaque saepe natus, odit dignissimos porro
-  corporis iusto hic dolorem, magnam ullam repellendus. Sequi deleniti rerum
-  illo ipsum omnis, officiis unde maxime nisi! Beatae, voluptate! Laboriosam sed
-  rerum unde dolore suscipit laborum optio, facere esse necessitatibus!
-  Reiciendis dignissimos et perspiciatis, id quo inventore iste accusantium nemo
-  ipsam. Veniam eius maxime eveniet laudantium tenetur. Nobis maxime deleniti
-  perferendis! Voluptates doloribus voluptate fugiat eligendi, sit velit
-  repudiandae aperiam laborum voluptas sunt beatae facilis, officiis similique
-  alias sint! Culpa similique nemo ab autem deleniti quisquam sint. Eum sed et
-  necessitatibus, numquam ratione quae ipsam iusto aspernatur facilis
-  repudiandae pariatur odit ut vel, quo nobis modi consequuntur? Tempore est
-  labore iusto aspernatur fugit excepturi molestiae fuga quam? Sapiente enim
-  distinctio vitae quam quod ea natus earum molestias dicta facere quaerat error
-  ut pariatur architecto et consectetur adipisci, quo reprehenderit excepturi,
-  aliquid sint eos quia! Sed, fugit et. Eos non nemo voluptatem, perferendis
-  odit impedit sequi quidem debitis ut quam tempore provident distinctio nostrum
-  ea iusto sunt magnam reprehenderit animi ratione aut molestiae maxime
-  corrupti. Praesentium, unde beatae! Minima numquam dignissimos, velit tempora
-  similique accusamus veniam ipsa consequuntur atque quibusdam adipisci
-  architecto unde, est expedita quas aperiam hic eveniet fugit, consequatur
-  culpa quisquam eaque ipsum incidunt? Recusandae, sapiente. Vel a sunt quaerat
-  voluptas sequi ipsa quam nam error? Fugiat maiores aspernatur et, repellat
-  officiis veritatis temporibus voluptatibus, voluptatum, nemo consequatur cum
-  dicta. Itaque quam obcaecati a corrupti quibusdam. Odit non officia suscipit
-  repellat doloremque accusantium alias cum dolore, in minima delectus quibusdam
-  maiores aperiam nemo omnis itaque recusandae. Neque, deleniti illum? Soluta
-  praesentium est omnis mollitia a laboriosam. Tenetur quam dolore officiis,
-  reprehenderit et repellendus dicta ipsa unde qui ea aliquam dolorem sed
-  consectetur provident suscipit commodi architecto natus sit nostrum omnis. In
-  accusantium neque dolor molestiae enim. Itaque sed necessitatibus vero iste
-  quisquam, nulla dolor dolorem molestias. Excepturi, suscipit, dolorum ducimus
-  minus voluptatem nesciunt ullam iste at voluptatibus animi sequi! Magnam hic
-  recusandae eligendi eos, cupiditate dolores. Recusandae, provident reiciendis.
-  Quaerat iusto molestiae nostrum blanditiis, eius eveniet, aliquam delectus
-  voluptatem beatae iste modi dolorem harum repellat veniam ut rem vel
-  veritatis, cum quam eligendi quas culpa? Quibusdam? Ex, quos. Omnis nam
-  voluptas quas repellendus exercitationem laudantium deleniti facere commodi
-  repudiandae blanditiis! Inventore nobis temporibus numquam est illum
-  repellendus mollitia quasi modi non et aut tempora, sapiente voluptates. Optio
-  itaque fugit, autem voluptate doloremque maiores soluta, facere tenetur non,
-  consectetur neque sapiente harum! Quae facilis in qui repudiandae ab vitae
-  mollitia debitis, tempora laboriosam neque repellat iure voluptas. Veritatis
-  sit, similique, ducimus impedit totam distinctio est labore error, cupiditate
-  illo eaque nulla iste cum! In harum tempora nemo repellat accusamus
-  praesentium minus nam ut placeat, consectetur enim laborum. Fugit voluptatibus
-  et laudantium assumenda tenetur eius error iusto consequatur. Recusandae
-  dolorum minima vel repudiandae? Vel dolore dolorem, natus quis impedit nemo
-  id. Iste totam sint et vitae aspernatur dignissimos. Animi nobis voluptates,
-  natus vitae voluptatibus sequi repellat facere cum illo dolore laudantium vel
+<!-- о нас -->
+<div class="index__about center">
+  <div class="index__about_imgBox">
+    <img
+      class="index__about_img"
+      src="{% static '/img/index/logo-fond-main.png' %}"
+      alt="Окно в Мир"
+    />
+  </div>
+  <div class="index__about_textBox">
+    <h1 class="index__about_textTitle">
+      Международный благотворительный фонд помощи детям –инвалидам с
+      ограниченными возможностями здоровья «Окно в мир»
+    </h1>
+    <p class="index__about_text">
+      Фонд был основан в 2015 году с целью оказания помощи семьям с
+      детьми-инвалидами, многодетным семьям, малоимущим семьям.
+    </p>
+    <p class="index__about_text">
+      У Фонда есть отделения в Кородеве, Подольске и Красноармейске.
+    </p>
+    <p class="index__about_text">
+      Мы оказываем регулярную помощь Новгородской и Костромской областям,
+      детским домам в регионах, а также вещевую помощь различным учреждениям для
+      взрослых.
+    </p>
+  </div>
 </div>
 
-<!-- скрипт -->
-<script src="{% static 'js/index.js' %}"></script>
-<!--  -->
-<!-- <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-ride="carousel">
-        <ol class="carousel-indicators">
-            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner" style="background-color: #777; font-size: 1.25rem;">
-            <div class="carousel-item active">
-                <img src="{% static 'img/slider_1.jpg' %}" width="1200" height="500" class="d-block w-100" alt="" style="opacity: 0.3;">
-                <div class="carousel-caption d-none d-md-block">
-                    <h3>МЕЖДУНАРОДНЫЙ БЛАГОТВОРИТЕЛЬНЫЙ ФОНД "ОКНО В МИР"</h3>
-                    <p>Среди нас живут семьи, которым требуется помощь: семьи с детьми-инвалидами; многодетные семьи;
-                        семьи, попавшие в трудную жизненную ситуацию.</p>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="{% static 'img/slider_2.jpg' %}" width="1200" height="500" class="d-block w-100" alt="" style="opacity: 0.3;">
-                <div class="carousel-caption d-none d-md-block">
-                    <h3>Детям в сложных жизненных ситуациях постоянно нужна ваша поддержка</h3>
-                    <p>Не откладывайте. Помогите прямо сейчас</p>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="{% static 'img/slider_3.jpg' %}" width="1200" height="500" class="d-block w-100" alt="" style="opacity: 0.3;">
-                <div class="carousel-caption d-none d-md-block">
-                    <h3>Мы будем благодарны любой помощи </h3>
-                    <p>Станьте волонтёром</p>
-                </div>
-            </div>
+<!-- контент -->
+<div class="index__content">
+  <!-- 3 последних события каждой категории поставил условие if т.е все 3 категории должны быть если что можно убрать -->
+  <!--  -->
+  <!-- блок подопечные -->
+  <div class="index__box center">
+    <h1 class="index__title">Помочь детям</h1>
+    {% if list_news and list_projects and list_allyouneedis %}
+    <div class="index__itemBox">
+      {% for item_allyouneedis in list_allyouneedis %}
+      <div class="index__item">
+        <div class="index__imgBox">
+          <img
+            class="index__img"
+            src="{{ item_allyouneedis.photo.url }}"
+            alt="foto"
+          />
         </div>
-        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
-    </div> -->
-
-<!-- <div class="jumbotron">
-        <h1 class="display-4">Мы рады, что вы зашли к нам на страничку</h1>
-        <p class="lead">
-            В нашем благотворительном фоне собрались люди неравнодушные к чужим проблемам
-        </p>
-    </div>
-
-    <div class="my-5">
-        <hr>
-    </div>
-
-    <div class="row justify-content-center align-items-center">
-        <div class="col-md-7">
-            <h1>О НАС</h1>
-            <p>Международный благотворительный фонд помощи детям–инвалидам с ограниченными возможностями здоровья «Окно
-                в мир» был основан в 2015 году
-                с целью оказания помощи семьям с детьми-инвалидами, многодетным семьям, малоимущим семьям г.о. Королев.
-                В г.о. Королев проживают более 1500 детей-инвалидов.
-                Со временем появились отделения Фонда в Подольске и Красноармейске.
-                Также оказывается регулярная помощь регионам: Новгородской и Костромской области, детским домам в
-                регионах, а также вещевая помощь различным учреждениям для взрослых.
-                Большое внимание в деятельности Фонда уделяется совместным проектам (культурным или спортивным), в
-                которых участвуют школьники и дети-инвалиды,
-                это помогает воспитать в подрастающем поколении адекватное восприятие инвалидов как членов современного
-                общества, пробудить в них сочувствие и желание помочь тому, кому тяжело одному.
-                В последнее время делается акцент на образовательных проектах.
+        <!-- блок с информацие о подопечном и о суммах  -->
+        <div class="index__allYouNeedis_descriptionBox">
+          <p class="index__subTitle">
+            {{ item_allyouneedis.name }} {{item_allyouneedis.surname }}
+          </p>
+          <p class="index__allYouNeedis_target">
+            {{ item_allyouneedis.short_description }}
+          </p>
+          <div class="index__allYouNeedis_payment">
+            <p class="index__allYouNeedis_collectedSum">
+              {{ item_allyouneedis.collected }} &#8381;
             </p>
+            <p class="index__allYouNeedis_totalSum">
+              {{ item_allyouneedis.donation }} &#8381;
+            </p>
+          </div>
+          <div class="index__allYouNeedis_donations">
+            <!--  линия необходимой суумы-->
+            <div class="index__allYouNeedis_donationsProgress">
+              <!-- линия собранной суммы -->
+            </div>
+          </div>
+          <!-- кнопка помочь -->
+          <div class="index__allYouNeedis_btnHelpBox">
+            <button
+              class="index__allYouNeedis_btnHelp"
+              onclick="location.href='{% url 'mainapp:donation' %}'"
+            >
+              Помочь {{ item_allyouneedis.name|inflect_to_dative }}
+            </button>
+          </div>
+          <!-- ссылка на страницу с более подробной информацией -->
+          <div class="index__article_box">
+            <div
+              onclick="location.href='allyouneedis/{{ item_allyouneedis.slug }}'"
+              class="index__article"
+            >
+              Узнать историю
+            </div>
+          </div>
         </div>
-        <div class="col-md-5">
-            <img src="{% static 'img/okno_v_mir.jpg' %}" alt="" class="w-100 h-100 rounded" style="opacity: 0.7;">
-        </div>
+      </div>
+      {% endfor %}
     </div>
-
-    <div class="my-5">
-        <hr>
+    <div class="index__btnCategoryBox">
+      <button
+        onclick="location.href ='{% url 'mainapp:allyouneedis' %}'"
+        class="index__btnCategory"
+      >
+        Узнать больше историй
+      </button>
     </div>
+  </div>
 
-    <div class="row justify-content-center align-items-center">
-        <div class="col-md-5">
-            <img src="{% static 'img/tseli.jpg' %}" alt="" class="w-100 h-100 rounded" style="opacity: 0.7;">
+  <!-- блок новостей -->
+  <div class="index__box index__news_box center">
+    <h1 class="index__title">Последние события</h1>
+    <!-- обертка для item -->
+    <div class="index__itemBox">
+      {% for item_news in list_news %}
+      <div class="index__item">
+        <div class="index__imgBox">
+          <img class="index__img" src="{{ item_news.photo.url }}" alt="foto" />
         </div>
-        <div class="col-md-7">
-            <h1>НАШИ ЦЕЛИ</h1>
-            <body>
-            <p>
-                Основной целью фонда является поддержка наиболее уязвимых слоев населения: семей с детьми-инвалидами,
-                многодетных семей, малоимущих семей с детьми, людей, попавших в трудную жизненную ситуацию.
 
-            <p><strong>Главными задачами фонда являются:</strong></p>
-
-            <li>Социальное обслуживание семей с детьми-инвалидами, малоимущих детей, многодетных семей</li>
-            <li>Социальная поддержка и защита граждан</li>
-            <li>Создание положительного образа ребенка — инвалида, помощь в интеграции в общество</li>
-
-            <p><strong>Виды деятельности:</strong></p>
-
-            <li>Благотворительная деятельность</li>
-            <li>Финансовое посредничество</li>
-            <li>Деятельность в области улучшения морально-психологического состояния граждан, содействие духовному
-                развитию личности
-            </li>
-            <li>Оказание юридической помощи на безвозмездной или на льготной основе гражданам, правовое просвещение
-                населения, деятельность по защите прав и свобод человека и гражданина
-            </li>
-            <li>Профилактика социально-опасных форм поведения граждан, включая участие в деятельности по профилактике
-                безнадзорности и правонарушений несовершеннолетних
-            </li>
-            <li>Виды издательской деятельности</li>
-            <li>Деятельность по уходу с обеспечением проживания</li>
-            <li>Предоставление социальных услуг без обеспечения проживания престарелым и инвалидам</li>
-            </body>
+        <div class="index__subTitle">{{ item_news.name }}</div>
+        <!-- перейти к новости -->
+        <div
+          onclick="location.href='news/{{ item_news.slug }}'"
+          class="index__article"
+        >
+          Читать новость
         </div>
+      </div>
+      {% endfor %}
     </div>
-
-    <div class="my-5">
-        <hr>
+    <!-- переход в раздел новости -->
+    <div class="index__btnCategoryBox">
+      <button
+        onclick="location.href ='{% url 'mainapp:news' %}'"
+        class="index__btnCategory"
+      >
+        Читать больше новостей
+      </button>
     </div>
+  </div>
 
-    <div class="row justify-content-center align-items-center">
-        <div class="col-md-7">
-            <h1>РЕКВИЗИТЫ</h1>
-            <p>
-                Международный благотворительный фонд помощи детям инвалидам с ограниченными возможностями здоровья «ОКНО
-                В МИР»
-
-            <p><strong>Юридический адрес:</strong>143090 Московская область, г. Королёв, мкр. Болшево, ул. Маяковского
-                д.18 Г ПОМ IV</p>
-            <p><strong>Фактический адрес:</strong>г. Королев, ул. Фрунзе, д.12, пом.9</p>
-
-            <p><strong>Наименование (Beneficiary Name):</strong> МЕЖДУНАРОДНЫЙ БЛАГОТВОРИТЕЛЬНЫЙ ФОНД ПОМОЩИ ДЕТЯМ
-                ИНВАЛИДАМ С ОГРАНИЧЕННЫМИ ВОЗМОЖНОСТЯМИ ЗДОРОВЬЯ «ОКНО В МИР»</p>
-            <p><strong>Номер счёта (Account Number):</strong> 40703810702760000079</p>
-
-            <p><strong>Валюта (Currency):</strong> Российский рубль</p>
-            <p><strong>ИНН (INN):</strong> 5018180547</p>
-            <p><strong>КПП (KPP):</strong> 501801001</p>
-            <p><strong>Банк (Bank):</strong> АО «АЛЬФА-БАНК»</p>
-            <p><strong>Кор. счёт (Correspondent Account):</strong> 30101810200000000593БИК (BIC): 044525593SWIFT:
-                ALFARUMM</p>
-
-            <strong>Президент фонда:</strong> Зеленцова Екатерина Валерьевна
+  <!-- проекты -->
+  <div class="index__box center">
+    <h1 class="index__title">Наши задачи в проектах</h1>
+    <!-- обертка для item -->
+    <div class="index__itemBox">
+      {% for item_projects in list_projects %}
+      <div class="index__item">
+        <div class="index__imgBox">
+          <img
+            class="index__img"
+            src="{{ item_projects.photo.url }}"
+            alt="foto"
+          />
         </div>
-        <div class="col-md-5">
-            <img src="{% static 'img/blago.jpg' %}" alt="" class="w-100 h-100 rounded" style="opacity: 0.7;">
+        <div class="index__subTitle">{{ item_projects.name }}</div>
+        <!-- перейти к задаче -->
+        <div
+          onclick="location.href='projects_post/{{ item_projects.slug }}'"
+          class="index__article"
+        >
+          Узнать больше
         </div>
-    </div> -->
+      </div>
+      {% endfor %}
+    </div>
+    <!-- переход в раздел проекты -->
+    <div class="index__btnCategoryBox">
+      <button
+        onclick="location.href ='{% url 'mainapp:projects_category' %}'"
+        class="index__btnCategory index__btnCategory_project"
+      >
+        Читать больше о проектах
+      </button>
+    </div>
+  </div>
+  {% endif %}
+
+  <!-- скрипт -->
+  <script src="{% static 'js/index.js' %}"></script>
+  <!--  -->
+</div>
 
 {% endblock content %}
-
-<!-- <div class="index">
-  элемент слайдера  1
-  <div class="index__slider_item">
-    <div>
-      <img
-        class="index__slider_img01"
-        src="{% static '/img/index/01.png' %}"
-        alt="Окно в Мир"
-      />
-    </div>
-
-    <div class="index____slider_textBox">
-      <h1 class="index____slider_title">
-        МЕЖДУНАРОДНЫЙ БЛАГОТВОРИТЕЛЬНЫЙ ФОНД "ОКНО В МИР"
-      </h1>
-      <p class="index____slider_text">
-        Среди нас живут семьи, которым требуется помощь: семьи с
-        детьми-инвалидами; многодетные семьи; семьи, попавшие в трудную
-        жизненную ситуацию.
-      </p>
-    </div>
-    <div>
-      <img
-        class="index__slider_img02"
-        src="{% static '/img/index/02.png' %}"
-        alt="Окно в Мир"
-      />
-    </div>
-  </div>
-</div>
-
-<div class="index2">
-  элемент слайдера  2
-  <div class="index__slider_item">
-    <div>
-      <img
-        class="index__slider_img03"
-        src="{% static '/img/index/03.png' %}"
-        alt="Окно в Мир"
-      />
-    </div>
-
-    <div class="index____slider_textBox">
-      <h1 class="index____slider_title">
-        Детям в сложных жизненных ситуациях постоянно нужна ваша поддержка
-      </h1>
-      <p class="index____slider_text">Не откладывайте. Помогите прямо сейчас</p>
-    </div>
-    <div>
-      <img
-        class="index__slider_img04"
-        src="{% static '/img/index/04.png' %}"
-        alt="Окно в Мир"
-      />
-    </div>
-  </div>
-</div>
-
-<div class="index3">
-  элемент слайдера  3
-  <div class="index__slider_item">
-    <div>
-      <img
-        class="index__slider_img05"
-        src="{% static '/img/index/05.png' %}"
-        alt="Окно в Мир"
-      />
-    </div>
-
-    <div class="index____slider_textBox">
-      <h1 class="index____slider_title">Мы будем благодарны любой помощи</h1>
-      <p class="index____slider_text">Станьте волонтёром</p>
-    </div>
-    <div>
-      <img
-        class="index__slider_img06"
-        src="{% static '/img/index/06.png' %}"
-        alt="Окно в Мир"
-      />
-    </div>
-  </div>
-  точки
-  <div class="index__dots">
-    <div class="index__dot index__dot_activ"></div>
-    <div class="index__dot"></div>
-    <div class="index__dot"></div>
-  </div>
-</div> -->

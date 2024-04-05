@@ -66,7 +66,6 @@
     min-width: 400px;
 }
 
-
 .allYouNeedisPost__title {
     color: rgb(43, 43, 43);
     font-family: Nunito;
@@ -280,7 +279,6 @@
 }
 
 
-
 /* адаптация */
 @media (min-width: 1000px) and (max-width: 1420px) {
 
@@ -294,7 +292,6 @@
 
     .allYouNeedisPost__imgBox {
         width: 50%;
-        /* height: 250px; */
     }
 
     .allYouNeedisPost__mainInfo_description {
@@ -334,7 +331,6 @@
         padding-bottom: 15px;
     }
 
-
     .allYouNeedisPost__mainInfo {
         flex-direction: column;
         align-items: center;
@@ -343,7 +339,6 @@
 
     .allYouNeedisPost__imgBox {
         width: 96%;
-        /* height: 250px; */
     }
 
     .allYouNeedisPost__mainInfo_description {
@@ -404,7 +399,6 @@
         width: 60px;
         padding-bottom: 5px;
     }
-
 
     .allYouNeedisPost__mainInfo {
         flex-direction: column;

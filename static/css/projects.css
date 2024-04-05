@@ -27,15 +27,6 @@
     padding-bottom: 15px;
 }
 
-/* .projects__title {
-    color: rgb(43, 43, 43);
-    font-family: Nunito;
-    font-size: 48px;
-    font-weight: 700;
-    text-align: center;
-    margin-bottom: 30px;
-} */
-
 .projects__subTitle {
     color: rgba(23, 123, 159, 1.00);
     font-family: Nunito;
@@ -43,7 +34,6 @@
     font-weight: 700;
     text-align: center;
     margin-bottom: 50px;
-
 }
 
 .projects__subTitle {
@@ -53,6 +43,17 @@
     font-weight: 700;
     text-align: center;
     margin-bottom: 50px;
+}
+
+.projects__description {
+    color: rgb(43, 43, 43);
+    font-family: Nunito;
+    font-size: 28px;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 50px;
+    max-width: 80%;
+    margin-left: 10%;
 }
 
 .projects {
@@ -63,7 +64,6 @@
     grid-row-gap: 50px;
 
     margin-bottom: 100px;
-
 }
 
 .projects__item {
@@ -103,13 +103,9 @@
     font-family: Nunito;
     font-size: 20px;
     font-weight: 700;
-    /* text-align: center; */
 }
 
 .projects__item_btn {
-    /* border: 1px solid rgba(200, 198, 198, 1.00);
-    border-radius: 50%; */
-
     color: rgba(23, 123, 159, 1.00);
     font-family: Nunito;
     font-size: 25px;
@@ -135,11 +131,11 @@
     .projects__titleBox {
         height: 100px;
     }
-    
+
     .projects__titleMain {
         font-size: 26px;
     }
-    
+
     .projects__title_img {
         width: 100px;
         padding-bottom: 5px;
@@ -160,14 +156,18 @@
     .projects__titleBox {
         height: 100px;
     }
-    
+
     .projects__titleMain {
         font-size: 26px;
     }
-    
+
     .projects__title_img {
         width: 80px;
         padding-bottom: 5px;
+    }
+
+    .projects__description {
+        font-size: 22px;
     }
 
     .projects {
@@ -185,7 +185,6 @@
     .projects__subTitle {
         font-size: 36px;
     }
-
 }
 
 @media (min-width: 320px) and (max-width: 400px) {
@@ -193,14 +192,18 @@
     .projects__titleBox {
         height: 100px;
     }
-    
+
     .projects__titleMain {
         font-size: 26px;
     }
-    
+
     .projects__title_img {
         width: 80px;
         padding-bottom: 5px;
+    }
+
+    .projects__description {
+        font-size: 18px;
     }
 
     .projects {
@@ -218,5 +221,4 @@
     .projects__title {
         font-size: 38px;
     }
-
 }

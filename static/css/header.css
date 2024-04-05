@@ -7,7 +7,6 @@
 
 /* шапка для всех остальный уствройст */
 .header {
-    /* box-shadow: 0px 4px 9px 0px rgba(0, 0, 0, 0.15); */
     background: rgba(23, 123, 159, 1.00);
     width: 100%;
 }
@@ -25,7 +24,6 @@
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    /* box-sizing: border-box; */
 
     padding-top: 30px;
     padding-bottom: 30px;
@@ -224,7 +222,6 @@
     /* шапка для мобильного меню */
     .header__mobileMenu {
         display: block;
-        /* box-shadow: 0px 4px 9px 0px rgba(0, 0, 0, 0.15); */
         background: rgba(23, 123, 159, 1.00);
         width: 100%;
     }
@@ -308,7 +305,6 @@
 
     .header {
         display: none;
-        /* position: absolute; */
         background: none;
         animation: burgerAnimation 0.7s;
         margin-top: 173px;

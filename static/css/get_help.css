@@ -70,14 +70,12 @@
     backdrop-filter: blur(4px);
     background: rgba(255, 228, 198, 0.51);
     padding: 30px 0 30px 30px;
-
 }
 
 .getHelp__form form {
     display: flex;
     flex-direction: column;
     gap: 20px;
-
     width: 80%;
 }
 
@@ -145,35 +143,6 @@
 
 
 /* адаптация */
-/* высота шапки 109px */
-/* @media (min-width: 1035px) and (max-width: 1320px) {
-    .getHelp {
-        padding-top: 170px;
-    }
-} */
-
-/* высота шапки 100px */
-/* @media (min-width: 835px) and (max-width: 1035px) {
-    .getHelp {
-        padding-top: 140px;
-    }
-} */
-
-/* млбилка - высота шапки 93px */
-/* @media (min-width: 768px) and (max-width: 835px) {
-    .getHelp {
-        padding-top: 130px;
-    }
-} */
-
-/* млбилка - высота шапки 173px */
-/* @media (min-width: 320px) and (max-width: 767px) {
-    .getHelp {
-        padding-top: 200px;
-    }
-} */
-
-/*  */
 @media (min-width: 1000px) and (max-width: 1150px) {
     .getHelp__container {
         justify-content: space-between;

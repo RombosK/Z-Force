@@ -1,65 +1,101 @@
-// убираем общую обертки для всех страниц
-const containerMDElem = document.querySelector(".container-md");
-containerMDElem.classList.remove("container-md");
 
-// слейдер
+// слАйдер
+
+// контейнер для конвейера фотограций
+const sliderLineElem = document.querySelector(".index__slider_items");
+// Массив изображений
 const sliderItemsElem = document.querySelectorAll(".index__slider_item");
+// левая стрелка
 const arrowLeftElem = document.querySelector(".index__slider_arrowLeft");
+// правая стрелка
 const arrowRightElem = document.querySelector(".index__slider_arrowRight");
 
-let slider = [];
 
-for (let i = 0; i < sliderItemsElem.length; i++) {
-  slider[i] = sliderItemsElem[i];
-  sliderItemsElem[i].remove();
+let activeImage = 0;
+
+// начальное отображение картинки
+function slider() {
+  for (let i = 0; i < sliderItemsElem.length; i++) {
+    sliderItemsElem[i].classList.add("index__slider_item-opasity");
+  }
+  sliderItemsElem[activeImage].classList.remove("index__slider_item-opasity");
 }
 
-console.log(slider);
+slider();
 
-let step = 0;
-// отвечает за смещение изображения
-let offset = 0;
-
-function drowImg() {
-  let div = document.createElement("div");
-  div = slider[step];
-  div.classList.add("index__slider_item");
-  let wid = window.innerWidth;
-  div.style.left = offset * wid + "px";
-  // console.log(div);
-  document.querySelector(".index__slider_items").appendChild(div);
-  if (step + 1 == sliderItemsElem.length) {
-    step = 0;
+// события нажатия на стрелки
+arrowRightElem.addEventListener("click", () => {
+  if (activeImage >= sliderItemsElem.length - 1) {
+    activeImage = 0;
   } else {
-    step++;
+    activeImage++;
   }
-  offset = 1;
+  slider();
+});
+arrowLeftElem.addEventListener("click", () => {
+  if (activeImage <= 0) {
+    activeImage = sliderItemsElem.length - 1;
+  } else {
+    activeImage--;
+  }
+  slider();
+});
+
+// авто прокрутка
+setInterval(() => {
+  if (activeImage >= sliderItemsElem.length - 1) {
+    activeImage = 0;
+  } else {
+    activeImage++;
+  }
+  slider();
+}, 9000);
+
+
+
+// ПРОГРЕСС ЛИНИЯ
+const totalSum = [];
+const collectedSum = [];
+
+// массив с суммой сбора
+[...document.querySelectorAll(".index__allYouNeedis_totalSum")].forEach(
+  (item) => {
+    let temp = item.innerHTML;
+    temp = temp.replace(/[^0-9]/g, "");
+    totalSum.push(temp);
+  }
+);
+
+// массив с собранной суммой
+[...document.querySelectorAll(".index__allYouNeedis_collectedSum")].forEach(
+  (item) => {
+    let temp = item.innerHTML;
+    temp = temp.replace(/[^0-9]/g, "");
+    collectedSum.push(temp);
+  }
+);
+
+// массив собранной суммы в процентах
+const percentages = [];
+for (let i = 0; i < totalSum.length; i++) {
+  percentages.push(((collectedSum[i] / totalSum[i]) * 100).toFixed(2));
 }
 
-// drowImg();
-// drowImg();
+// задание свойства ширины блока (в процентаХ)
+const percentagesSet = document.querySelectorAll(
+  ".index__allYouNeedis_donationsProgress"
+);
 
-function left() {
-  const slider2 = document.querySelectorAll(".index__slider_item");
-  let offset2 = 0;
-  for (let i = 0; i < slider2.length; i++) {
-    let wid = window.innerWidth;
-    console.log(wid);
-    slider2[i].style.left = offset2 * wid - wid + "px";
-    offset2++;
+for (let i = 0; i < percentagesSet.length; i++) {
+  if (percentages[i] >= 100) {
+    percentagesSet[i].style.width = 100 + "%";
+    document
+      .querySelectorAll(".index__allYouNeedis_payment")
+      [i].classList.add("index__allYouNeedis_collectedSum");
+    document.querySelectorAll(".index__allYouNeedis_payment")[i].textContent =
+      "Сбор закрыт";
+  } else {
+    percentagesSet[i].style.width = percentages[i] + "%";
   }
-  setTimeout(() => {
-    slider2[0].remove();
-    drowImg();
-  }, 1000);
 }
 
-drowImg();
-drowImg();
-// drowImg();
-
-document.onclick = left;
-
-// setInterval(() => {
-//   left();
-// }, 1000);

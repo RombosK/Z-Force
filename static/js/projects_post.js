@@ -4,25 +4,24 @@ let totalSum = document.querySelector(".projectsPost__totalSum").innerHTML;
 let collectedSum = document.querySelector(
   ".projectsPost__collectedSum"
 ).innerHTML;
-console.log(totalSum);
-console.log(collectedSum);
 
 totalSum = totalSum.replace(/[^0-9]/g, "");
 collectedSum = collectedSum.replace(/[^0-9]/g, "");
 
-console.log(totalSum);
-console.log(collectedSum);
 
 const percentages = ((collectedSum / totalSum) * 100).toFixed(2);
 
 if (percentages >= 100) {
   document.querySelector(".projectsPost__donationsProgress").style.width =
     100 + "%";
+  document
+    .querySelector(".projectsPost__payment")
+    .classList.add("projectsPost__collectedSum");
+  document.querySelector(".projectsPost__payment").textContent = "Сбор закрыт";
 } else {
   document.querySelector(".projectsPost__donationsProgress").style.width =
     percentages + "%";
 }
-
 
 const stillNeed = totalSum - collectedSum;
 
@@ -32,9 +31,6 @@ if (percentages >= 100) {
   document.querySelector(".projectsPost__stillNeed").innerHTML =
     "Осталось собрать " + stillNeed;
 }
-
-
-
 
 // СЛАЙДНР
 
@@ -49,8 +45,6 @@ const imagesElem = document.querySelectorAll(".projectsPost__slider_img");
 let numberElem = document.querySelector(".projectsPost__slider_navNumber");
 
 let index = 0;
-
-console.log(imagesElem);
 
 // блокировка сладера при отсутствии фото
 if (imagesElem.length < 1) {
