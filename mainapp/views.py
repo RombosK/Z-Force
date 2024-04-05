@@ -329,20 +329,29 @@ class AllYouNeedIsDetailView(DetailView):
 class IndexView(TemplateView):
     template_name = 'mainapp/index.html'
     # hot_projects = get_hot_projects()
+    """ в extra context добавляем список чтоб меньше было запросов к базе данных чем при get context_data подопечных,
+    задачи, новости все они отоброжают последние 3 события из списка если в списке меньше 3 отоброжаються все что
+     есть (1 или 2) если нет новостей в шаблоне сробатывает if и новость не отоброжается вовсе"""
+    extra_context = {
+        'list_allyouneedis': AllYouNeedIs.objects.all().reverse()[:(3 if len(AllYouNeedIs.objects.all()) >= 3
+                                                                    else len(AllYouNeedIs.objects.all()))],
+        'list_projects': Project.objects.all().reverse()[:(3 if len(Project.objects.all()) >= 3
+                                                           else len(Project.objects.all()))],
+        'list_news': News.objects.all().reverse()[:(3 if len(News.objects.all()) >= 3 else len(News.objects.all()))]
+    }
 
-    def get_context_data(self, **kwargs):
-        random_projects = get_projects()
-        random_kids = get_kids()
-        random_news = get_news()
-        context = super().get_context_data(**kwargs)
-        context['title'] = 'Окно в Мир'
-        context['random_projects'] = random_projects
-        context['random_kids'] = random_kids
-        context['random_news'] = random_news
-        context['list_news'] = News.objects.all().reverse()[:3]
-        context['list_projects'] = Project.objects.all().reverse()[:3]
-        context['list_allyouneedis'] = AllYouNeedIs.objects.all().reverse()[:3]
-        return context
+    # def get_context_data(self, **kwargs):
+    #     # random_projects = get_projects()
+    #     # random_kids = get_kids()
+    #     # random_news = get_news()
+    #     context = super().get_context_data(**kwargs)
+    #     context['title'] = 'Окно в Мир'
+    #     # context['random_projects'] = random_projects
+    #     # context['random_kids'] = random_kids
+    #     # context['random_news'] = random_news
+    #
+    #
+        # return context
 
 
 # Контроллер страницы О нас

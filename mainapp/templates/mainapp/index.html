@@ -118,9 +118,9 @@
   <!-- 3 последних события каждой категории поставил условие if т.е все 3 категории должны быть если что можно убрать -->
   <!--  -->
   <!-- блок подопечные -->
+  {% if list_allyouneedis %}
   <div class="index__box center">
     <h1 class="index__title">Помочь детям</h1>
-    {% if list_news and list_projects and list_allyouneedis %}
     <div class="index__itemBox">
       {% for item_allyouneedis in list_allyouneedis %}
       <div class="index__item">
@@ -184,8 +184,10 @@
       </button>
     </div>
   </div>
+  {% endif %}
 
   <!-- блок новостей -->
+  {% if list_news %}
   <div class="index__box index__news_box center">
     <h1 class="index__title">Последние события</h1>
     <!-- обертка для item -->
@@ -217,8 +219,9 @@
       </button>
     </div>
   </div>
-
+  {% endif %}
   <!-- проекты -->
+  {% if list_projects %}
   <div class="index__box center">
     <h1 class="index__title">Наши задачи в проектах</h1>
     <!-- обертка для item -->
