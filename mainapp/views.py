@@ -1,9 +1,13 @@
 import asyncio
-import logging
-import os
 import random
 
 import aiohttp
+
+from mainapp.forms import GiveHelpForm, GetHelpForm
+import logging
+import os
+
+import requests
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from django.shortcuts import render, redirect
@@ -13,8 +17,26 @@ from django.views.generic import TemplateView, View
 
 from mainapp.forms import GiveHelpForm, GetHelpForm
 from mainapp.models import GiveHelp, GetHelp, News, ProjectCategory, AllYouNeedIs, Partners, Project, Report, \
-    ImagesMany
+    ReportYear, Images, ImagesMany
 
+
+# # Контроллер страницы с анкетой
+# class GiveHelpView(View):
+#     model = GiveHelp
+#     form_class = GiveHelpForm
+#
+#     def get(self, request):
+#         form = GiveHelpForm()
+#         return render(request, 'mainapp/give_help.html', {'form': form})
+#
+#     def post(self, request):
+#         form = GiveHelpForm(request.POST)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('/home/success/')  # перенаправление на страницу успешного заполнения анкеты
+#
+#         # return render(request, 'mainapp/success.html')
+#         return render(request, 'mainapp/get_help.html', {'form': form})
 
 class GiveHelpView(View):
     model = GiveHelp
@@ -52,6 +74,7 @@ class GetHelpView(View):
             form.save()
             return redirect('/home/success/')  # перенаправление на страницу успешного заполнения анкеты
 
+        # return render(request, 'mainapp/get_help.html')
         return render(request, 'mainapp/get_help.html', {'form': form})
 
 
@@ -179,6 +202,7 @@ class NewsDetailView(DetailView):
         print(context)
         return context
 
+
     # def get_queryset(self):
     #     queryset = Images.objects.all()
     #     print(queryset)
@@ -212,7 +236,6 @@ class ProjectView(ListView):
     extra_context = {
         'title': 'Наши проекты',
     }
-
     # В get_queryset переопределяется object_list в котором содержится наименование проектов отсортированный по
     # категориям
 
@@ -223,6 +246,7 @@ class ProjectView(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['category'] = ProjectCategory.objects.filter(id=self.kwargs[self.pk_url_kwarg]).get()
+        # print(context)
         return context
 
 
@@ -256,8 +280,7 @@ class ProjectDetailView(DetailView):
     # смотреть 206 строку
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        item = ImagesMany.objects.filter(
-            projects_image=Project.objects.filter(slug=self.kwargs[self.slug_url_kwarg]).get())
+        item = ImagesMany.objects.filter(projects_image=Project.objects.filter(slug=self.kwargs[self.slug_url_kwarg]).get())
         context['image'] = item
         return context
 
@@ -265,7 +288,7 @@ class ProjectDetailView(DetailView):
 # Контроллер нуждающихся
 # родитель ListView для удобства работы со страницами где нужна пагинация
 class AllYouNeedIsView(ListView):
-    paginate_by = 6
+    paginate_by = 6 
     # в дальнейшем нужно поставить 9
     template_name = 'mainapp/allyouneedis.html'
     model = AllYouNeedIs
@@ -292,7 +315,7 @@ class AllYouNeedIsDetailView(DetailView):
     def get_object(self, queryset=None):
         return get_object_or_404(AllYouNeedIs, slug=self.kwargs[self.slug_url_kwarg])
 
-    # смотреть 216 строку
+    # смотреть 206 строку
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         item = ImagesMany.objects.filter(allyouneedis_image=AllYouNeedIs.objects.filter(
@@ -306,30 +329,20 @@ class AllYouNeedIsDetailView(DetailView):
 class IndexView(TemplateView):
     template_name = 'mainapp/index.html'
     # hot_projects = get_hot_projects()
-    """ в extra context добавляем список чтоб меньше было запросов к базе данных чем при get context_data подопечных,
-    задачи, новости все они отоброжают последние 3 события из списка если в списке меньше 3 отоброжаються все что
-     есть (1 или 2) если нет новостей в шаблоне сробатывает if и новость не отоброжается вовсе"""
-    extra_context = {
-        'list_allyouneedis': AllYouNeedIs.objects.all().reverse()[:(3 if len(AllYouNeedIs.objects.all()) >= 3
-                                                                    else len(AllYouNeedIs.objects.all()))],
-        'list_projects': Project.objects.all().reverse()[:(3 if len(Project.objects.all()) >= 3
-                                                           else len(Project.objects.all()))],
-        'list_news': News.objects.all().reverse()[:(3 if len(News.objects.all()) >= 3 else len(News.objects.all()))]
-    }
 
-    # def get_context_data(self, **kwargs):
-    #     random_projects = get_projects()
-    #     random_kids = get_kids()
-    #     random_news = get_news()
-    #     context = super().get_context_data(**kwargs)
-    #     context['title'] = 'Окно в Мир'
-    #     context['random_projects'] = random_projects
-    #     context['random_kids'] = random_kids
-    #     context['random_news'] = random_news
-    #     context['list_news'] = News.objects.all().reverse()[:3]
-    #     context['list_projects'] = Project.objects.all().reverse()[:3]
-    #     context['list_allyouneedis'] = AllYouNeedIs.objects.all().reverse()[:3]
-    #     return context
+    def get_context_data(self, **kwargs):
+        random_projects = get_projects()
+        random_kids = get_kids()
+        random_news = get_news()
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Окно в Мир'
+        context['random_projects'] = random_projects
+        context['random_kids'] = random_kids
+        context['random_news'] = random_news
+        context['list_news'] = News.objects.all().reverse()[:3]
+        context['list_projects'] = Project.objects.all().reverse()[:3]
+        context['list_allyouneedis'] = AllYouNeedIs.objects.all().reverse()[:3]
+        return context
 
 
 # Контроллер страницы О нас
@@ -421,3 +434,4 @@ class ReportView(ListView):
     extra_context = {
         'title': 'Отчеты',
     }
+
