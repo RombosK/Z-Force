@@ -246,7 +246,7 @@ class ReportYear(models.Model):
 # Модель для страницы с отчетами
 class Report(models.Model):
     name = models.CharField(max_length=75, verbose_name='название отчета')
-    year = models.ForeignKey(ReportYear, on_delete=models.CASCADE)
+    year = models.ForeignKey(ReportYear, on_delete=models.CASCADE, verbose_name='Год')
     upload = models.FileField(upload_to='uploadsFiles/%Y/%m/%d/', verbose_name='отчетный файл')
     created_at = models.DateTimeField(default=timezone.now, verbose_name='дата создания', editable=True)
 

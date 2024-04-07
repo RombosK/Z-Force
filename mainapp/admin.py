@@ -155,10 +155,10 @@ class PartnersAdmin(admin.ModelAdmin):
 
 @admin.register(Report)
 class ReportAdmin(admin.ModelAdmin):
-    list_display = ('name', 'upload', 'created_at',)
+    list_display = ('name', 'upload', 'year', 'created_at',)
     list_per_page = 12
-    list_filter = ('name', 'upload', 'created_at')
-    search_fields = ('name', 'upload', 'created_at')
+    list_filter = ('name', 'upload', 'year', 'created_at')
+    search_fields = ('name', 'upload', 'year', 'created_at')
     show_full_result_count = False
 
 
