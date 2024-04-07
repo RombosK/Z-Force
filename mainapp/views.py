@@ -349,9 +349,9 @@ class IndexView(TemplateView):
     #     # context['random_projects'] = random_projects
     #     # context['random_kids'] = random_kids
     #     # context['random_news'] = random_news
-    #
-    #
-        # return context
+    
+    
+    #     return context
 
 
 # Контроллер страницы О нас
