@@ -9,11 +9,9 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-import os
 from pathlib import Path
-
+import os
 from dotenv import load_dotenv
-from pymorphy2.lang import ru
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -27,13 +25,13 @@ SECRET_KEY = 'django-insecure-m4w3d-8$pzr0!bfudanv!0o#46j)w^vlq6&-u*9n2prx^pb53l
 # SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-# DEBUG = True if os.getenv('DEBUG') == 'True' else False
+# DEBUG = True
+DEBUG = True if os.getenv('DEBUG') == 'True' else False
 
 ALLOWED_HOSTS = ['*']
 
-# ENV_TYPE = os.getenv('ENV_TYPE', 'prod')
-#
+ENV_TYPE = os.getenv('ENV_TYPE', 'prod')
+
 if DEBUG:
     INTERNAL_IPS = [
         "localhost",
@@ -51,7 +49,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'crispy_forms',
     'adminapp',
-    'userapp',
     'mainapp',
     'authapp',
     'debug_toolbar',
@@ -92,27 +89,28 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
-# if ENV_TYPE == 'local':
-#     DATABASES = {
-#         'default': {
-#             'ENGINE': 'django.db.backends.sqlite3',
-#             'NAME': BASE_DIR / 'db.sqlite3',
-#         }
-#     }
-# else:
-#     DATABASES = {
-#         'default': {
-#             'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#             'NAME': BASE_DIR / 'db.sqlite3'
-#         }
-#     }
+if ENV_TYPE == 'local':
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'okno',
+            'USER': 'admin'
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -147,15 +145,15 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
-# if ENV_TYPE == 'local':
-#     STATICFILES_DIRS = [
-#         BASE_DIR / 'static',
-#     ]
-# else:
-#     STATIC_ROOT = BASE_DIR / 'static'
-STATICFILES_DIRS = [
-    BASE_DIR / 'static',
-]
+if ENV_TYPE == 'local':
+    STATICFILES_DIRS = [
+        BASE_DIR / 'static',
+    ]
+else:
+    STATIC_ROOT = BASE_DIR / 'static'
+# STATICFILES_DIRS = [
+#     BASE_DIR / 'static',
+# ]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -180,22 +178,6 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
-# CRISPY_TEMPLATE_PACK = 'uni_form'
 
 
-# Read about sending email:
-# https://docs.djangoproject.com/en/3.2/topics/email/
-# Full list of email settings:
-# https://docs.djangoproject.com/en/3.2/ref/settings/#email
-# EMAIL_HOST = "localhost"
-# EMAIL_PORT = "25"
-# #
-# # For debugging: python -m smtpd -n -c DebuggingServer localhost:25
-# EMAIL_HOST_USER = "django@geekshop.local"
-# EMAIL_HOST_PASSWORD = "geekshop"
-# EMAIL_USE_SSL = False
-# If server support TLS:
-# EMAIL_USE_TLS = True
-# Email as files for debug
-# EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
-# EMAIL_FILE_PATH = "emails-tmp"
+
