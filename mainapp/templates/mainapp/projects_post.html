@@ -65,10 +65,10 @@
   <div class="projectsPost_article center">
     <p>{{ post.description|linebreaks }}</p>
     {% if post.vk_link %}
-    <p>Vk <a href="{{ post.vk_link }}" target="_blank"> {{ post.vk_link }}</a></p>
+    {% include 'mainapp/includes/vk.link.html' %}
     {% endif %}
     {% if post.tg_link %}
-    <p>Тг <a href="{{ post.tg_link }}" target="_blank"> {{ post.tg_link }}</a></p>
+    {% include 'mainapp/includes/tg_link.html' %}
     {% endif %}
   </div>
 
