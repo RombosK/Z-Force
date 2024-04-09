@@ -151,8 +151,8 @@ class NewsView(ListView):
         'title': 'Новости',
     }
 
-    # В --get_queryset-- переопределяется --object_list-- который отоброжает список новостей
-    # фильтруется чере менеджер --order_by-- по дате создания и реверсируется
+    # В --get_queryset-- переопределяется --object_list-- который отображает список новостей
+    # фильтруется через менеджер --order_by-- по дате создания и реверсируется
     def get_queryset(self):
         queryset = News.objects.order_by('created_at').reverse()
         return queryset
@@ -170,8 +170,8 @@ class NewsDetailView(DetailView):
     def get_object(self, queryset=None):
         return get_object_or_404(News, slug=self.kwargs[self.slug_url_kwarg])
 
-    # В get_context_data добовляем  context['image'] фотографии которые сортируються по id через slug
-    # slug пренодлежит опреджеленной новости которая имеет опред id
+    # В get_context_data добавляем  context['image'] фотографии которые сортируються по id через slug
+    # slug принадлежит определенной новости которая имеет определенный id
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         item = ImagesMany.objects.filter(news_image=News.objects.filter(slug=self.kwargs[self.slug_url_kwarg]).get())
@@ -215,7 +215,6 @@ class ProjectView(ListView):
 
     # В get_queryset переопределяется object_list в котором содержится наименование проектов отсортированный по
     # категориям
-
     def get_queryset(self):
         queryset = Project.objects.filter(category=self.kwargs[self.pk_url_kwarg])
         return queryset
@@ -307,8 +306,8 @@ class IndexView(TemplateView):
     template_name = 'mainapp/index.html'
     # hot_projects = get_hot_projects()
     """ в extra context добавляем список чтоб меньше было запросов к базе данных чем при get context_data подопечных,
-    задачи, новости все они отоброжают последние 3 события из списка если в списке меньше 3 отоброжаються все что
-     есть (1 или 2) если нет новостей в шаблоне сробатывает if и новость не отоброжается вовсе"""
+    задачи, новости все они отображают последние 3 события из списка если в списке меньше 3 отображаются все что
+     есть (1 или 2) если нет новостей в шаблоне срабатывает if и новость не отображается вовсе"""
     extra_context = {
         'list_allyouneedis': AllYouNeedIs.objects.all().reverse()[:(3 if len(AllYouNeedIs.objects.all()) >= 3
                                                                     else len(AllYouNeedIs.objects.all()))],
