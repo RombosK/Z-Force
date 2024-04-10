@@ -64,11 +64,19 @@
 
   <div class="projectsPost_article center">
     <p>{{ post.description|linebreaks }}</p>
+  </div>
+
+  <div class="projectsPost_link">
     {% if post.vk_link %}
+    <!--  -->
     {% include 'mainapp/includes/vk.link.html' %}
+    <!--  -->
     {% endif %}
+    <!--  -->
     {% if post.tg_link %}
+    <!--  -->
     {% include 'mainapp/includes/tg_link.html' %}
+    <!--  -->
     {% endif %}
   </div>
 

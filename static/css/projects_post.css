@@ -184,9 +184,13 @@
     font-size: 24px;
     font-weight: 400;
     text-align: justify;
-    margin-bottom: 50px;
+    /* margin-bottom: 50px; */
 }
 
+.projectsPost_link {
+    width: 80%;
+    margin-left: 10%;
+}
 
 .projectsPost__slider {
     margin-bottom: 100px;
@@ -274,6 +278,11 @@
         width: 90%;
         margin-left: 5%;
     }
+
+    .projectsPost_link {
+        width: 90%;
+        margin-left: 5%;
+    }
 }
 
 @media (min-width: 768px) and (max-width: 999px) {
@@ -309,6 +318,11 @@
 
 
     .projectsPost_article {
+        width: 94%;
+        margin-left: 3%;
+    }
+
+    .projectsPost_link {
         width: 94%;
         margin-left: 3%;
     }
@@ -368,6 +382,11 @@
 
 
     .projectsPost_article {
+        width: 96%;
+        margin-left: 2%;
+    }
+
+    .projectsPost_link {
         width: 96%;
         margin-left: 2%;
     }
@@ -478,6 +497,11 @@
         font-size: 20px;
     }
 
+    .projectsPost_link {
+        width: 96%;
+        margin-left: 2%;
+    }
+
     .projectsPost_paymentInfo {
         flex-direction: column;
         margin-left: 2%;
@@ -582,6 +606,11 @@
         width: 96%;
         margin-left: 2%;
         font-size: 20px;
+    }
+
+    .projectsPost_link {
+        width: 96%;
+        margin-left: 2%;
     }
 
     .projectsPost_paymentInfo {

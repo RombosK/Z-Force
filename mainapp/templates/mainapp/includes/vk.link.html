@@ -1,1 +1,10 @@
-    <p>Vk <a href="{{ post.vk_link }}" target="_blank"> {{ post.vk_link }}</a></p>
+<!-- <p class="newsPost__link">Читайте подробнее в ВКонтакте:  <a href="{{ post.vk_link }}" target="_blank"> {{ post.vk_link }}</a></p> -->
+{% load static %}
+
+<a class="post__link" href="{{ post.vk_link }}" target="_blank">
+  <p>Читайте подробнее в</p>
+  <img
+    class="post__link_icon"
+    src="{% static '/img/icons/vk_post.png' %}"
+    alt="vk"
+/></a>

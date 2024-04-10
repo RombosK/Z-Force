@@ -1,1 +1,11 @@
-    <p>Тг <a href="{{ post.tg_link }}" target="_blank"> {{ post.tg_link }}</a></p>
+<!-- <p>Тг <a href="{{ post.tg_link }}" target="_blank"> {{ post.tg_link }}</a></p> -->
+
+{% load static %}
+
+<a class="post__link" href="{{ post.tg_link }}" target="_blank">
+  <p>Читайте подробнее в</p>
+  <img
+    class="post__link_icon"
+    src="{% static '/img/icons/tg_post.png' %}"
+    alt="vk"
+/></a>
