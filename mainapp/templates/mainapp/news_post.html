@@ -31,6 +31,12 @@
 
   <!-- текст статьи -->
   <div class="newsPost__text">{{ post.description|linebreaks}}</div>
+    {% if post.vk_link %}
+    {% include 'mainapp/includes/vk.link.html' %}
+    {% endif %}
+    {% if post.tg_link %}
+    {% include 'mainapp/includes/tg_link.html' %}
+    {% endif %}
   <p class="newsPost__data">{{ post.created_at|date:"d M Y" }}</p>
 
   <!-- слайлер -->

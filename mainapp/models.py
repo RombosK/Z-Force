@@ -34,6 +34,8 @@ class News(models.Model):
     name = models.CharField(verbose_name='заголовок', max_length=64)
     slug = models.SlugField(max_length=255, unique=True, db_index=True)
     description = models.TextField(verbose_name='Описание')
+    vk_link = models.CharField(max_length=700, verbose_name="ВК ссылка", blank=True)
+    tg_link = models.CharField(max_length=700, verbose_name="ТГ ссылка", blank=True)
     photo = models.ImageField(upload_to='news_photos', blank=True)
     created_at = models.DateTimeField(default=timezone.now, verbose_name='дата создания', editable=True)
     updated_at = models.DateTimeField(auto_now=True, verbose_name='дата изменения', editable=False)
@@ -75,6 +77,8 @@ class Project(models.Model):
     slug = models.SlugField(max_length=255, unique=True, db_index=True)
     name = models.CharField(verbose_name='название задачи', max_length=128)
     description = models.TextField(verbose_name='описание задачи')
+    vk_link = models.CharField(max_length=700, verbose_name="ВК ссылка", blank=True)
+    tg_link = models.CharField(max_length=700, verbose_name="ТГ ссылка", blank=True)
     short_description = models.CharField(verbose_name='краткое описание задачи', max_length=255, blank=True)
     photo = models.ImageField(upload_to='project_photos')
     purpose = models.CharField(verbose_name='назначение платежа', max_length=64, blank=True)
@@ -103,6 +107,8 @@ class AllYouNeedIs(models.Model):
     city = models.CharField(verbose_name='город, регион', max_length=64, blank=True)
     birthdate = models.CharField(verbose_name='Год рождения', max_length=4, null=True)
     description = models.TextField(verbose_name='описание проблемы')
+    vk_link = models.CharField(max_length=700, verbose_name="ВК ссылка", blank=True)
+    tg_link = models.CharField(max_length=700, verbose_name="ТГ ссылка", blank=True)
     short_description = models.CharField(verbose_name='краткое описание проблемы', max_length=128, blank=True)
     # name_for_payment = models.CharField(verbose_name='напишите имя в дательном пажеде', max_length=32, blank=True)
     photo = models.ImageField(upload_to='needs_photos')
@@ -246,7 +252,7 @@ class ReportYear(models.Model):
 # Модель для страницы с отчетами
 class Report(models.Model):
     name = models.CharField(max_length=75, verbose_name='название отчета')
-    year = models.ForeignKey(ReportYear, on_delete=models.CASCADE)
+    year = models.ForeignKey(ReportYear, on_delete=models.CASCADE, verbose_name='Год')
     upload = models.FileField(upload_to='uploadsFiles/%Y/%m/%d/', verbose_name='отчетный файл')
     created_at = models.DateTimeField(default=timezone.now, verbose_name='дата создания', editable=True)
 

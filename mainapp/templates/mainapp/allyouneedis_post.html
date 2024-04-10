@@ -80,6 +80,12 @@
   <!-- история ребенка -->
   <div class="allYouNeedisPost__history center">
     {{ post.description|linebreaks }}
+    {% if post.vk_link %}
+    {% include 'mainapp/includes/vk.link.html' %}
+    {% endif %}
+    {% if post.tg_link %}
+    {% include 'mainapp/includes/tg_link.html' %}
+    {% endif %}
   </div>
 
   <!-- слайлер -->

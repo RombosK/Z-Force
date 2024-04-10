@@ -54,7 +54,7 @@ class NewsAdmin(admin.ModelAdmin):
     prepopulated_fields = {
         'slug': ('name',)
     }
-    list_display = ('name', 'description', 'created_at', 'updated_at', 'is_closed')
+    list_display = ('name', 'description', 'vk_link', 'tg_link', 'created_at', 'updated_at', 'is_closed')
     list_per_page = 10
     list_filter = ('name', 'description', 'created_at')
     search_fields = ('name', 'description', 'created_at')
@@ -90,7 +90,7 @@ class ImagesAdmin(admin.ModelAdmin):
 
 @admin.register(Project)
 class ProjectAdmin(admin.ModelAdmin):
-    list_display = ('name', 'short_description', 'category', 'created_at', 'donation')
+    list_display = ('name', 'short_description', 'category', 'created_at', 'vk_link', 'tg_link', 'donation')
     prepopulated_fields = {
         'slug': ('name', 'category')
     }
@@ -118,7 +118,7 @@ class AllYouNeedIsAdmin(admin.ModelAdmin):
     prepopulated_fields = {
         'slug': ('name', 'surname', 'city')
     }
-    list_display = ('name', 'surname', 'city', 'short_description', 'created_at', 'in_process', 'is_closed')
+    list_display = ('name', 'surname', 'city', 'short_description', 'vk_link', 'tg_link', 'created_at', 'in_process', 'is_closed')
     list_per_page = 10
     list_filter = ('name', 'surname', 'city', 'in_process', 'is_closed', 'created_at')
     search_fields = ('name', 'surname', 'city', 'short_description', 'in_process', 'is_closed', 'created_at')
@@ -155,10 +155,10 @@ class PartnersAdmin(admin.ModelAdmin):
 
 @admin.register(Report)
 class ReportAdmin(admin.ModelAdmin):
-    list_display = ('name', 'upload', 'created_at',)
+    list_display = ('name', 'upload', 'year', 'created_at',)
     list_per_page = 12
-    list_filter = ('name', 'upload', 'created_at')
-    search_fields = ('name', 'upload', 'created_at')
+    list_filter = ('name', 'upload', 'year', 'created_at')
+    search_fields = ('name', 'upload', 'year', 'created_at')
     show_full_result_count = False
 
 
