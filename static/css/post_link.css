@@ -1,0 +1,49 @@
+.post__link {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+
+    color: rgb(43, 43, 43);
+    font-family: Nunito;
+    font-size: 24px;
+    font-weight: 400;
+    text-align: justify;
+    margin-bottom: 20px;
+}
+
+.post__link:hover {
+    color: rgba(254, 186, 166, 1.00);
+}
+
+.post__link_icon {
+    width: 30px;
+}
+
+@media (min-width: 501px) and (max-width: 766px) {
+    .post__link {
+        font-size: 20px;
+    }
+    
+    .post__link:hover {
+        color: rgba(254, 186, 166, 1.00);
+    }
+    
+    .post__link_icon {
+        width: 30px;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 500px) {
+    .post__link {
+        font-size: 18px;
+    }
+    
+    .post__link:hover {
+        color: rgba(254, 186, 166, 1.00);
+    }
+    
+    .post__link_icon {
+        width: 20px;
+    }
+}

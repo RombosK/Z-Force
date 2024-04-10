@@ -316,6 +316,30 @@ class IndexView(TemplateView):
     #     'list_news': News.objects.all().reverse()[:(3 if len(News.objects.all()) >= 3 else len(News.objects.all()))]
     # }
 
+    # def get_context_data(self, **kwargs):
+    #     # random_projects = get_projects()
+    #     # random_kids = get_kids()
+    #     # random_news = get_news()
+    #     context = super().get_context_data(**kwargs)
+    #     context['title'] = 'Окно в Мир'
+    #     # context['random_projects'] = random_projects
+    #     # context['random_kids'] = random_kids
+    #     # context['random_news'] = random_news
+    
+    
+    #     random_projects = get_projects()
+    #     random_kids = get_kids()
+    #     random_news = get_news()
+    #     context = super().get_context_data(**kwargs)
+    #     context['title'] = 'Окно в Мир'
+    #     context['random_projects'] = random_projects
+    #     context['random_kids'] = random_kids
+    #     context['random_news'] = random_news
+    #     context['list_news'] = News.objects.all().reverse()[:3]
+    #     context['list_projects'] = Project.objects.all().reverse()[:3]
+    #     context['list_allyouneedis'] = AllYouNeedIs.objects.all().reverse()[:3]
+    
+    #     return context
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Окно в Мир'
