@@ -32,11 +32,11 @@ ALLOWED_HOSTS = ['*']
 
 ENV_TYPE = os.getenv('ENV_TYPE', 'prod')
 
-if DEBUG:
-    INTERNAL_IPS = [
-        "localhost",
-        "127.0.0.1",
-    ]
+# if DEBUG:
+#     INTERNAL_IPS = [
+#         "localhost",
+#         "127.0.0.1",
+#     ]
 
 # Application definition
 
