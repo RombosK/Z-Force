@@ -23,7 +23,7 @@
   <div class="newsPost__top">
     {% if post.photo %}
     <div class="newsPost__top_imgBox">
-      <img class="newsPost__top_img" src="/home{{post.photo.url}}" />
+      <img class="newsPost__top_img" src="{{post.photo.url}}" />
     </div>
     {% endif %}
     <p class="newsPost__title">{{ post.name }}</p>
