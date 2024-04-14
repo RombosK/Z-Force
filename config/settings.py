@@ -146,13 +146,13 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-# if ENV_TYPE == 'local':
-#     STATICFILES_DIRS = [
-#         BASE_DIR / 'static',
-#     ]
-# else:
-#     STATIC_ROOT = BASE_DIR / 'static'
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+if ENV_TYPE == 'local':
+    STATICFILES_DIRS = [
+        BASE_DIR / 'static',
+    ]
+else:
+    STATIC_ROOT = BASE_DIR / 'static'
 # STATICFILES_DIRS = [
 #     BASE_DIR / 'static',
 # ]
@@ -163,7 +163,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = '/media/'
-DEFAULT_AVATAR_URL = '/img/'
+# DEFAULT_AVATAR_URL = '/img/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 USE_THOUSAND_SEPARATOR = True
