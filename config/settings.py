@@ -96,41 +96,41 @@ WSGI_APPLICATION = 'config.wsgi.application'
 #     }
 # }
 
-# if ENV_TYPE == 'local':
-#     DATABASES = {
-#         'default': {
-#             'ENGINE': 'django.db.backends.sqlite3',
-#             'NAME': BASE_DIR / 'db.sqlite3',
-#         }
-#     }
-# else:
-#     DATABASES = {
-#         'default': {
-#             'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#             'NAME': 'okno',
-#             'USER': 'admin'
-#         }
-#     }
+if ENV_TYPE == 'local':
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'okno',
+            'USER': 'admin'
+        }
+    }
 
-DATABASES = {
-
-    'default': {
-
-        'ENGINE': 'django.db.backends.postgresql',
-
-        'NAME': 'mainapp',
-
-        'USER': 'postgres',
+# DATABASES = {
+#
+#     'default': {
+#
+#         'ENGINE': 'django.db.backends.postgresql',
+#
+#         'NAME': 'mainapp',
+#
+#         'USER': 'postgres',
 
         # 'PASSWORD': '<password>',
         #
         # 'HOST': 'localhost',
         #
         # 'PORT': 5432,
-
-    }
-
-}
+#
+#     }
+#
+# }
 
 
 # Password validation
