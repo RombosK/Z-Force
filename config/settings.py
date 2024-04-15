@@ -108,7 +108,7 @@ else:
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
             'NAME': 'okno',
-            'USER': 'admin'
+            'USER': 'postgres'
         }
     }
 
