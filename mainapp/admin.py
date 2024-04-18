@@ -54,12 +54,13 @@ class NewsAdmin(admin.ModelAdmin):
     prepopulated_fields = {
         'slug': ('name',)
     }
-    list_display = ('name', 'description', 'vk_link', 'tg_link', 'created_at', 'updated_at', 'is_closed')
+    list_display = ('name', 'vk_link', 'tg_link', 'created_at', 'updated_at', 'is_closed')
     list_per_page = 10
-    list_filter = ('name', 'description', 'created_at')
-    search_fields = ('name', 'description', 'created_at')
+    list_filter = ('name', 'created_at')
+    search_fields = ('name', 'created_at')
     show_full_result_count = False
     inlines = [ImagesNewsInline, ]
+
 
 @admin.register(Images)
 class ImagesAdmin(admin.ModelAdmin):
@@ -90,13 +91,13 @@ class ImagesAdmin(admin.ModelAdmin):
 
 @admin.register(Project)
 class ProjectAdmin(admin.ModelAdmin):
-    list_display = ('name', 'short_description', 'category', 'created_at', 'vk_link', 'tg_link', 'donation')
+    list_display = ('name', 'category', 'created_at', 'vk_link', 'tg_link', 'donation')
     prepopulated_fields = {
         'slug': ('name', 'category')
     }
     list_per_page = 10
-    list_filter = ('name', 'short_description', 'category', 'created_at')
-    search_fields = ('name', 'short_description', 'category', 'created_at')
+    list_filter = ('name', 'category', 'created_at')
+    search_fields = ('name', 'category', 'created_at')
     show_full_result_count = False
     inlines = [ImagesProjectInline, ]
 
@@ -106,10 +107,10 @@ class ProjectCategoryAdmin(admin.ModelAdmin):
     prepopulated_fields = {
         'slug': ('name',)
     }
-    list_display = ('name', 'description')
+    list_display = ('name', )
     list_per_page = 10
-    list_filter = ('name', 'description')
-    search_fields = ('name', 'description')
+    list_filter = ('name', )
+    search_fields = ('name', )
     show_full_result_count = False
 
 
@@ -118,10 +119,10 @@ class AllYouNeedIsAdmin(admin.ModelAdmin):
     prepopulated_fields = {
         'slug': ('name', 'surname', 'city')
     }
-    list_display = ('name', 'surname', 'city', 'short_description', 'vk_link', 'tg_link', 'created_at', 'in_process', 'is_closed')
+    list_display = ('name', 'surname', 'city', 'vk_link', 'tg_link', 'created_at', 'in_process', 'is_closed')
     list_per_page = 10
     list_filter = ('name', 'surname', 'city', 'in_process', 'is_closed', 'created_at')
-    search_fields = ('name', 'surname', 'city', 'short_description', 'in_process', 'is_closed', 'created_at')
+    search_fields = ('name', 'surname', 'city', 'in_process', 'is_closed', 'created_at')
     show_full_result_count = False
     inlines = [ImagesAllyouneedisInline, ]
 
