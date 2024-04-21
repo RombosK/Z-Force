@@ -32,13 +32,18 @@
     <div class="projectsPost__mainInfo_description">
       <h1 class="projectsPost__title">{{ post.name }}</h1>
       <!-- блок о суммах -->
+      {% if post.collected %}
+      {% if post.donation %}
       <div class="projectsPost__paymentnBox">
         <div class="projectsPost__payment">
           <p class="projectsPost__collectedSum">{{ post.collected }} &#8381;</p>
           <p class="projectsPost__totalSum">{{ post.donation }} &#8381;</p>
         </div>
+        {% endif %}
+        {% endif %}
+
         <div class="projectsPost__donations">
-          <!--  линия необходимой суумы-->
+          <!--  линия необходимой суммы-->
           <div class="projectsPost__donationsProgress">
             <!-- линия собранной суммы -->
           </div>
@@ -61,7 +66,6 @@
     </div>
   </div>
   <!-- конец блока с фото и информацией о сборе -->
-
   <div class="projectsPost_article center">
     <p>{{ post.description|linebreaks }}</p>
   </div>
