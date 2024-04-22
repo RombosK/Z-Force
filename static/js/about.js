@@ -111,3 +111,7 @@ const slider2 = new AboutSlider(".about__slider2", ".about__slider2_text");
 
 slider1.abouInit();
 slider2.abouInit();
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0ebed57710c3dc4c357a965efadd12d77028b28f

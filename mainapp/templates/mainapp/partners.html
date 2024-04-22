@@ -20,7 +20,7 @@
   {% for partner in object %}
   <div class="partners__imgBox">
     {% if partner.picture %}
-    <img class="partners__img" src="/home{{partner.picture.url}}" />
+    <img class="partners__img" src="{{partner.picture.url}}" />
     {% endif %}
   </div>
   {% endfor %}

@@ -296,7 +296,6 @@ class AllYouNeedIsDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         item = ImagesMany.objects.filter(allyouneedis_image=AllYouNeedIs.objects.filter(
             slug=self.kwargs[self.slug_url_kwarg]).get())
-        print(item)
         context['image'] = item
         return context
 

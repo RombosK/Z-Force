@@ -32,11 +32,11 @@ ALLOWED_HOSTS = ['*']
 
 ENV_TYPE = os.getenv('ENV_TYPE', 'prod')
 
-if DEBUG:
-    INTERNAL_IPS = [
-        "localhost",
-        "127.0.0.1",
-    ]
+# if DEBUG:
+#     INTERNAL_IPS = [
+#         "localhost",
+#         "127.0.0.1",
+#     ]
 
 # Application definition
 
@@ -108,7 +108,7 @@ else:
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
             'NAME': 'okno',
-            'USER': 'admin'
+            'USER': 'postgres'
         }
     }
 
@@ -144,7 +144,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 if ENV_TYPE == 'local':
     STATICFILES_DIRS = [
         BASE_DIR / 'static',
@@ -161,7 +163,7 @@ else:
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = '/media/'
-DEFAULT_AVATAR_URL = '/img/'
+# DEFAULT_AVATAR_URL = '/img/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 USE_THOUSAND_SEPARATOR = True
