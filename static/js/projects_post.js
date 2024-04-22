@@ -7,7 +7,16 @@ let collectedSum = document.querySelector(
 
 totalSum = totalSum.replace(/[^0-9]/g, "");
 collectedSum = collectedSum.replace(/[^0-9]/g, "");
+console.log(totalSum);
+console.log(typeof(totalSum));
 
+if (totalSum === '0') {
+  console.log("иф сработал");
+  document.querySelector(".projectsPost__shortDescription").style.display = "block";
+  document.querySelector(".projectsPost__payment").style.display = "none";
+  document.querySelector(".projectsPost__donations").style.display = "none";
+  document.querySelector(".projectsPost__stillNeed").style.display = "none";
+}
 
 const percentages = ((collectedSum / totalSum) * 100).toFixed(2);
 

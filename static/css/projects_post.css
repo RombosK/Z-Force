@@ -91,6 +91,16 @@
     padding: 20px 30px 10px 30px;
 }
 
+.projectsPost__shortDescription {
+    display: none;
+    color: rgba(254, 186, 166, 1.00);
+    font-family: Nunito;
+    font-size: 16px;
+    font-weight: 700;
+    text-align: center;
+    /* margin-bottom: 30px; */
+}
+
 .projectsPost__payment {
     display: flex;
     flex-direction: row;
