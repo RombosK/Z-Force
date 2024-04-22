@@ -107,8 +107,7 @@ class AboutSlider {
 
 const slider1 = new AboutSlider(".about__slider1", ".about__slider1_text");
 const slider2 = new AboutSlider(".about__slider2", ".about__slider2_text");
-const slider3 = new AboutSlider(".about__slider3", ".about__slider3_text");
+
 
 slider1.abouInit();
 slider2.abouInit();
-slider3.abouInit();
