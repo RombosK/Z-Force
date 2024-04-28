@@ -2,6 +2,9 @@ import asyncio
 import logging
 import os
 import random
+import re
+from collections import defaultdict
+import time
 
 import aiohttp
 from django.http import HttpResponseRedirect
@@ -112,10 +115,25 @@ class ContactsView(TemplateView):
 
         return context
 
-    # Метод отправляет сообщение в ТГ админу через бота
+    # Метод для отправки сообщения через форму обратной связи с фильтрацией на спам
+    async def send_feedback_to_email(self, message: str, message_from: int = None) -> None:
+        self.message_history = defaultdict(int)
+        self.spam_threshold = 10  # Устанавливаем порог для определения спама
+        self.spam_interval = 60  # Устанавливаем интервал времени для проверки спама
 
-    @staticmethod
-    async def send_feedback_to_email(message: str, message_from: int = None) -> None:
+        current_time = time.time()
+
+        if message in self.message_history and current_time - self.message_history[message] < self.spam_interval:
+            print("Spam detected. Message not sent.")
+            return
+
+        # Проверяем наличие ссылок в сообщении
+        if re.search(r'http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', message):
+            print("Links are not allowed. Message not sent.")
+            return
+
+        self.message_history[message] = current_time
+
         TOKEN = os.getenv('TOKEN')
         CHAT_ID = os.getenv('CHAT_ID')
         url = f"https://api.telegram.org/bot{TOKEN}/sendMessage"
@@ -158,6 +176,7 @@ class NewsView(ListView):
         return queryset
 
 
+# Контроллер страницы с новостью
 class NewsDetailView(DetailView):
     model = News
     template_name = 'mainapp/news_post.html'
@@ -179,16 +198,8 @@ class NewsDetailView(DetailView):
         print(context)
         return context
 
-    # def get_queryset(self):
-    #     queryset = Images.objects.all()
-    #     print(queryset)
-    #     return queryset
-    #
-    # queryset = 'post'
 
-
-# Контроллер проектов
-# родитель ListView для удобства работы со страницами где нужна пагинация
+# Контроллер проектов. Родитель ListView для удобства работы со страницами где нужна пагинация
 class ProjectCategoryView(ListView):
     # paginate_by = 3
     template_name = 'mainapp/projects_category.html'
@@ -199,10 +210,8 @@ class ProjectCategoryView(ListView):
         'title': 'Наши проекты',
     }
 
-    # def get_object(self, queryset=None):
-    #     return get_object_or_404(ProjectCategory, pk=self.kwargs[self.pk_url_kwarg])
 
-
+# Контроллер страницы с проектами
 class ProjectView(ListView):
     paginate_by = 6
     template_name = 'mainapp/projects.html'
@@ -213,8 +222,7 @@ class ProjectView(ListView):
         'title': 'Наши проекты',
     }
 
-    # В get_queryset переопределяется object_list в котором содержится наименование проектов отсортированный по
-    # категориям
+    # В get_queryset переопределяется object_list в котором содержится наименование проектов отсортированный по категориям
     def get_queryset(self):
         queryset = Project.objects.filter(category=self.kwargs[self.pk_url_kwarg])
         return queryset
@@ -243,6 +251,7 @@ def get_news():
     return random.sample(list(news), k=3)[0]
 
 
+# Контроллер страницы с проектом
 class ProjectDetailView(DetailView):
     model = Project
     template_name = 'mainapp/projects_post.html'
@@ -261,8 +270,7 @@ class ProjectDetailView(DetailView):
         return context
 
 
-# Контроллер нуждающихся
-# родитель ListView для удобства работы со страницами где нужна пагинация
+# Контроллер нуждающихся. Родитель ListView для удобства работы со страницами где нужна пагинация
 class AllYouNeedIsView(ListView):
     paginate_by = 6
     # в дальнейшем нужно поставить 9
@@ -428,6 +436,7 @@ class OfferoView(TemplateView):
         return context
 
 
+# Контроллер с аутентификацией
 class LoginView(TemplateView):
     template_name = 'mainapp/login.html'
 

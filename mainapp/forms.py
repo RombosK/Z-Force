@@ -45,4 +45,3 @@ class GetHelpForm(forms.ModelForm):
             'phone': forms.TextInput(attrs={'class': 'getHelp_input', 'placeholder': '+7(___)___-__-__'}),
             'text': forms.Textarea(attrs={'class': 'getHelp_inputTextArea', 'rows': 10}),
         }
-

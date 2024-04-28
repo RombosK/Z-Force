@@ -7,14 +7,13 @@ from mainapp.apps import MainappConfig
 
 app_name = MainappConfig.name
 
+
 urlpatterns = [
     path('', views.IndexView.as_view(), name='home'),
     path('news/', views.NewsView.as_view(), name='news'),
     path('about/', views.AboutView.as_view(), name='about'),
     path('targets/', views.TargetsView.as_view(), name='targets'),
     path('history/', views.HistoryView.as_view(), name='history'),
-
-
 
     path('projects_category/', views.ProjectCategoryView.as_view(), name='projects_category'),
     path('allyouneedis/', views.AllYouNeedIsView.as_view(), name='allyouneedis'),
