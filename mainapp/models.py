@@ -181,18 +181,20 @@ class GiveHelp(models.Model):
         (BOTH, 'Все варианты возможны')
     )
 
-    first_name = models.CharField(verbose_name='Имя', max_length=100)
-    last_name = models.CharField(verbose_name='Фамилия', max_length=100)
-    city = models.CharField(verbose_name='Город проживания', max_length=100)
-    email = models.EmailField(verbose_name='Электронная почта', unique=True)
-    phone = models.CharField(verbose_name='Телефон', max_length=20,
+    first_name = models.CharField(verbose_name='имя', max_length=100)
+    last_name = models.CharField(verbose_name='фамилия', max_length=100)
+    city = models.CharField(verbose_name='город проживания', max_length=100)
+    email = models.EmailField(verbose_name='электронная почта', unique=True)
+    phone = models.CharField(verbose_name='телефон', max_length=20,
                              validators=[validate_phone])
     schedule = models.CharField(verbose_name='сколько времени в неделю готовы уделять', choices=SCHEDULE, max_length=64,
                                 blank=True)
     help = models.CharField(verbose_name='варианты помощи', choices=HELP, max_length=64, blank=True)
     mobility = models.CharField(verbose_name='мобильность', choices=MOBILITY, max_length=64, blank=True)
-    text_1 = models.TextField(verbose_name='Немного о себе')
-    text_2 = models.TextField(verbose_name='Как я хочу помочь')
+    text_1 = models.TextField(verbose_name='немного о себе')
+    text_2 = models.TextField(verbose_name='как я хочу помочь')
+    created_at = models.DateTimeField(default=timezone.now, verbose_name='дата создания', editable=True)
+    is_closed = models.BooleanField(default=False, verbose_name='анкета обработана')
 
     def __str__(self):
         return f'{self.first_name} - {self.last_name} - {self.text_1} - {self.text_2}'
@@ -213,6 +215,8 @@ class GetHelp(models.Model):
     phone = models.CharField(verbose_name='телефон', max_length=20, validators=[validate_phone])
     text = models.TextField(verbose_name='опиcание ситуации')
     agreed = models.BooleanField(verbose_name='я согласен на обработку персональных данных', blank=False, default=True)
+    created_at = models.DateTimeField(default=timezone.now, verbose_name='дата создания', editable=True)
+    is_closed = models.BooleanField(default=False, verbose_name='анкета обработана')
 
     def __str__(self):
         return f'{self.name} - {self.surname} - {self.city}'
