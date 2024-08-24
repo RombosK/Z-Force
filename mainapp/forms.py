@@ -9,7 +9,10 @@ class GiveHelpForm(forms.ModelForm):
 
     class Meta:
         model = GiveHelp
-        fields = '__all__'
+        # fields = '__all__'
+        fields = ['first_name', 'last_name', 'city',
+                  'email', 'phone', 'text_1', 'text_2',
+                  'schedule', 'help', 'mobility']
 
         widgets = {
             'first_name': forms.TextInput(attrs={'class': 'volounteerFormWrapper__input'}),
