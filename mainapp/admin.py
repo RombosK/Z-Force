@@ -1,10 +1,10 @@
 from mainapp.models import News, ProjectCategory, Project, AllYouNeedIs, GiveHelp, GetHelp, Partners, Report, \
     ReportYear, Images, ImagesMany
 from django.contrib import admin
+from .models import ItemVideos
 
 
 # Регистрация моделей в админке
-
 # class Image(admin.StackedInline):
 #     model = Images
 #
@@ -23,7 +23,7 @@ class ImagesNewsInline(admin.StackedInline):
 
 class ImagesProjectInline(admin.StackedInline):
     model = ImagesMany
-    fields = ["image",]
+    fields = ["image", ]
     max_num = 10
     extra = 0
     fk_name = "projects_image"
@@ -107,10 +107,10 @@ class ProjectCategoryAdmin(admin.ModelAdmin):
     prepopulated_fields = {
         'slug': ('name',)
     }
-    list_display = ('name', )
+    list_display = ('name',)
     list_per_page = 10
-    list_filter = ('name', )
-    search_fields = ('name', )
+    list_filter = ('name',)
+    search_fields = ('name',)
     show_full_result_count = False
 
 
@@ -168,5 +168,15 @@ class ReportYearAdmin(admin.ModelAdmin):
     list_display = ('name', 'created_at',)
     list_per_page = 3
     list_filter = ('name', 'created_at')
-    search_fields = ('name','created_at')
+    search_fields = ('name', 'created_at')
     show_full_result_count = False
+
+
+@admin.register(ItemVideos)
+class ItemVideosAdmin(admin.ModelAdmin):
+    list_display = ('video', 'video_url')
+
+    def video_url(self, obj):
+        return obj.get_video_url()
+
+    video_url.short_description = 'Video URL'

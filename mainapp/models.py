@@ -266,3 +266,19 @@ class Report(models.Model):
     class Meta:
         verbose_name = 'Отчет'
         verbose_name_plural = 'Отчеты'
+
+
+# Модель для страницы с видео
+class ItemVideos(models.Model):
+    title = models.CharField(max_length=255, default='Без названия')
+    video = models.CharField(max_length=255)
+
+    def get_video_url(self):
+        return f"https://rutube.ru/play/embed/{self.video}"
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = 'Видео'
+        verbose_name_plural = 'Видео'

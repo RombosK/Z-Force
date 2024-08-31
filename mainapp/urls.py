@@ -1,9 +1,11 @@
+from django.conf import settings
+from django.conf.urls.static import static
 from django.urls import path, include
 from django.views.generic import RedirectView, TemplateView
-from django.conf.urls.static import static
-from django.conf import settings
+
 from mainapp import views
 from mainapp.apps import MainappConfig
+
 
 app_name = MainappConfig.name
 
@@ -33,6 +35,8 @@ urlpatterns = [
     path('projects_post/<slug:slug>/', views.ProjectDetailView.as_view(), name='projects_post'),
     path('allyouneedis/<slug:slug>/', views.AllYouNeedIsDetailView.as_view(), name='allyouneedis_post'),
     path('report/', views.ReportView.as_view(), name='report'),
+    path('vid/', views.VideoListView.as_view(), name='video_list'),
+    path('video/<int:pk>/', views.VideoDetailView.as_view(), name='video_detail'),
 ]
 
 if settings.DEBUG:

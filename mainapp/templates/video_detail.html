@@ -1,0 +1,21 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+{% block content %}
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Воспроизведение видео</title>
+    </head>
+<body>
+<h1>{{ item.title }}</h1>
+{% if video_url %}
+<iframe width="720" height="405" src="{{ video_url }}" frameborder="0" allowfullscreen></iframe>
+{% else %}
+<p>Видео не доступно.</p>
+{% endif %}
+<p>{{ item.description }}</p>
+</body>
+
+
+{% endblock %}

@@ -10,10 +10,10 @@ import aiohttp
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from django.shortcuts import render, redirect
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.views.generic import ListView, DetailView
 from django.views.generic import TemplateView, View
-
+from .models import ItemVideos
 from mainapp.forms import GiveHelpForm, GetHelpForm
 from mainapp.models import GiveHelp, GetHelp, News, ProjectCategory, AllYouNeedIs, Partners, Project, Report, \
     ImagesMany
@@ -311,6 +311,7 @@ class AllYouNeedIsDetailView(DetailView):
 # Контроллер главной страницы
 class IndexView(TemplateView):
     template_name = 'mainapp/index.html'
+
     # hot_projects = get_hot_projects()
     # """ в extra context добавляем список чтоб меньше было запросов к базе данных чем при get context_data подопечных,
     # задачи, новости все они отображают последние 3 события из списка если в списке меньше 3 отображаются все что
@@ -332,8 +333,7 @@ class IndexView(TemplateView):
     #     # context['random_projects'] = random_projects
     #     # context['random_kids'] = random_kids
     #     # context['random_news'] = random_news
-    
-    
+
     #     random_projects = get_projects()
     #     random_kids = get_kids()
     #     random_news = get_news()
@@ -345,7 +345,7 @@ class IndexView(TemplateView):
     #     context['list_news'] = News.objects.all().reverse()[:3]
     #     context['list_projects'] = Project.objects.all().reverse()[:3]
     #     context['list_allyouneedis'] = AllYouNeedIs.objects.all().reverse()[:3]
-    
+
     #     return context
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -353,9 +353,9 @@ class IndexView(TemplateView):
         context['list_news'] = News.objects.all().reverse()[:(3 if len(News.objects.all()) >= 3
                                                               else len(News.objects.all()))]
         context['list_projects'] = Project.objects.all().reverse()[:(3 if len(Project.objects.all()) >= 3
-                                                               else len(Project.objects.all()))]
+                                                                     else len(Project.objects.all()))]
         context['list_allyouneedis'] = AllYouNeedIs.objects.all().reverse()[:(3 if len(AllYouNeedIs.objects.all()) >= 3
-                                                                        else len(AllYouNeedIs.objects.all()))]
+                                                                              else len(AllYouNeedIs.objects.all()))]
         return context
 
 
@@ -449,3 +449,27 @@ class ReportView(ListView):
     extra_context = {
         'title': 'Отчеты',
     }
+
+
+# Контроллер страницы списка видео
+class VideoListView(TemplateView):
+    template_name = 'video_list.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['videos'] = ItemVideos.objects.all()  # Получаем все видео из базы данных
+        return context
+
+
+# Контроллер страницы с видео
+class VideoDetailView(DetailView):
+    model = ItemVideos
+    template_name = 'video_detail.html'
+    context_object_name = 'item'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        item = self.get_object()
+        context['video_url'] = item.get_video_url()
+        print(context['video_url'])  # Отладочный вывод
+        return context
