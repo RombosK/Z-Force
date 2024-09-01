@@ -275,7 +275,7 @@ class ItemVideos(models.Model):
     video = models.CharField(max_length=255)
 
     def get_video_url(self):
-        return f"https://rutube.ru/play/embed/{self.video}"
+        return {self.video}
 
     def __str__(self):
         return self.title
