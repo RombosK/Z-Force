@@ -49,17 +49,17 @@ class ImagesAllyouneedisInline(admin.StackedInline):
 #     extra = 0
 
 
-@admin.register(News)
-class NewsAdmin(admin.ModelAdmin):
-    prepopulated_fields = {
-        'slug': ('name',)
-    }
-    list_display = ('name', 'vk_link', 'tg_link', 'created_at', 'updated_at', 'is_closed')
-    list_per_page = 10
-    list_filter = ('name', 'created_at')
-    search_fields = ('name', 'created_at')
-    show_full_result_count = False
-    inlines = [ImagesNewsInline, ]
+# @admin.register(News)
+# class NewsAdmin(admin.ModelAdmin):
+#     prepopulated_fields = {
+#         'slug': ('name',)
+#     }
+#     list_display = ('name', 'vk_link', 'tg_link', 'created_at', 'updated_at', 'is_closed')
+#     list_per_page = 10
+#     list_filter = ('name', 'created_at')
+#     search_fields = ('name', 'created_at')
+#     show_full_result_count = False
+#     inlines = [ImagesNewsInline, ItemVideosInline ]
 
 
 @admin.register(Images)
@@ -180,3 +180,33 @@ class ItemVideosAdmin(admin.ModelAdmin):
         return obj.get_video_url()
 
     video_url.short_description = 'Video URL'
+
+
+class ItemVideosInline(admin.TabularInline):
+    model = News.videos.through
+    extra = 1
+    can_delete = True  # Удаление записи
+
+
+# @admin.register(News)
+# class NewsAdmin(admin.ModelAdmin):
+#     prepopulated_fields = {
+#         'slug': ('name',)
+#     }
+#     list_display = ('name', 'vk_link', 'tg_link', 'created_at', 'updated_at', 'is_closed')
+#     list_per_page = 10
+#     list_filter = ('name', 'created_at')
+#     search_fields = ('name', 'created_at')
+#     show_full_result_count = False
+#     inlines = [ImagesNewsInline, ItemVideosInline]
+#     filter_horizontal = ('images', 'videos')
+@admin.register(News)
+class NewsAdmin(admin.ModelAdmin):
+    list_display = ('name', 'slug', 'created_at', 'is_closed')
+    prepopulated_fields = {"slug": ("name",)}
+    inlines = [ItemVideosInline, ImagesNewsInline]
+    filter_horizontal = ('images', 'videos')  # Удобный выбор для ManyToMany связей
+
+
+# Регистрация модели ImagesMany (если требуется)
+admin.site.register(ImagesMany)
