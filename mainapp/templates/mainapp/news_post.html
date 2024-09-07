@@ -42,17 +42,7 @@
   </div>
   <p class="newsPost__data">{{ post.created_at|date:"d M Y" }}</p>
 
-  <!-- Видео статьи -->
-  {% if post.videos.exists %}
-  <div class="newsPost__videos">
-    {% for video in post.videos.all %}
-    <div class="newsPost__video">
-      <p>{{ video.title }}</p>
-      <iframe width="720" height="405" src="{{ video.get_video_url }}" frameborder="0" allowfullscreen></iframe>
-    </div>
-    {% endfor %}
-  </div>
-  {% endif %}
+
 
   <!-- слайдер -->
   <div class="newsPost__slider">
