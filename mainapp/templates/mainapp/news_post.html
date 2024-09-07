@@ -1,7 +1,5 @@
 {% extends 'mainapp/base.html' %}
-<!--  -->
 {% load static %}
-<!--  -->
 
 <title xmlns="http://www.w3.org/1999/html">
   {% block title %} {{ post.name }} {% endblock %}
@@ -12,25 +10,25 @@
 <div class="newsPost__titleBox center">
   <a class="newsPost__titleMain" href="{% url 'mainapp:news' %}">{{ title }}</a>
   <img
-    class="newsPost__title_img"
-    src="{% static '/img/news/news2.png' %}"
-    alt="Окно в Мир"
+          class="newsPost__title_img"
+          src="{% static 'img/news/news2.png' %}"
+          alt="Окно в Мир"
   />
 </div>
 
-<!--шапка статьи  -->
+<!-- шапка статьи -->
 <div class="newsPost center">
   <div class="newsPost__top">
     {% if post.photo %}
     <div class="newsPost__top_imgBox">
-      <img class="newsPost__top_img" src="{{post.photo.url}}" />
+      <img class="newsPost__top_img" src="{{ post.photo.url }}" />
     </div>
     {% endif %}
     <p class="newsPost__title">{{ post.name }}</p>
   </div>
 
   <!-- текст статьи -->
-  <div class="newsPost__text">{{ post.description|linebreaks}}</div>
+  <div class="newsPost__text">{{ post.description|linebreaks }}</div>
   <div class="newsPost__link">
     {% if post.vk_link %}
     <!--  -->
@@ -44,16 +42,27 @@
   </div>
   <p class="newsPost__data">{{ post.created_at|date:"d M Y" }}</p>
 
-  <!-- слайлер -->
+  <!-- Видео статьи -->
+  {% if post.videos.exists %}
+  <div class="newsPost__videos">
+    {% for video in post.videos.all %}
+    <div class="newsPost__video">
+      <p>{{ video.title }}</p>
+      <iframe width="1375" height="605" src="{{ video.get_video_url }}" frameborder="0" allowfullscreen></iframe>
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
 
+  <!-- слайдер -->
   <div class="newsPost__slider">
     <!-- фото -->
     <div class="newsPost__slider_imgBox">
       <div class="newsPost__slider_imgline">
         {% for item in image %}
         <img
-          class="newsPost__slider_img newsPost__slider_imgHidden"
-          src="{{ item.image.image.url }}"
+                class="newsPost__slider_img newsPost__slider_imgHidden"
+                src="{{ item.image.image.url }}"
         />
         {% endfor %}
       </div>

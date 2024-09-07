@@ -11,9 +11,9 @@
 <div class="news__titleBox center">
   <h1 class="news__title">{{ title }}</h1>
   <img
-    class="news__title_img"
-    src="{% static '/img/news/news2.png' %}"
-    alt="Окно в Мир"
+          class="news__title_img"
+          src="{% static '/img/news/news2.png' %}"
+          alt="Окно в Мир"
   />
 </div>
 
@@ -26,10 +26,10 @@
       {% if news_item.photo %}
       <div class="news__item__imgBox">
         <img
-          class="news__item__img"
-          src="{{news_item.photo.url}}"
-          width="300"
-          height="250"
+                class="news__item__img"
+                src="{{news_item.photo.url}}"
+                width="300"
+                height="250"
         />
       </div>
       {% endif %}
@@ -41,8 +41,8 @@
         </div>
         <p class="news__item__content_data">{{ news_item.created_at|date:"d M Y" }}</p>
         <button
-          class="news__item__content_btn"
-          onclick="location.href='{{ news_item.slug }}'"
+                class="news__item__content_btn"
+                onclick="location.href='{{ news_item.slug }}'"
         >
           Читать
         </button>
