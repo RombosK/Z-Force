@@ -460,7 +460,7 @@ class ReportView(ListView):
 
 # Контроллер страницы списка видео
 class VideoListView(TemplateView):
-    template_name = 'video_list.html'
+    template_name = 'mainapp/video_list.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -471,7 +471,7 @@ class VideoListView(TemplateView):
 # Контроллер страницы с видео
 class VideoDetailView(DetailView):
     model = ItemVideos
-    template_name = 'video_detail.html'
+    template_name = 'mainapp/video_detail.html'
     context_object_name = 'item'
 
     def get_context_data(self, **kwargs):
