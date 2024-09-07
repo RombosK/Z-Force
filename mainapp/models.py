@@ -42,6 +42,7 @@ class News(models.Model):
     is_closed = models.BooleanField(default=False, verbose_name='событие прошло')
     images = models.ManyToManyField('Images', through="ImagesMany", through_fields=("news_image", "image"),
                                     blank=True)
+    videos = models.ManyToManyField('ItemVideos', blank=True,  related_name='news')  # Новая связь
 
     class Meta:
         verbose_name = 'Новость'
