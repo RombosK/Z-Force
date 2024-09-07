@@ -207,6 +207,3 @@ class NewsAdmin(admin.ModelAdmin):
     inlines = [ItemVideosInline, ImagesNewsInline]
     filter_horizontal = ('images', 'videos')  # Удобный выбор для ManyToMany связей
 
-
-# Регистрация модели ImagesMany (если требуется)
-admin.site.register(ImagesMany)
