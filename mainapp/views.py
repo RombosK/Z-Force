@@ -191,13 +191,20 @@ class NewsDetailView(DetailView):
 
     # В get_context_data добавляем  context['image'] фотографии которые сортируються по id через slug
     # slug принадлежит определенной новости которая имеет определенный id
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     item = ImagesMany.objects.filter(news_image=News.objects.filter(slug=self.kwargs[self.slug_url_kwarg]).get())
+    #     context['image'] = item
+    #     print(context)
+    #     return context
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        item = ImagesMany.objects.filter(news_image=News.objects.filter(slug=self.kwargs[self.slug_url_kwarg]).get())
-        context['image'] = item
+        news_item = self.get_object()
+        context['image'] = ImagesMany.objects.filter(news_image=news_item)
+        context['videos'] = news_item.videos.all()  # Передаем связанные видео
         print(context)
         return context
-
 
 # Контроллер проектов. Родитель ListView для удобства работы со страницами где нужна пагинация
 class ProjectCategoryView(ListView):
