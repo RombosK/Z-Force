@@ -206,6 +206,7 @@ class NewsDetailView(DetailView):
         print(context)
         return context
 
+
 # Контроллер проектов. Родитель ListView для удобства работы со страницами где нужна пагинация
 class ProjectCategoryView(ListView):
     # paginate_by = 3

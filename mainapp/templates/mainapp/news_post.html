@@ -48,7 +48,7 @@
     {% for video in post.videos.all %}
     <div class="newsPost__video">
       <p>{{ video.title }}</p>
-      <iframe width="720" height="405" src="{{ video.get_video_url }}" frameborder="0" allowfullscreen></iframe>
+      {{ video.get_video_url|safe }}
     </div>
     {% endfor %}
   </div>

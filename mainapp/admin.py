@@ -174,7 +174,7 @@ class ReportYearAdmin(admin.ModelAdmin):
 
 @admin.register(ItemVideos)
 class ItemVideosAdmin(admin.ModelAdmin):
-    list_display = ('video', 'video_url')
+    list_display = ('title', 'video', 'video_url')
 
     def video_url(self, obj):
         return obj.get_video_url()

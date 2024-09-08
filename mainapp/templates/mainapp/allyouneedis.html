@@ -33,7 +33,11 @@
     </div>
     <!-- блок с информацие о подопечном и о суммах  -->
     <div class="allYouNeedis__item_descriptionBox">
-      <p class="allYouNeedis__item_title">{{ post.name }} {{post.surname }}</p>
+      <p class="allYouNeedis__item_title">{{ post.name }}
+        {% if post.second_name %}
+        {{ post.second_name }}
+        {% endif %}
+        {{post.surname }}</p>
       <p class="allYouNeedis__item_target">{{ post.short_description }}</p>
       <div class="allYouNeedis__item_payment">
         <p class="allYouNeedis__item_collectedSum">
@@ -42,7 +46,7 @@
         <p class="allYouNeedis__item_totalSum">{{ post.donation }} &#8381;</p>
       </div>
       <div class="allYouNeedis__item_donations">
-        <!--  линия необходимой суумы-->
+        <!--  линия необходимой суммы-->
         <div class="allYouNeedis__item_donationsProgress">
           <!-- линия собранной суммы -->
         </div>
@@ -54,6 +58,9 @@
           onclick="location.href='{% url 'mainapp:donation' %}'"
         >
           Помочь {{ post.name|inflect_to_dative }}
+          {% if post.second_name %}
+          {{ post.second_name|inflect_to_dative }}
+          {% endif %}
         </button>
       </div>
       <!-- ссылка на страницу с более подробной информацией -->
