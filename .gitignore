@@ -2,11 +2,12 @@
 __pycache__/
 *.py[cod]
 *$py.class
-
+certs
 # C extensions
 *.so
 
 # Distribution / packaging
+certs
 .Python
 build/
 develop-eggs/
