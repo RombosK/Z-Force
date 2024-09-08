@@ -273,10 +273,10 @@ class Report(models.Model):
 # Модель для страницы с видео
 class ItemVideos(models.Model):
     title = models.CharField(max_length=255, default='Без названия')
-    video = models.CharField(max_length=1000)
+    video = models.CharField(max_length=255)
 
     def get_video_url(self):
-        return self.video
+        return f"https://rutube.ru/play/embed/{self.video}"
 
     def __str__(self):
         return self.title
