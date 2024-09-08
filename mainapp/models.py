@@ -104,6 +104,7 @@ class Project(models.Model):
 class AllYouNeedIs(models.Model):
     slug = models.SlugField(max_length=255, unique=True, db_index=True)
     name = models.CharField(verbose_name='имя подопечного', max_length=32)
+    second_name = models.CharField(verbose_name='отчество подопечного', blank=True, null=True, max_length=32)
     surname = models.CharField(verbose_name='фамилия подопечного', max_length=32)
     city = models.CharField(verbose_name='город, регион', max_length=64, blank=True)
     birthdate = models.CharField(verbose_name='Год рождения', max_length=4, null=True)
@@ -111,7 +112,7 @@ class AllYouNeedIs(models.Model):
     vk_link = models.CharField(max_length=700, verbose_name="ВК ссылка", blank=True)
     tg_link = models.CharField(max_length=700, verbose_name="ТГ ссылка", blank=True)
     short_description = models.CharField(verbose_name='краткое описание проблемы', max_length=128, blank=True)
-    # name_for_payment = models.CharField(verbose_name='напишите имя в дательном пажеде', max_length=32, blank=True)
+    # name_for_payment = models.CharField(verbose_name='напишите имя в дательном падеже', max_length=32, blank=True)
     photo = models.ImageField(upload_to='needs_photos')
     purpose = models.CharField(verbose_name='назначение платежа', max_length=64, blank=True)
     donation = models.DecimalField(verbose_name='необходимая сумма', max_digits=12, decimal_places=0, default=0)
