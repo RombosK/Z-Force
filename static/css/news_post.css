@@ -298,3 +298,52 @@
     }
 
 }
+
+/* Основные стили fix */
+
+.newsPost__titleBox {
+    text-align: center;
+}
+
+.newsPost__title_img {
+    max-width: 100%;
+    height: auto;
+}
+
+.newsPost__top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.newsPost__top_img {
+    max-width: 100%;
+    height: auto;
+}
+
+.newsPost__slider_imgBox {
+    overflow: hidden;
+}
+
+.newsPost__slider_img {
+    max-width: 100%;
+    height: auto;
+}
+
+.newsPost__video iframe {
+    width: 100%;
+    height: auto;
+}
+
+/* Медиазапросы для мобильных устройств */
+@media (min-width: 769px) {
+    .newsPost__top {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    .newsPost__video iframe {
+        width: 720px;
+        height: 405px;
+    }
+}
