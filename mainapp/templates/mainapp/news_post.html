@@ -1,5 +1,4 @@
-{% extends 'mainapp/base.html' %}
-{% load static %}
+{% extends 'mainapp/base.html' %} {% load static %}
 
 <title xmlns="http://www.w3.org/1999/html">
   {% block title %} {{ post.name }} {% endblock %}
@@ -10,14 +9,15 @@
 <div class="newsPost__titleBox center">
   <a class="newsPost__titleMain" href="{% url 'mainapp:news' %}">{{ title }}</a>
   <img
-          class="newsPost__title_img"
-          src="{% static 'img/news/news2.png' %}"
-          alt="Окно в Мир"
+    class="newsPost__title_img"
+    src="{% static 'img/news/news2.png' %}"
+    alt="Окно в Мир"
   />
 </div>
 
-<!-- шапка статьи -->
+<!-- статья с фото и видео -->
 <div class="newsPost center">
+  <!-- шапка статьи -->
   <div class="newsPost__top">
     {% if post.photo %}
     <div class="newsPost__top_imgBox">
@@ -42,18 +42,6 @@
   </div>
   <p class="newsPost__data">{{ post.created_at|date:"d M Y" }}</p>
 
-  <!-- Видео статьи -->
-  {% if post.videos.exists %}
-  <div class="newsPost__videos">
-    {% for video in post.videos.all %}
-    <div class="newsPost__video">
-      <p>{{ video.title }}</p>
-      <iframe width="720" height="405" src="{{ video.get_video_url }}" frameborder="0" allowfullscreen></iframe>
-    </div>
-    {% endfor %}
-  </div>
-  {% endif %}
-
   <!-- слайдер -->
   <div class="newsPost__slider">
     <!-- фото -->
@@ -61,8 +49,8 @@
       <div class="newsPost__slider_imgline">
         {% for item in image %}
         <img
-                class="newsPost__slider_img newsPost__slider_imgHidden"
-                src="{{ item.image.image.url }}"
+          class="newsPost__slider_img newsPost__slider_imgHidden"
+          src="{{ item.image.image.url }}"
         />
         {% endfor %}
       </div>
@@ -74,6 +62,20 @@
       <p class="newsPost__slider_navRight"></p>
     </div>
   </div>
+
+  <!-- Видео статьи -->
+  {% if post.videos.exists %}
+  <div class="newsPost__videos">
+    {% for video in post.videos.all %}
+    <div class="newsPost__video-box">
+      <p class="newsPost__video-title">{{ video.title }}</p>
+      <div class="newsPost__video">
+        <iframe src="{{ video.get_video_url }}"></iframe>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
 
   <!--  -->
 </div>
